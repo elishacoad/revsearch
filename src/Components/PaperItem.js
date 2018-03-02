@@ -11,7 +11,7 @@ class PaperItem extends Component {
 
   render() {
     return (
-      <div className="Paper" style={{ "background-color": "lightgray" }}>
+      <div className="Paper jumbotron bg-info" style={{ "backgroundColor": "lightgray" }}>
         <h3>{this.props.Paper.title}</h3>
         <p>{this.props.Paper.category}</p>
         <p>{this.props.Paper.absract}
