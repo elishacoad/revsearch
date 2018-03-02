@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import PaperItem from './PaperItem';
+import PaperItem from './PaperItem/index';
 
 class Papers extends Component {
   deletePaper(id) {
@@ -11,7 +11,6 @@ class Papers extends Component {
     let PaperItems;
     if (this.props.Papers) {
       PaperItems = this.props.Papers.map(Paper => {
-        //console.log(Paper);
         return (
           <PaperItem onDelete={this.deletePaper.bind(this)} key={Paper.id} Paper={Paper} />
         );

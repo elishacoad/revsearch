@@ -1,0 +1,26 @@
+.Paper{
+    margin-left: auto; margin-right: auto;
+    border-radius: 10px;
+    width: 80%;
+    border-radius: 10px;
+    margin-left: auto; margin-right: auto;
+}
+
+.paperheader {
+    text-align: center;
+}
+
+.grow {
+    /* padding: 5px 5px 5px 5px; */
+    height: 5px;
+    margin: 5px 1% 5px 1%;
+    /* float: left; */
+    position: relative;
+    transition: height 0.5s;
+    -webkit-transition: height 0.5s;
+    overflow: hidden;
+}
+
+.grow:hover {
+    height: 100%;
+}

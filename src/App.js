@@ -2,10 +2,8 @@ import './App.css';
 
 import React, { Component } from 'react';
 
-import $ from 'jquery';
 import AddPaper from './Components/AddPaper';
 import Papers from './Components/Papers';
-import uuid from 'uuid';
 
 class App extends Component {
   constructor() {

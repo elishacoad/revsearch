@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import parseCorpus from './CorpusParser'
+import {parseCorpus} from './CorpusParser'
 import uuid from 'uuid';
 
 class AddPaper extends Component {
@@ -12,6 +12,7 @@ class AddPaper extends Component {
   }
 
   handleSubmit(e) {
+    console.log(this.refs.rawtext.value);
     let papers = parseCorpus(this.refs.rawtext.value);
     let paper = papers[0];
     paper.id = uuid.v4();
@@ -34,10 +35,10 @@ class AddPaper extends Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div>
             <label>Text Here</label><br />
-            <input type="text" ref="rawtext" />
+            <textarea type="text" cols="40" rows="5" ref="rawtext"></textarea>
           </div>
           <br />
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Add Paper" />
           <br />
         </form>
       </div>

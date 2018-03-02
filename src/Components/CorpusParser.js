@@ -102,4 +102,4 @@ function parsePaper(papertext) {
     return paper;
 }
 
-export default parseCorpus;
+export {parseCorpus, parsePaper};
