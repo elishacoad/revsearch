@@ -6,13 +6,16 @@ class PaperItem extends Component {
     e.preventDefault();
   }
 
+  myFunc(){
+    console.log("hovering");
+  }
+
   render() {
     return (
-      <div className="Paper jumbotron bg-info" style={{ "backgroundColor": "lightgray" }}>
+      <div className="Paper" style={{ "backgroundColor": "lightgray" }} onMouseOver={this.myFunc}>
         <h3>{this.props.Paper.title}</h3>
-        <p>{this.props.Paper.category}</p>
         <p>
-          {this.props.Paper.absract}
+          {this.props.Paper.abstract}
           <a href="" onClick={this.changeColor}> Include </a>
           <a href="" onClick={this.changeColor}> Exclude </a>
           <a href="" onClick={this.changeColor}> Maybe </a>
