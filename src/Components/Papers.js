@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import PaperItem from './PaperItem/index';
 
 class Papers extends Component {
-  deletePaper(id) {
-    this.props.onDelete(id);
+  onDecisionChange(id) {
+    this.props.onDecisionChange(id);
   }
 
   render() {
@@ -12,7 +12,7 @@ class Papers extends Component {
     if (this.props.Papers) {
       PaperItems = this.props.Papers.map(Paper => {
         return (
-          <PaperItem onDelete={this.deletePaper.bind(this)} key={Paper.id} Paper={Paper} />
+          <PaperItem onDecisionChange={this.onDecisionChange.bind(this)} key={Paper.id} Paper={Paper} />
         );
       });
     }

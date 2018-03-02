@@ -2,15 +2,31 @@ import './index.css';
 
 import React, { Component } from 'react';
 
-class PaperItem extends Component {
-  changeColor(e, color) {
-    console.log(color);
-    e.target.parentNode.parentNode.setAttribute("style", "background-color:" + color + ";");
-    e.preventDefault();
-  }
+const Decision = Object.freeze({
+  NONE: "none",
+  INCLUDE: "include",
+  MAYBE: "maybe",
+  EXCLUDE: "exclude"
+});
 
-  myFunc(){
-    console.log("hovering");
+class PaperItem extends Component {
+
+
+  
+  changeColor(e, decision) {
+    e.preventDefault();
+    let colors = {
+      "include": "green",
+      "maybe": "blue",
+      "exclude": "red"
+    };
+    e.target.parentNode.parentNode.setAttribute("style", "background-color:" + colors[decision] + ";");
+    this.props.Paper.decision = decision;
+    this.props.onDecisionChange(this.props.Paper.id);
+  }
+  
+  myFunc() {
+    // console.log("hovering");
   }
 
   render() {
@@ -18,9 +34,9 @@ class PaperItem extends Component {
       <div className="Paper" style={{ "backgroundColor": "lightgray" }} onMouseOver={this.myFunc}>
         <div className="paperheader">
           <h3>{this.props.Paper.title}</h3>
-          <button href="" onClick={(e) => this.changeColor(e, "green")}> Include </button>
-          <button href="" onClick={(e) => this.changeColor(e, "red")}> Exclude </button>
-          <button href="" onClick={(e) => this.changeColor(e, "blue")}> Maybe </button>
+          <button href="" onClick={(e) => this.changeColor(e, Decision.INCLUDE)}> Include </button>
+          <button href="" onClick={(e) => this.changeColor(e, Decision.EXCLUDE)}> Exclude </button>
+          <button href="" onClick={(e) => this.changeColor(e, Decision.MAYBE)}> Maybe </button>
         </div>
         <p className="grow">
           {this.props.Paper.abstract}

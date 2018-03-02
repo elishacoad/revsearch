@@ -12,7 +12,6 @@ class AddPaper extends Component {
   }
 
   handleSubmit(e) {
-    console.log(this.refs.rawtext.value);
     let papers = parseCorpus(this.refs.rawtext.value);
     let paper = papers[0];
     paper.id = uuid.v4();
@@ -24,13 +23,18 @@ class AddPaper extends Component {
     });
     e.preventDefault();
   }
-
+  
+  unmount() {
+    this.props.unmountMe();
+  } 
+  
   render() {
     // let categoryOptions = this.props.categories.map(category => {
     //   return <option key={category} value={category}>{category}</option>
     // });
     return (
       <div>
+        <button onClick={this.unmount.bind(this)}>Unmount</button>
         <h3>Add Paper</h3>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div>
