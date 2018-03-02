@@ -3,14 +3,8 @@ import './App.css';
 import React, { Component } from 'react';
 
 import AddPaper from './Components/AddPaper';
+import Decision from './Constants';
 import Papers from './Components/Papers';
-
-const Decision = Object.freeze({
-  NONE: "none",
-  INCLUDE: "include",
-  MAYBE: "maybe",
-  EXCLUDE: "exclude"
-});
 
 class App extends Component {
   constructor() {
@@ -62,6 +56,8 @@ class App extends Component {
           break;
         case Decision.MAYBE:
           maybes += 1;
+          break;
+        case Decision.NONE:
           break;
         default:
           console.log(paper.decision + " is not a valid decision");

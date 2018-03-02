@@ -1,7 +1,11 @@
-// for a specific type of formattting
-// parsing assumptions: a paper starts with "%0 Journal Article" and ends with "%G"
-// The beginning of a new section in a paper starts with one of the deliminators
-// shown below, and each section ends with a newline character (using \n) for now
+/*
+Parsing for a specific type of formatting.
+Parsing assumptions: a paper starts with "%0 Journal Article" and ends with "%G"
+The beginning of a new section in a paper starts with one of the deliminators shown below
+and each section ends with a newline character (using \n).
+*/
+
+import Decision from '../Constants';
 
 const SECTION_DELIMITERS = {
     "0": "type",
@@ -24,8 +28,7 @@ const SECTION_DELIMITERS = {
     "W": "databaseprovider"
 };
 
-// eslint-disable-next-line
-function parseCorpus() {
+export function parseCorpus() {
     const regex = /%0[\s\S]*?(?=%G)/gm; // to see how this matches, use regex101.com
     const corpus =
         `%0 Journal Article
@@ -67,7 +70,7 @@ function parseCorpus() {
     return papers;
 }
 
-function parsePaper(papertext) {
+export function parsePaper(papertext) {
     /*
     Found match, group 0: %0 Journal Article
     Found match, group 1: 0
@@ -76,7 +79,6 @@ function parsePaper(papertext) {
     Found match, group 1: D
     Found match, group 2: 2016
     */
-    //console.log("papertext " + papertext)
     const regex = /^\s*%\s*(.)\s*(.*)/gm;
     let m;
     let sectionheader;
@@ -99,7 +101,6 @@ function parsePaper(papertext) {
             }
         });
     }
+    paper.decision = Decision.NONE;
     return paper;
 }
-
-export {parseCorpus, parsePaper};

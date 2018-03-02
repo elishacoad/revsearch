@@ -2,17 +2,9 @@ import './index.css';
 
 import React, { Component } from 'react';
 
-const Decision = Object.freeze({
-  NONE: "none",
-  INCLUDE: "include",
-  MAYBE: "maybe",
-  EXCLUDE: "exclude"
-});
+import Decision from '../../Constants';
 
 class PaperItem extends Component {
-
-
-  
   changeColor(e, decision) {
     e.preventDefault();
     let colors = {
@@ -25,13 +17,14 @@ class PaperItem extends Component {
     this.props.onDecisionChange(this.props.Paper.id);
   }
   
-  myFunc() {
-    // console.log("hovering");
+  grow() {
+    // e.target.parentNode.parentNode.setAttribute("style", "height: 100%;");
+    console.log("hovering");
   }
 
   render() {
     return (
-      <div className="Paper" style={{ "backgroundColor": "lightgray" }} onMouseOver={this.myFunc}>
+      <div className="Paper" style={{ "backgroundColor": "lightgray" }} onClick={this.myFunc}>
         <div className="paperheader">
           <h3>{this.props.Paper.title}</h3>
           <button href="" onClick={(e) => this.changeColor(e, Decision.INCLUDE)}> Include </button>
