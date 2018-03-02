@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import TodoItem from './TodoItem';
 
 class Todos extends Component {
@@ -6,7 +7,7 @@ class Todos extends Component {
     let todoItems;
     if(this.props.todos){
       todoItems = this.props.todos.map(todo => {
-        //console.log(project);
+        //console.log(Paper);
         return (
           <TodoItem key={todo.title} todo={todo} />
         );

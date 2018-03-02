@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
-import uuid from 'uuid';
-import $ from 'jquery';
-import Projects from './Components/Projects';
-import AddProject from './Components/AddProject';
-import Todos from './Components/Todos';
 import './App.css';
+
+import React, { Component } from 'react';
+
+import $ from 'jquery';
+import AddPaper from './Components/AddPaper';
+import Papers from './Components/Papers';
+import Todos from './Components/Todos';
+import uuid from 'uuid';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      projects: [],
+      Papers: [],
       todos:[]
     }
   }
@@ -31,8 +33,8 @@ class App extends Component {
     });
   }
 
-  getProjects(){
-    this.setState({projects: [
+  getPapers(){
+    this.setState({Papers: [
       {
         id:uuid.v4(),
         title: 'Business Website',
@@ -52,7 +54,7 @@ class App extends Component {
   }
 
   componentWillMount(){
-    this.getProjects();
+    this.getPapers();
     this.getTodos();
   }
 
@@ -60,24 +62,24 @@ class App extends Component {
     this.getTodos();
   }
 
-  handleAddProject(project){
-    let projects = this.state.projects;
-    projects.push(project);
-    this.setState({projects:projects});
+  handleAddPaper(Paper){
+    let Papers = this.state.Papers;
+    Papers.push(Paper);
+    this.setState({Papers:Papers});
   }
 
-  handleDeleteProject(id){
-    let projects = this.state.projects;
-    let index = projects.findIndex(x => x.id === id);
-    projects.splice(index, 1);
-    this.setState({projects:projects});
+  handleDeletePaper(id){
+    let Papers = this.state.Papers;
+    let index = Papers.findIndex(x => x.id === id);
+    Papers.splice(index, 1);
+    this.setState({Papers:Papers});
   }
 
   render() {
     return (
       <div className="App">
-        <AddProject addProject={this.handleAddProject.bind(this)} />
-        <Projects projects={this.state.projects} onDelete={this.handleDeleteProject.bind(this)} />
+        <AddPaper addPaper={this.handleAddPaper.bind(this)} />
+        <Papers Papers={this.state.Papers} onDelete={this.handleDeletePaper.bind(this)} />
         <hr />
         <Todos todos={this.state.todos} />
       </div>
