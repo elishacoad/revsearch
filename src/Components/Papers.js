@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 import PaperItem from './PaperItem';
 
 class Papers extends Component {
-  deletePaper(id){
+  deletePaper(id) {
     this.props.onDelete(id);
   }
 
   render() {
     let PaperItems;
-    if(this.props.Papers){
+    if (this.props.Papers) {
       PaperItems = this.props.Papers.map(Paper => {
         //console.log(Paper);
         return (

@@ -4,24 +4,21 @@ import parseCorpus from './CorpusParser'
 import uuid from 'uuid';
 
 class AddPaper extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
-      newPaper:{}
+      newPaper: {}
     }
   }
 
-  static defaultProps = {
-    categories: ['Web Design', 'Web Development', 'Mobile Development']
-  }
-
-  handleSubmit(e){
+  handleSubmit(e) {
     let papers = parseCorpus(this.refs.rawtext.value);
     let paper = papers[0];
     paper.id = uuid.v4();
     paper.category = "research";
-    this.setState({newPaper: paper
-    }, function(){
+    this.setState({
+      newPaper: paper
+    }, function () {
       this.props.addPaper(this.state.newPaper);
     });
     e.preventDefault();
