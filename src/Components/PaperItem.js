@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 
 class PaperItem extends Component {
-  deletePaper(id) {
-    this.props.onDelete(id);
-  }
-
-  static defaultProps = {
-    categories: ['Web Design', 'Web Development', 'Mobile Development']
+  changeColor(e) {
+    e.target.parentNode.parentNode.setAttribute("style", "background-color:blue;");
+    e.preventDefault();
   }
 
   render() {
@@ -14,10 +11,11 @@ class PaperItem extends Component {
       <div className="Paper jumbotron bg-info" style={{ "backgroundColor": "lightgray" }}>
         <h3>{this.props.Paper.title}</h3>
         <p>{this.props.Paper.category}</p>
-        <p>{this.props.Paper.absract}
-          <a href="#" onClick={this.deletePaper.bind(this, this.props.Paper.id)}>
-            Delete
-          </a>
+        <p>
+          {this.props.Paper.absract}
+          <a href="" onClick={this.changeColor}> Include </a>
+          <a href="" onClick={this.changeColor}> Exclude </a>
+          <a href="" onClick={this.changeColor}> Maybe </a>
         </p>
       </div>
     );
