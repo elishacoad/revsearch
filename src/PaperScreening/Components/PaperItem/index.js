@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 
 import { Button } from 'react-bootstrap';
 import Decision from '../../../Constants';
+// import { bindActionCreators } from 'react-redux';
+import { connect } from 'react-redux';
 
 class PaperItem extends Component {
   constructor() {
@@ -24,14 +26,10 @@ class PaperItem extends Component {
     this.props.onDecisionChange(this.props.Paper.id);
   }
 
-  grow() {
-    // e.target.parentNode.parentNode.setAttribute("style", "height: 100%;");
-    console.log("hovering");
-  }
-
   myFunc() {
     let isExpanded = this.state.isExpanded;
     this.setState({ isExpanded: !isExpanded });
+    console.log(this.props.coolpapers);
   }
 
   render() {
@@ -62,9 +60,10 @@ class PaperItem extends Component {
   }
 }
 
-PaperItem.propTypes = {
-  Paper: React.PropTypes.object,
-  onDelete: React.PropTypes.func
+function mapStateToProps(state) {
+  return {
+    coolpapers: state.papers
+  }
 }
 
-export default PaperItem;
+export default connect(mapStateToProps)(PaperItem);
