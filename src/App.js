@@ -2,7 +2,7 @@ import './App.css';
 
 import React, { Component } from 'react';
 
-import AddPaper from './Components/AddPaper';
+import AddCorpus from './Components/AddCorpus';
 import Decision from './Constants';
 import Papers from './Components/Papers';
 
@@ -11,41 +11,28 @@ class App extends Component {
     super();
     this.state = {
       Papers: [],
-      renderAddPaper: true,
+      renderAddCorpus: true,
       includes: 0,
       maybes: 0,
       excludes: 0
     }
   }
 
-  getPapers() {
-    this.setState({
-      Papers: []
-    });
-  }
-
   componentWillMount() {
-    this.getPapers();
   }
 
   componentDidMount() {
   }
 
-  handleAddPaper(Paper) {
-    let Papers = this.state.Papers;
-    Papers.push(Paper);
-    this.setState({ Papers: Papers });
+  handleAddCorpus(corpus) {
+    this.setState({ Papers: corpus });
   }
 
   handleDecisionChange(id) {
     let Papers = this.state.Papers;
-    // let paper = Papers.find(function(item) {
-    //   return item.id === id;
-    // });
     let includes = 0;
     let excludes = 0;
     let maybes = 0;
-    // console.log(this.state);
     Papers.forEach(paper => {
       switch (paper.decision) {
         case Decision.INCLUDE:
@@ -68,11 +55,10 @@ class App extends Component {
         maybes: maybes
       });
     });
-
   }
 
-  handlePaperUnmount() {
-    this.setState({ renderAddPaper: false });
+  handleCorpusUnmount() {
+    this.setState({ renderAddCorpus: false });
   }
 
   getPercent(count) {
@@ -82,8 +68,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.renderAddPaper &&
-          <AddPaper addPaper={this.handleAddPaper.bind(this)} unmountMe={this.handlePaperUnmount.bind(this)} />
+        {this.state.renderAddCorpus &&
+          <AddCorpus addCorpus={this.handleAddCorpus.bind(this)} unmountMe={this.handleCorpusUnmount.bind(this)} />
         }
         <hr />
         <p>includes={this.state.includes} {this.getPercent(this.state.includes)},
