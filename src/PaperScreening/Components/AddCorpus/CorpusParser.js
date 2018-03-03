@@ -28,7 +28,7 @@ const SECTION_DELIMITERS = {
     "W": "databaseprovider"
 };
 
-const corpus = `%0 Journal Article
+const dummypapers = `%0 Journal Article
 %D 2016
 %T Characteristics of patients with type 2 diabetes mellitus newly treated with GLP-1 receptor agonists (CHADIG Study): A cross-sectional multicentre study in Spain
 %B BMJ Open. 6 (7) (no pagination), 2016. Article Number: e010197. Date of Publication: 01 Jul 2016.
@@ -67,6 +67,7 @@ const corpus = `%0 Journal Article
 `
 
 export function parseCorpus() {
+    let corpus = [dummypapers, dummypapers, dummypapers, dummypapers];
     const regex = /%0[\s\S]*?(?=%G)/gm; // to see how this matches, use regex101.com
     let m;
     let papers = [];

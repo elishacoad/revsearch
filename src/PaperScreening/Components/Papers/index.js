@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import PaperItem from '../PaperItem';
+import { Table } from 'react-bootstrap';
 
 class Papers extends Component {
   onDecisionChange(id) {
@@ -18,8 +19,17 @@ class Papers extends Component {
     }
     return (
       <div className="Papers">
-        <h3>Latest Papers</h3>
-        {PaperItems}
+        <Table hover bordered>
+          <thead>
+            <tr>
+              <th>Paper</th>
+              <th>Decision</th>
+            </tr>
+          </thead>
+          <tbody>
+            {PaperItems}
+          </tbody>
+        </Table>
       </div>
     );
   }

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import AddCorpus from './Components/AddCorpus';
 import Decision from '../Constants';
 import Papers from './Components/Papers';
+import { ProgressBar } from 'react-bootstrap';
 
 class PaperScreening extends Component {
   constructor() {
@@ -60,7 +61,7 @@ class PaperScreening extends Component {
   }
 
   getPercent(count) {
-    return "(" + (this.state.Papers.length === 0 ? 0 : (count / this.state.Papers.length) * 100) + "%)";
+    return this.state.Papers.length === 0 ? 0 : (count / this.state.Papers.length) * 100;
   }
 
   render() {
@@ -72,13 +73,16 @@ class PaperScreening extends Component {
       );
     }
     else {
+      let pdecided = Math.round(this.getPercent(this.state.includes + this.state.excludes));
+      let pincluded = Math.round(this.getPercent(this.state.includes));
+      let pexcluded = Math.round(this.getPercent(this.state.excludes));
       return (
         <div className="App">
-          <hr />
-          <p>includes={this.state.includes} {this.getPercent(this.state.includes)},
-              excludes={this.state.excludes} {this.getPercent(this.state.excludes)},
-              maybes={this.state.maybes} {this.getPercent(this.state.maybes)}
-          </p>
+          <div className="App">
+            <ProgressBar now={pdecided} label={`${pdecided}%`} />
+            <ProgressBar now={pincluded} label={`${pincluded}%`} bsStyle="success" />
+            <ProgressBar now={pexcluded} label={`${pexcluded}%`} bsStyle="danger" />
+          </div>
           <Papers Papers={this.state.Papers} onDecisionChange={this.handleDecisionChange.bind(this)} />
         </div>
       );

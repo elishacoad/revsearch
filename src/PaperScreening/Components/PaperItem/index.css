@@ -20,3 +20,7 @@
     -webkit-transition: height 0.5s;
     overflow: hidden;
 }
+
+.decisionbutton {
+    margin: 10px;
+}

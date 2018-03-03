@@ -1,6 +1,6 @@
+import { Alert, Button } from 'react-bootstrap';
 import React, { Component } from 'react';
 
-import { Alert } from 'react-bootstrap';
 import { parseCorpus } from './CorpusParser'
 import uuid from 'uuid';
 
@@ -19,7 +19,7 @@ class AddCorpus extends Component {
   //     alert("Failed to load file");
   //   }
   // }
-  
+
   handleSubmit(e) {
     e.preventDefault();
     let papers = parseCorpus();
@@ -39,10 +39,13 @@ class AddCorpus extends Component {
   render() {
     return (
       <div>
-        <Alert bsStyle="warning">
-          <strong>Add Paper</strong> Looks like you haven't uploaded any papers yet.
+        <Alert bsStyle="warning" style={{"text-align": "center"}}>
+          <h4> Looks like you haven't uploaded any papers yet! </h4>
+          <br/>
+          <Button bsStyle="warning" onClick={this.handleSubmit.bind(this)}>
+            Add Some Papers
+          </Button>
         </Alert>
-        <button onClick={this.handleSubmit.bind(this)}>Add Some Papers</button>
         {/* <input type="file" id="fileinput" onChange={this.handleSubmit.bind(this)} /> */}
         {/* <form onSubmit={this.handleSubmit.bind(this)}>
           <div>

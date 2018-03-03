@@ -2,6 +2,7 @@ import './index.css';
 
 import React, { Component } from 'react';
 
+import { Button } from 'react-bootstrap';
 import Decision from '../../../Constants';
 
 class PaperItem extends Component {
@@ -14,15 +15,15 @@ class PaperItem extends Component {
 
   changeColor(decision) {
     let colors = {
-      "include": "#C0ED7B",
+      "include": "#77dd77",
       "maybe": "#89CDC2",
       "exclude": "#FF8585"
     };
-    this.refs.paper.setAttribute("style", "background-color:" + colors[decision] + ";");
+    this.refs.colorindicator.setAttribute("style", "background-color:" + colors[decision] + ";");
     this.props.Paper.decision = decision;
     this.props.onDecisionChange(this.props.Paper.id);
   }
-  
+
   grow() {
     // e.target.parentNode.parentNode.setAttribute("style", "height: 100%;");
     console.log("hovering");
@@ -30,25 +31,33 @@ class PaperItem extends Component {
 
   myFunc() {
     let isExpanded = this.state.isExpanded;
-    isExpanded ?
-      this.refs.paperdiv.setAttribute("style", "height: 0px;"):
-      this.refs.paperdiv.setAttribute("style", "height: 100%;");
-    this.setState({isExpanded: !isExpanded});
+    this.setState({ isExpanded: !isExpanded });
   }
 
   render() {
-    return (
-      <div className="Paper" ref="paper" style={{ "backgroundColor": "lightgray" }} onClick={this.myFunc.bind(this)}>
-        <div className="paperheader">
-          <h3>{this.props.Paper.title}</h3>
-          <button href="" onClick={this.changeColor.bind(this, Decision.INCLUDE)}> Include </button>
-          <button href="" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}> Exclude </button>
-          <button href="" onClick={this.changeColor.bind(this, Decision.MAYBE)}> Maybe </button>
-        </div>
-        <p className="grow" ref="paperdiv">
-          {this.props.Paper.abstract}
-        </p>
+    const buttons = (
+      <div>
+        <Button href="" bsStyle="success" className="decisionbutton" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
+          Include
+              </Button>
+        <Button href="" bsStyle="danger" className="decisionbutton" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
+          Exclude
+              </Button>
+        <Button href="" bsStyle="info" className="decisionbutton" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
+          Maybe
+              </Button>
       </div>
+    );
+    return (
+      <tr onClick={this.myFunc.bind(this)} ref="colorindicator">
+        <td className="grow">
+          <h5>{this.props.Paper.title}</h5>
+          {this.state.isExpanded && this.props.Paper.abstract}
+        </td>
+        <td className="decisionbutton">
+          {this.state.isExpanded ? buttons : this.props.Paper.decision}
+        </td>
+      </tr>
     );
   }
 }
