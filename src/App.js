@@ -66,7 +66,6 @@ class App extends Component {
   }
 
   render() {
-
     if (this.state.renderAddCorpus || this.state.Papers.length === 0) {
       return (
         <div className="App">
