@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 
 import { Button } from 'react-bootstrap';
 import Decision from '../../../Constants';
+import { bindActionCreators } from 'redux';
+import { changeDecision } from '../../../Actions';
+import { connect } from 'react-redux';
 
 class PaperItem extends Component {
   constructor() {
@@ -14,27 +17,21 @@ class PaperItem extends Component {
   }
 
   changeColor(decision) {
-    let colors = {
-      "include": "#83ddb2",
-      "maybe": "#cde9ff",
-      "exclude": "#eeab9e"
-    };
-    this.refs.colorindicator.setAttribute("style", "background-color:" + colors[decision] + ";");
-    this.props.Paper.decision = decision;
-    this.props.onDecisionChange(this.props.Paper.id);
+    this.props.paper.decision = decision;
+    this.props.changeDecision(this.props.paper);
   }
 
-  grow() {
-    // e.target.parentNode.parentNode.setAttribute("style", "height: 100%;");
-    console.log("hovering");
-  }
-
-  myFunc() {
+  rowClicked() {
     let isExpanded = this.state.isExpanded;
     this.setState({ isExpanded: !isExpanded });
   }
 
   render() {
+    const colors = {
+      "include": "#77dd77",
+      "maybe": "#89CDC2",
+      "exclude": "#FF8585"
+    };
     const buttons = (
       <div>
         <Button href="" bsStyle="success" className="decisionbutton" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
@@ -49,30 +46,30 @@ class PaperItem extends Component {
       </div>
     );
     return (
-      <tr onClick={this.myFunc.bind(this)} ref="colorindicator">
+      <tr onClick={this.rowClicked.bind(this)} style={{ "backgroundColor": colors[this.props.paper.decision] }}>
         <td className="grow">
-          <h5>{this.props.Paper.title}</h5>
-          {this.state.isExpanded &&
-            <div>
-              <h4>{this.props.Paper.title}</h4>
-              {this.props.Paper.abstract}
-              <div className="decisionbutton">
-                {this.state.isExpanded && buttons}
-              </div>
-            </div>
+          <h5>{this.props.paper.title}</h5>
+          {this.state.isExpanded && this.props.paper.abstract}
+        </td>
+        <td className="decisionbutton">
+          {this.state.isExpanded ?
+            buttons :
+            <span>{this.props.paper.decision}</span>
           }
         </td>
-        {/*<td className="decisionbutton">
-          {this.state.isExpanded ? buttons : this.props.Paper.decision}
-        </td>*/}
       </tr>
     );
   }
 }
 
-PaperItem.propTypes = {
-  Paper: React.PropTypes.object,
-  onDelete: React.PropTypes.func
+function mapStateToProps(state) {
+  return {
+    papers: state.papers
+  }
 }
 
-export default PaperItem;
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({ changeDecision: changeDecision }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(PaperItem);
