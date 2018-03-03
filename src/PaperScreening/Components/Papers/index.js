@@ -21,7 +21,7 @@ class Papers extends Component {
     }
     return (
       <div className="Papers" >
-        <Table hover bordered className="table-fixed">
+        <Table hover className="table-fixed">
           <tbody>
             {PaperItems}
           </tbody>
