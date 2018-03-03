@@ -66,19 +66,26 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        {this.state.renderAddCorpus &&
+
+    if (this.state.renderAddCorpus || this.state.Papers.length === 0) {
+      return (
+        <div className="App">
           <AddCorpus addCorpus={this.handleAddCorpus.bind(this)} unmountMe={this.handleCorpusUnmount.bind(this)} />
-        }
-        <hr />
-        <p>includes={this.state.includes} {this.getPercent(this.state.includes)},
-           excludes={this.state.excludes} {this.getPercent(this.state.excludes)},
-           maybes={this.state.maybes} {this.getPercent(this.state.maybes)}
-        </p>
-        <Papers Papers={this.state.Papers} onDecisionChange={this.handleDecisionChange.bind(this)} />
-      </div>
-    );
+        </div>
+      );
+    }
+    else {
+      return (
+        <div className="App">
+          <hr />
+          <p>includes={this.state.includes} {this.getPercent(this.state.includes)},
+              excludes={this.state.excludes} {this.getPercent(this.state.excludes)},
+              maybes={this.state.maybes} {this.getPercent(this.state.maybes)}
+          </p>
+          <Papers Papers={this.state.Papers} onDecisionChange={this.handleDecisionChange.bind(this)} />
+        </div>
+      );
+    }
   }
 }
 

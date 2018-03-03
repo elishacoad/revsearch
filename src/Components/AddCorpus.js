@@ -1,36 +1,59 @@
 import React, { Component } from 'react';
 
+import { Alert } from 'react-bootstrap';
 import { parseCorpus } from './CorpusParser'
 import uuid from 'uuid';
 
 class AddCorpus extends Component {
-
+  // getFileText(evt) {
+  //   var f = evt.target.files[0];
+  //   if (f) {
+  //     var r = new FileReader();
+  //     r.onload = function (e) {
+  //       var contents = e.target.result;
+  //       console.log(contents.substr(1, contents.indexOf("n")));
+  //       return contents;
+  //     }
+  //     r.readAsText(f);
+  //   } else {
+  //     alert("Failed to load file");
+  //   }
+  // }
+  
   handleSubmit(e) {
-    let papers = parseCorpus(this.refs.fileContent.value);
-    papers = papers.map((paper, i) => {
-      paper.id = uuid.v4() + "_" + i;
-      return paper;
-    });
-    this.props.addCorpus(papers);
-    this.props.unmountMe();
     e.preventDefault();
+    let papers = parseCorpus();
+    if (papers.length === 0) {
+      alert("No papers able to parsed.");
+    }
+    else {
+      papers = papers.map((paper, i) => {
+        paper.id = uuid.v4() + "_" + i;
+        return paper;
+      });
+      this.props.addCorpus(papers);
+      this.props.unmountMe();
+    }
   }
 
   render() {
     return (
       <div>
-        <h3>Add Paper</h3>
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <Alert bsStyle="warning">
+          <strong>Add Paper</strong> Looks like you haven't uploaded any papers yet.
+        </Alert>
+        <button onClick={this.handleSubmit.bind(this)}>Add Some Papers</button>
+        {/* <input type="file" id="fileinput" onChange={this.handleSubmit.bind(this)} /> */}
+        {/* <form onSubmit={this.handleSubmit.bind(this)}>
           <div>
             <label>Upload a corpus of papers for screening.</label><br />
             <input type="file" id="openFile" />
             <br />
-            <textarea ref="fileContent" id="fileContent" style={{ display: "none" }}></textarea>
+            <textarea ref="content" id="fileContent" style={{ display: "none" }}></textarea>
+            <br />
+            <input type="submit" value="Submit" />
           </div>
-          <br />
-          <input type="submit" value="Add Paper" />
-          <br />
-        </form>
+        </form> */}
       </div>
     );
   }

@@ -1,0 +1,8 @@
+handleClick(param, e) {
+  console.log('Parameter', param);
+  console.log('Event', e);
+}
+
+render() {
+  <button onClick={this.handleClick.bind(this, 'Parameter')}></button>
+}
