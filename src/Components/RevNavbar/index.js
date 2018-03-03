@@ -8,7 +8,7 @@ class RevNavbar extends Component {
             <Navbar>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a href="#home">Revsearch</a>
+                        <a href="#home">reVsearch</a>
                     </Navbar.Brand>
                 </Navbar.Header>
                 {/* <Nav>
