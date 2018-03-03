@@ -5,14 +5,20 @@ import React, { Component } from 'react';
 import Decision from '../../Constants';
 
 class PaperItem extends Component {
-  changeColor(e, decision) {
-    e.preventDefault();
+  constructor() {
+    super();
+    this.state = {
+      isExpanded: false
+    }
+  }
+
+  changeColor(decision) {
     let colors = {
       "include": "green",
       "maybe": "blue",
       "exclude": "red"
     };
-    e.target.parentNode.parentNode.setAttribute("style", "background-color:" + colors[decision] + ";");
+    this.refs.paper.setAttribute("style", "background-color:" + colors[decision] + ";");
     this.props.Paper.decision = decision;
     this.props.onDecisionChange(this.props.Paper.id);
   }
@@ -22,16 +28,24 @@ class PaperItem extends Component {
     console.log("hovering");
   }
 
+  myFunc() {
+    let isExpanded = this.state.isExpanded;
+    isExpanded ?
+      this.refs.paperdiv.setAttribute("style", "height: 0px;"):
+      this.refs.paperdiv.setAttribute("style", "height: 100%;");
+    this.setState({isExpanded: !isExpanded});
+  }
+
   render() {
     return (
-      <div className="Paper" style={{ "backgroundColor": "lightgray" }} onClick={this.myFunc}>
+      <div className="Paper" ref="paper" style={{ "backgroundColor": "lightgray" }} onClick={this.myFunc.bind(this)}>
         <div className="paperheader">
           <h3>{this.props.Paper.title}</h3>
-          <button href="" onClick={(e) => this.changeColor(e, Decision.INCLUDE)}> Include </button>
-          <button href="" onClick={(e) => this.changeColor(e, Decision.EXCLUDE)}> Exclude </button>
-          <button href="" onClick={(e) => this.changeColor(e, Decision.MAYBE)}> Maybe </button>
+          <button href="" onClick={this.changeColor.bind(this, Decision.INCLUDE)}> Include </button>
+          <button href="" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}> Exclude </button>
+          <button href="" onClick={this.changeColor.bind(this, Decision.MAYBE)}> Maybe </button>
         </div>
-        <p className="grow">
+        <p className="grow" ref="paperdiv">
           {this.props.Paper.abstract}
         </p>
       </div>
