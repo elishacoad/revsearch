@@ -1,8 +1,10 @@
+import activeRowReducer from './reducer-activerow';
 import {combineReducers} from "redux";
-import papersReducer from './reducer-papers'
+import papersReducer from './reducer-papers';
 
 const allReducers = combineReducers({
-    papers: papersReducer
+    papers: papersReducer,
+    activeRow: activeRowReducer
 });
 
 export default allReducers;

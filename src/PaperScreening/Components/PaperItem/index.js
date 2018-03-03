@@ -17,12 +17,6 @@ class PaperItem extends Component {
   }
 
   changeColor(decision) {
-    let colors = {
-      "include": "#77dd77",
-      "maybe": "#89CDC2",
-      "exclude": "#FF8585"
-    };
-    this.refs.colorindicator.setAttribute("style", "backgroundColor: " + colors[decision] + ";");
     this.props.paper.decision = decision;
     this.props.changeDecision(this.props.paper);
   }
@@ -33,6 +27,11 @@ class PaperItem extends Component {
   }
 
   render() {
+    const colors = {
+      "include": "#77dd77",
+      "maybe": "#89CDC2",
+      "exclude": "#FF8585"
+    };
     const buttons = (
       <div>
         <Button href="" bsStyle="success" className="decisionbutton" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
@@ -47,13 +46,13 @@ class PaperItem extends Component {
       </div>
     );
     return (
-      <tr onClick={this.rowClicked.bind(this)} ref="colorindicator">
+      <tr onClick={this.rowClicked.bind(this)} style={{"backgroundColor": colors[this.props.paper.decision]}}>
         <td className="grow">
-          <h5>{this.props.Paper.title}</h5>
-          {this.state.isExpanded && this.props.Paper.abstract}
+          <h5>{this.props.paper.title}</h5>
+          {this.state.isExpanded && this.props.paper.abstract}
         </td>
         <td className="decisionbutton">
-          {this.state.isExpanded ? buttons : this.props.Paper.decision}
+          {this.state.isExpanded ? buttons : this.props.paper.decision}
         </td>
       </tr>
     );

@@ -28,11 +28,12 @@ class PaperScreening extends Component {
     return this.props.papers.length === 0 ? 0 : (count / this.props.papers.length) * 100;
   }
 
-  tallyDecisions() {
+  tallyDecisions(papers) {
     let includes = 0;
     let excludes = 0;
     let maybes = 0;
-    this.props.papers.forEach(paper => {
+    console.log("Tallying with " + papers.length);
+    papers.forEach(paper => {
       switch (paper.decision) {
         case Decision.INCLUDE:
           includes += 1;
@@ -53,7 +54,7 @@ class PaperScreening extends Component {
         includes: includes,
         excludes: excludes,
         maybes: maybes
-  }
+    }
   }
 
   render() {
@@ -65,7 +66,7 @@ class PaperScreening extends Component {
       );
     }
     else {
-      let counts = this.tallyDecisions();
+      let counts = this.tallyDecisions(this.props.papers);
       let pdecided = Math.round(this.getPercent(counts.includes + counts.excludes));
       let pincluded = Math.round(this.getPercent(counts.includes));
       let pexcluded = Math.round(this.getPercent(counts.excludes));
