@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import PaperItem from './PaperItem/index';
+import PaperItem from '../PaperItem';
 
 class Papers extends Component {
   onDecisionChange(id) {
@@ -23,11 +23,6 @@ class Papers extends Component {
       </div>
     );
   }
-}
-
-Papers.propTypes = {
-  Papers: React.PropTypes.array,
-  onDelete: React.PropTypes.func
 }
 
 export default Papers;

@@ -2,7 +2,7 @@ import './index.css';
 
 import React, { Component } from 'react';
 
-import Decision from '../../Constants';
+import Decision from '../../../Constants';
 
 class PaperItem extends Component {
   constructor() {
