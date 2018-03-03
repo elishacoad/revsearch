@@ -14,9 +14,9 @@ class PaperItem extends Component {
 
   changeColor(decision) {
     let colors = {
-      "include": "green",
-      "maybe": "blue",
-      "exclude": "red"
+      "include": "#C0ED7B",
+      "maybe": "#89CDC2",
+      "exclude": "#FF8585"
     };
     this.refs.paper.setAttribute("style", "background-color:" + colors[decision] + ";");
     this.props.Paper.decision = decision;
