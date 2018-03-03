@@ -1,9 +1,9 @@
+import { Col, ProgressBar, Row } from 'react-bootstrap';
 import React, { Component } from 'react';
 
 import AddCorpus from './Components/AddCorpus';
 import Decision from '../Constants';
 import Papers from './Components/Papers';
-import { ProgressBar } from 'react-bootstrap';
 
 class PaperScreening extends Component {
   constructor() {
@@ -77,14 +77,17 @@ class PaperScreening extends Component {
       let pincluded = Math.round(this.getPercent(this.state.includes));
       let pexcluded = Math.round(this.getPercent(this.state.excludes));
       return (
-        <div className="App">
-          <div className="App">
-            <ProgressBar now={pdecided} label={`${pdecided}%`} />
-            <ProgressBar now={pincluded} label={`${pincluded}%`} bsStyle="success" />
-            <ProgressBar now={pexcluded} label={`${pexcluded}%`} bsStyle="danger" />
-          </div>
-          <Papers Papers={this.state.Papers} onDecisionChange={this.handleDecisionChange.bind(this)} />
-        </div>
+          <Row>
+            <Col xs={12} md={3} lg={3}>
+              <ProgressBar now={pdecided} label={`${pdecided}%`} />
+              <ProgressBar now={pincluded} label={`${pincluded}%`} bsStyle="success" />
+              <ProgressBar now={pexcluded} label={`${pexcluded}%`} bsStyle="danger" />
+
+            </Col>
+            <Col xs={12} md={9} lg={9}>
+              <Papers Papers={this.state.Papers} onDecisionChange={this.handleDecisionChange.bind(this)} />
+            </Col>
+          </Row>
       );
     }
   }

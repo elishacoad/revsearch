@@ -1,3 +1,5 @@
+import './index.css'
+
 import React, { Component } from 'react';
 
 import PaperItem from '../PaperItem';
@@ -18,8 +20,8 @@ class Papers extends Component {
       });
     }
     return (
-      <div className="Papers">
-        <Table hover bordered>
+      <div className="Papers" >
+        <Table hover bordered className="table-fixed">
           <thead>
             <tr>
               <th>Paper</th>

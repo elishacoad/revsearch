@@ -5,14 +5,14 @@ import React, { Component } from 'react';
 export default class Sidebar extends Component {
     render() {
         return (
-            <div class="wrapper">
+            <div className="wrapper">
                 <nav id="sidebar">
-                    <div class="sidebar-header">
+                    <div className="sidebar-header">
                         <h3>Collapsible Sidebar</h3>
                     </div>
 
-                    <ul class="list-unstyled components">
-                        <li class="active">
+                    <ul className="list-unstyled components">
+                        <li className="active">
                             <a href="#">Home</a>
                         </li>
                         <li>
@@ -20,7 +20,7 @@ export default class Sidebar extends Component {
                         </li>
                         <li>
                             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-                            <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <ul className="collapse list-unstyled" id="homeSubmenu">
                                 <li><a href="#">Page</a></li>
                                 <li><a href="#">Page</a></li>
                                 <li><a href="#">Page</a></li>

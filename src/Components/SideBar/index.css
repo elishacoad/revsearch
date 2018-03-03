@@ -1,6 +1,4 @@
 .wrapper {
-    /* float: left;
-    background-color: blue; */
     display: flex;
     align-items: stretch;
 }
