@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 
 import { Button } from 'react-bootstrap';
 import Decision from '../../../Constants';
-// import { bindActionCreators } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { changeDecision } from '../../../Actions';
 import { connect } from 'react-redux';
 
 class PaperItem extends Component {
@@ -21,15 +22,14 @@ class PaperItem extends Component {
       "maybe": "#89CDC2",
       "exclude": "#FF8585"
     };
-    this.refs.colorindicator.setAttribute("style", "background-color:" + colors[decision] + ";");
-    this.props.Paper.decision = decision;
-    this.props.onDecisionChange(this.props.Paper.id);
+    this.refs.colorindicator.setAttribute("style", "backgroundColor: " + colors[decision] + ";");
+    this.props.paper.decision = decision;
+    this.props.changeDecision(this.props.paper);
   }
 
-  myFunc() {
+  rowClicked() {
     let isExpanded = this.state.isExpanded;
     this.setState({ isExpanded: !isExpanded });
-    console.log(this.props.coolpapers);
   }
 
   render() {
@@ -47,7 +47,7 @@ class PaperItem extends Component {
       </div>
     );
     return (
-      <tr onClick={this.myFunc.bind(this)} ref="colorindicator">
+      <tr onClick={this.rowClicked.bind(this)} ref="colorindicator">
         <td className="grow">
           <h5>{this.props.Paper.title}</h5>
           {this.state.isExpanded && this.props.Paper.abstract}
@@ -62,8 +62,12 @@ class PaperItem extends Component {
 
 function mapStateToProps(state) {
   return {
-    coolpapers: state.papers
+    papers: state.papers
   }
 }
 
-export default connect(mapStateToProps)(PaperItem);
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({ changeDecision: changeDecision }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(PaperItem);

@@ -1,6 +1,9 @@
 import { Alert, Button } from 'react-bootstrap';
 import React, { Component } from 'react';
 
+import { addCorpusAction } from '../../../Actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { parseCorpus } from './CorpusParser'
 import uuid from 'uuid';
 
@@ -31,17 +34,18 @@ class AddCorpus extends Component {
         paper.id = uuid.v4() + "_" + i;
         return paper;
       });
-      this.props.addCorpus(papers);
+      // this.props.papers = papers;
       this.props.unmountMe();
+      this.props.addCorpusAction(papers);
     }
   }
 
   render() {
     return (
       <div>
-        <Alert bsStyle="warning" style={{"textAlign": "center"}}>
+        <Alert bsStyle="warning" style={{ "textAlign": "center" }}>
           <h4> Looks like you haven't uploaded any papers yet! </h4>
-          <br/>
+          <br />
           <Button bsStyle="warning" onClick={this.handleSubmit.bind(this)}>
             Add Some Papers
           </Button>
@@ -62,4 +66,14 @@ class AddCorpus extends Component {
   }
 }
 
-export default AddCorpus;
+function mapStateToProps(state) {
+  return {
+    papers: state.papers
+  }
+}
+
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({ addCorpusAction: addCorpusAction }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(AddCorpus);

@@ -4,16 +4,13 @@ import React, { Component } from 'react';
 import AddCorpus from './Components/AddCorpus';
 import Decision from '../Constants';
 import Papers from './Components/Papers';
+import { connect } from 'react-redux';
 
 class PaperScreening extends Component {
   constructor() {
     super();
     this.state = {
-      Papers: [],
       renderAddCorpus: true,
-      includes: 0,
-      maybes: 0,
-      excludes: 0
     }
   }
 
@@ -23,16 +20,19 @@ class PaperScreening extends Component {
   componentDidMount() {
   }
 
-  handleAddCorpus(corpus) {
-    this.setState({ Papers: corpus });
+  handleCorpusUnmount() {
+    this.setState({ renderAddCorpus: false });
   }
 
-  handleDecisionChange(id) {
-    let Papers = this.state.Papers;
+  getPercent(count) {
+    return this.props.papers.length === 0 ? 0 : (count / this.props.papers.length) * 100;
+  }
+
+  tallyDecisions() {
     let includes = 0;
     let excludes = 0;
     let maybes = 0;
-    Papers.forEach(paper => {
+    this.props.papers.forEach(paper => {
       switch (paper.decision) {
         case Decision.INCLUDE:
           includes += 1;
@@ -48,44 +48,36 @@ class PaperScreening extends Component {
         default:
           console.log(paper.decision + " is not a valid decision");
       }
-      this.setState({
+    });
+    return {
         includes: includes,
         excludes: excludes,
         maybes: maybes
-      });
-    });
   }
-
-  handleCorpusUnmount() {
-    this.setState({ renderAddCorpus: false });
-  }
-
-  getPercent(count) {
-    return this.state.Papers.length === 0 ? 0 : (count / this.state.Papers.length) * 100;
   }
 
   render() {
-    if (this.state.renderAddCorpus || this.state.Papers.length === 0) {
+    if (this.state.renderAddCorpus || this.props.papers.length === 0) {
       return (
         <div className="App">
-          <AddCorpus addCorpus={this.handleAddCorpus.bind(this)} unmountMe={this.handleCorpusUnmount.bind(this)} />
+          <AddCorpus unmountMe={this.handleCorpusUnmount.bind(this)} />
         </div>
       );
     }
     else {
-      let pdecided = Math.round(this.getPercent(this.state.includes + this.state.excludes));
-      let pincluded = Math.round(this.getPercent(this.state.includes));
-      let pexcluded = Math.round(this.getPercent(this.state.excludes));
+      let counts = this.tallyDecisions();
+      let pdecided = Math.round(this.getPercent(counts.includes + counts.excludes));
+      let pincluded = Math.round(this.getPercent(counts.includes));
+      let pexcluded = Math.round(this.getPercent(counts.excludes));
       return (
           <Row>
             <Col xs={12} md={3} lg={3}>
               <ProgressBar now={pdecided} label={`${pdecided}%`} />
               <ProgressBar now={pincluded} label={`${pincluded}%`} bsStyle="success" />
               <ProgressBar now={pexcluded} label={`${pexcluded}%`} bsStyle="danger" />
-
             </Col>
             <Col xs={12} md={9} lg={9}>
-              <Papers Papers={this.state.Papers} onDecisionChange={this.handleDecisionChange.bind(this)} />
+            <Papers />
             </Col>
           </Row>
       );
@@ -93,4 +85,10 @@ class PaperScreening extends Component {
   }
 }
 
-export default PaperScreening;
+function mapStateToProps(state) {
+  return {
+    papers: state.papers
+  }
+}
+
+export default connect(mapStateToProps)(PaperScreening);

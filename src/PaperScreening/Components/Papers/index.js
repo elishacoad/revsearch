@@ -4,18 +4,15 @@ import React, { Component } from 'react';
 
 import PaperItem from '../PaperItem';
 import { Table } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 class Papers extends Component {
-  onDecisionChange(id) {
-    this.props.onDecisionChange(id);
-  }
-
   render() {
-    let PaperItems;
-    if (this.props.Papers) {
-      PaperItems = this.props.Papers.map(Paper => {
+    let paperItems;
+    if (this.props.papers.length !== 0) {
+      paperItems = this.props.papers.map(paper => {
         return (
-          <PaperItem onDecisionChange={this.onDecisionChange.bind(this)} key={Paper.id} Paper={Paper} />
+          <PaperItem key={paper.id} paper={paper} />
         );
       });
     }
@@ -29,7 +26,7 @@ class Papers extends Component {
             </tr>
           </thead>
           <tbody>
-            {PaperItems}
+            {paperItems}
           </tbody>
         </Table>
       </div>
@@ -37,4 +34,10 @@ class Papers extends Component {
   }
 }
 
-export default Papers;
+function mapStateToProps(state) {
+  return {
+    papers: state.papers
+  }
+}
+
+export default connect(mapStateToProps)(Papers);
