@@ -22,12 +22,6 @@ class Papers extends Component {
     return (
       <div className="Papers" >
         <Table hover bordered className="table-fixed">
-          <thead>
-            <tr>
-              <th>Paper</th>
-              <th>Decision</th>
-            </tr>
-          </thead>
           <tbody>
             {PaperItems}
           </tbody>

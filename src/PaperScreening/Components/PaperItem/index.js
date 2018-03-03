@@ -52,11 +52,19 @@ class PaperItem extends Component {
       <tr onClick={this.myFunc.bind(this)} ref="colorindicator">
         <td className="grow">
           <h5>{this.props.Paper.title}</h5>
-          {this.state.isExpanded && this.props.Paper.abstract}
+          {this.state.isExpanded &&
+            <div>
+              <h4>{this.props.Paper.title}</h4>
+              {this.props.Paper.abstract}
+              <div className="decisionbutton">
+                {this.state.isExpanded && buttons}
+              </div>
+            </div>
+          }
         </td>
-        <td className="decisionbutton">
+        {/*<td className="decisionbutton">
           {this.state.isExpanded ? buttons : this.props.Paper.decision}
-        </td>
+        </td>*/}
       </tr>
     );
   }
