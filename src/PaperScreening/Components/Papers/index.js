@@ -11,6 +11,7 @@ class Papers extends Component {
   render() {
     let paperItems;
     if (this.props.papers.length !== 0) {
+      // eslint-disable-next-line
       paperItems = this.props.papers.map(paper => {
         if (this.props.filters.showIncludes && paper.decision === Decision.INCLUDE){
           return <PaperItem key={paper.id} paper={paper} />

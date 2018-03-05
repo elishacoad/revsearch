@@ -1,4 +1,4 @@
-import { Checkbox, Panel, PanelGroup } from 'react-bootstrap';
+import { Checkbox, Panel } from 'react-bootstrap';
 import React, { Component } from 'react';
 
 import { bindActionCreators } from 'redux';

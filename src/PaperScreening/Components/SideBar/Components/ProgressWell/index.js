@@ -1,4 +1,4 @@
-import { Badge, Panel, PanelGroup, ProgressBar } from 'react-bootstrap';
+import { Badge, Panel, ProgressBar } from 'react-bootstrap';
 import React, { Component } from 'react';
 
 import Decision from '../../../../../Constants';
