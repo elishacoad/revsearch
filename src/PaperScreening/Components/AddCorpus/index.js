@@ -23,51 +23,24 @@ class AddCorpus extends Component {
         paper.id = uuid.v4() + "_" + i;
         return paper;
       });
+      this.props.addCorpusAction(papers);
     }
-    this.props.addCorpusAction(papers);
   }
   
   readFile(e) {
     e.preventDefault()
-    let inputtext;
     let file = e.target.files[0];
     let read = new FileReader();
     read.readAsBinaryString(file);
-    read.onloadend = function(){
+    read.onloadend = () => {
       this.handleSubmit(read.result);
     }
-    read.onloadend.bind(this);
-  }
-
-  handleSubmit(inputtext=null){
-    let papers = parseCorpus(inputtext);
-    if (papers.length === 0) {
-      alert("No papers able to parsed.");
-      }
-    else {
-      papers = papers.map((paper, i) => {
-        paper.id = uuid.v4() + "_" + i;
-        return paper;
-      });
-    }
-    this.props.addCorpusAction(papers);
   }
   
-  readFile(e) {
-    e.preventDefault()
-    let inputtext;
-    let file = e.target.files[0];
-    let read = new FileReader();
-    read.readAsBinaryString(file);
-    read.onloadend = function(){
-      this.setState({filetext : read.result});
-    }
-    read.onloadend.bind(this);
-  }
   render() {
     return (
       <div>
-        <Alert bsStyle="warning" style={{ "textAlign": "center" }}>
+        <Alert bsStyle="warning" style={{ textAlign: "center" }}>
           <h4> Looks like you haven't uploaded any papers yet! </h4>
           <br />
           <Button bsStyle="info" onClick={this.handleSubmit.bind(this)}>

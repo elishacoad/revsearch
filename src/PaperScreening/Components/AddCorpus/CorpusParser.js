@@ -67,7 +67,7 @@ const dummypapers = `%0 Journal Article
 `
 
 export function parseCorpus(text) {
-    let corpus = text ? text : [dummypapers, dummypapers, dummypapers, dummypapers];
+    let corpus = typeof text === "string" ? text : [dummypapers, dummypapers, dummypapers, dummypapers];
     const regex = /%0[\s\S]*?(?=%G)/gm; // to see how this matches, use regex101.com
     let m;
     let papers = [];
@@ -84,7 +84,7 @@ export function parseCorpus(text) {
             papers.push(parsePaper(match));
         });
     }
-    return papers;
+    return papers.length > 100 ? papers.slice(0,100) : papers;
 }
 
 export function parsePaper(papertext) {
