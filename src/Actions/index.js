@@ -12,3 +12,10 @@ export const addCorpusAction = (papers) => {
     }
 };
 
+// updateObject: {"showIncludes", true}
+export const updateFilter = (updateObject) => {
+    return {
+        type: 'DECISIONFILTER_UPDATED',
+        payload: updateObject
+    }
+};
