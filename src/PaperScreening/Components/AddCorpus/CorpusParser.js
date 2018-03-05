@@ -66,8 +66,8 @@ const dummypapers = `%0 Journal Article
 %G eng
 `
 
-export function parseCorpus() {
-    let corpus = [dummypapers, dummypapers, dummypapers, dummypapers];
+export function parseCorpus(text) {
+    let corpus = text ? text : [dummypapers, dummypapers, dummypapers, dummypapers];
     const regex = /%0[\s\S]*?(?=%G)/gm; // to see how this matches, use regex101.com
     let m;
     let papers = [];

@@ -1,4 +1,4 @@
-import { Alert, Button } from 'react-bootstrap';
+import { Alert, Button, ControlLabel, FormControl, FormGroup, Label } from 'react-bootstrap';
 import React, { Component } from 'react';
 
 import { addCorpusAction } from '../../../Actions';
@@ -8,59 +8,91 @@ import { parseCorpus } from './CorpusParser'
 import uuid from 'uuid';
 
 class AddCorpus extends Component {
-  // getFileText(evt) {
-  //   var f = evt.target.files[0];
-  //   if (f) {
-  //     var r = new FileReader();
-  //     r.onload = function (e) {
-  //       var contents = e.target.result;
-  //       console.log(contents.substr(1, contents.indexOf("n")));
-  //       return contents;
-  //     }
-  //     r.readAsText(f);
-  //   } else {
-  //     alert("Failed to load file");
-  //   }
-  // }
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    let papers = parseCorpus();
+  handleSubmit(inputtext=null){
+    let papers = parseCorpus(inputtext);
     if (papers.length === 0) {
       alert("No papers able to parsed.");
-    }
+      }
     else {
       papers = papers.map((paper, i) => {
         paper.id = uuid.v4() + "_" + i;
         return paper;
       });
-      // this.props.papers = papers;
-      this.props.unmountMe();
-      this.props.addCorpusAction(papers);
     }
+    this.props.addCorpusAction(papers);
+  }
+  
+  readFile(e) {
+    e.preventDefault()
+    let inputtext;
+    let file = e.target.files[0];
+    let read = new FileReader();
+    read.readAsBinaryString(file);
+    read.onloadend = function(){
+      this.handleSubmit(read.result);
+    }
+    read.onloadend.bind(this);
   }
 
+  handleSubmit(inputtext=null){
+    let papers = parseCorpus(inputtext);
+    if (papers.length === 0) {
+      alert("No papers able to parsed.");
+      }
+    else {
+      papers = papers.map((paper, i) => {
+        paper.id = uuid.v4() + "_" + i;
+        return paper;
+      });
+    }
+    this.props.addCorpusAction(papers);
+  }
+  
+  readFile(e) {
+    e.preventDefault()
+    let inputtext;
+    let file = e.target.files[0];
+    let read = new FileReader();
+    read.readAsBinaryString(file);
+    read.onloadend = function(){
+      this.setState({filetext : read.result});
+    }
+    read.onloadend.bind(this);
+  }
   render() {
     return (
       <div>
         <Alert bsStyle="warning" style={{ "textAlign": "center" }}>
           <h4> Looks like you haven't uploaded any papers yet! </h4>
           <br />
-          <Button bsStyle="warning" onClick={this.handleSubmit.bind(this)}>
-            Add Some Papers
+          <Button bsStyle="info" onClick={this.handleSubmit.bind(this)}>
+            Add Some Dummy Papers
           </Button>
+          <br />
+          OR
+          <br />
+          <FormGroup>
+            <ControlLabel htmlFor="fileUpload" style={{ cursor: "pointer" }}>
+              <h4>
+                <Label bsStyle="info">
+                  Add file
+                </Label>
+              </h4>
+              <FormControl
+                id="fileUpload"
+                type="file"
+                accept=".txt"
+                onChange={this.readFile.bind(this)}
+                style={{ display: "none" }}
+              />
+            </ControlLabel>
+          </FormGroup>
         </Alert>
-        {/* <input type="file" id="fileinput" onChange={this.handleSubmit.bind(this)} /> */}
-        {/* <form onSubmit={this.handleSubmit.bind(this)}>
-          <div>
-            <label>Upload a corpus of papers for screening.</label><br />
-            <input type="file" id="openFile" />
-            <br />
-            <textarea ref="content" id="fileContent" style={{ display: "none" }}></textarea>
-            <br />
-            <input type="submit" value="Submit" />
-          </div>
-        </form> */}
       </div>
     );
   }
