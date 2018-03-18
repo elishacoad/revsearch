@@ -53,7 +53,7 @@ class ProgressWell extends Component {
                 </Panel.Heading>
                 <Panel.Collapse>
                     <Panel.Body>
-                        <ProgressBar now={pdecided} label={`${pdecided}%`} />
+                        <ProgressBar now={pdecided} label={`${pdecided}%`} bsStyle="warning" />
                         <ProgressBar now={pincluded} label={`${pincluded}%`} bsStyle="success" />
                         <ProgressBar now={pexcluded} label={`${pexcluded}%`} bsStyle="danger" />
                     </Panel.Body>

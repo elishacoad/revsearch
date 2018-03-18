@@ -1,0 +1,15 @@
+.viewport-div {
+    height: 100%;
+}
+
+#root {
+    height: 100vh;
+}
+
+div .container-fluid {
+    height: 90vh;
+}
+
+div .row, .right-col, .Papers, table, tbody {
+    height: 100%;
+}

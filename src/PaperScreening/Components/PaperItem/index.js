@@ -28,19 +28,19 @@ class PaperItem extends Component {
 
   render() {
     const colors = {
-      "include": "#77dd77",
-      "maybe": "#89CDC2",
-      "exclude": "#FF8585"
+      "include": "#83ddb2",
+      "maybe": "#cde9ff",
+      "exclude": "#eeab9e"
     };
     const buttons = (
       <div>
-        <Button href="" bsStyle="success" className="decisionbutton" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
+        <Button href="" style={{backgroundColor:colors.include}} className="decisionbutton" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
           Include
               </Button>
-        <Button href="" bsStyle="danger" className="decisionbutton" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
+        <Button href="" style={{backgroundColor:colors.exclude}} className="decisionbutton" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
           Exclude
               </Button>
-        <Button href="" bsStyle="info" className="decisionbutton" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
+        <Button href="" style={{backgroundColor:colors.maybe}} className="decisionbutton" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
           Maybe
               </Button>
       </div>

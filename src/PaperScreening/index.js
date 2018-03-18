@@ -18,10 +18,10 @@ class PaperScreening extends Component {
     else {
       return (
           <Row>
-            <Col xs={12} md={3} lg={3}>
+            <Col xs={12} md={3} lg={3} className="left-col">
               <Sidebar />
             </Col>
-            <Col xs={12} md={9} lg={9}>
+            <Col xs={12} md={9} lg={9} className="right-col">
               <Papers />
             </Col>
           </Row>

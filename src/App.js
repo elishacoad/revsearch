@@ -11,7 +11,7 @@ import RevNavbar from './Components/RevNavbar';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="viewport-div">
         <RevNavbar />
         <Grid fluid>
           <PaperScreening />
