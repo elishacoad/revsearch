@@ -6,7 +6,7 @@ export const Decision = Object.freeze({
 });
 
 export const Colors = Object.freeze({
-    "include": "#83ddb2",
-    "maybe": "#cde9ff",
-    "exclude": "#eeab9e"
+    INCLUDE: "#83ddb2",
+    MAYBE: "#cde9ff",
+    EXCLUDE: "#eeab9e"
 });
