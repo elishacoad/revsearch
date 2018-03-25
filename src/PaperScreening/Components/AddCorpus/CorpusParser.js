@@ -5,7 +5,7 @@ The beginning of a new section in a paper starts with one of the deliminators sh
 and each section ends with a newline character (using \n).
 */
 
-import Decision from '../../../Constants';
+import {Decision} from '../../../Constants';
 
 const SECTION_DELIMITERS = {
     "0": "type",

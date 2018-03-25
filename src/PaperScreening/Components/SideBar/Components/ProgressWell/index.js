@@ -1,7 +1,7 @@
 import { Badge, Panel, ProgressBar } from 'react-bootstrap';
 import React, { Component } from 'react';
 
-import Decision from '../../../../../Constants';
+import { Decision } from '../../../../../Constants';
 import { connect } from 'react-redux';
 
 class ProgressWell extends Component {
