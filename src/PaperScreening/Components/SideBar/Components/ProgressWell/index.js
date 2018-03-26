@@ -39,7 +39,6 @@ class ProgressWell extends Component {
 
     render() {
         let counts = this.tallyDecisions(this.props.papers);
-        let pdecided = Math.round(this.getPercent(counts.includes + counts.excludes));
         let pincluded = Math.round(this.getPercent(counts.includes));
         let pexcluded = Math.round(this.getPercent(counts.excludes));
 
