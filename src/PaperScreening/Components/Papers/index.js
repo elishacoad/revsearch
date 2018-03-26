@@ -1,8 +1,8 @@
 import './index.css'
 
+import { Colors, Decision } from '../../../Constants';
 import React, { Component } from 'react';
 
-import { Decision } from '../../../Constants';
 import PaperItem from '../PaperItem';
 import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -28,7 +28,7 @@ class Papers extends Component {
       });
     }
     return (
-      <div className="Papers" >
+      <div className="Papers" style={{"backgroundColor": "white"}}>
         <Table hover className="table-fixed">
           <tbody>
             {paperItems}

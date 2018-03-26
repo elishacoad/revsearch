@@ -1,8 +1,9 @@
 import './App.css';
 
-import { Grid } from 'react-bootstrap';
 import React, { Component } from 'react';
 
+import { Colors } from "./Constants"
+import { Grid } from 'react-bootstrap';
 import PaperScreening from './PaperScreening/index';
 import RevNavbar from './Components/RevNavbar';
 
@@ -11,7 +12,7 @@ import RevNavbar from './Components/RevNavbar';
 class App extends Component {
   render() {
     return (
-      <div className="viewport-div">
+      <div style={{"backgroundColor": Colors.REVBACKGROUND}}>
         <RevNavbar />
         <Grid fluid>
           <PaperScreening />
