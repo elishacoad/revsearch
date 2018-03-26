@@ -1,9 +1,9 @@
 import './index.css';
 
+import { Button, Label } from 'react-bootstrap';
+import { Colors, Decision } from '../../../Constants';
 import React, { Component } from 'react';
 
-import { Button } from 'react-bootstrap';
-import { Decision, Colors } from '../../../Constants';
 import { bindActionCreators } from 'redux';
 import { changeDecision } from '../../../Actions';
 import { connect } from 'react-redux';
@@ -49,7 +49,7 @@ class PaperItem extends Component {
         <td className="decisionbutton">
           {this.state.isExpanded ?
             buttons :
-            <span>{this.props.paper.decision}</span>
+            <h4><Label>{this.props.paper.decision}</Label></h4>
           }
         </td>
       </tr>

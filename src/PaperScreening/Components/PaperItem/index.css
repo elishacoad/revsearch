@@ -11,18 +11,18 @@
 }
 
 .grow {
-    /* padding: 5px 5px 5px 5px; */
     height: 0px;
     margin: 5px 1% 5px 1%;
-    /* float: left; */
     position: relative;
     transition: height 0.5s;
     -webkit-transition: height 0.5s;
     overflow: hidden;
+    width: 90%;
 }
 
 .decisionbutton {
     margin-top: 10px;
+    width: 10%;
 }
 
 .decisionbutton button {
