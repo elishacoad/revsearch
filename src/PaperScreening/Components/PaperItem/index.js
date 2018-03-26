@@ -29,15 +29,21 @@ class PaperItem extends Component {
   render() {
     const buttons = (
       <div>
-        <Button href="" style={{backgroundColor:Colors.INCLUDE}} className="decisionbutton" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
+        <Button href=""
+          style={{ backgroundColor: Colors.INCLUDE }}
+          className="decisionbutton" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
           Include
-              </Button>
-        <Button href="" style={{backgroundColor:Colors.EXCLUDE}} className="decisionbutton" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
+        </Button>
+        <Button href=""
+          style={{ backgroundColor: Colors.EXCLUDE }}
+          className="decisionbutton" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
           Exclude
-              </Button>
-        <Button href="" style={{backgroundColor:Colors.MAYBE}} className="decisionbutton" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
+        </Button>
+        <Button href=""
+          style={{ backgroundColor: Colors.MAYBE }}
+          className="decisionbutton" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
           Maybe
-              </Button>
+        </Button>
       </div>
     );
     return (
@@ -45,6 +51,17 @@ class PaperItem extends Component {
         <td className="grow">
           <h5>{this.props.paper.title}</h5>
           {this.state.isExpanded && this.props.paper.abstract}
+          {(this.state.isExpanded && this.props.paper.fulltextlink) && (
+            <div>
+              <br />
+              <a
+                href={this.props.paper.fulltextlink}
+                target="_blank"
+                style={{ "font-style": "italic" }}>
+                Link to Article
+              </a>
+            </div>
+          )}
         </td>
         <td className="decisionbutton">
           {this.state.isExpanded ?
