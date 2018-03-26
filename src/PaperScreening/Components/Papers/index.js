@@ -1,8 +1,8 @@
 import './index.css'
 
-import { Colors, Decision } from '../../../Constants';
 import React, { Component } from 'react';
 
+import { Decision } from '../../../Constants';
 import PaperItem from '../PaperItem';
 import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
