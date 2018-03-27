@@ -27,4 +27,17 @@
 
 .decisionbutton button {
     width: 100%;
+    border-color: rgba(255, 255, 255, 0);
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.decisionbutton button:hover {
+    border-color: black;
+    box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2), 3px 2px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+td h4 .label {
+    display: block;
+    text-align: center;
 }

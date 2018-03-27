@@ -5,3 +5,11 @@ div .row, .right-col, .Papers, table, tbody {
 div .container-fluid {
     height: 90vh;
 }
+
+tr {
+    cursor: pointer;
+}
+
+tr:nth-child(odd) {
+    background-color: #dddddd;
+}

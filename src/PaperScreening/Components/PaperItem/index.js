@@ -29,24 +29,24 @@ class PaperItem extends Component {
   render() {
     const buttons = (
       <div>
-        <Button href="" style={{backgroundColor:Colors.INCLUDE}} className="decisionbutton" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
+        <Button href="" style={{ backgroundColor: Colors.INCLUDE }} className="decisionbutton" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
           Include
               </Button>
-        <Button href="" style={{backgroundColor:Colors.EXCLUDE}} className="decisionbutton" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
+        <Button href="" style={{ backgroundColor: Colors.EXCLUDE }} className="decisionbutton" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
           Exclude
               </Button>
-        <Button href="" style={{backgroundColor:Colors.MAYBE}} className="decisionbutton" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
+        <Button href="" style={{ backgroundColor: Colors.MAYBE }} className="decisionbutton" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
           Maybe
               </Button>
       </div>
     );
     return (
-      <tr onClick={this.rowClicked.bind(this)} style={{ "backgroundColor": Colors[this.props.paper.decision.toUpperCase()] }}>
+      <tr onClick={this.rowClicked.bind(this)}>
         <td className="grow">
-          <h5>{this.props.paper.title}</h5>
+          <h4>{this.props.paper.title}</h4>
           {this.state.isExpanded && this.props.paper.abstract}
         </td>
-        <td className="decisionbutton">
+        <td className="decisionbutton" style={{ "backgroundColor": Colors[this.props.paper.decision.toUpperCase()] }}>
           {this.state.isExpanded ?
             buttons :
             <h4><Label>{this.props.paper.decision}</Label></h4>
