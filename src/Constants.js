@@ -8,5 +8,7 @@ export const Decision = Object.freeze({
 export const Colors = Object.freeze({
     INCLUDE: "#83ddb2",
     MAYBE: "#cde9ff",
-    EXCLUDE: "#eeab9e"
+    EXCLUDE: "#eeab9e",
+    REVNAVY: "#294777",
+    REVBACKGROUND: "#efefef"
 });

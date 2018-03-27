@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
 
+import { Colors } from '../../Constants';
 import { Navbar } from 'react-bootstrap';
 
 class RevNavbar extends Component {
     render() {
         return (
-            <Navbar>
+            <Navbar style={{"backgroundColor" : Colors.REVNAVY}}>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a href="#home">reVsearch</a>
+                        <a href="#home" style={{"color" : "white"}}>reVsearch</a>
                     </Navbar.Brand>
                 </Navbar.Header>
-                {/* <Nav>
-                    <NavItem eventKey={1} href="#">
-                        Link
-                    </NavItem>
-                    <NavItem eventKey={2} href="#">
-                        Link
-                    </NavItem>
-                </Nav> */}
             </Navbar>
         );
     }

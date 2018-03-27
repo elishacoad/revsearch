@@ -28,7 +28,7 @@ class Papers extends Component {
       });
     }
     return (
-      <div className="Papers" >
+      <div className="Papers" style={{"backgroundColor": "white"}}>
         <Table hover className="table-fixed">
           <tbody>
             {paperItems}
