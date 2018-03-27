@@ -29,7 +29,7 @@
     width: 100%;
     border-color: rgba(255, 255, 255, 0);
     -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
+    transition-duration: 0.4s; /* General */
 }
 
 .decisionbutton button:hover {

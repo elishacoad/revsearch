@@ -51,9 +51,14 @@ class ProgressWell extends Component {
         let pexcluded = Math.round(this.getPercent(counts.excludes));
 
         return (
+            // Panel tag throws this error:
+            // If the field should be mutable use `defaultExpanded`. Otherwise, set `onToggle`
             <Panel defaultExpanded bsStyle="primary" expanded={this.state.open}>
                 <Panel.Heading
-                    style={{ "backgroundColor": Colors.REVNAVY }}
+                    style={{
+                        "backgroundColor": Colors.REVNAVY,
+                        "cursor": "pointer"
+                    }}
                     onClick={() => this.setState({ open: !this.state.open })}
                 >
                     <Panel.Title toggle style={{ "color": "white" }}>

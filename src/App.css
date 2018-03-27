@@ -1,4 +1,4 @@
-div .row, .right-col, .Papers, table, tbody {
+div .row, .paper-review-col, .Papers, table, tbody {
     height: 100%;
 }
 
@@ -8,8 +8,32 @@ div .container-fluid {
 
 tr {
     cursor: pointer;
+    /* Disables Text Selection */
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
 }
 
 tr:nth-child(odd) {
     background-color: #dddddd;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+div .panel {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Overides Bootstrap Styles */
+/* Forces navbar to hug sides */
+.navbar {
+    border-radius: 0px !important;
+    border: none !important;
 }

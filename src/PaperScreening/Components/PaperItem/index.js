@@ -57,7 +57,7 @@ class PaperItem extends Component {
               <a
                 href={this.props.paper.fulltextlink}
                 target="_blank"
-                style={{ "font-style": "italic" }}>
+                style={{ "fontstyle": "italic" }}>
                 Link to Article
               </a>
             </div>
