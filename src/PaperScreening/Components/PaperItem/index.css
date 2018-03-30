@@ -1,3 +1,13 @@
+:root {
+    /* :root is a way of saying "the outer-most element" */
+    --include-color: #83ddb2;
+    --dark-include-color: #00994d;
+    --maybe-color: #cde9ff;
+    --dark-maybe-color: #004d99;
+    --exclude-color: #eeab9e;
+    --dark-exclude-color: #990000;
+}
+
 .paper {
     margin-left: auto;
     margin-right: auto;
@@ -42,30 +52,32 @@
     overflow: hidden;
 }
 
+.dropdown {
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.full-title {
+    width: 90%;
+}
+
 .grow {
-    max-height: 500px;
     position: relative;
     overflow-y: hidden;
     width: 90%;
-	transition-property: all;
-	transition-duration: .5s;
-	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-}
-
-.grow.closed {
-    max-height: 0px;
 }
 
 .decisionbutton {
-    margin-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
     width: 10%;
 }
 
 .decisionbutton button {
+    margin-top: 10px;
     width: 100%;
-    border-color: rgba(255, 255, 255, 0);
+    background-color: white;
+    border-color: rgb(0, 0, 0);
     -webkit-transition-duration: 0.4s;
     /* Safari */
     transition-duration: 0.4s;
@@ -73,6 +85,18 @@
 }
 
 .decisionbutton button:hover {
-    border-color: black;
+    border-color: rgb(0, 0, 0);
     box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2), 3px 2px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.include-btn:hover {
+    background-color: var(--include-color) !important;
+}
+
+.maybe-btn:hover {
+    background-color: var(--maybe-color) !important;
+}
+
+.exclude-btn:hover {
+    background-color: var(--exclude-color) !important;
 }
