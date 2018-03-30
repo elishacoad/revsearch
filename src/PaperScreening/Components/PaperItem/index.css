@@ -1,43 +1,78 @@
-.Paper{
-    margin-left: auto; margin-right: auto;
-    border-radius: 10px;
-    width: 100%;
-    border-radius: 10px;
-    margin-left: auto; margin-right: auto;
+.paper {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+    /* Disables Text Selection */
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+    supported by Chrome and Opera */
 }
 
-.paperheader {
-    text-align: center;
+.paper {
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 2px;
+}
+
+.paper:hover {
+    background-color: #b7b7b7;
+}
+
+.title h4 {
+    text-overflow: ellipsis;
+    width: 100%;
+    /* Required properties to achieve text-overflow */
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .grow {
-    height: 0px;
-    margin: 5px 1% 5px 1%;
+    max-height: 500px;
     position: relative;
-    transition: height 0.5s;
-    -webkit-transition: height 0.5s;
-    overflow: hidden;
+    overflow-y: hidden;
     width: 90%;
+	transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.grow.closed {
+    max-height: 0px;
 }
 
 .decisionbutton {
     margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     width: 10%;
 }
 
 .decisionbutton button {
     width: 100%;
     border-color: rgba(255, 255, 255, 0);
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s; /* General */
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    /* General */
 }
 
 .decisionbutton button:hover {
     border-color: black;
     box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2), 3px 2px 15px 0 rgba(0, 0, 0, 0.19);
-}
-
-td h4 .label {
-    display: block;
-    text-align: center;
 }

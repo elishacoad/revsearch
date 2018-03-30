@@ -35,21 +35,21 @@ class PaperItem extends Component {
           Include
         </Button>
         <Button href=""
-          style={{ backgroundColor: Colors.EXCLUDE }}
-          className="decisionbutton" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
-          Exclude
-        </Button>
-        <Button href=""
           style={{ backgroundColor: Colors.MAYBE }}
           className="decisionbutton" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
           Maybe
         </Button>
+        <Button href=""
+          style={{ backgroundColor: Colors.EXCLUDE }}
+          className="decisionbutton" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
+          Exclude
+        </Button>
       </div>
     );
     return (
-      <tr onClick={this.rowClicked.bind(this)}>
+      <div className="paper" onClick={this.rowClicked.bind(this)} style={{ "borderColor": Colors["DARK" + this.props.paper.decision.toUpperCase()] }}>
+        <div className="title"><h4>{this.props.paper.title}</h4></div>
         <td className="grow">
-          <h4>{this.props.paper.title}</h4>
           {this.state.isExpanded && this.props.paper.abstract}
           {(this.state.isExpanded && this.props.paper.fulltextlink) && (
             <div>
@@ -63,13 +63,13 @@ class PaperItem extends Component {
             </div>
           )}
         </td>
-        <td className="decisionbutton" style={{ "backgroundColor": Colors[this.props.paper.decision.toUpperCase()] }}>
-          {this.state.isExpanded ?
-            buttons :
-            <h4><Label>{this.props.paper.decision}</Label></h4>
-          }
-        </td>
-      </tr>
+        {this.state.isExpanded ?
+          <td className="decisionbutton">
+            {buttons}
+          </td> :
+          null
+        }
+      </div>
     );
   }
 }

@@ -7,8 +7,12 @@ export const Decision = Object.freeze({
 
 export const Colors = Object.freeze({
     INCLUDE: "#83ddb2",
+    DARKINCLUDE: "#00994d",
     MAYBE: "#cde9ff",
+    DARKMAYBE: "#004d99",
     EXCLUDE: "#eeab9e",
+    DARKEXCLUDE: "#990000",
     REVNAVY: "#294777",
-    REVBACKGROUND: "#efefef"
+    REVBACKGROUND: "#f0f0f0",
+    PAPERBACKGROUND: "#dfdfdf"
 });

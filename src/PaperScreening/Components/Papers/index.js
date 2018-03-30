@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 
 import { Decision } from '../../../Constants';
 import PaperItem from '../PaperItem';
-import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 class Papers extends Component {
@@ -28,12 +27,8 @@ class Papers extends Component {
       });
     }
     return (
-      <div className="Papers" style={{"backgroundColor": "white"}}>
-        <Table hover className="table-fixed">
-          <tbody>
-            {paperItems}
-          </tbody>
-        </Table>
+      <div className="Papers">
+        {paperItems}
       </div>
     );
   }
