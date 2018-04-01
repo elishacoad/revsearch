@@ -1,6 +1,6 @@
 import './index.css';
 
-import { Button, Panel } from 'react-bootstrap';
+import { Button, Col, Panel } from 'react-bootstrap';
 import { Colors, Decision } from '../../../Constants';
 import React, { Component } from 'react';
 
@@ -31,17 +31,17 @@ class PaperItem extends Component {
       <div>
         <Button href=""
           style={{ "backgroundColor": Colors.INCLUDE }}
-          className="decisionbutton include-btn" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
+          className="decisionbutton" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
           Include
         </Button>
         <Button href=""
           style={{ "backgroundColor": Colors.MAYBE }}
-          className="decisionbutton maybe-btn" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
+          className="decisionbutton" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
           Maybe
         </Button>
         <Button href=""
           style={{ "backgroundColor": Colors.EXCLUDE }}
-          className="decisionbutton exclude-btn" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
+          className="decisionbutton" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
           Exclude
         </Button>
       </div >
@@ -57,21 +57,24 @@ class PaperItem extends Component {
           <Panel.Title toggle>{this.props.paper.title}</Panel.Title>
         </Panel.Heading>
         <Panel.Body collapsible>
-          <h4>{this.props.paper.title}</h4>
-          <br/>
-          {buttons}
-          {this.props.paper.abstract}
-          {this.props.paper.fulltextlink && (
-            <div>
-              <br />
-              <a
-                href={this.props.paper.fulltextlink}
-                target="_blank"
-                style={{ "fontstyle": "italic" }}>
-                Link to Article
-            </a>
-            </div>
-          )}
+          <Col md={10}>
+            <h5>{this.props.paper.title}</h5>
+            <hr></hr>
+            {this.props.paper.abstract}
+            {this.props.paper.fulltextlink && (
+              <div>
+                <a
+                  href={this.props.paper.fulltextlink}
+                  target="_blank"
+                  style={{ "fontstyle": "italic" }}>
+                  Link to Article
+                  </a>
+              </div>
+            )}
+          </Col>
+          <Col md={2}>
+            {buttons}
+          </Col>
         </Panel.Body>
       </Panel>
     );
