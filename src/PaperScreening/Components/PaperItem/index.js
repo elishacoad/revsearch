@@ -1,6 +1,6 @@
 import './index.css';
 
-import { Button } from 'react-bootstrap';
+import { Button, Panel } from 'react-bootstrap';
 import { Colors, Decision } from '../../../Constants';
 import React, { Component } from 'react';
 
@@ -30,50 +30,50 @@ class PaperItem extends Component {
     const buttons = (
       <div>
         <Button href=""
-          style={{ "borderColor": Colors["DARK" + this.props.paper.decision.toUpperCase()] }}
+          style={{ "backgroundColor": Colors.INCLUDE }}
           className="decisionbutton include-btn" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
           Include
         </Button>
         <Button href=""
-          style={{ "borderColor": Colors["DARK" + this.props.paper.decision.toUpperCase()] }}
+          style={{ "backgroundColor": Colors.MAYBE }}
           className="decisionbutton maybe-btn" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
           Maybe
         </Button>
         <Button href=""
-          style={{ "borderColor": Colors["DARK" + this.props.paper.decision.toUpperCase()] }}
+          style={{ "backgroundColor": Colors.EXCLUDE }}
           className="decisionbutton exclude-btn" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
           Exclude
         </Button>
       </div >
     );
     return (
-      <div className="paper" onClick={this.rowClicked.bind(this)} style={{ "borderColor": Colors["DARK" + this.props.paper.decision.toUpperCase()], "backgroundColor": Colors[this.props.paper.decision.toUpperCase()] }}>
-        <div className="title"><h4>{this.props.paper.title}</h4></div>
-        <div className="dropdown">
-          {this.state.isExpanded && (
-            <h3 className="full-title">{this.props.paper.title}</h3>)
-          }
-          <td className="grow">
-            {this.state.isExpanded && this.props.paper.abstract}
-            {(this.state.isExpanded && this.props.paper.fulltextlink) && (
-              <div>
-                <br />
-                <a
-                  href={this.props.paper.fulltextlink}
-                  target="_blank"
-                  style={{ "fontstyle": "italic" }}>
-                  Link to Article
-              </a>
-              </div>
-            )}
-          </td>
-          {this.state.isExpanded && (
-            <td className="decisionbutton">
-              {buttons}
-            </td>)
-          }
-        </div>
-      </div>
+      <Panel
+        eventKey={this.props.eventKey}
+        style={{ "borderColor": Colors["DARK" + this.props.paper.decision.toUpperCase()] }}
+      >
+        <Panel.Heading
+          style={{ "backgroundColor": Colors[this.props.paper.decision.toUpperCase()] }}
+        >
+          <Panel.Title toggle>{this.props.paper.title}</Panel.Title>
+        </Panel.Heading>
+        <Panel.Body collapsible>
+          <h4>{this.props.paper.title}</h4>
+          <br/>
+          {buttons}
+          {this.props.paper.abstract}
+          {this.props.paper.fulltextlink && (
+            <div>
+              <br />
+              <a
+                href={this.props.paper.fulltextlink}
+                target="_blank"
+                style={{ "fontstyle": "italic" }}>
+                Link to Article
+            </a>
+            </div>
+          )}
+        </Panel.Body>
+      </Panel>
     );
   }
 }
