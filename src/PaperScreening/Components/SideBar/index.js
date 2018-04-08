@@ -7,8 +7,8 @@ export default class Sidebar extends Component {
     render() {
         return (
             <div>
-                <ProgressWell />
                 <FilterForm />
+                <ProgressWell />
             </div>
         );
     }
