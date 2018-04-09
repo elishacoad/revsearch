@@ -47,7 +47,7 @@ class FilterForm extends Component {
     render() {
         let counts = this.tallyDecisions(this.props.papers);
         return (
-            <Panel bsStyle="primary" defaultExpanded expanded={this.state.open}>
+            <Panel defaultExpanded expanded={this.state.open} style={{"borderColor" : "gray"}}>
                 <Panel.Heading
                     style={{
                         "backgroundColor": Colors.REVNAVY,

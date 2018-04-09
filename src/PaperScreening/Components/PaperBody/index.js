@@ -43,7 +43,7 @@ class PaperBody extends Component {
     );
     return (
       <Row>
-        <Col md={10}>
+        <Col xs={12} sm={10}>
           <h5>{this.props.paper.title}</h5>
           <hr></hr>
           {this.props.paper.abstract}
@@ -58,7 +58,7 @@ class PaperBody extends Component {
             </div>
           )}
         </Col>
-        <Col md={2}>
+        <Col xs={12} sm={2}>
           {buttons}
         </Col>
       </Row>

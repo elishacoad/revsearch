@@ -53,7 +53,7 @@ class ProgressWell extends Component {
         return (
             // Panel tag throws this error:
             // If the field should be mutable use `defaultExpanded`. Otherwise, set `onToggle`
-            <Panel defaultExpanded bsStyle="primary" expanded={this.state.open}>
+            <Panel defaultExpanded expanded={this.state.open} style={{"borderColor" : "gray"}}>
                 <Panel.Heading
                     style={{
                         "backgroundColor": Colors.REVNAVY,
