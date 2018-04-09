@@ -5,7 +5,7 @@ import papersReducer from './reducer-papers';
 
 const allReducers = combineReducers({
     papers: papersReducer,
-    activeRow: activeRowReducer,
+    activeRowIndex: activeRowReducer,
     filters: filterReducer
 });
 
