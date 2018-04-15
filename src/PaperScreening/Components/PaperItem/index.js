@@ -1,9 +1,7 @@
-import './index.css';
-
+import { Button } from 'react-bootstrap';
+import { Colors, Decision } from '../../../Constants';
 import React, { Component } from 'react';
 
-import { Button } from 'react-bootstrap';
-import Decision from '../../../Constants';
 import { bindActionCreators } from 'redux';
 import { changeDecision } from '../../../Actions';
 import { connect } from 'react-redux';
@@ -27,37 +25,53 @@ class PaperItem extends Component {
   }
 
   render() {
-    const colors = {
-      "include": "#77dd77",
-      "maybe": "#89CDC2",
-      "exclude": "#FF8585"
-    };
     const buttons = (
       <div>
-        <Button href="" bsStyle="success" className="decisionbutton" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
+        <Button href=""
+          style={{ "borderColor": Colors["DARK" + this.props.paper.decision.toUpperCase()] }}
+          className="decisionbutton include-btn" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
           Include
-              </Button>
-        <Button href="" bsStyle="danger" className="decisionbutton" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
-          Exclude
-              </Button>
-        <Button href="" bsStyle="info" className="decisionbutton" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
+        </Button>
+        <Button href=""
+          style={{ "borderColor": Colors["DARK" + this.props.paper.decision.toUpperCase()] }}
+          className="decisionbutton maybe-btn" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
           Maybe
-              </Button>
-      </div>
+        </Button>
+        <Button href=""
+          style={{ "borderColor": Colors["DARK" + this.props.paper.decision.toUpperCase()] }}
+          className="decisionbutton exclude-btn" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
+          Exclude
+        </Button>
+      </div >
     );
     return (
-      <tr onClick={this.rowClicked.bind(this)} style={{ "backgroundColor": colors[this.props.paper.decision] }}>
-        <td className="grow">
-          <h5>{this.props.paper.title}</h5>
-          {this.state.isExpanded && this.props.paper.abstract}
-        </td>
-        <td className="decisionbutton">
-          {this.state.isExpanded ?
-            buttons :
-            <span>{this.props.paper.decision}</span>
+      <div className="paper" onClick={this.rowClicked.bind(this)} style={{ "borderColor": Colors["DARK" + this.props.paper.decision.toUpperCase()], "backgroundColor": Colors[this.props.paper.decision.toUpperCase()] }}>
+        <div className="title"><h4>{this.props.paper.title}</h4></div>
+        <div className="dropdown">
+          {this.state.isExpanded && (
+            <h3 className="full-title">{this.props.paper.title}</h3>)
           }
-        </td>
-      </tr>
+          <td className="grow">
+            {this.state.isExpanded && this.props.paper.abstract}
+            {(this.state.isExpanded && this.props.paper.fulltextlink) && (
+              <div>
+                <br />
+                <a
+                  href={this.props.paper.fulltextlink}
+                  target="_blank"
+                  style={{ "fontstyle": "italic" }}>
+                  Link to Article
+              </a>
+              </div>
+            )}
+          </td>
+          {this.state.isExpanded && (
+            <td className="decisionbutton">
+              {buttons}
+            </td>)
+          }
+        </div>
+      </div>
     );
   }
 }

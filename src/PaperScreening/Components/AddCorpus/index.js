@@ -40,7 +40,7 @@ class AddCorpus extends Component {
   render() {
     return (
       <div>
-        <Alert bsStyle="warning" style={{ textAlign: "center" }}>
+        <Alert style={{ textAlign: "center" }}>
           <h4> Looks like you haven't uploaded any papers yet! </h4>
           <br />
           <Button bsStyle="info" onClick={this.handleSubmit.bind(this)}>
