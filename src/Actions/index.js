@@ -12,10 +12,23 @@ export const addCorpusAction = (papers) => {
     }
 };
 
-// updateObject: {"showIncludes", true}
 export const updateFilter = (updateObject) => {
     return {
         type: 'DECISIONFILTER_UPDATED',
+        payload: updateObject
+    }
+};
+
+export const incrementRow = (updateObject) => {
+    return {
+        type: 'INCREMENT_ROW',
+        payload: updateObject
+    }
+};
+
+export const selectRow = (updateObject) => {
+    return {
+        type: 'ROW_SELECTED',
         payload: updateObject
     }
 };

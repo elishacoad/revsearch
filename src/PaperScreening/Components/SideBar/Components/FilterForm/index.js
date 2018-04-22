@@ -1,4 +1,5 @@
-import { Checkbox, FormControl, Glyphicon, Panel } from 'react-bootstrap';
+import { Checkbox, Panel } from 'react-bootstrap';
+import { Colors, Decision } from '../../../../../Constants';
 import React, { Component } from 'react';
 
 import { bindActionCreators } from 'redux';
@@ -9,76 +10,73 @@ class FilterForm extends Component {
     constructor(props, context) {
         super(props, context);
 
-        this.addIncludeWord = this.addIncludeWord.bind(this);
-        this.addExcludeWord = this.addExcludeWord.bind(this);
-
         this.state = {
-            includeWords: [],
-            excludeWords: []
+            open: true
         };
     }
 
-    addIncludeWord(e) {
-        if(e.charCode==13){
-            let includes = this.state.includeWords;
-            includes.push(e.target.value);
-            this.setState({ value: '' });
-            this.setState({ includeWords: includes });
-
+    tallyDecisions(papers) {
+        let includes = 0;
+        let excludes = 0;
+        let maybes = 0;
+        papers.forEach(paper => {
+            switch (paper.decision) {
+                case Decision.INCLUDE:
+                    includes += 1;
+                    break;
+                case Decision.EXCLUDE:
+                    excludes += 1;
+                    break;
+                case Decision.MAYBE:
+                    maybes += 1;
+                    break;
+                case Decision.NONE:
+                    break;
+                default:
+                    console.log(paper.decision + " is not a valid decision");
+            }
+        });
+        return {
+            includes: includes,
+            excludes: excludes,
+            maybes: maybes,
+            undecided: papers.length - (includes + excludes + maybes),
+            total: papers.length,
         }
     }
 
-    addExcludeWord(e) {
-        let excludes = this.state.excludeWords;
-        excludes.push(e.target.value);
-        e.target.value = "";
-        this.setState({ excludeWords: excludes });
-    }
-
     render() {
+        let counts = this.tallyDecisions(this.props.papers);
         return (
-            <Panel id="accordion-example" defaultExpanded>
-                <Panel.Heading>
-                    <Panel.Title toggle>Filter</Panel.Title>
-                </Panel.Heading>
+            <Panel id="accordion-example" style={{ "borderColor": "gray" }} defaultExpanded>
+                <Panel.Toggle>
+                    <Panel.Heading
+                        style={{
+                            "backgroundColor": Colors.REVNAVY,
+                            "cursor": "pointer"
+                        }}
+                    >
+                        <Panel.Title style={{ "color": "white" }}>Library ({counts.total})</Panel.Title>
+                    </Panel.Heading>
+                </Panel.Toggle>
                 <Panel.Collapse>
-                    <Panel.Body collapsible defaultExpanded>
+                    <Panel.Body>
                         <Checkbox defaultChecked
                             onChange={(e) => this.props.updateFilter({ showIncludes: e.target.checked })}>
-                            Show Includes
+                            Includes ({counts.includes})
                         </Checkbox>
                         <Checkbox defaultChecked
                             onChange={(e) => this.props.updateFilter({ showExcludes: e.target.checked })}>
-                            Show Excludes
+                            Excludes ({counts.excludes})
                         </Checkbox>
                         <Checkbox defaultChecked
                             onChange={(e) => this.props.updateFilter({ showMaybes: e.target.checked })}>
-                            Show Maybes
+                            Maybes ({counts.maybes})
                         </Checkbox>
                         <Checkbox defaultChecked
                             onChange={(e) => this.props.updateFilter({ showUndecided: e.target.checked })}>
+                            Undecided ({counts.undecided})
                         </Checkbox>
-                        <Glyphicon glyph="plus" />Inclusion
-                        <FormControl
-                            type="text"
-                            value={this.state.value}
-                            placeholder="Add new keyword"
-                            onKeyPress={this.addIncludeWord}
-                        />
-                        <Glyphicon glyph="plus" />
-                        <Glyphicon glyph="minus" />Excludes
-                        <FormControl
-                            type="text"
-                            value={this.state.value}
-                            placeholder="Add new keyword"
-                            onClick={this.addExcludeWord}
-                        />
-                        <ul>
-                            {this.state.includeWords.map((includeWord) => {
-                                return <li>{includeWord}</li>;
-                            })
-                            }
-                        </ul>
                     </Panel.Body>
                 </Panel.Collapse>
             </Panel>
@@ -87,7 +85,9 @@ class FilterForm extends Component {
 }
 
 function mapStateToProps(state) {
-    return {}
+    return {
+        papers: state.papers
+    }
 }
 
 function matchDispatchToProps(dispatch) {

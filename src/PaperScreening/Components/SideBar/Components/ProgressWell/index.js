@@ -1,10 +1,18 @@
 import { Badge, Panel, ProgressBar } from 'react-bootstrap';
+import { Colors, Decision } from '../../../../../Constants';
 import React, { Component } from 'react';
 
-import Decision from '../../../../../Constants';
 import { connect } from 'react-redux';
 
 class ProgressWell extends Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.state = {
+            open: true
+        };
+    }
+
     getPercent(count) {
         return this.props.papers.length === 0 ? 0 : (count / this.props.papers.length) * 100;
     }
@@ -39,21 +47,27 @@ class ProgressWell extends Component {
 
     render() {
         let counts = this.tallyDecisions(this.props.papers);
-        let pdecided = Math.round(this.getPercent(counts.includes + counts.excludes));
         let pincluded = Math.round(this.getPercent(counts.includes));
         let pexcluded = Math.round(this.getPercent(counts.excludes));
 
         return (
-            // <PanelGroup accordion id="accordion-example">
-            <Panel id="accordion-example" defaultExpanded>
-                <Panel.Heading>
-                    <Panel.Title toggle>
-                        Progress <Badge>{counts.excludes + counts.includes} / {this.props.papers.length}</Badge>
-                    </Panel.Title>
-                </Panel.Heading>
+            // Panel tag throws this error:
+            // If the field should be mutable use `defaultExpanded`. Otherwise, set `onToggle`
+            <Panel defaultExpanded style={{ "borderColor": "gray" }}>
+                <Panel.Toggle>
+                    <Panel.Heading
+                        style={{
+                            "backgroundColor": Colors.REVNAVY,
+                            "cursor": "pointer"
+                        }}
+                    >
+                        <Panel.Title style={{ "color": "white" }}>
+                            Progress <Badge>{counts.excludes + counts.includes} / {this.props.papers.length}</Badge>
+                        </Panel.Title>
+                    </Panel.Heading>
+                </Panel.Toggle>
                 <Panel.Collapse>
                     <Panel.Body>
-                        <ProgressBar now={pdecided} label={`${pdecided}%`} />
                         <ProgressBar now={pincluded} label={`${pincluded}%`} bsStyle="success" />
                         <ProgressBar now={pexcluded} label={`${pexcluded}%`} bsStyle="danger" />
                     </Panel.Body>
