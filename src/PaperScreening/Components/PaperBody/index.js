@@ -44,18 +44,18 @@ class PaperBody extends Component {
     return (
       <Row>
         <Col xs={12} sm={10}>
-          <h5>{this.props.paper.title}</h5>
-          <hr></hr>
-          {this.props.paper.abstract}
+          <div className="paperbody">
+            <h5>{this.props.paper.title}</h5>
+            <hr></hr>
+            {this.props.paper.abstract}
+          </div>
           {this.props.paper.fulltextlink && (
-            <div>
-              <a
-                href={this.props.paper.fulltextlink}
-                target="_blank"
-                style={{ "fontstyle": "italic" }}>
-                Link to Article
+            <a
+              href={this.props.paper.fulltextlink}
+              target="_blank"
+              style={{ "fontstyle": "italic" }}>
+              Link to Article
             </a>
-            </div>
           )}
         </Col>
         <Col xs={12} sm={2}>
@@ -77,7 +77,7 @@ function matchDispatchToProps(dispatch) {
     {
       changeDecision: changeDecision,
       incrementRow: incrementRow
-    }, 
+    },
     dispatch);
 }
 
