@@ -32,7 +32,6 @@ class Keywords extends Component {
                 value: ''
             });
             this.colorPapers();
-            // dangerouslySetInnerHTML
         }
     }
 
@@ -44,15 +43,6 @@ class Keywords extends Component {
     }
 
     colorPapers() {
-        // let abstracts = document.getElementsByClassName('words-to-color-abstract');
-
-        // let papers = this.props.papers.map((paper) => {
-        //     paper.abstract = paper.abstract.split(" ").map((word) => {
-        //         return this.state.includeWords.includes(word) ? `<font color="green">${word}</font>` : word;
-        //     }).join(" ");
-        //     return paper;
-        // });
-        // this.props.addCorpusAction(papers);
         var x = document.getElementsByClassName("paperbody");
         for (var i = 0; i < x.length; i++) {
             x[i].innerHTML = x[i].innerHTML.split(" ").map((word) => {

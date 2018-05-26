@@ -4,6 +4,7 @@ import { Colors, Decision } from '../../../Constants';
 import { Panel, PanelGroup } from 'react-bootstrap';
 import React, { Component } from 'react';
 
+import Highlighter from "react-highlight-words";
 import PaperBody from '../PaperBody';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -56,6 +57,12 @@ class Papers extends Component {
         id="papers-accordion-uncontrolled"
         className="Papers"
       >
+        <Highlighter
+          highlightClassName="YourHighlightClass"
+          searchWords={["and", "or", "the"]}
+          autoEscape={true}
+          textToHighlight="The dog is chasing the cat. Or perhaps they're just playing?"
+          />
         {paperItems}
       </PanelGroup>
     );
