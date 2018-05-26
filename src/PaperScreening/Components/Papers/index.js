@@ -1,5 +1,3 @@
-import './index.css'
-
 import { Colors, Decision } from '../../../Constants';
 import { Panel, PanelGroup } from 'react-bootstrap';
 import React, { Component } from 'react';
@@ -18,14 +16,18 @@ class Papers extends Component {
         style={{ "borderColor": Colors["DARK" + paper.decision.toUpperCase()] }}
         key={paper.id}
       >
-        <Panel.Heading
-          style={{ "backgroundColor": Colors[paper.decision.toUpperCase()] }}
-        >
-          <Panel.Title toggle>{paper.title}</Panel.Title>
-        </Panel.Heading>
-        <Panel.Body collapsible>
-          <PaperBody paper={paper} />
-        </Panel.Body>
+        <Panel.Toggle>
+          <Panel.Heading
+            style={{ "backgroundColor": Colors[paper.decision.toUpperCase()] }}
+          >
+            <Panel.Title>{paper.title}</Panel.Title>
+          </Panel.Heading>
+        </Panel.Toggle>
+        <Panel.Collapse>
+          <Panel.Body>
+            <PaperBody paper={paper} />
+          </Panel.Body>
+        </Panel.Collapse>
       </Panel>
     )
   }

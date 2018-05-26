@@ -734,11 +734,10 @@ body {
 
 /* line 1, ../sass/components/_panels.scss */
 .panel-heading {
-  background-color: #294777 !important;
   cursor: pointer;
 }
 
-/* line 6, ../sass/components/_panels.scss */
+/* line 5, ../sass/components/_panels.scss */
 .panel-title {
   color: #FFFFFF;
 }
