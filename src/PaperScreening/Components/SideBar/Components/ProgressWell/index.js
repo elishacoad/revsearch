@@ -55,9 +55,13 @@ class ProgressWell extends Component {
             // If the field should be mutable use `defaultExpanded`. Otherwise, set `onToggle`
             <Panel defaultExpanded bsStyle="primary" expanded={this.state.open}>
                 <Panel.Heading
+                    style={{
+                        "backgroundColor": Colors.REVNAVY,
+                        "cursor": "pointer"
+                    }}
                     onClick={() => this.setState({ open: !this.state.open })}
                 >
-                    <Panel.Title toggle>
+                    <Panel.Title toggle style={{ "color": "white" }}>
                         Progress <Badge>{counts.excludes + counts.includes} / {this.props.papers.length}</Badge>
                     </Panel.Title>
                 </Panel.Heading>

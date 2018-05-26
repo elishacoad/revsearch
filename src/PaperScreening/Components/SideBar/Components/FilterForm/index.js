@@ -49,9 +49,13 @@ class FilterForm extends Component {
         return (
             <Panel bsStyle="primary" defaultExpanded expanded={this.state.open}>
                 <Panel.Heading
+                    style={{
+                        "backgroundColor": Colors.REVNAVY,
+                        "cursor": "pointer"
+                    }}
                     onClick={() => this.setState({ open: !this.state.open })}
                 >
-                    <Panel.Title toggle>Screening Tools</Panel.Title>
+                    <Panel.Title toggle style={{ "color": "white" }}>Screening Tools</Panel.Title>
                 </Panel.Heading>
                 <Panel.Collapse>
                     <Panel.Body>
