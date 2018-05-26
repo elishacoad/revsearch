@@ -44,22 +44,23 @@ class FilterForm extends Component {
             total: papers.length,
         }
     }
+
     render() {
         let counts = this.tallyDecisions(this.props.papers);
         return (
-            <Panel bsStyle="primary" defaultExpanded expanded={this.state.open}>
-                <Panel.Heading
-                    style={{
-                        "backgroundColor": Colors.REVNAVY,
-                        "cursor": "pointer"
-                    }}
-                    onClick={() => this.setState({ open: !this.state.open })}
-                >
-                    <Panel.Title toggle style={{ "color": "white" }}>Screening Tools</Panel.Title>
-                </Panel.Heading>
+            <Panel id="accordion-example" style={{ "borderColor": "gray" }} defaultExpanded>
+                <Panel.Toggle>
+                    <Panel.Heading
+                        style={{
+                            "backgroundColor": Colors.REVNAVY,
+                            "cursor": "pointer"
+                        }}
+                    >
+                        <Panel.Title style={{ "color": "white" }}>Library ({counts.total})</Panel.Title>
+                    </Panel.Heading>
+                </Panel.Toggle>
                 <Panel.Collapse>
                     <Panel.Body>
-                        Library ({counts.total})
                         <Checkbox defaultChecked
                             onChange={(e) => this.props.updateFilter({ showIncludes: e.target.checked })}>
                             Includes ({counts.includes})

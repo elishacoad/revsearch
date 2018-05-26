@@ -1,4 +1,7 @@
+import './App.css';
+
 import React, { Component } from 'react';
+
 import { Colors } from "./Constants"
 import { Grid } from 'react-bootstrap';
 import PaperScreening from './PaperScreening/index';

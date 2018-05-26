@@ -53,18 +53,19 @@ class ProgressWell extends Component {
         return (
             // Panel tag throws this error:
             // If the field should be mutable use `defaultExpanded`. Otherwise, set `onToggle`
-            <Panel defaultExpanded bsStyle="primary" expanded={this.state.open}>
-                <Panel.Heading
-                    style={{
-                        "backgroundColor": Colors.REVNAVY,
-                        "cursor": "pointer"
-                    }}
-                    onClick={() => this.setState({ open: !this.state.open })}
-                >
-                    <Panel.Title toggle style={{ "color": "white" }}>
-                        Progress <Badge>{counts.excludes + counts.includes} / {this.props.papers.length}</Badge>
-                    </Panel.Title>
-                </Panel.Heading>
+            <Panel defaultExpanded style={{ "borderColor": "gray" }}>
+                <Panel.Toggle>
+                    <Panel.Heading
+                        style={{
+                            "backgroundColor": Colors.REVNAVY,
+                            "cursor": "pointer"
+                        }}
+                    >
+                        <Panel.Title style={{ "color": "white" }}>
+                            Progress <Badge>{counts.excludes + counts.includes} / {this.props.papers.length}</Badge>
+                        </Panel.Title>
+                    </Panel.Heading>
+                </Panel.Toggle>
                 <Panel.Collapse>
                     <Panel.Body>
                         <ProgressBar now={pincluded} label={`${pincluded}%`} bsStyle="success" />
