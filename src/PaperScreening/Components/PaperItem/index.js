@@ -40,21 +40,6 @@ class PaperItem extends Component {
         <Button href=""
           style={{ "borderColor": Colors["DARK" + this.props.paper.decision.toUpperCase()] }}
           className="decisionbutton exclude-btn" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
-
-{/*           
-          style={{ "backgroundColor": Colors.INCLUDE }}
-          className="decisionbutton" onClick={this.changeColor.bind(this, Decision.INCLUDE)}>
-          Include
-        </Button>
-        <Button href=""
-          style={{ "backgroundColor": Colors.MAYBE }}
-          className="decisionbutton" onClick={this.changeColor.bind(this, Decision.MAYBE)}>
-          Maybe
-        </Button>
-        <Button href=""
-          style={{ "backgroundColor": Colors.EXCLUDE }}
-          className="decisionbutton" onClick={this.changeColor.bind(this, Decision.EXCLUDE)}>
-          Exclude */}
         </Button>
       </div >
     );
