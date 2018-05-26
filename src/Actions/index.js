@@ -19,6 +19,13 @@ export const updateFilter = (updateObject) => {
     }
 };
 
+export const updateKeywords = (updateObject) => {
+    return {
+        type: 'KEYWORDS_UPDATED',
+        payload: updateObject
+    }
+};
+
 export const incrementRow = (updateObject) => {
     return {
         type: 'INCREMENT_ROW',

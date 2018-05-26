@@ -5,6 +5,7 @@ import { Colors, Decision } from '../../../Constants';
 import React, { Component } from 'react';
 import { changeDecision, incrementRow } from '../../../Actions';
 
+import Highlighter from "react-highlight-words";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -45,9 +46,21 @@ class PaperBody extends Component {
       <Row>
         <Col xs={12} sm={10}>
           <div className="paperbody">
-            <h5>{this.props.paper.title}</h5>
+            <h5>
+              <Highlighter
+                highlightClassName="highlight-match"
+                searchWords={this.props.keywords.includeWords}
+                autoEscape={true}
+                textToHighlight={this.props.paper.title}
+              />
+            </h5>
             <hr></hr>
-            {this.props.paper.abstract}
+            <Highlighter
+                highlightClassName="highlight-match"
+                searchWords={this.props.keywords.includeWords}
+                autoEscape={true}
+                textToHighlight={this.props.paper.abstract}
+              />
           </div>
           {this.props.paper.fulltextlink && (
             <a
@@ -68,7 +81,8 @@ class PaperBody extends Component {
 
 function mapStateToProps(state) {
   return {
-    papers: state.papers
+    papers: state.papers,
+    keywords: state.keywords
   }
 }
 
