@@ -23,7 +23,7 @@ class Keywords extends Component {
     addIncludeWord(e) {
         if (e.charCode !== 13) return;
         let includes = this.props.keywords.includeWords;
-        if (includes.includes(e.target.value)) return;
+        if (includes.concat(this.props.keywords.excludeWords).includes(e.target.value)) return;
         includes.push(e.target.value);
         this.setState({
             includevalue: ''
@@ -31,22 +31,12 @@ class Keywords extends Component {
         this.props.updateKeywords({
             includeWords: includes
         });
-        // var keywordTags = document.getElementsByClassName('highlight-match');
-        // console.log(keywordTags.length);
-        // for (var i = 0; i < 8; i++) {
-        //     console.log(keywordTags[i].textContent);
-        //     if (includes.includes(keywordTags[i].textContent)) {
-        //         console.log("match");
-        //         keywordTags[i].classList.add("positive-word")
-        //         keywordTags[i].style.color = "blue";
-        //     }
-        // }
     }
 
     addExcludeWord(e) {
         if (e.charCode !== 13) return;
         let excludes = this.props.keywords.excludeWords;
-        if (excludes.includes(e.target.value)) return;
+        if (excludes.concat(this.props.keywords.includeWords).includes(e.target.value)) return;
         excludes.push(e.target.value);
         this.setState({
             excludevalue: ''
@@ -54,19 +44,24 @@ class Keywords extends Component {
         this.props.updateKeywords({
             excludeWords: excludes
         });
+        // let keywordTags = document.getElementsByClassName('highlight-match');
+        // console.log(keywordTags.length);
+        // for (var i = 0; i < keywordTags.length; i++) {
+        //     if (excludes.includes(keywordTags[i].textContent)) {
+        //         console.log("match");
+        //         keywordTags[i].classList.add("positive-word")
+        //         keywordTags[i].style.backgroundColor = "lightblue";
+        //     }
+        // }
     }
 
     deleteKeyword(word) {
         let includes = this.props.keywords.includeWords;
         let excludes = this.props.keywords.excludeWords;
-        if (includes.includes(word)) {
-            let index = this.props.keywords.includeWords.indexOf(word);
-            if (index !== -1) includes.splice(index, 1);
-        }
-        if (excludes.includes(word)) {
-            let index = this.props.keywords.includeWords.indexOf(word);
-            if (index !== -1) excludes.splice(index, 1);
-        }
+        let index = includes.indexOf(word);
+        if (index !== -1) includes.splice(index, 1);
+        index = excludes.indexOf(word);
+        if (index !== -1) excludes.splice(index, 1);
         this.props.updateKeywords({
             includeWords: includes,
             excludeWords: excludes
@@ -91,7 +86,7 @@ class Keywords extends Component {
                         <FormControl
                             type="text"
                             value={this.state.includevalue}
-                            placeholder="+ add include keyword"
+                            placeholder="+ add include word"
                             onChange={(e) => this.setState({ includevalue: e.target.value })}
                             onKeyPress={this.addIncludeWord}
                         />
@@ -110,7 +105,7 @@ class Keywords extends Component {
                         <FormControl
                             type="text"
                             value={this.state.excludevalue}
-                            placeholder="+ add exclude keyword"
+                            placeholder="+ add exclude word"
                             onChange={(e) => this.setState({ excludevalue: e.target.value })}
                             onKeyPress={this.addExcludeWord}
                         />
