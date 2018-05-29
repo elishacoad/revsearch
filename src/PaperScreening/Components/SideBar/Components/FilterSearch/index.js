@@ -1,4 +1,4 @@
-import { FormControl, Glyphicon, Panel } from 'react-bootstrap';
+import { Checkbox, DropdownButton, FormControl, Glyphicon, MenuItem, Panel } from 'react-bootstrap';
 import React, { Component } from 'react';
 import { addCorpusAction, updateSearchwords } from '../../../../../Actions';
 
@@ -69,7 +69,7 @@ class FilterSearch extends Component {
                             "cursor": "pointer"
                         }}
                     >
-                        <Panel.Title style={{ "color": "white" }}>Filter Words</Panel.Title>
+                        <Panel.Title style={{ "color": "white" }}>Search</Panel.Title>
                     </Panel.Heading>
                 </Panel.Toggle>
                 <Panel.Collapse>
@@ -86,13 +86,39 @@ class FilterSearch extends Component {
                             {this.props.searchwords.includeWords.map((word, idx) => {
                                 return (
                                     <li key={idx}>
-                                        {word + "  "}
+                                        <DropdownButton
+                                            bsStyle="default"
+                                            title="Section"
+                                            key={idx}
+                                            id={`dropdown-basic-${idx}`}
+                                        >
+                                            <MenuItem eventKey="title"><Checkbox>Title</Checkbox></MenuItem>
+                                            <MenuItem eventKey="abstract"><Checkbox>Abstract</Checkbox></MenuItem>
+                                            <MenuItem eventKey="..." active><Checkbox>...</Checkbox></MenuItem>
+                                        </DropdownButton>
+                                        {"  " + word + "  "}
                                         <Glyphicon onClick={this.deleteSearchword.bind(this, word)} glyph="remove" />
                                     </li>
                                 );
                             })}
                         </ul>
                         <hr></hr>
+                        <DropdownButton
+                            bsStyle="default"
+                            title="Section"
+                            id={`dropdown-basic`}
+                        >
+                            <MenuItem eventKey="title">
+                                <Checkbox>Title</Checkbox>
+                            </MenuItem>
+                            <MenuItem eventKey="abstract">
+                                <Checkbox>Abstract</Checkbox>
+                            </MenuItem>
+                            <MenuItem eventKey="..." active>
+                                <Checkbox>...</Checkbox>
+                            </MenuItem>
+                        </DropdownButton>
+
                         <FormControl
                             type="text"
                             value={this.state.excludevalue}
@@ -105,6 +131,22 @@ class FilterSearch extends Component {
                             {this.props.searchwords.excludeWords.map((word, idx) => {
                                 return (
                                     <li key={idx}>
+                                        {/* <DropdownButton
+                                            bsStyle="default"
+                                            title="Section"
+                                            key={idx}
+                                            id={`dropdown-basic-${idx}`}
+                                        >
+                                            <MenuItem eventKey="title">
+                                                <Checkbox>Title</Checkbox>
+                                            </MenuItem>
+                                            <MenuItem eventKey="abstract">
+                                                <Checkbox>Abstract</Checkbox>
+                                            </MenuItem>
+                                            <MenuItem eventKey="..." active>
+                                                <Checkbox>...</Checkbox>
+                                            </MenuItem>
+                                        </DropdownButton> */}
                                         {word + "  "}
                                         <Glyphicon onClick={this.deleteSearchword.bind(this, word)} glyph="remove" />
                                     </li>
