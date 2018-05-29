@@ -26,6 +26,14 @@ export const updateKeywords = (updateObject) => {
     }
 };
 
+export const updateSearchwords = (updateObject) => {
+    return {
+        type: 'SEARCHWORDS_UPDATED',
+        payload: updateObject
+    }
+};
+
+
 export const incrementRow = (updateObject) => {
     return {
         type: 'INCREMENT_ROW',

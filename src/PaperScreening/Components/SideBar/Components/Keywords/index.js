@@ -10,45 +10,43 @@ class Keywords extends Component {
     constructor(props, context) {
         super(props, context);
 
-        this.addIncludeWord = this.addIncludeWord.bind(this);
-        this.addExcludeWord = this.addExcludeWord.bind(this);
+        this.addPositiveWord = this.addPositiveWord.bind(this);
+        this.addNegativeWord = this.addNegativeWord.bind(this);
 
         this.state = {
-            open: true,
-            includevalue: '',
-            excludevalue: ''
+            open: false,
+            positivekeyword_inputvalue: '',
+            negativekeyword_inputvalue: ''
         };
     }
 
-    addIncludeWord(e) {
+    addPositiveWord(e) {
         if (e.charCode !== 13) return;
-        let includes = this.props.keywords.includeWords;
-        if (includes.concat(this.props.keywords.excludeWords).includes(e.target.value)) return;
-        includes.push(e.target.value);
+        let positiveWords = this.props.keywords.positiveWords;
+        if (positiveWords.concat(this.props.keywords.negativeWords).includes(e.target.value)) return;
+        positiveWords.push(e.target.value);
         this.setState({
-            includevalue: ''
+            positivekeyword_inputvalue: ''
         })
         this.props.updateKeywords({
-            includeWords: includes
+            positiveWords: positiveWords
         });
     }
 
-    addExcludeWord(e) {
+    addNegativeWord(e) {
         if (e.charCode !== 13) return;
-        let excludes = this.props.keywords.excludeWords;
-        if (excludes.concat(this.props.keywords.includeWords).includes(e.target.value)) return;
-        excludes.push(e.target.value);
+        let negativeWords = this.props.keywords.negativeWords;
+        if (negativeWords.concat(this.props.keywords.positiveWords).includes(e.target.value)) return;
+        negativeWords.push(e.target.value);
         this.setState({
-            excludevalue: ''
+            negativekeyword_inputvalue: ''
         })
         this.props.updateKeywords({
-            excludeWords: excludes
+            negativeWords: negativeWords
         });
         // let keywordTags = document.getElementsByClassName('highlight-match');
-        // console.log(keywordTags.length);
         // for (var i = 0; i < keywordTags.length; i++) {
-        //     if (excludes.includes(keywordTags[i].textContent)) {
-        //         console.log("match");
+        //     if (negativeWords.includes(keywordTags[i].textContent)) {
         //         keywordTags[i].classList.add("positive-word")
         //         keywordTags[i].style.backgroundColor = "lightblue";
         //     }
@@ -56,21 +54,21 @@ class Keywords extends Component {
     }
 
     deleteKeyword(word) {
-        let includes = this.props.keywords.includeWords;
-        let excludes = this.props.keywords.excludeWords;
-        let index = includes.indexOf(word);
-        if (index !== -1) includes.splice(index, 1);
-        index = excludes.indexOf(word);
-        if (index !== -1) excludes.splice(index, 1);
+        let positiveWords = this.props.keywords.positiveWords;
+        let negativeWords = this.props.keywords.negativeWords;
+        let index = positiveWords.indexOf(word);
+        if (index !== -1) positiveWords.splice(index, 1);
+        index = negativeWords.indexOf(word);
+        if (index !== -1) negativeWords.splice(index, 1);
         this.props.updateKeywords({
-            includeWords: includes,
-            excludeWords: excludes
+            positiveWords: positiveWords,
+            negativeWords: negativeWords
         });
     }
 
     render() {
         return (
-            <Panel id="accordion-example" style={{ "borderColor": "gray" }} defaultExpanded>
+            <Panel id="accordion-example" style={{ "borderColor": "gray" }}>
                 <Panel.Toggle>
                     <Panel.Heading
                         style={{
@@ -85,14 +83,14 @@ class Keywords extends Component {
                     <Panel.Body>
                         <FormControl
                             type="text"
-                            value={this.state.includevalue}
-                            placeholder="+ add include word"
-                            onChange={(e) => this.setState({ includevalue: e.target.value })}
-                            onKeyPress={this.addIncludeWord}
+                            value={this.state.positivekeyword_inputvalue}
+                            placeholder="+ add positive word"
+                            onChange={(e) => this.setState({ positivekeyword_inputvalue: e.target.value })}
+                            onKeyPress={this.addPositiveWord}
                         />
-                        <br></br>
+                        {this.props.keywords.positiveWords.length > 0 && <br></br>}
                         <ul style={{ "color": "#00994d" }}>
-                            {this.props.keywords.includeWords.map((word, idx) => {
+                            {this.props.keywords.positiveWords.map((word, idx) => {
                                 return (
                                     <li key={idx}>
                                         {word + "  "}
@@ -104,14 +102,14 @@ class Keywords extends Component {
                         <hr></hr>
                         <FormControl
                             type="text"
-                            value={this.state.excludevalue}
-                            placeholder="+ add exclude word"
-                            onChange={(e) => this.setState({ excludevalue: e.target.value })}
-                            onKeyPress={this.addExcludeWord}
+                            value={this.state.negativekeyword_inputvalue}
+                            placeholder="+ add negative word"
+                            onChange={(e) => this.setState({ negativekeyword_inputvalue: e.target.value })}
+                            onKeyPress={this.addNegativeWord}
                         />
-                        <br></br>
+                        {this.props.keywords.negativeWords.length > 0 && <br></br>}
                         <ul style={{ "color": "#990000" }}>
-                            {this.props.keywords.excludeWords.map((word, idx) => {
+                            {this.props.keywords.negativeWords.map((word, idx) => {
                                 return (
                                     <li key={idx}>
                                         {word + "  "}

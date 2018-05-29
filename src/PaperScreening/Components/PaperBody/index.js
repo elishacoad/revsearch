@@ -49,7 +49,7 @@ class PaperBody extends Component {
             <h5>
               <Highlighter
                 highlightClassName="highlight-good"
-                searchWords={this.props.keywords.includeWords}
+                searchWords={this.props.keywords.positiveWords}
                 autoEscape={true}
                 textToHighlight={this.props.paper.title}
               />
@@ -57,7 +57,7 @@ class PaperBody extends Component {
             <hr></hr>
             <Highlighter
               highlightClassName="highlight-good"
-              searchWords={this.props.keywords.includeWords}
+              searchWords={this.props.keywords.positiveWords}
               autoEscape={true}
               textToHighlight={this.props.paper.abstract}
             />
