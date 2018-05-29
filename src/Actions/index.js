@@ -5,10 +5,10 @@ export const changeDecision = (paper) => {
     }
 };
 
-export const addCorpusAction = (papers) => {
+export const addCorpusAction = (originalPapers) => {
     return {
         type: 'CORPUS_ADDED',
-        payload: papers
+        payload: originalPapers
     }
 };
 
@@ -32,7 +32,6 @@ export const updateSearchwords = (updateObject) => {
         payload: updateObject
     }
 };
-
 
 export const incrementRow = (updateObject) => {
     return {

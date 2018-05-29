@@ -25,16 +25,12 @@ class FilterSearch extends Component {
         let includes = this.props.searchwords.includeWords;
         if (includes.concat(this.props.searchwords.excludeWords).includes(e.target.value)) return;
         includes.push(e.target.value);
-        let papers = this.props.papers.filter(paper =>
-            paper.abstract.includes(e.target.value) || paper.title.includes(e.target.value)
-        );
         this.setState({
             includevalue: ''
         })
         this.props.updateSearchwords({
             includeWords: includes
         });
-        this.props.addCorpusAction(papers);
     }
 
     addExcludeWord(e) {
@@ -42,16 +38,12 @@ class FilterSearch extends Component {
         let excludes = this.props.searchwords.excludeWords;
         if (excludes.concat(this.props.searchwords.includeWords).includes(e.target.value)) return;
         excludes.push(e.target.value);
-        let papers = this.props.papers.filter(paper =>
-            !(paper.abstract.includes(e.target.value) || paper.title.includes(e.target.value))
-        );
         this.setState({
             excludevalue: ''
         })
         this.props.updateSearchwords({
             excludeWords: excludes
         });
-        this.props.addCorpusAction(papers);
     }
 
     deleteSearchword(word) {
@@ -89,7 +81,7 @@ class FilterSearch extends Component {
                             onChange={(e) => this.setState({ includevalue: e.target.value })}
                             onKeyPress={this.addIncludeWord}
                         />
-                        {this.props.keywords.includeWords.length > 0 && <br></br>}
+                        {this.props.searchwords.includeWords.length > 0 && <br></br>}
                         <ul style={{ "color": "#00994d" }}>
                             {this.props.searchwords.includeWords.map((word, idx) => {
                                 return (
@@ -108,7 +100,7 @@ class FilterSearch extends Component {
                             onChange={(e) => this.setState({ excludevalue: e.target.value })}
                             onKeyPress={this.addExcludeWord}
                         />
-                        {this.props.keywords.excludeWords.length > 0 && <br></br>}
+                        {this.props.searchwords.excludeWords.length > 0 && <br></br>}
                         <ul style={{ "color": "#990000" }}>
                             {this.props.searchwords.excludeWords.map((word, idx) => {
                                 return (

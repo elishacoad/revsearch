@@ -44,13 +44,6 @@ class Keywords extends Component {
         this.props.updateKeywords({
             negativeWords: negativeWords
         });
-        // let keywordTags = document.getElementsByClassName('highlight-match');
-        // for (var i = 0; i < keywordTags.length; i++) {
-        //     if (negativeWords.includes(keywordTags[i].textContent)) {
-        //         keywordTags[i].classList.add("positive-word")
-        //         keywordTags[i].style.backgroundColor = "lightblue";
-        //     }
-        // }
     }
 
     deleteKeyword(word) {
@@ -76,7 +69,7 @@ class Keywords extends Component {
                             "cursor": "pointer"
                         }}
                     >
-                        <Panel.Title style={{ "color": "white" }}>Keywords</Panel.Title>
+                        <Panel.Title style={{ "color": "white" }}>Highlight Words</Panel.Title>
                     </Panel.Heading>
                 </Panel.Toggle>
                 <Panel.Collapse>

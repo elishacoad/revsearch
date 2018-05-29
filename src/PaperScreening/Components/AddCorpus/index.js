@@ -13,11 +13,11 @@ class AddCorpus extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(inputtext=null){
+  handleSubmit(inputtext = null) {
     let papers = parseCorpus(inputtext);
     if (papers.length === 0) {
       alert("No papers able to parsed.");
-      }
+    }
     else {
       papers = papers.map((paper, i) => {
         paper.id = uuid.v4() + "_" + i;
@@ -26,7 +26,7 @@ class AddCorpus extends Component {
       this.props.addCorpusAction(papers);
     }
   }
-  
+
   readFile(e) {
     e.preventDefault()
     let file = e.target.files[0];
@@ -36,7 +36,7 @@ class AddCorpus extends Component {
       this.handleSubmit(read.result);
     }
   }
-  
+
   render() {
     return (
       <div>
