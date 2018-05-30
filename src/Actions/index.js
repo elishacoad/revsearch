@@ -5,16 +5,30 @@ export const changeDecision = (paper) => {
     }
 };
 
-export const addCorpusAction = (papers) => {
+export const addCorpusAction = (originalPapers) => {
     return {
         type: 'CORPUS_ADDED',
-        payload: papers
+        payload: originalPapers
     }
 };
 
 export const updateFilter = (updateObject) => {
     return {
         type: 'DECISIONFILTER_UPDATED',
+        payload: updateObject
+    }
+};
+
+export const updateKeywords = (updateObject) => {
+    return {
+        type: 'KEYWORDS_UPDATED',
+        payload: updateObject
+    }
+};
+
+export const updateSearchwords = (updateObject) => {
+    return {
+        type: 'SEARCHWORDS_UPDATED',
         payload: updateObject
     }
 };

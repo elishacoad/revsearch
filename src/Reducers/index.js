@@ -1,12 +1,16 @@
 import activeRowReducer from './reducer-activerow';
-import {combineReducers} from "redux";
+import {combineReducers} from 'redux';
+import corpusReducer from './reducer-corpus';
 import filterReducer from './reducer-filter';
-import papersReducer from './reducer-papers';
+import keywordsReducer from './reducer-keywords';
+import searchwordsReducer from './reducer-searchwords';
 
 const allReducers = combineReducers({
-    papers: papersReducer,
+    papers: corpusReducer,
     activeRowIndex: activeRowReducer,
-    filters: filterReducer
+    keywords: keywordsReducer,
+    filters: filterReducer,
+    searchwords: searchwordsReducer
 });
 
 export default allReducers;

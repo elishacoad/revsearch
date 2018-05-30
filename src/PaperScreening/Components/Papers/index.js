@@ -33,19 +33,35 @@ class Papers extends Component {
   }
   render() {
     let paperItems;
-    if (this.props.papers.length !== 0) {
+    // only display papers that match the search criteria
+    // TODO: Make more efficient! O(n^2) right now!
+    let papers = this.props.papers;
+    this.props.searchwords.includeWords.forEach(includeWord => {
+      papers = papers.filter(paper =>
+        paper.abstract.includes(includeWord) || paper.title.includes(includeWord)
+      );
+    });
+    this.props.searchwords.excludeWords.forEach(excludeWord => {
+      papers = papers.filter(paper =>
+        !(paper.abstract.includes(excludeWord) || paper.title.includes(excludeWord))
+      );
+    });
+    // apply 'decision' filter to the papers... AKA only show papers 
+    // that match the paper-decisions that the user wants to see
+    if (papers.length !== 0) {
+      // (must do the next line because the maping doesn't have unique keys)
       // eslint-disable-next-line
-      paperItems = this.props.papers.map((paper, i) => {
-        if (this.props.filters.showIncludes && paper.decision === Decision.INCLUDE) {
+      paperItems = papers.map((paper, i) => {
+        if (this.props.decisionFilter.showIncludes && paper.decision === Decision.INCLUDE) {
           return this.getPanel(paper, i)
         }
-        if (this.props.filters.showExcludes && paper.decision === Decision.EXCLUDE) {
+        if (this.props.decisionFilter.showExcludes && paper.decision === Decision.EXCLUDE) {
           return this.getPanel(paper, i)
         }
-        if (this.props.filters.showMaybes && paper.decision === Decision.MAYBE) {
+        if (this.props.decisionFilter.showMaybes && paper.decision === Decision.MAYBE) {
           return this.getPanel(paper, i)
         }
-        if (this.props.filters.showUndecided && paper.decision === Decision.NONE) {
+        if (this.props.decisionFilter.showUndecided && paper.decision === Decision.NONE) {
           return this.getPanel(paper, i)
         }
       });
@@ -67,7 +83,8 @@ class Papers extends Component {
 function mapStateToProps(state) {
   return {
     papers: state.papers,
-    filters: state.filters,
+    decisionFilter: state.filters,
+    searchwords: state.searchwords,
     activeRowIndex: state.activeRowIndex
   }
 }

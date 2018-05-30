@@ -6,12 +6,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateFilter } from '../../../../../Actions';
 
-class FilterForm extends Component {
+class LibraryCounts extends Component {
     constructor(props, context) {
         super(props, context);
 
         this.state = {
-            open: true
+            open: false
         };
     }
 
@@ -48,7 +48,7 @@ class FilterForm extends Component {
     render() {
         let counts = this.tallyDecisions(this.props.papers);
         return (
-            <Panel id="accordion-example" style={{ "borderColor": "gray" }} defaultExpanded>
+            <Panel id="accordion-example" style={{ "borderColor": "gray" }}>
                 <Panel.Toggle>
                     <Panel.Heading
                         style={{
@@ -94,4 +94,4 @@ function matchDispatchToProps(dispatch) {
     return bindActionCreators({ updateFilter: updateFilter }, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(FilterForm);
+export default connect(mapStateToProps, matchDispatchToProps)(LibraryCounts);
