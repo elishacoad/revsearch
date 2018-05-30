@@ -1,4 +1,4 @@
-import { Checkbox, DropdownButton, FormControl, Glyphicon, MenuItem, Panel } from 'react-bootstrap';
+import { Button, DropdownButton, FormControl, Glyphicon, MenuItem, Panel } from 'react-bootstrap';
 import React, { Component } from 'react';
 import { addCorpusAction, updateSearchwords } from '../../../../../Actions';
 
@@ -15,9 +15,56 @@ class FilterSearch extends Component {
 
         this.state = {
             open: false,
-            includevalue: '',
-            excludevalue: ''
+            searchgroups: [],
+            inputvalue: ''
         };
+    }
+    addSearchGroup() {
+        this.setState({
+            searchgroups: this.state.searchgroups.concat(
+                <div key={`searchgroup-${this.state.searchgroups.length}`}>
+                    <hr></hr>
+                    <DropdownButton
+                        bsStyle="default"
+                        title="Any Field"
+                        key={`field-${this.state.searchgroups.length}`}
+                        id={`field-${this.state.searchgroups.length}`}
+                    >
+                        <MenuItem eventKey="Any Field">Any Field</MenuItem>
+                        <MenuItem eventKey="Title">Title</MenuItem>
+                        <MenuItem eventKey="Abstract">Abstract</MenuItem>
+                    </DropdownButton>
+                    <DropdownButton
+                        bsStyle="default"
+                        title="Containing"
+                        key={`containing-${this.state.searchgroups.length}`}
+                        id={`containing-${this.state.searchgroups.length}`}
+                    >
+                        <MenuItem eventKey="Containing">Containing</MenuItem>
+                        <MenuItem eventKey="Not Containing">Not Containing</MenuItem>
+                    </DropdownButton>
+                    <FormControl
+                        type="text"
+                        value={this.state.inputvalue}
+                        placeholder="+ add word"
+                        onChange={(e) => this.setState({ inputvalue: e.target.value })}
+                        onKeyPress={this.addIncludeWord}
+                    />
+                    {this.props.searchwords.includeWords.length > 0 && <br></br>}
+                    <ul style={{ "color": "#00994d" }}>
+                        {this.props.searchwords.includeWords.map((word, idx) => {
+                            return (
+                                <li key={idx}>
+                                    {word + "  "}
+                                    <Glyphicon onClick={this.deleteSearchword.bind(this, word)} glyph="remove" />
+                                </li>
+                            );
+                        })}
+                    </ul>
+
+                </div>
+            )
+        });
     }
 
     addIncludeWord(e) {
@@ -26,7 +73,7 @@ class FilterSearch extends Component {
         if (includes.concat(this.props.searchwords.excludeWords).includes(e.target.value)) return;
         includes.push(e.target.value);
         this.setState({
-            includevalue: ''
+            inputvalue: ''
         })
         this.props.updateSearchwords({
             includeWords: includes
@@ -74,85 +121,10 @@ class FilterSearch extends Component {
                 </Panel.Toggle>
                 <Panel.Collapse>
                     <Panel.Body>
-                        <FormControl
-                            type="text"
-                            value={this.state.includevalue}
-                            placeholder="+ add include word"
-                            onChange={(e) => this.setState({ includevalue: e.target.value })}
-                            onKeyPress={this.addIncludeWord}
-                        />
-                        {this.props.searchwords.includeWords.length > 0 && <br></br>}
-                        <ul style={{ "color": "#00994d" }}>
-                            {this.props.searchwords.includeWords.map((word, idx) => {
-                                return (
-                                    <li key={idx}>
-                                        <DropdownButton
-                                            bsStyle="default"
-                                            title="Section"
-                                            key={idx}
-                                            id={`dropdown-basic-${idx}`}
-                                        >
-                                            <MenuItem eventKey="title"><Checkbox>Title</Checkbox></MenuItem>
-                                            <MenuItem eventKey="abstract"><Checkbox>Abstract</Checkbox></MenuItem>
-                                            <MenuItem eventKey="..." active><Checkbox>...</Checkbox></MenuItem>
-                                        </DropdownButton>
-                                        {"  " + word + "  "}
-                                        <Glyphicon onClick={this.deleteSearchword.bind(this, word)} glyph="remove" />
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                        <hr></hr>
-                        <DropdownButton
-                            bsStyle="default"
-                            title="Section"
-                            id={`dropdown-basic`}
-                        >
-                            <MenuItem eventKey="title">
-                                <Checkbox>Title</Checkbox>
-                            </MenuItem>
-                            <MenuItem eventKey="abstract">
-                                <Checkbox>Abstract</Checkbox>
-                            </MenuItem>
-                            <MenuItem eventKey="..." active>
-                                <Checkbox>...</Checkbox>
-                            </MenuItem>
-                        </DropdownButton>
-
-                        <FormControl
-                            type="text"
-                            value={this.state.excludevalue}
-                            placeholder="+ add exclude word"
-                            onChange={(e) => this.setState({ excludevalue: e.target.value })}
-                            onKeyPress={this.addExcludeWord}
-                        />
-                        {this.props.searchwords.excludeWords.length > 0 && <br></br>}
-                        <ul style={{ "color": "#990000" }}>
-                            {this.props.searchwords.excludeWords.map((word, idx) => {
-                                return (
-                                    <li key={idx}>
-                                        {/* <DropdownButton
-                                            bsStyle="default"
-                                            title="Section"
-                                            key={idx}
-                                            id={`dropdown-basic-${idx}`}
-                                        >
-                                            <MenuItem eventKey="title">
-                                                <Checkbox>Title</Checkbox>
-                                            </MenuItem>
-                                            <MenuItem eventKey="abstract">
-                                                <Checkbox>Abstract</Checkbox>
-                                            </MenuItem>
-                                            <MenuItem eventKey="..." active>
-                                                <Checkbox>...</Checkbox>
-                                            </MenuItem>
-                                        </DropdownButton> */}
-                                        {word + "  "}
-                                        <Glyphicon onClick={this.deleteSearchword.bind(this, word)} glyph="remove" />
-                                    </li>
-                                );
-                            })}
-                        </ul>
+                        <Button onClick={this.addSearchGroup.bind(this)}>
+                            + add search group
+                        </Button>
+                        {this.state.searchgroups}
                     </Panel.Body>
                 </Panel.Collapse>
             </Panel>
