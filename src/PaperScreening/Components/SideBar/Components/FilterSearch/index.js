@@ -15,59 +15,73 @@ class FilterSearch extends Component {
 
         this.state = {
             open: false,
-            searchgroups: [],
-            inputvalue: ''
+            searchgroups: []
         };
     }
     addSearchGroup() {
         this.setState({
             searchgroups: this.state.searchgroups.concat(
-                <div key={`searchgroup-${this.state.searchgroups.length}`}>
-                    <hr></hr>
-                    <DropdownButton
-                        bsStyle="default"
-                        title="Any Field"
-                        key={`field-${this.state.searchgroups.length}`}
-                        id={`field-${this.state.searchgroups.length}`}
-                    >
-                        <MenuItem eventKey="Any Field">Any Field</MenuItem>
-                        <MenuItem eventKey="Title">Title</MenuItem>
-                        <MenuItem eventKey="Abstract">Abstract</MenuItem>
-                    </DropdownButton>
-                    <DropdownButton
-                        bsStyle="default"
-                        title="Containing"
-                        key={`containing-${this.state.searchgroups.length}`}
-                        id={`containing-${this.state.searchgroups.length}`}
-                    >
-                        <MenuItem eventKey="Containing">Containing</MenuItem>
-                        <MenuItem eventKey="Not Containing">Not Containing</MenuItem>
-                    </DropdownButton>
-                    <FormControl
-                        type="text"
-                        value={this.state.inputvalue}
-                        placeholder="+ add word"
-                        onChange={(e) => this.setState({ inputvalue: e.target.value })}
-                        onKeyPress={this.addIncludeWord}
-                    />
-                    {this.props.searchwords.includeWords.length > 0 && <br></br>}
-                    <ul style={{ "color": "#00994d" }}>
-                        {this.props.searchwords.includeWords.map((word, idx) => {
-                            return (
-                                <li key={idx}>
-                                    {word + "  "}
-                                    <Glyphicon onClick={this.deleteSearchword.bind(this, word)} glyph="remove" />
-                                </li>
-                            );
-                        })}
-                    </ul>
-
-                </div>
+                {
+                    field: "Any Field",
+                    logic: "Containing",
+                    inputvalue: "",
+                    terms: []
+                }
             )
         });
+        console.log(this.state.searchgroups);
     }
 
-    addIncludeWord(e) {
+    handleChange(e) {
+        console.log("handleChange called!")
+        console.log(e);
+    }
+
+    makeSearchGroup(idx) {
+        return (
+            <div key={idx}>
+                <hr></hr>
+                <DropdownButton
+                    bsStyle="default"
+                    title={this.state.searchgroups[idx].title}
+                >
+                    <MenuItem eventKey="Any Field"></MenuItem>
+                    <MenuItem eventKey="Title">Title</MenuItem>
+                    <MenuItem eventKey="Abstract">Abstract</MenuItem>
+                </DropdownButton>
+                <DropdownButton
+                    bsStyle="default"
+                    title={this.state.searchgroups[idx].logic}
+                >
+                    <MenuItem eventKey="Containing">Containing</MenuItem>
+                    <MenuItem eventKey="Not Containing">Not Containing</MenuItem>
+                </DropdownButton>
+                <FormControl
+                    type="text"
+                    value={this.state.searchgroups[idx].inputvalue}
+                    placeholder="+ add word"
+                    onChange={(e) => this.setState({ inputvalue: e.target.value })}
+                    onKeyPress={this.state.searchgroups[idx].logic === "Containing" ?
+                        this.addIncludeWord(event, this.state.searchgroups[idx]) :
+                        this.addExcludeWord(event, this.state.searchgroups[idx])
+                    }
+                />
+                {this.props.searchwords.includeWords.length > 0 && <br></br>}
+                <ul style={{ "color": "#00994d" }}>
+                    {this.props.searchwords.includeWords.map((word, i) => {
+                        return (
+                            <li key={i}>
+                                {word + "  "}
+                                <Glyphicon onClick={this.deleteSearchword.bind(this, word)} glyph="remove" />
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
+        );
+    }
+
+    addIncludeWord(e, group) {
         if (e.charCode !== 13) return;
         let includes = this.props.searchwords.includeWords;
         if (includes.concat(this.props.searchwords.excludeWords).includes(e.target.value)) return;
@@ -121,10 +135,12 @@ class FilterSearch extends Component {
                 </Panel.Toggle>
                 <Panel.Collapse>
                     <Panel.Body>
-                        <Button onClick={this.addSearchGroup.bind(this)}>
+                        <Button onClick={this.addSearchGroup.bind(this, this.state.searchgroups.length)}>
                             + add search group
                         </Button>
-                        {this.state.searchgroups}
+                        {this.state.searchgroups.map(group => {
+                            return this.makeSearchGroup.bind(this, group);
+                        })}
                     </Panel.Body>
                 </Panel.Collapse>
             </Panel>
