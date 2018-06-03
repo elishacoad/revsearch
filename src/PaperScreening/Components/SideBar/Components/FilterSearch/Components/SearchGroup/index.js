@@ -1,12 +1,11 @@
 import { DropdownButton, FormControl, Glyphicon, MenuItem } from 'react-bootstrap';
 import React, { Component } from 'react';
 
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-
 class SearchGroup extends Component {
     constructor(props, context) {
         super(props, context);
+
+        this.addSearchTerm = this.addSearchTerm.bind(this);
 
         this.state = {
             field: "Any Field",
@@ -18,19 +17,14 @@ class SearchGroup extends Component {
 
     addSearchTerm(e) {
         if (e.charCode !== 13) return;
-        let terms = this.state.terms;
-        terms.push(e.target.value);
-        this.setState({ 
-            terms: terms,
+        this.setState({
+            terms: this.state.terms.concat(e.target.value),
             inputvalue: ''
-         });
+        });
     }
 
     deleteSearchTerm(word) {
-        let terms = this.state.terms;
-        let index = terms.indexOf(word);
-        if (index !== -1) terms.splice(index, 1);
-        this.setState({ terms: terms });
+        this.setState({ terms: this.state.terms.filter(e => e !== word) });
     }
 
     render() {
@@ -39,7 +33,8 @@ class SearchGroup extends Component {
                 <hr></hr>
                 <DropdownButton
                     bsStyle="default"
-                    title={this.state.title}
+                    title={this.state.field}
+                    id="searchgroup-field-select"
                 >
                     <MenuItem eventKey="Any Field"></MenuItem>
                     <MenuItem eventKey="Title">Title</MenuItem>
@@ -48,6 +43,7 @@ class SearchGroup extends Component {
                 <DropdownButton
                     bsStyle="default"
                     title={this.state.logic}
+                    id="searchgroup-logic-select"
                 >
                     <MenuItem eventKey="Containing">Containing</MenuItem>
                     <MenuItem eventKey="Not Containing">Not Containing</MenuItem>
@@ -57,7 +53,7 @@ class SearchGroup extends Component {
                     value={this.state.inputvalue}
                     placeholder="+ add word"
                     onChange={(e) => this.setState({ inputvalue: e.target.value })}
-                    onKeyPress={(e) => this.addSearchTerm.bind(this, e)}
+                    onKeyPress={this.addSearchTerm}
                 />
                 {this.state.terms.length > 0 && <br></br>}
                 <ul style={{ "color": "#00994d" }}>
@@ -75,15 +71,4 @@ class SearchGroup extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        papers: state.papers,
-        searchwords: state.searchwords
-    }
-}
-
-function matchDispatchToProps(dispatch) {
-    return bindActionCreators({ }, dispatch);
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(SearchGroup);
+export default SearchGroup;

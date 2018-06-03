@@ -2,7 +2,7 @@ import { Button, Panel } from 'react-bootstrap';
 import React, { Component } from 'react';
 
 import { Colors } from '../../../../../Constants';
-import { SearchGroup } from './Components/SearchGroup';
+import SearchGroup from './Components/SearchGroup';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateSearchwords } from '../../../../../Actions';
@@ -18,10 +18,12 @@ class FilterSearch extends Component {
     }
 
     addSearchGroup() {
-        let searchgroups = this.state.searchgroups;
-        searchgroups.push( <SearchGroup/> );
-        this.setState({ searchgroups: searchgroups });
-        console.log(this.state.searchgroups);
+        this.setState({
+            searchgroups:
+                this.state.searchgroups.concat(
+                    <SearchGroup key={this.state.searchgroups.length} />
+                )
+        });
     }
 
     render() {
@@ -42,7 +44,15 @@ class FilterSearch extends Component {
                         <Button onClick={this.addSearchGroup.bind(this, this.state.searchgroups.length)}>
                             + add search group
                         </Button>
-                        {/* {this.state.searchgroups} */}
+                        {this.state.searchgroups}
+                        {/* {this.state.searchgroups.map((group, idx) => {
+                            return (
+                                <div key={idx}>
+                                    {group}
+                                </div>
+                            )
+                        }
+                        )} */}
                     </Panel.Body>
                 </Panel.Collapse>
             </Panel>
