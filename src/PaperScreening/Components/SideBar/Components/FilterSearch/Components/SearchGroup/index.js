@@ -70,7 +70,6 @@ class SearchGroup extends Component {
                     <MenuItem eventKey={SearchLogic.CONTAINING}>Containing</MenuItem>
                     <MenuItem eventKey={SearchLogic.NOTCONTAINING}>Not Containing</MenuItem>
                 </DropdownButton>
-                <Button onClick={this.props.handleDelete(this.props.idx)}>Remove</Button>
                 <FormControl
                     type="text"
                     value={this.state.inputvalue}
