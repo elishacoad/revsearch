@@ -17,22 +17,17 @@ class FilterSearch extends Component {
     }
 
     addSearchGroup() {
-        this.setState({
-            searchgroups: this.state.searchgroups.concat(
-                {
-                    field: "Any Field",
-                    logic: "Containing",
-                    inputvalue: "",
-                    terms: []
-                }
-            )
-        });
+        let searchgroups = this.state.searchgroups;
+        searchgroups.push(
+            {
+                field: "Any Field",
+                logic: "Containing",
+                inputvalue: "",
+                terms: []
+            }
+        );
+        this.setState({ searchgroups: searchgroups });
         console.log(this.state.searchgroups);
-    }
-
-    handleChange(e) {
-        console.log("handleChange called!")
-        console.log(e);
     }
 
     makeSearchGroup(idx) {
