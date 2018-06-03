@@ -12,10 +12,7 @@ class SearchGroup extends Component {
 
         this.addSearchTerm = this.addSearchTerm.bind(this);
         this.state = {
-            field: PaperFields.ALL,
-            logic: SearchLogic.CONTAINING,
-            inputvalue: "",
-            terms: []
+            inputvalue: ""
         };
     }
 
@@ -30,20 +27,20 @@ class SearchGroup extends Component {
     addSearchTerm(e) {
         if (e.charCode !== 13) return;
         this.setState({
-            terms: this.state.terms.concat(e.target.value),
+            terms: this.props.searchwords[this.props.idx].terms.concat(e.target.value),
             inputvalue: ''
         });
         this.props.updateSearchwords(
             this.props.searchwords.concat({
                 term: e.target.value,
-                field: this.state.field,
-                logic: this.state.logic
+                field: this.props.searchwords[this.props.idx].field,
+                logic: this.props.searchwords[this.props.idx].logic
             })
         );
     }
 
     deleteSearchTerm(word) {
-        this.setState({ terms: this.state.terms.filter(w => w !== word) });
+        this.setState({ terms: this.props.searchwords[this.props.idx].terms.filter(w => w !== word) });
         this.props.updateSearchwords(this.props.searchwords.filter(o => o.term !== word));
     }
 
@@ -53,7 +50,7 @@ class SearchGroup extends Component {
                 <hr></hr>
                 <DropdownButton
                     bsStyle="default"
-                    title={this.logicalToDisplayName[this.state.field]}
+                    title={this.logicalToDisplayName[this.props.searchwords[this.props.idx].field]}
                     id="searchgroup-field-select"
                     onSelect={(choice) => this.setState({ field: choice })}
                 >
@@ -63,9 +60,11 @@ class SearchGroup extends Component {
                 </DropdownButton>
                 <DropdownButton
                     bsStyle="default"
-                    title={this.logicalToDisplayName[this.state.logic]}
+                    title={this.logicalToDisplayName[this.props.searchwords[this.props.idx].logic]}
                     id="searchgroup-logic-select"
-                    onSelect={(choice) => this.setState({ logic: choice })}
+                    onSelect={(choice) => {
+                        let searchwords = this.props.searchwords;
+                    }}
                 >
                     <MenuItem eventKey={SearchLogic.CONTAINING}>Containing</MenuItem>
                     <MenuItem eventKey={SearchLogic.NOTCONTAINING}>Not Containing</MenuItem>
@@ -77,10 +76,10 @@ class SearchGroup extends Component {
                     onChange={(e) => this.setState({ inputvalue: e.target.value })}
                     onKeyPress={this.addSearchTerm}
                 />
-                {this.state.terms.length > 0 && <br></br>}
-                <ul style={this.state.logic === SearchLogic.CONTAINING ?
+                {this.props.searchwords[this.props.idx].terms.length > 0 && <br></br>}
+                <ul style={this.props.searchwords[this.props.idx].logic === SearchLogic.CONTAINING ?
                     { "color": "#00994d" } : { "color": "#990000" }}>
-                    {this.state.terms.map((word, i) => {
+                    {this.props.searchwords[this.props.idx].terms.map((word, i) => {
                         return (
                             <li key={i}>
                                 {word + "  "}

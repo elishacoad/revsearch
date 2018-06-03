@@ -1,8 +1,13 @@
 import { Button, Panel } from 'react-bootstrap';
+import { PaperFields, SearchLogic } from '../../../../../Constants';
 import React, { Component } from 'react';
 
 import { Colors } from '../../../../../Constants';
 import SearchGroup from './Components/SearchGroup';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateSearchwords } from '../../../../../Actions';
+import uuid from 'uuid';
 
 class FilterSearch extends Component {
     constructor(props, context) {
@@ -10,17 +15,18 @@ class FilterSearch extends Component {
 
         this.state = {
             open: false,
-            searchgroups: []
+            searchgroups: {}
         };
     }
 
     addSearchGroup() {
-        this.setState({
-            searchgroups:
-                this.state.searchgroups.concat(
-                    <SearchGroup key={this.state.searchgroups.length} />
-                )
-        });
+        let searchgroups = this.state.searchgroups;
+        searchgroups[uuid.v1()] = {
+            field: PaperFields.ALL,
+            logic: SearchLogic.CONTAINING,
+            terms: []
+        }
+        this.setState({ searchgroups: searchgroups });
     }
 
     render() {
@@ -41,7 +47,7 @@ class FilterSearch extends Component {
                         <Button onClick={this.addSearchGroup.bind(this, this.state.searchgroups.length)}>
                             + new search
                         </Button>
-                        {this.state.searchgroups}
+                        {Object.keys(this.state.searchgroups).map(uuid => <SearchGroup key={uuid} uuid={uuid}/>)}
                     </Panel.Body>
                 </Panel.Collapse>
             </Panel>
@@ -49,4 +55,16 @@ class FilterSearch extends Component {
     }
 }
 
-export default FilterSearch;
+function mapStateToProps(state) {
+    return {
+        searchwords: state.searchwords
+    }
+}
+
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({
+        updateSearchwords: updateSearchwords,
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(FilterSearch);
