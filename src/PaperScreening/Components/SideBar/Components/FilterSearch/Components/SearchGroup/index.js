@@ -1,4 +1,4 @@
-import { Button, DropdownButton, FormControl, Glyphicon, MenuItem } from 'react-bootstrap';
+import { DropdownButton, FormControl, Glyphicon, MenuItem } from 'react-bootstrap';
 import { PaperFields, SearchLogic } from '../../../../../../../Constants';
 import React, { Component } from 'react';
 
