@@ -12,7 +12,7 @@ class SearchGroup extends Component {
 
         this.addSearchTerm = this.addSearchTerm.bind(this);
         this.state = {
-            field: PaperFields.TITLE,
+            field: PaperFields.ALL,
             logic: SearchLogic.CONTAINING,
             inputvalue: "",
             terms: []
@@ -89,7 +89,7 @@ class SearchGroup extends Component {
                         );
                     })}
                 </ul>
-            </div>
+            </div >
         );
     }
 }
