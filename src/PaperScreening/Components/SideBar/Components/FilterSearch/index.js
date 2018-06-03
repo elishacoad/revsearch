@@ -61,6 +61,63 @@ class FilterSearch extends Component {
                     type="text"
                     value={this.state.searchgroups[idx].inputvalue}
                     placeholder="+ add word"
+                    onChange={(e) => this.setState({ inputvalue: e.target.value })}
+                    onKeyPress={this.state.searchgroups[idx].logic === "Containing" ?
+                        this.addIncludeWord(event, this.state.searchgroups[idx]) :
+                        this.addExcludeWord(event, this.state.searchgroups[idx])
+                    }
+                />
+                {this.props.searchwords.includeWords.length > 0 && <br></br>}
+                <ul style={{ "color": "#00994d" }}>
+                    {this.props.searchwords.includeWords.map((word, i) => {
+                        return (
+                            <li key={i}>
+                                {word + "  "}
+                                <Glyphicon onClick={this.deleteSearchword.bind(this, word)} glyph="remove" />
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
+        );
+    }
+
+    addIncludeWord(e, group) {
+        if (e.charCode !== 13) return;
+        let includes = this.props.searchwords.includeWords;
+        if (includes.concat(this.props.searchwords.excludeWords).includes(e.target.value)) return;
+        includes.push(e.target.value);
+        this.setState({
+            inputvalue: ''
+        })
+        this.props.updateSearchwords({
+            includeWords: includes
+        });
+    }
+
+    makeSearchGroup(idx) {
+        return (
+            <div key={idx}>
+                <hr></hr>
+                <DropdownButton
+                    bsStyle="default"
+                    title={this.state.searchgroups[idx].title}
+                >
+                    <MenuItem eventKey="Any Field"></MenuItem>
+                    <MenuItem eventKey="Title">Title</MenuItem>
+                    <MenuItem eventKey="Abstract">Abstract</MenuItem>
+                </DropdownButton>
+                <DropdownButton
+                    bsStyle="default"
+                    title={this.state.searchgroups[idx].logic}
+                >
+                    <MenuItem eventKey="Containing">Containing</MenuItem>
+                    <MenuItem eventKey="Not Containing">Not Containing</MenuItem>
+                </DropdownButton>
+                <FormControl
+                    type="text"
+                    value={this.state.searchgroups[idx].inputvalue}
+                    placeholder="+ add word"
                     onChange={(e) => {
                         let searchgroups = this.state.searchgroups;
                         searchgroups[idx].value = e.value;
