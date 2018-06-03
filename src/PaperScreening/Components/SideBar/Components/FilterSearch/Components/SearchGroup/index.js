@@ -1,22 +1,31 @@
 import { DropdownButton, FormControl, Glyphicon, MenuItem } from 'react-bootstrap';
+import { PaperFields, SearchLogic } from '../../../../../../../Constants';
 import React, { Component } from 'react';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateSearchwords } from '../../../../../../../Actions';
 
-class SearchGroup extends Component {
+class SearchGroup extends Component {    
     constructor(props, context) {
         super(props, context);
 
         this.addSearchTerm = this.addSearchTerm.bind(this);
 
         this.state = {
-            field: "Title",
-            logic: "Containing",
+            field: PaperFields.ALL,
+            logic: SearchLogic.CONTAINING,
             inputvalue: "",
             terms: []
         };
+    }
+
+    logicalToDisplayName = {
+        [PaperFields.ALL] : "Any Field",
+        [PaperFields.TITLE] : "Title",
+        [PaperFields.ABSTRACT] : "Abstract",
+        [SearchLogic.CONTAINING] : "Containing",
+        [SearchLogic.NOTCONTAINING] : "Not Containing"
     }
 
     addSearchTerm(e) {
@@ -45,21 +54,22 @@ class SearchGroup extends Component {
                 <hr></hr>
                 <DropdownButton
                     bsStyle="default"
-                    title={this.state.field}
+                    title={this.logicalToDisplayName[this.state.field]}
                     id="searchgroup-field-select"
-                    onSelect={(e) => this.setState({field : e})}
+                    onSelect={(choice) => this.setState({field : choice})}
                 >
-                    <MenuItem eventKey="Title">Title</MenuItem>
-                    <MenuItem eventKey="Abstract">Abstract</MenuItem>
+                    <MenuItem eventKey={PaperFields.ALL}>Any Field</MenuItem>
+                    <MenuItem eventKey={PaperFields.TITLE}>Title</MenuItem>
+                    <MenuItem eventKey={PaperFields.ABSTRACT}>Abstract</MenuItem>
                 </DropdownButton>
                 <DropdownButton
                     bsStyle="default"
-                    title={this.state.logic}
+                    title={this.logicalToDisplayName[this.state.logic]}
                     id="searchgroup-logic-select"
-                    onSelect={(e) => this.setState({logic : e})}
+                    onSelect={(choice) => this.setState({logic : choice})}
                 >
-                    <MenuItem eventKey="Containing">Containing</MenuItem>
-                    <MenuItem eventKey="Not Containing">Not Containing</MenuItem>
+                    <MenuItem eventKey={SearchLogic.CONTAINING}>Containing</MenuItem>
+                    <MenuItem eventKey={SearchLogic.NOTCONTAINING}>Not Containing</MenuItem>
                 </DropdownButton>
                 <FormControl
                     type="text"
@@ -69,7 +79,7 @@ class SearchGroup extends Component {
                     onKeyPress={this.addSearchTerm}
                 />
                 {this.state.terms.length > 0 && <br></br>}
-                <ul style={this.state.logic === "Containing" ? 
+                <ul style={this.state.logic === SearchLogic.CONTAINING ? 
                     { "color": "#00994d" } : { "color": "#990000" }}>
                     {this.state.terms.map((word, i) => {
                         return (

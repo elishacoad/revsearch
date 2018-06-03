@@ -16,3 +16,14 @@ export const Colors = Object.freeze({
     REVBACKGROUND: "#f0f0f0",
     PAPERBACKGROUND: "#dfdfdf"
 });
+
+export const PaperFields = Object.freeze({
+    ALL: "all",
+    TITLE: "title",
+    ABSTRACT: "abstract"
+});
+
+export const SearchLogic = Object.freeze({
+    CONTAINING: "containing",
+    NOTCONTAINING: "notcontaining"
+});
