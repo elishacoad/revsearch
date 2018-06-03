@@ -45,14 +45,6 @@ class FilterSearch extends Component {
                             + add search group
                         </Button>
                         {this.state.searchgroups}
-                        {/* {this.state.searchgroups.map((group, idx) => {
-                            return (
-                                <div key={idx}>
-                                    {group}
-                                </div>
-                            )
-                        }
-                        )} */}
                     </Panel.Body>
                 </Panel.Collapse>
             </Panel>

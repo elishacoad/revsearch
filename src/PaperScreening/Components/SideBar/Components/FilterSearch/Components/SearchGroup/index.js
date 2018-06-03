@@ -35,6 +35,7 @@ class SearchGroup extends Component {
                     bsStyle="default"
                     title={this.state.field}
                     id="searchgroup-field-select"
+                    onSelect={(e) => this.setState({field : e})}
                 >
                     <MenuItem eventKey="Any Field"></MenuItem>
                     <MenuItem eventKey="Title">Title</MenuItem>
@@ -44,6 +45,7 @@ class SearchGroup extends Component {
                     bsStyle="default"
                     title={this.state.logic}
                     id="searchgroup-logic-select"
+                    onSelect={(e) => this.setState({logic : e})}
                 >
                     <MenuItem eventKey="Containing">Containing</MenuItem>
                     <MenuItem eventKey="Not Containing">Not Containing</MenuItem>
@@ -56,7 +58,8 @@ class SearchGroup extends Component {
                     onKeyPress={this.addSearchTerm}
                 />
                 {this.state.terms.length > 0 && <br></br>}
-                <ul style={{ "color": "#00994d" }}>
+                <ul style={this.state.logic === "Containing" ? 
+                    { "color": "#00994d" } : { "color": "#990000" }}>
                     {this.state.terms.map((word, i) => {
                         return (
                             <li key={i}>
