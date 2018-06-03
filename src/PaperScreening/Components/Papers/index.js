@@ -34,14 +34,14 @@ class Papers extends Component {
     // only display papers that match the search criteria
     // TODO: Make more efficient! O(n^2) right now!
     let papers = this.props.papers;
-    this.props.searchwords.forEach(termObject => {
+    this.props.searchwords.includeWords.forEach(includeWord => {
       papers = papers.filter(paper =>
-        (termObject.logic === "Containing" &&
-          (termObject.field === "Title" &&  paper.title.includes(termObject.term)) ||
-          (termObject.field === "Abstract" &&  paper.abstract.includes(termObject.term))) ||
-        (termObject.logic === "Not Containing" &&
-          (termObject.field === "Title" &&  !paper.title.includes(termObject.term)) ||
-          (termObject.field === "Abstract" &&  !paper.abstract.includes(termObject.term)))
+        paper.abstract.includes(includeWord) || paper.title.includes(includeWord)
+      );
+    });
+    this.props.searchwords.excludeWords.forEach(excludeWord => {
+      papers = papers.filter(paper =>
+        !(paper.abstract.includes(excludeWord) || paper.title.includes(excludeWord))
       );
     });
     // apply 'decision' filter to the papers... AKA only show papers 
