@@ -36,7 +36,7 @@ class SearchGroup extends Component {
 
     deleteSearchTerm(word) {
         this.setState({ terms: this.state.terms.filter(w => w !== word) });
-        this.updateSearchwords(this.props.searchwords.filter(o => o.term !== word));
+        this.props.updateSearchwords(this.props.searchwords.filter(o => o.term !== word));
     }
 
     render() {

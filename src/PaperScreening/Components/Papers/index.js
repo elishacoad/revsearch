@@ -34,7 +34,6 @@ class Papers extends Component {
     // only display papers that match the search criteria
     // TODO: Make more efficient! O(n^2) right now!
     let papers = this.props.papers;
-    console.log(this.props.searchwords);
     this.props.searchwords.forEach(termObject => {
       papers = papers.filter(paper =>
         (termObject.logic === "Containing" &&
