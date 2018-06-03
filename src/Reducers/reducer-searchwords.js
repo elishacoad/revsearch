@@ -1,9 +1,4 @@
-const defaultstate = {
-    includeWords: [],
-    excludeWords: []
-}
-
-export default (state=defaultstate, action) => {
+export default (state=[], action) => {
     switch(action.type){
         case "SEARCHWORDS_UPDATED":
             // have to make a newstate since you can't mutate the original state

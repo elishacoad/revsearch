@@ -1,6 +1,10 @@
 import { DropdownButton, FormControl, Glyphicon, MenuItem } from 'react-bootstrap';
 import React, { Component } from 'react';
 
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateSearchwords } from '../../../../../../../Actions';
+
 class SearchGroup extends Component {
     constructor(props, context) {
         super(props, context);
@@ -21,10 +25,18 @@ class SearchGroup extends Component {
             terms: this.state.terms.concat(e.target.value),
             inputvalue: ''
         });
+        this.props.updateSearchwords(
+            this.props.searchwords.concat({
+                term : e.target.value,
+                field: this.state.field,
+                logic: this.state.logic
+            })
+        );
     }
 
     deleteSearchTerm(word) {
-        this.setState({ terms: this.state.terms.filter(e => e !== word) });
+        this.setState({ terms: this.state.terms.filter(w => w !== word) });
+        this.updateSearchwords(this.props.searchwords.filter(o => o.term !== word));
     }
 
     render() {
@@ -74,4 +86,16 @@ class SearchGroup extends Component {
     }
 }
 
-export default SearchGroup;
+function mapStateToProps(state) {
+    return {
+        searchwords: state.searchwords
+    }
+}
+
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({
+        updateSearchwords: updateSearchwords,
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(SearchGroup);

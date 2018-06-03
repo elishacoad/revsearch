@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 
 import { Colors } from '../../../../../Constants';
 import SearchGroup from './Components/SearchGroup';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { updateSearchwords } from '../../../../../Actions';
 
 class FilterSearch extends Component {
     constructor(props, context) {
@@ -42,7 +39,7 @@ class FilterSearch extends Component {
                 <Panel.Collapse>
                     <Panel.Body>
                         <Button onClick={this.addSearchGroup.bind(this, this.state.searchgroups.length)}>
-                            + add search group
+                            + new search
                         </Button>
                         {this.state.searchgroups}
                     </Panel.Body>
@@ -52,17 +49,4 @@ class FilterSearch extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        papers: state.papers,
-        searchwords: state.searchwords
-    }
-}
-
-function matchDispatchToProps(dispatch) {
-    return bindActionCreators({
-        updateSearchwords: updateSearchwords,
-    }, dispatch);
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(FilterSearch);
+export default FilterSearch;
