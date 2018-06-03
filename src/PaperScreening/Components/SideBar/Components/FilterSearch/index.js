@@ -1,122 +1,25 @@
-import { Button, DropdownButton, FormControl, Glyphicon, MenuItem, Panel } from 'react-bootstrap';
+import { Button, Panel } from 'react-bootstrap';
 import React, { Component } from 'react';
-import { addCorpusAction, updateSearchwords } from '../../../../../Actions';
 
 import { Colors } from '../../../../../Constants';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import SearchGroup from './Components/SearchGroup';
 
 class FilterSearch extends Component {
     constructor(props, context) {
         super(props, context);
-
-        this.addIncludeWord = this.addIncludeWord.bind(this);
-        this.addExcludeWord = this.addExcludeWord.bind(this);
 
         this.state = {
             open: false,
             searchgroups: []
         };
     }
+
     addSearchGroup() {
         this.setState({
-            searchgroups: this.state.searchgroups.concat(
-                {
-                    field: "Any Field",
-                    logic: "Containing",
-                    inputvalue: "",
-                    terms: []
-                }
-            )
-        });
-        console.log(this.state.searchgroups);
-    }
-
-    handleChange(e) {
-        console.log("handleChange called!")
-        console.log(e);
-    }
-
-    makeSearchGroup(idx) {
-        return (
-            <div key={idx}>
-                <hr></hr>
-                <DropdownButton
-                    bsStyle="default"
-                    title={this.state.searchgroups[idx].title}
-                >
-                    <MenuItem eventKey="Any Field"></MenuItem>
-                    <MenuItem eventKey="Title">Title</MenuItem>
-                    <MenuItem eventKey="Abstract">Abstract</MenuItem>
-                </DropdownButton>
-                <DropdownButton
-                    bsStyle="default"
-                    title={this.state.searchgroups[idx].logic}
-                >
-                    <MenuItem eventKey="Containing">Containing</MenuItem>
-                    <MenuItem eventKey="Not Containing">Not Containing</MenuItem>
-                </DropdownButton>
-                <FormControl
-                    type="text"
-                    value={this.state.searchgroups[idx].inputvalue}
-                    placeholder="+ add word"
-                    onChange={(e) => this.setState({ inputvalue: e.target.value })}
-                    onKeyPress={this.state.searchgroups[idx].logic === "Containing" ?
-                        this.addIncludeWord(event, this.state.searchgroups[idx]) :
-                        this.addExcludeWord(event, this.state.searchgroups[idx])
-                    }
-                />
-                {this.props.searchwords.includeWords.length > 0 && <br></br>}
-                <ul style={{ "color": "#00994d" }}>
-                    {this.props.searchwords.includeWords.map((word, i) => {
-                        return (
-                            <li key={i}>
-                                {word + "  "}
-                                <Glyphicon onClick={this.deleteSearchword.bind(this, word)} glyph="remove" />
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
-        );
-    }
-
-    addIncludeWord(e, group) {
-        if (e.charCode !== 13) return;
-        let includes = this.props.searchwords.includeWords;
-        if (includes.concat(this.props.searchwords.excludeWords).includes(e.target.value)) return;
-        includes.push(e.target.value);
-        this.setState({
-            inputvalue: ''
-        })
-        this.props.updateSearchwords({
-            includeWords: includes
-        });
-    }
-
-    addExcludeWord(e) {
-        if (e.charCode !== 13) return;
-        let excludes = this.props.searchwords.excludeWords;
-        if (excludes.concat(this.props.searchwords.includeWords).includes(e.target.value)) return;
-        excludes.push(e.target.value);
-        this.setState({
-            excludevalue: ''
-        })
-        this.props.updateSearchwords({
-            excludeWords: excludes
-        });
-    }
-
-    deleteSearchword(word) {
-        let includes = this.props.searchwords.includeWords;
-        let excludes = this.props.searchwords.excludeWords;
-        let index = includes.indexOf(word);
-        if (index !== -1) includes.splice(index, 1);
-        index = excludes.indexOf(word);
-        if (index !== -1) excludes.splice(index, 1);
-        this.props.updateSearchwords({
-            includeWords: includes,
-            excludeWords: excludes
+            searchgroups:
+                this.state.searchgroups.concat(
+                    <SearchGroup key={this.state.searchgroups.length} />
+                )
         });
     }
 
@@ -136,11 +39,9 @@ class FilterSearch extends Component {
                 <Panel.Collapse>
                     <Panel.Body>
                         <Button onClick={this.addSearchGroup.bind(this, this.state.searchgroups.length)}>
-                            + add search group
+                            + new search
                         </Button>
-                        {this.state.searchgroups.map(group => {
-                            return this.makeSearchGroup.bind(this, group);
-                        })}
+                        {this.state.searchgroups}
                     </Panel.Body>
                 </Panel.Collapse>
             </Panel>
@@ -148,18 +49,4 @@ class FilterSearch extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        papers: state.papers,
-        searchwords: state.searchwords
-    }
-}
-
-function matchDispatchToProps(dispatch) {
-    return bindActionCreators({
-        updateSearchwords: updateSearchwords,
-        addCorpusAction: addCorpusAction
-    }, dispatch);
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(FilterSearch);
+export default FilterSearch;
