@@ -12,7 +12,7 @@ class SearchGroup extends Component {
         this.addSearchTerm = this.addSearchTerm.bind(this);
 
         this.state = {
-            field: "Any Field",
+            field: "Title",
             logic: "Containing",
             inputvalue: "",
             terms: []
@@ -49,7 +49,6 @@ class SearchGroup extends Component {
                     id="searchgroup-field-select"
                     onSelect={(e) => this.setState({field : e})}
                 >
-                    <MenuItem eventKey="Any Field"></MenuItem>
                     <MenuItem eventKey="Title">Title</MenuItem>
                     <MenuItem eventKey="Abstract">Abstract</MenuItem>
                 </DropdownButton>
