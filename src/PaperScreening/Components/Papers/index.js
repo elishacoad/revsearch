@@ -38,33 +38,33 @@ class Papers extends Component {
     )
   }
 
-  applySearchLogic(searchText, termObject) {
+  applySearchLogic(searchText, group) {
     // part of isEligibleToShow()
     // would be best to make it a nested function but I don't know how
-    switch (termObject.logic) {
+    switch (group.logic) {
       case SearchLogic.CONTAINING:
-        return searchText.includes(termObject.term);
+        return group.terms.every(term => searchText.includes(term));
       case SearchLogic.NOTCONTAINING:
-        return !searchText.includes(termObject.term);
+        return group.terms.every(term => !searchText.includes(term));
       default:
-      // this should never be reached since the SearchLogic is an enum
-      // and all the options are covered in the cases above
+        // this should never be reached since the SearchLogic is an enum
+        // and all the options are covered in the cases above
     }
   }
 
-  isEligibleToShow(paper, termObject) {
+  isEligibleToShow(paper, group) {
     // perform the logic to decide if the paper should be displayed to
     // the user given the search terms that the user has currently set
-    switch (termObject.field) {
+    switch (group.field) {
       case PaperFields.ALL:
-        return this.applySearchLogic(Object.values(paper).join(" "), termObject);
+        return this.applySearchLogic(Object.values(paper).join(" "), group);
       case PaperFields.TITLE:
-        return this.applySearchLogic(paper.title, termObject);
+        return this.applySearchLogic(paper.title, group);
       case PaperFields.ABSTRACT:
-        return this.applySearchLogic(paper.abstract, termObject);
+        return this.applySearchLogic(paper.abstract, group);
       default:
-      // this should never be reached since the PaperFields is an enum
-      // and all the options are covered in the cases above
+        // this should never be reached since the PaperFields is an enum
+        // and all the options are covered in the cases above
     }
   }
 
@@ -73,8 +73,8 @@ class Papers extends Component {
     let papers = this.props.papers;
     // only display papers that match the search criteria
     // TODO: Make more efficient! O(n^2) right now!
-    this.props.searchwords.forEach(termObject => {
-      papers = papers.filter(paper => this.isEligibleToShow(paper, termObject));
+    this.props.searchgroups.forEach(group => {
+      papers = papers.filter(paper => this.isEligibleToShow(paper, group));
     });
     if (papers.length !== 0) {
       // (must do the next line because the maping doesn't have unique keys)
@@ -112,7 +112,7 @@ function mapStateToProps(state) {
   return {
     papers: state.papers,
     decisionFilter: state.filters,
-    searchwords: state.searchwords,
+    searchgroups: state.searchgroups,
     activeRowIndex: state.activeRowIndex
   }
 }

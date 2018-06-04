@@ -1,12 +1,11 @@
 import { Button, Panel } from 'react-bootstrap';
-import { PaperFields, SearchLogic } from '../../../../../Constants';
 import React, { Component } from 'react';
 
 import { Colors } from '../../../../../Constants';
 import SearchGroup from './Components/SearchGroup';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { updateSearchwords } from '../../../../../Actions';
+import { updateSearchgroups } from '../../../../../Actions';
 import uuid from 'uuid';
 
 class FilterSearch extends Component {
@@ -15,18 +14,12 @@ class FilterSearch extends Component {
 
         this.state = {
             open: false,
-            searchgroups: {}
+            searchgroups: []
         };
     }
 
     addSearchGroup() {
-        let searchgroups = this.state.searchgroups;
-        searchgroups[uuid.v1()] = {
-            field: PaperFields.ALL,
-            logic: SearchLogic.CONTAINING,
-            terms: []
-        }
-        this.setState({ searchgroups: searchgroups });
+        this.setState({ searchgroups: this.state.searchgroups.concat( <SearchGroup key={uuid.v1()} /> )});
     }
 
     render() {
@@ -47,7 +40,7 @@ class FilterSearch extends Component {
                         <Button onClick={this.addSearchGroup.bind(this, this.state.searchgroups.length)}>
                             + new search
                         </Button>
-                        {Object.keys(this.state.searchgroups).map(uuid => <SearchGroup key={uuid} uuid={uuid}/>)}
+                        {this.state.searchgroups}
                     </Panel.Body>
                 </Panel.Collapse>
             </Panel>
@@ -57,13 +50,13 @@ class FilterSearch extends Component {
 
 function mapStateToProps(state) {
     return {
-        searchwords: state.searchwords
+        searchgroups: state.searchgroups
     }
 }
 
 function matchDispatchToProps(dispatch) {
     return bindActionCreators({
-        updateSearchwords: updateSearchwords,
+        updateSearchgroups: updateSearchgroups,
     }, dispatch);
 }
 
