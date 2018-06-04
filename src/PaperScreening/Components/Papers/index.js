@@ -1,5 +1,6 @@
 import { Colors, Decision } from '../../../Constants';
 import { Panel, PanelGroup } from 'react-bootstrap';
+import { PaperFields, SearchLogic } from '../../../Constants';
 import React, { Component } from 'react';
 
 import PaperBody from '../PaperBody';
@@ -8,6 +9,13 @@ import { connect } from 'react-redux';
 import { selectRow } from '../../../Actions';
 
 class Papers extends Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.applySearchLogic = this.applySearchLogic.bind(this);
+    this.isEligibleToShow = this.isEligibleToShow.bind(this);
+  }
+
 
   getPanel(paper, eventKey) {
     return (
@@ -31,23 +39,45 @@ class Papers extends Component {
       </Panel>
     )
   }
+
+  applySearchLogic(searchText, group) {
+    // part of isEligibleToShow()
+    // would be best to make it a nested function but I don't know how
+    switch (group.logic) {
+      case SearchLogic.CONTAINING:
+        return group.terms.every(term => searchText.includes(term));
+      case SearchLogic.NOTCONTAINING:
+        return group.terms.every(term => !searchText.includes(term));
+      default:
+        // this should never be reached since the SearchLogic is an enum
+        // and all the options are covered in the cases above
+    }
+  }
+
+  isEligibleToShow(paper, group) {
+    // perform the logic to decide if the paper should be displayed to
+    // the user given the search terms that the user has currently set
+    switch (group.field) {
+      case PaperFields.ALL:
+        return this.applySearchLogic(Object.values(paper).join(" "), group);
+      case PaperFields.TITLE:
+        return this.applySearchLogic(paper.title, group);
+      case PaperFields.ABSTRACT:
+        return this.applySearchLogic(paper.abstract, group);
+      default:
+        // this should never be reached since the PaperFields is an enum
+        // and all the options are covered in the cases above
+    }
+  }
+
   render() {
     let paperItems;
+    let papers = this.props.papers;
     // only display papers that match the search criteria
     // TODO: Make more efficient! O(n^2) right now!
-    let papers = this.props.papers;
-    this.props.searchwords.includeWords.forEach(includeWord => {
-      papers = papers.filter(paper =>
-        paper.abstract.includes(includeWord) || paper.title.includes(includeWord)
-      );
+    this.props.searchgroups.forEach(group => {
+      papers = papers.filter(paper => this.isEligibleToShow(paper, group));
     });
-    this.props.searchwords.excludeWords.forEach(excludeWord => {
-      papers = papers.filter(paper =>
-        !(paper.abstract.includes(excludeWord) || paper.title.includes(excludeWord))
-      );
-    });
-    // apply 'decision' filter to the papers... AKA only show papers 
-    // that match the paper-decisions that the user wants to see
     if (papers.length !== 0) {
       // (must do the next line because the maping doesn't have unique keys)
       // eslint-disable-next-line
@@ -84,7 +114,7 @@ function mapStateToProps(state) {
   return {
     papers: state.papers,
     decisionFilter: state.filters,
-    searchwords: state.searchwords,
+    searchgroups: state.searchgroups,
     activeRowIndex: state.activeRowIndex
   }
 }

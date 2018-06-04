@@ -5,7 +5,8 @@ import { Colors } from '../../../../../Constants';
 import SearchGroup from './Components/SearchGroup';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { updateSearchwords } from '../../../../../Actions';
+import { updateSearchgroups } from '../../../../../Actions';
+import uuid from 'uuid';
 
 class FilterSearch extends Component {
     constructor(props, context) {
@@ -18,12 +19,7 @@ class FilterSearch extends Component {
     }
 
     addSearchGroup() {
-        this.setState({
-            searchgroups:
-                this.state.searchgroups.concat(
-                    <SearchGroup key={this.state.searchgroups.length} />
-                )
-        });
+        this.setState({ searchgroups: this.state.searchgroups.concat( <SearchGroup key={uuid.v1()} /> )});
     }
 
     render() {
@@ -42,7 +38,7 @@ class FilterSearch extends Component {
                 <Panel.Collapse>
                     <Panel.Body>
                         <Button onClick={this.addSearchGroup.bind(this, this.state.searchgroups.length)}>
-                            + add search group
+                            + new search
                         </Button>
                         {this.state.searchgroups}
                     </Panel.Body>
@@ -54,14 +50,13 @@ class FilterSearch extends Component {
 
 function mapStateToProps(state) {
     return {
-        papers: state.papers,
-        searchwords: state.searchwords
+        searchgroups: state.searchgroups
     }
 }
 
 function matchDispatchToProps(dispatch) {
     return bindActionCreators({
-        updateSearchwords: updateSearchwords,
+        updateSearchgroups: updateSearchgroups,
     }, dispatch);
 }
 
