@@ -13,15 +13,16 @@ class SearchGroup extends Component {
 
         this.addSearchTerm = this.addSearchTerm.bind(this);
         this.state = {
-            searchgroup: {
-                key: uuid.v1(),
+            key: uuid.v1(),
+            inputvalue: ""
+        };
+        this.props.addSearchgroups({
+                key: this.state.key,
                 field: PaperFields.ALL,
                 logic: SearchLogic.CONTAINING,
                 terms: []
-            },
-            inputvalue: ""
-        };
-        this.props.addSearchgroups(this.state.searchgroup);
+            }
+        );
     }
 
     logicalToDisplayName = {
@@ -34,33 +35,32 @@ class SearchGroup extends Component {
 
     addSearchTerm(e) {
         if (e.charCode !== 13) return;
-        // let existingTerms = this.props.searchgroups.find(group => group.key === this.props.searchgroup.key).terms;
-        this.setState({
-            searchgroup: { ...this.state.searchgroup, terms: this.state.searchgroup.terms.concat(e.target.value) },
-            inputvalue: ''
-        });
-        this.props.updateSearchgroups(this.state.searchgroup);
+        let searchgroup = this.props.searchgroups.find(group => group.key === this.props.searchgroup.key);
+        searchgroup.terms = searchgroup.terms.concat(e.target.value);
+        this.props.updateSearchgroups(searchgroup);
+        this.setState({ inputvalue: '' });
     }
 
     deleteSearchTerm(word) {
-        this.setState({
-            searchgroup: { ...this.state.searchgroup, terms: this.state.searchgroup.terms.filter(w => w !== word) },
-            inputvalue: ''
-        });
-        this.props.updateSearchgroups(this.state.searchgroup);
+        let searchgroup = this.props.searchgroups.find(group => group.key === this.props.searchgroup.key);
+        searchgroup.terms = searchgroup.terms.filter(w => w !== word);
+        this.props.updateSearchgroups(searchgroup);
+        this.setState({ inputvalue: '' });
     }
 
     render() {
+        let searchgroup = this.props.searchgroups.find(group => group.key === this.state.key);
+        console.log(searchgroup);
         return (
             <div>
                 <hr></hr>
                 <DropdownButton
                     bsStyle="default"
-                    title={this.logicalToDisplayName[this.state.searchgroup.field]}
+                    title={this.logicalToDisplayName[searchgroup.field]}
                     id="searchgroup-field-select"
                     onSelect={choice => {
-                        this.setState({ searchgroup: { ...this.state.searchgroup, field: choice } });
-                        this.props.updateSearchgroups(this.state.searchgroup);
+                        searchgroup.field = choice;
+                        this.props.updateSearchgroups(searchgroup);
                     }}
                 >
                     <MenuItem eventKey={PaperFields.ALL}>Any Field</MenuItem>
@@ -69,11 +69,11 @@ class SearchGroup extends Component {
                 </DropdownButton>
                 <DropdownButton
                     bsStyle="default"
-                    title={this.logicalToDisplayName[this.state.searchgroup.logic]}
+                    title={this.logicalToDisplayName[searchgroup.logic]}
                     id="searchgroup-logic-select"
                     onSelect={choice => {
-                        this.setState({ searchgroup: { ...this.state.searchgroup, logic: choice } });
-                        this.props.updateSearchgroups(this.state.searchgroup);
+                        searchgroup.logic = choice;
+                        this.props.updateSearchgroups(searchgroup);
                     }}
                 >
                     <MenuItem eventKey={SearchLogic.CONTAINING}>Containing</MenuItem>
@@ -86,10 +86,10 @@ class SearchGroup extends Component {
                     onChange={(e) => this.setState({ inputvalue: e.target.value })}
                     onKeyPress={this.addSearchTerm}
                 />
-                {this.state.searchgroup.terms.length > 0 && <br></br>}
-                <ul style={this.state.searchgroup.logic === SearchLogic.CONTAINING ?
+                {searchgroup.terms.length > 0 && <br></br>}
+                <ul style={searchgroup.logic === SearchLogic.CONTAINING ?
                     { "color": "#00994d" } : { "color": "#990000" }}>
-                    {this.state.searchgroup.terms.map((word, i) => {
+                    {searchgroup.terms.map((word, i) => {
                         return (
                             <li key={i}>
                                 {word + "  "}
