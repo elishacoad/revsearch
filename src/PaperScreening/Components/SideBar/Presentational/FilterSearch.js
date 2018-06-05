@@ -24,17 +24,10 @@ export const FilterSearch = (props) => {
                     <Searches
                         updateSearchGroup={props.updateSearchGroup}
                         searchGroupsList={props.searchGroups}
+                        allTerms={props.allTerms}
                     />
                 </Panel.Body>
             </Panel.Collapse>
         </Panel>
     )
 }
-
-// searchGroupsList={
-//     [{
-//         key: "123",
-//         field: PaperFields.ALL,
-//         logic: SearchLogic.CONTAINING,
-//         terms: []
-//     }]}

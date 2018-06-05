@@ -7,7 +7,6 @@ export const SearchGroups = (props) => {
             {props.searchGroupsList.map((searchObject, i) => {
                 return (
                     <SearchGroup
-                        newInput={props.newInput}
                         onInputChange={props.onInputChange}
                         key={searchObject.key}
                         searchObject={searchObject}
