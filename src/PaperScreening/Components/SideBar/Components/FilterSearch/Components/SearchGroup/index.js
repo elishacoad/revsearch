@@ -1,8 +1,9 @@
-import { DropdownButton, FormControl, Glyphicon, MenuItem } from 'react-bootstrap';
+import { DropdownButton, Glyphicon, MenuItem } from 'react-bootstrap';
 import { PaperFields, SearchLogic } from '../../../../../../../Constants';
 import React, { Component } from 'react';
 import { addSearchgroups, updateSearchgroups } from '../../../../../../../Actions';
 
+import { FormElement } from '../../../../../../../Elements/FormElement';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
@@ -79,7 +80,7 @@ class SearchGroup extends Component {
                     <MenuItem eventKey={SearchLogic.CONTAINING}>Containing</MenuItem>
                     <MenuItem eventKey={SearchLogic.NOTCONTAINING}>Not Containing</MenuItem>
                 </DropdownButton>
-                <FormControl
+                <FormElement
                     type="text"
                     value={this.state.inputvalue}
                     placeholder="+ add word"
