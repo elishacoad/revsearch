@@ -1,6 +1,5 @@
 import React from 'react';
 import { SearchGroups } from '../Presentational/SearchGroups';
-import { SearchGroupAttributes } from '../../../../Constants'
 
 class Searches extends React.Component {
     constructor(props) {
