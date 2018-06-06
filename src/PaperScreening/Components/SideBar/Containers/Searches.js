@@ -1,5 +1,6 @@
 import React from 'react';
 import { SearchGroups } from '../Presentational/SearchGroups';
+import { SearchGroupAttributes } from '../../../../Constants'
 
 class Searches extends React.Component {
     constructor(props) {
@@ -33,7 +34,10 @@ class Searches extends React.Component {
         this.props.updateSearchGroup(newObject)
     }
 
-    editSearch(newObject){
+    editSearch(object, attribute, attributeList, choice){
+        // Create new object with new attribute before updating
+        let newObject = object
+        newObject[attribute] = attributeList[choice]
         this.props.updateSearchGroup(newObject)
     }
 

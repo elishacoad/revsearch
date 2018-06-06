@@ -27,3 +27,8 @@ export const SearchLogic = Object.freeze({
     CONTAINING: "containing",
     NOTCONTAINING: "notcontaining"
 });
+
+export const SearchGroupAttributes = Object.freeze({
+    FIELD : "field",
+    LOGIC : "logic",
+});

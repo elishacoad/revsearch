@@ -1,7 +1,7 @@
 import React from 'react'
 import { Glyphicon } from 'react-bootstrap';
 import { FormElement } from './FormElement'
-import { PaperFields, SearchLogic } from '../Constants'
+import { PaperFields, SearchLogic, SearchGroupAttributes } from '../Constants'
 import { DropdownElement } from './DropdownElement'
 import { logicalToDisplayName } from './helper'
 
@@ -26,9 +26,7 @@ export class SearchGroup extends React.Component {
                     id="searchgroup-field-select"
                     items={PaperFields}
                     onSelect={choice => {
-                        let newSearchObject = this.props.searchObject
-                        newSearchObject.field = PaperFields[choice]
-                        this.props.editSearch(newSearchObject)
+                        this.props.editSearch(this.props.searchObject, SearchGroupAttributes.FIELD, PaperFields, choice)
                 }}/>
 
                 <DropdownElement
@@ -37,9 +35,7 @@ export class SearchGroup extends React.Component {
                     id="searchgroup-logic-select"
                     items={SearchLogic}
                     onSelect={choice => {
-                        let newSearchObject = this.props.searchObject
-                        newSearchObject.logic = SearchLogic[choice]
-                        this.props.editSearch(newSearchObject)
+                        this.props.editSearch(this.props.searchObject, SearchGroupAttributes.LOGIC, SearchLogic, choice)
                 }}/>
 
                 <FormElement
