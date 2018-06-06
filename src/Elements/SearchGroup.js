@@ -1,5 +1,5 @@
 import React from 'react'
-import { Glyphicon } from 'react-bootstrap';
+import { Glyphicon, ButtonGroup } from 'react-bootstrap';
 import { FormElement } from './FormElement'
 import { PaperFields, SearchLogic, SearchGroupAttributes } from '../Constants'
 import { DropdownElement } from './DropdownElement'
@@ -20,23 +20,26 @@ export class SearchGroup extends React.Component {
         return(
             <div>
                 <hr></hr>
-                <DropdownElement
-                    bstyle="default"
-                    title={logicalToDisplayName[field]}
-                    id="searchgroup-field-select"
-                    items={PaperFields}
-                    onSelect={choice => {
-                        this.props.editSearch(this.props.searchObject, SearchGroupAttributes.FIELD, PaperFields, choice)
-                }}/>
 
-                <DropdownElement
-                    bstyle="default"
-                    title={logicalToDisplayName[logic]}
-                    id="searchgroup-logic-select"
-                    items={SearchLogic}
-                    onSelect={choice => {
-                        this.props.editSearch(this.props.searchObject, SearchGroupAttributes.LOGIC, SearchLogic, choice)
-                }}/>
+                <ButtonGroup justified>
+                    <DropdownElement
+                        bstyle="default"
+                        title={logicalToDisplayName[field]}
+                        id="searchgroup-field-select"
+                        items={PaperFields}
+                        onSelect={choice => {
+                            this.props.editSearch(this.props.searchObject, SearchGroupAttributes.FIELD, PaperFields, choice)
+                    }}/>
+    
+                    <DropdownElement
+                        bstyle="default"
+                        title={logicalToDisplayName[logic]}
+                        id="searchgroup-logic-select"
+                        items={SearchLogic}
+                        onSelect={choice => {
+                            this.props.editSearch(this.props.searchObject, SearchGroupAttributes.LOGIC, SearchLogic, choice)
+                    }}/>
+                </ButtonGroup>
 
                 <FormElement
                     type="text"

@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Panel } from 'react-bootstrap';
 import { Colors } from '../../../../Constants';
 import Searches from '../Containers/Searches';
+import { Glyphicon } from 'react-bootstrap';
 
 export const FilterSearch = (props) => {
     return (
@@ -18,8 +19,8 @@ export const FilterSearch = (props) => {
             </Panel.Toggle>
             <Panel.Collapse>
                 <Panel.Body>
-                    <Button onClick={props.onClick}>
-                        + new search
+                    <Button onClick={props.onClick} className="btn btn-default btn-block">
+                        <Glyphicon glyph="search" /> New search
                      </Button>
                     <Searches
                         updateSearchGroup={props.updateSearchGroup}
