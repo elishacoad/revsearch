@@ -44,6 +44,50 @@ Forces navbar to hug sides */
     padding: 9px 10px !important;
 }
 
+.add-word-form{
+    font-weight: 500 !important;
+    background-color: #eaeaea !important;
+}
+
+.keyword-list-green,
+.keyword-list-red{
+    margin: 10px;
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.keyword-list-green{
+    color: #00994d
+}
+
+.keyword-list-red{
+    color: #990000
+}
+
+.keyword > .glyphicon{
+    vertical-align: baseline;
+}
+
+.keyword > p{
+    padding: 7px;
+    margin: 3px;
+    border-radius: 15px;
+    display: inline-flex;
+    color: white;
+    word-break: break-word;
+    max-width: 90%;
+}
+
+
+.keyword-green{
+    background: #00994d;
+}
+
+.keyword-red{
+    background: #990000;
+}
+
 @media (min-width: 768px) {
     .navbar-nav>li>a {
         /* (80px - line-height of 27px) / 2 = 26.5px */

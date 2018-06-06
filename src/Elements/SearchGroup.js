@@ -1,6 +1,7 @@
 import React from 'react'
-import { Glyphicon, ButtonGroup } from 'react-bootstrap';
+import { ButtonGroup } from 'react-bootstrap';
 import { FormElement } from './FormElement'
+import { Keywords } from './Keywords'
 import { PaperFields, SearchLogic, SearchGroupAttributes } from '../Constants'
 import { DropdownElement } from './DropdownElement'
 import { logicalToDisplayName } from './helper'
@@ -11,6 +12,12 @@ export class SearchGroup extends React.Component {
         this.state = {
             inputValue : ''
         }
+
+        this.clearInput = this.clearInput.bind(this)
+    }
+
+    clearInput (){
+        this.setState({ inputValue : ''})
     }
 
     render(){
@@ -52,20 +59,11 @@ export class SearchGroup extends React.Component {
                     }
                 />
 
-                {this.props.searchObject.terms.length > 0 && <br></br>}
-                <ul style={logic === SearchLogic.CONTAINING ?
-                    { "color": "#00994d" } : { "color": "#990000" }}>
-                    {this.props.searchObject.terms.map((word, i) => {
-                        return (
-                            <li key={i}>
-                                {word + "  "}
-                                <Glyphicon onClick={(e) => {
-                                    this.setState({ inputValue : ''})
-                                    this.props.removeSearchTerm(this.props.searchObject, word)}} glyph="remove" />
-                            </li>
-                        );
-                    })}
-                </ul>
+                <Keywords 
+                    searchObject={this.props.searchObject} 
+                    removeSearchTerm={this.props.removeSearchTerm}
+                    clearInput={this.clearInput}/>
+
             </div>
         )
     }
