@@ -1,7 +1,12 @@
-import React from 'react';
-import { SearchGroups } from '../Presentational/SearchGroups';
+/** Container component that receives the list of search groups made by the user
+ *  from the state, displats them, and handles formatting for updating and 
+ *  removing terms, logic, and field options
+ */
 
-class Searches extends React.Component {
+import React from 'react';
+import { SearchGroupsPresentational } from '../Presentational/SearchGroupsPresentational';
+
+class SearchGroups extends React.Component {
     constructor(props) {
         super(props)
 
@@ -16,33 +21,34 @@ class Searches extends React.Component {
     }
 
     addSearchTerm (object, e) {
+        // if enter key, or empty field or duplicate fo not add search term
         if (e.charCode !== 13 || e.target.value === '' || this.usedTerm(e.target.value)) return;
-        object.terms = object.terms.concat(e.target.value)
-        let newObject = object
-        this.props.updateSearchGroup(newObject)
-        return true
+        object.terms = object.terms.concat(e.target.value);
+        let newObject = object;
+        this.props.updateSearchGroup(newObject);
+        return true;
     }
 
     usedTerm(word){
-        return (this.props.allTerms.includes(word))
+        return (this.props.allTerms.includes(word));
     }
 
     removeSearchTerm (object, word) {
-        object.terms = object.terms.filter(w => w !== word)
-        let newObject = object
-        this.props.updateSearchGroup(newObject)
+        object.terms = object.terms.filter(w => w !== word);
+        let newObject = object;
+        this.props.updateSearchGroup(newObject);
     }
 
     editSearch(object, attribute, attributeList, choice){
         // Create new object with new attribute before updating
-        let newObject = object
-        newObject[attribute] = attributeList[choice]
-        this.props.updateSearchGroup(newObject)
+        let newObject = object;
+        newObject[attribute] = attributeList[choice];
+        this.props.updateSearchGroup(newObject);
     }
 
     render() {
         return (
-            <SearchGroups
+            <SearchGroupsPresentational
                 onInputChange={this.onInputChange}
                 searchGroupsList={this.props.searchGroupsList}
                 addSearchTerm={this.addSearchTerm}
@@ -53,4 +59,4 @@ class Searches extends React.Component {
     }
 }
 
-export default Searches;
+export default SearchGroups;

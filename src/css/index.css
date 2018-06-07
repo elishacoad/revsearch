@@ -54,6 +54,8 @@ Forces navbar to hug sides */
     background-color: #eaeaea !important;
 }
 
+/* ######## KEYWORDS ######## */
+
 .keyword-list-green, .keyword-list-red {
     margin: 10px;
     margin-top: 20px;
@@ -90,6 +92,24 @@ Forces navbar to hug sides */
 .keyword-red {
     background: #990000;
 }
+
+/* ######## BACKGROUNDS ######## */
+
+.background-revnavy {
+    background-color: #294777;
+}
+
+.background-revnavy {
+    background-color: #294777;
+}
+
+/* ######## EXTRAS ######## */
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
 
 @media (min-width: 768px) {
     .navbar-nav>li>a {

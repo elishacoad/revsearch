@@ -1,3 +1,5 @@
+/** Form element wrapper around bootstrap form control */
+
 import React from 'react'
 import {FormControl} from 'react-bootstrap';
 
