@@ -3,13 +3,12 @@
  *  and edit/remove them 
  */
 
-import { PaperFields, SearchLogic } from '../../../../Elements/constants';
 import React, { Component } from 'react';
-import { addSearchgroups, updateSearchgroups } from '../../../../Actions';
-
-import { FilterPresentational } from '../Presentational/FilterPresentational';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { addSearchgroups, updateSearchgroups } from '../../../../Actions';
+import { PaperFields, SearchLogic } from '../../../../Elements';
+import { FilterPresentational } from '../Presentational/FilterPresentational';
 import uuid from 'uuid';
 
 class Filter extends Component {

@@ -2,10 +2,10 @@
  *  receives a list of items for menuitems and maps those accordingly
  */
 
-import {DropdownButton, MenuItem} from 'react-bootstrap';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 import React from 'react';
-import { logicalToDisplayName } from './constants';
+import { logicalToDisplayName } from '../Elements';
 
 export const DropdownElement = (props) => {
     // maps menu items options from items sent as list

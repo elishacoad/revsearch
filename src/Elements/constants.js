@@ -29,8 +29,8 @@ export const SearchLogic = Object.freeze({
 });
 
 export const SearchGroupAttributes = Object.freeze({
-    FIELD : "FIELD",
-    LOGIC : "LOGIC",
+    FIELD : "field",
+    LOGIC : "logic",
 });
 
 export const logicalToDisplayName = {
