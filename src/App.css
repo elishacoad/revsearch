@@ -72,7 +72,7 @@ Forces navbar to hug sides */
 .keyword > p{
     padding: 7px;
     margin: 3px;
-    border-radius: 15px;
+    border-radius: 12px;
     display: inline-flex;
     color: white;
     word-break: break-word;
