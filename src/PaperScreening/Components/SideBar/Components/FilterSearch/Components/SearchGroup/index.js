@@ -1,5 +1,5 @@
 import { DropdownButton, Glyphicon, MenuItem } from 'react-bootstrap';
-import { PaperFields, SearchLogic } from '../../../../../../../Constants';
+import { PaperFields, SearchLogic } from '../../../../../../../Elements/constants';
 import React, { Component } from 'react';
 import { addSearchgroups, updateSearchgroups } from '../../../../../../../Actions';
 

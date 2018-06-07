@@ -18,17 +18,25 @@ export const Colors = Object.freeze({
 });
 
 export const PaperFields = Object.freeze({
-    ALL: "all",
-    TITLE: "title",
-    ABSTRACT: "abstract"
+    ALL: "ALL",
+    TITLE: "TITLE",
+    ABSTRACT: "ABSTRACT"
 });
 
 export const SearchLogic = Object.freeze({
-    CONTAINING: "containing",
-    NOTCONTAINING: "notcontaining"
+    CONTAINING: "CONTAINING",
+    NOTCONTAINING: "NOTCONTAINING"
 });
 
 export const SearchGroupAttributes = Object.freeze({
-    FIELD : "field",
-    LOGIC : "logic",
+    FIELD : "FIELD",
+    LOGIC : "LOGIC",
 });
+
+export const logicalToDisplayName = {
+    [PaperFields.ALL]: "Any Field",
+    [PaperFields.TITLE]: "Title",
+    [PaperFields.ABSTRACT]: "Abstract",
+    [SearchLogic.CONTAINING]: "Containing",
+    [SearchLogic.NOTCONTAINING]: "Not Containing"
+}

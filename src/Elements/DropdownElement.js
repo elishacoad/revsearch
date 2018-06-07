@@ -1,6 +1,7 @@
-import React from 'react'
 import {DropdownButton, MenuItem} from 'react-bootstrap';
-import { logicalNameToDisplayName } from './helper'
+
+import React from 'react'
+import { logicalToDisplayName } from './constants'
 
 export const DropdownElement = (props) => {
     return (
@@ -11,7 +12,7 @@ export const DropdownElement = (props) => {
              onSelect={props.onSelect}>
 
             {Object.keys(props.items).map((key, value) => 
-                <MenuItem key={key} eventKey={key}>{logicalNameToDisplayName[key]}</MenuItem>)}
+                <MenuItem key={key} eventKey={key}>{logicalToDisplayName[key]}</MenuItem>)}
 
         </DropdownButton>
     )

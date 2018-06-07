@@ -1,6 +1,5 @@
-import { Colors, Decision } from '../../../Constants';
+import { Colors, Decision, PaperFields, SearchLogic } from '../../../Elements/constants';
 import { Panel, PanelGroup } from 'react-bootstrap';
-import { PaperFields, SearchLogic } from '../../../Constants';
 import React, { Component } from 'react';
 
 import PaperBody from '../PaperBody';

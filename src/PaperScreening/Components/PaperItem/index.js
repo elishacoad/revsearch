@@ -1,5 +1,5 @@
 import { Button, Col, Panel } from 'react-bootstrap';
-import { Colors, Decision } from '../../../Constants';
+import { Colors, Decision } from '../../../Elements/constants';
 import React, { Component } from 'react';
 
 import { bindActionCreators } from 'redux';

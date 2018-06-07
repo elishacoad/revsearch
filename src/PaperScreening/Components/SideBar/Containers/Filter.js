@@ -1,12 +1,12 @@
+import { PaperFields, SearchLogic } from '../../../../Elements/constants';
 //import { Button, Panel } from 'react-bootstrap';
 import React, { Component } from 'react';
+import { addSearchgroups, updateSearchgroups } from '../../../../Actions';
 
+import { FilterSearch } from '../Presentational/FilterSearch';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { PaperFields, SearchLogic } from '../../../../Constants';
-import { addSearchgroups, updateSearchgroups } from '../../../../Actions';
 import uuid from 'uuid';
-import { FilterSearch } from '../Presentational/FilterSearch';
 
 class Filter extends Component {
     constructor(props, context) {

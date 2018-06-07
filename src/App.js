@@ -2,7 +2,7 @@ import './css/index.css';
 
 import React, { Component } from 'react';
 
-import { Colors } from "./Constants"
+import { Colors } from "./Elements/constants"
 import { Grid } from 'react-bootstrap';
 import PaperScreening from './PaperScreening/index';
 import RevNavbar from './Components/RevNavbar';

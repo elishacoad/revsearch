@@ -1,7 +1,7 @@
 import { Button, Panel } from 'react-bootstrap';
 import React, { Component } from 'react';
 
-import { Colors } from '../../../../../Constants';
+import { Colors } from '../../../../../Elements/constants';
 import SearchGroup from './Components/SearchGroup';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Colors } from '../../Constants';
+import { Colors } from '../../Elements/constants';
 import { Navbar } from 'react-bootstrap';
 
 class RevNavbar extends Component {
