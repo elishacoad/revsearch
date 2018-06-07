@@ -1,8 +1,9 @@
-import React from 'react'
 import { Button, Panel } from 'react-bootstrap';
-import { Colors } from '../../../../Constants';
-import Searches from '../Containers/Searches';
+
+import { Colors } from '../../../../Elements/constants';
 import { Glyphicon } from 'react-bootstrap';
+import React from 'react'
+import Searches from '../Containers/Searches';
 
 export const FilterSearch = (props) => {
     return (

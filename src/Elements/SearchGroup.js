@@ -1,10 +1,11 @@
-import React from 'react'
+import { PaperFields, SearchGroupAttributes, SearchLogic } from '../Elements/constants'
+
 import { ButtonGroup } from 'react-bootstrap';
+import { DropdownElement } from './DropdownElement'
 import { FormElement } from './FormElement'
 import { Keywords } from './Keywords'
-import { PaperFields, SearchLogic, SearchGroupAttributes } from '../Constants'
-import { DropdownElement } from './DropdownElement'
-import { logicalToDisplayName } from './helper'
+import React from 'react'
+import { logicalToDisplayName } from './constants'
 
 export class SearchGroup extends React.Component {
     constructor () {
