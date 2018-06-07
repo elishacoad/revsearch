@@ -1,10 +1,10 @@
 /* ######## INDEX.CSS ######## */
+
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
 }
-
 
 /* ######## APP.CSS ######## */
 
@@ -76,7 +76,7 @@ Forces navbar to hug sides */
 .keyword>p {
     padding: 7px;
     margin: 3px;
-    border-radius: 15px;
+    border-radius: 12px;
     display: inline-flex;
     color: white;
     word-break: break-word;
@@ -100,9 +100,8 @@ Forces navbar to hug sides */
     }
 }
 
-
-
 /* ######## PAPERBODY.CSS ######## */
+
 .highlight-match {
     background: #83ddb2;
 }
