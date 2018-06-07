@@ -1,4 +1,4 @@
-import './index.css';
+import '../../../css/index.css';
 
 import { Button, Col, Row } from 'react-bootstrap';
 import { Colors, Decision } from '../../../Constants';
