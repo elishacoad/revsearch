@@ -1,3 +1,9 @@
+/** This is the entire collection of PaperPanels. It is a collection of panels
+ *  that behave as an "accordian effect" in that when you chose a decision
+ *  on one paper, that paper body closes and the next paper body opens.
+ *  The logic to decide which papers to present to the user is also here.
+ */
+
 import { Decision, PaperFields, SearchLogic } from '../../../Elements/constants';
 import React, { Component } from 'react';
 

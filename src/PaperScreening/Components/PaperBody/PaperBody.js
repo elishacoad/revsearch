@@ -1,7 +1,12 @@
+/** This is the body of the paper panel that contains the paper title,
+ *  (in smaller text; not the title banner that you click on),
+ *  and paper abstract, link, etc. The buttons are also displayed here.
+ */
+
 import '../../../css/index.css';
 
 import React, { Component } from 'react';
-import { changeDecision, incrementRow } from '../../../Actions';
+import { incrementRow, updatePaper } from '../../../Actions';
 
 import PaperBodyPresentational from './PaperBodyPresentational';
 import { bindActionCreators } from 'redux';
@@ -10,15 +15,14 @@ import { connect } from 'react-redux';
 class PaperBody extends Component {
   constructor(props, context) {
     super(props, context);
-    this.handleDecisionButtonClick = this.handleDecisionButtonClick.bind(this);
+    this.changePaperDecision = this.changePaperDecision.bind(this);
   }
 
 
-  handleDecisionButtonClick(decision) {
-    // this is causing an error that "a state is getting set inside the render"...
-    // let paper = this.props.paper;
-    // paper.decision = decision;
-    // this.props.changeDecision(paper);
+  changePaperDecision(decision) {
+    let paper = this.props.paper;
+    paper.decision = decision;
+    this.props.updatePaper(paper);
     this.props.incrementRow();
   }
 
@@ -27,7 +31,7 @@ class PaperBody extends Component {
       <PaperBodyPresentational
         keywords={this.props.keywords}
         paper={this.props.paper}
-        handleDecisionButtonClick={this.handleDecisionButtonClick}
+        handleDecisionButtonClick={this.changePaperDecision}
       />
     );
   }
@@ -42,7 +46,7 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      changeDecision: changeDecision,
+      updatePaper: updatePaper,
       incrementRow: incrementRow
     },
     dispatch);
