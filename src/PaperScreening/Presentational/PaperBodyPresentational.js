@@ -32,7 +32,7 @@ const PaperBodyPresentational = (props) => {
                         style={{ "fontstyle": "italic" }}
                     >
                         Link to Article
-                        </a>
+                    </a>
                 )}
             </Col>
             <Col xs={12} sm={2}>

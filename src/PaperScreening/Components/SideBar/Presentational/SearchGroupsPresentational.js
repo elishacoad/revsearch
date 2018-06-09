@@ -1,7 +1,11 @@
-import React from 'react'
-import { SearchGroup } from '../../../../Elements/SearchGroup';
+/** Presentational component for displaying search groups
+ *  maps the list of groups to an element search group
+ */
 
-export const SearchGroups = (props) => {
+import React from 'react'
+import { SearchGroup } from '../../../../Elements';
+
+const SearchGroupsPresentational = (props) => {
     return (
         <div className='search-groups'>
             {props.searchGroupsList.map((searchObject, i) => {
@@ -17,7 +21,7 @@ export const SearchGroups = (props) => {
                 );
             })}
         </div>
-
     )
 }
 
+export default SearchGroupsPresentational;

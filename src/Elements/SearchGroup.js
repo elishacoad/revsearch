@@ -1,9 +1,9 @@
-import { PaperFields, SearchGroupAttributes, SearchLogic } from '../Elements/constants'
+/** Search group UI element displays the search group defined by a user
+ *  controls the input value whenever a user finishes typing an element
+ */
 
 import { ButtonGroup } from 'react-bootstrap';
-import { DropdownElement } from './DropdownElement'
-import { FormElement } from './FormElement'
-import { Keywords } from './Keywords'
+import { Keywords, FormElement, DropdownElement, PaperFields, SearchGroupAttributes, SearchLogic } from '../Elements'
 import React from 'react'
 import { logicalToDisplayName } from './constants'
 

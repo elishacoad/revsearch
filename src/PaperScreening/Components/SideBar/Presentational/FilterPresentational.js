@@ -1,20 +1,18 @@
-import { Button, Panel } from 'react-bootstrap';
+/** Presentational component for filtering papers, has UI elements for the 
+ *  search tab and renders the Searchgroups component to make and update
+ *  new searches
+ */
 
-import { Colors } from '../../../../Elements/constants';
-import { Glyphicon } from 'react-bootstrap';
 import React from 'react'
-import Searches from '../Containers/Searches';
+import { Button, Panel } from 'react-bootstrap';
+import SearchGroups from '../Containers/SearchGroups';
+import { Glyphicon } from 'react-bootstrap';
 
-export const FilterSearch = (props) => {
+const FilterPresentational = (props) => {
     return (
         <Panel id="accordion-example" style={{ "borderColor": "gray" }}>
             <Panel.Toggle>
-                <Panel.Heading
-                    style={{
-                        "backgroundColor": Colors.REVNAVY,
-                        "cursor": "pointer"
-                    }}
-                >
+                <Panel.Heading className='background-revnavy cursor-pointer'>
                     <Panel.Title style={{ "color": "white" }}>Search</Panel.Title>
                 </Panel.Heading>
             </Panel.Toggle>
@@ -23,7 +21,7 @@ export const FilterSearch = (props) => {
                     <Button onClick={props.onClick} className="btn btn-default btn-block">
                         <Glyphicon glyph="search" /> New search
                      </Button>
-                    <Searches
+                    <SearchGroups
                         updateSearchGroup={props.updateSearchGroup}
                         searchGroupsList={props.searchGroups}
                         allTerms={props.allTerms}
@@ -33,3 +31,5 @@ export const FilterSearch = (props) => {
         </Panel>
     )
 }
+
+export default FilterPresentational;

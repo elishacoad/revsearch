@@ -19,7 +19,7 @@ class Papers extends Component {
         this.applyGroupLogic = this.applyGroupLogic.bind(this);
         this.matchesGroupCriteria = this.matchesGroupCriteria.bind(this);
         this.matchesGroupsCriteria = this.matchesGroupsCriteria.bind(this);
-        this.areElibleToShow = this.areElibleToShow.bind(this);
+        this.areEligibleToShow = this.areEligibleToShow.bind(this);
     }
 
     /**
@@ -55,8 +55,8 @@ class Papers extends Component {
     }
 
     /**
-     * Decide if a paper should be displayed to
-     * given the search groups that the user has currently set.
+     * Decide if a paper should be displayed given
+     * the search groups that the user has currently set.
      */
     matchesGroupsCriteria(paper) {
         return this.props.searchgroups.every(group => this.matchesGroupCriteria(paper, group));
@@ -66,7 +66,7 @@ class Papers extends Component {
      * Decide which papers should be displayed to
      * the search terms that the user has currently set.
      */
-    areElibleToShow(allPapers) {
+    areEligibleToShow(allPapers) {
         // filter out papers that don't match the searchgroups criteria
         let papersToShow = allPapers.filter(paper => this.matchesGroupsCriteria(paper));
         // filter out papers that don't match the decision filter criteria
@@ -84,7 +84,7 @@ class Papers extends Component {
             <PapersPresentational
                 activeKey={this.props.activeRowIndex}
                 onSelect={this.props.selectRow}
-                paperItems={this.areElibleToShow(this.props.papersItems)}
+                paperItems={this.areEligibleToShow(this.props.papersItems)}
                 activeRowIndex={this.props.activeRowIndex}
                 selectRow={this.props.selectRow}
             />);
