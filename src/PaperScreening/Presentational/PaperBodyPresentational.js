@@ -38,6 +38,7 @@ const PaperBodyPresentational = (props) => {
             <Col xs={12} sm={2}>
                 <DecisionButtonGroup
                     handleDecisionButtonClick={props.handleDecisionButtonClick}
+                    decisions={props.decisions}
                 />
             </Col>
         </Row>

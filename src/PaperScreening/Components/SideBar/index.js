@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Filter from './Containers/Filter';
-import Keywords from './Containers/Keywords';
+import Keywords from './Containers/KeywordHighlighter';
 import LibraryCounts from '../../Components/SideBar/Containers/LibraryCounts';
 import ProgressWell from './Containers/ProgressWell';
 
