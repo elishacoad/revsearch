@@ -1,30 +1,28 @@
-import { Alert, Button, ControlLabel, FormControl, FormGroup, Label } from 'react-bootstrap';
 import React, { Component } from 'react';
 
-import { addCorpusAction } from '../../Actions';
+import AddCorpusPresentational from '../Presentational/AddCorpusPresentational';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { parseCorpus } from '../../Elements/corpusParser'
-import uuid from 'uuid';
+import { setCorpus } from '../../Actions';
 
 class AddCorpus extends Component {
-  constructor() {
-    super();
-    this.handleSubmit = this.handleSubmit.bind(this);
+  constructor(props, context) {
+    super(props, context);
+
+    this.setCorpusToString = this.setCorpusToString.bind(this);
+    this.readFile = this.readFile.bind(this);
   }
 
-  handleSubmit(inputtext = null) {
-    let papers = parseCorpus(inputtext);
-    if (papers.length === 0) {
-      alert("No papers able to parsed.");
-    }
-    else {
-      papers = papers.map((paper, i) => {
-        paper.id = uuid.v4() + "_" + i;
-        return paper;
-      });
-      this.props.addCorpusAction(papers);
-    }
+  /**
+   * Set the collection of papers by reading in a string, parsing it
+   * and setting the global state corpus to the result.
+   */
+  setCorpusToString(inputtext) {
+    let corpus = parseCorpus(inputtext);
+    // set a unique key for each paper using it's index in the corpus
+    corpus = corpus.map((paper, i) => Object.assign(paper, {id: i}));
+    this.props.setCorpus(corpus);
   }
 
   readFile(e) {
@@ -33,52 +31,24 @@ class AddCorpus extends Component {
     let read = new FileReader();
     read.readAsBinaryString(file);
     read.onloadend = () => {
-      this.handleSubmit(read.result);
+      this.setCorpusToString(read.result);
     }
   }
 
   render() {
     return (
-      <div>
-        <Alert style={{ textAlign: "center" }}>
-          <h4> Looks like you haven't uploaded any papers yet! </h4>
-          <br />
-          <Button bsStyle="info" onClick={this.handleSubmit.bind(this)}>
-            Add Some Dummy Papers
-          </Button>
-          <br />
-          OR
-          <br />
-          <FormGroup>
-            <ControlLabel htmlFor="fileUpload" style={{ cursor: "pointer" }}>
-              <h4>
-                <Label bsStyle="info">
-                  Add file
-                </Label>
-              </h4>
-              <FormControl
-                id="fileUpload"
-                type="file"
-                accept=".txt"
-                onChange={this.readFile.bind(this)}
-                style={{ display: "none" }}
-              />
-            </ControlLabel>
-          </FormGroup>
-        </Alert>
-      </div>
+      <AddCorpusPresentational
+        setCorpus={this.setCorpusToString}
+        readFile={this.readFile}
+      />
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    papers: state.papers
-  }
-}
+const mapStateToProps = null;
 
 function matchDispatchToProps(dispatch) {
-  return bindActionCreators({ addCorpusAction: addCorpusAction }, dispatch);
+  return bindActionCreators({ setCorpus: setCorpus }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(AddCorpus);

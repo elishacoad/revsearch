@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import Keywords from './Components/Keywords';
-import LibraryCounts from './Components/LibraryCounts';
-import ProgressWell from './Components/ProgressWell';
 import Filter from './Containers/Filter';
+import Keywords from './Containers/Keywords';
+import LibraryCounts from '../../Components/SideBar/Containers/LibraryCounts';
+import ProgressWell from './Containers/ProgressWell';
 
 export default class Sidebar extends Component {
     render() {

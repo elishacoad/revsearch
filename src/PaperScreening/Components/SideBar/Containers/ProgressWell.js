@@ -1,5 +1,5 @@
 import { Badge, Panel, ProgressBar } from 'react-bootstrap';
-import { Colors, Decision } from '../../../../../Elements/constants';
+import { Colors, Decision } from '../../../../Elements/constants';
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';

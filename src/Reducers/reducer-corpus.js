@@ -2,7 +2,7 @@
 // of papers that belongs to the user
 export default (state=[], action) => {
     switch(action.type){
-        case "CORPUS_ADDED":
+        case "CORPUS_SET":
             // set the original papers to the list of papers passed to this reducer
             return action.payload;
         case "PAPER_UPDATED":
