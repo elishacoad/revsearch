@@ -1,7 +1,7 @@
-import './index.css';
+import '../../../css/index.css';
 
 import { Button, Col, Row } from 'react-bootstrap';
-import { Colors, Decision } from '../../../Constants';
+import { Colors, Decision } from '../../../Elements/constants';
 import React, { Component } from 'react';
 import { changeDecision, incrementRow } from '../../../Actions';
 

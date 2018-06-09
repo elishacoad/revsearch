@@ -1,7 +1,7 @@
 import { FormControl, Glyphicon, Panel } from 'react-bootstrap';
 import React, { Component } from 'react';
 
-import { Colors } from '../../../../../Constants';
+import { Colors } from '../../../../../Elements/constants';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateKeywords } from '../../../../../Actions';

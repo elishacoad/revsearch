@@ -1,8 +1,12 @@
 import { Button, Panel } from 'react-bootstrap';
 import React, { Component } from 'react';
 
-import { Colors } from '../../../../../Constants';
+import { Colors } from '../../../../../Elements/constants';
 import SearchGroup from './Components/SearchGroup';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateSearchgroups } from '../../../../../Actions';
+import uuid from 'uuid';
 
 class FilterSearch extends Component {
     constructor(props, context) {
@@ -15,12 +19,7 @@ class FilterSearch extends Component {
     }
 
     addSearchGroup() {
-        this.setState({
-            searchgroups:
-                this.state.searchgroups.concat(
-                    <SearchGroup key={this.state.searchgroups.length} />
-                )
-        });
+        this.setState({ searchgroups: this.state.searchgroups.concat( <SearchGroup key={uuid.v1()} /> )});
     }
 
     render() {
@@ -49,4 +48,16 @@ class FilterSearch extends Component {
     }
 }
 
-export default FilterSearch;
+function mapStateToProps(state) {
+    return {
+        searchgroups: state.searchgroups
+    }
+}
+
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({
+        updateSearchgroups: updateSearchgroups,
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(FilterSearch);

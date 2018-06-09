@@ -26,9 +26,9 @@ export const updateKeywords = (updateObject) => {
     }
 };
 
-export const updateSearchwords = (updateObject) => {
+export const updateSearchgroups = (updateObject) => {
     return {
-        type: 'SEARCHWORDS_UPDATED',
+        type: 'SEARCHGROUPS_UPDATED',
         payload: updateObject
     }
 };
@@ -44,5 +44,12 @@ export const selectRow = (updateObject) => {
     return {
         type: 'ROW_SELECTED',
         payload: updateObject
+    }
+};
+
+export const addSearchgroups = (newGroup) => {
+    return {
+        type: 'SEARCHGROUP_ADDED',
+        payload: newGroup
     }
 };

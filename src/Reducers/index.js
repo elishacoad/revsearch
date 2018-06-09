@@ -3,14 +3,14 @@ import {combineReducers} from 'redux';
 import corpusReducer from './reducer-corpus';
 import filterReducer from './reducer-filter';
 import keywordsReducer from './reducer-keywords';
-import searchwordsReducer from './reducer-searchwords';
+import searchwordsReducer from './reducer-searchgroups';
 
 const allReducers = combineReducers({
     papers: corpusReducer,
     activeRowIndex: activeRowReducer,
     keywords: keywordsReducer,
     filters: filterReducer,
-    searchwords: searchwordsReducer
+    searchgroups: searchwordsReducer
 });
 
 export default allReducers;
