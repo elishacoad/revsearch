@@ -1,31 +1,33 @@
-/** Search group UI element displays the search group defined by a user
- *  controls the input value whenever a user finishes typing an element
+/** 
+ * Search group UI element displays the search group defined by a user
+ * controls the input value whenever a user finishes typing an element.
  */
 
+import { DropdownElement, FormElement, Keywords, PaperFields, SearchGroupAttributes, SearchLogic } from '../Elements'
+
 import { ButtonGroup } from 'react-bootstrap';
-import { Keywords, FormElement, DropdownElement, PaperFields, SearchGroupAttributes, SearchLogic } from '../Elements'
 import React from 'react'
 import { logicalToDisplayName } from './constants'
 
 export class SearchGroup extends React.Component {
-    constructor () {
+    constructor() {
         super()
         this.state = {
-            inputValue : ''
+            inputValue: ''
         }
 
         this.clearInput = this.clearInput.bind(this)
     }
 
-    clearInput (){
-        this.setState({ inputValue : ''})
+    clearInput() {
+        this.setState({ inputValue: '' })
     }
 
-    render(){
+    render() {
         let field = this.props.searchObject.field
         let logic = this.props.searchObject.logic
 
-        return(
+        return (
             <div>
                 <hr></hr>
 
@@ -35,10 +37,11 @@ export class SearchGroup extends React.Component {
                         title={logicalToDisplayName[field]}
                         id="searchgroup-field-select"
                         items={PaperFields}
-                        onSelect={choice => {
+                        onSelect={choice =>
                             this.props.editSearch(this.props.searchObject, SearchGroupAttributes.FIELD, PaperFields, choice)
-                    }}/>
-    
+                        }
+                    />
+
                     <DropdownElement
                         bstyle="default"
                         title={logicalToDisplayName[logic]}
@@ -46,24 +49,26 @@ export class SearchGroup extends React.Component {
                         items={SearchLogic}
                         onSelect={choice => {
                             this.props.editSearch(this.props.searchObject, SearchGroupAttributes.LOGIC, SearchLogic, choice)
-                    }}/>
+                        }}
+                    />
                 </ButtonGroup>
 
                 <FormElement
                     type="text"
                     placeholder="+ add word"
                     value={this.state.inputValue}
-                    onChange={(e) => {this.setState({ inputValue: e.target.value })}}
+                    onChange={(e) => { this.setState({ inputValue: e.target.value }) }}
                     onKeyPress={(e) => {
-                            if(this.props.addSearchTerm(this.props.searchObject, e))
-                                this.setState({ inputValue : ''}) }
-                    }
+                        if (this.props.addSearchTerm(this.props.searchObject, e))
+                            this.setState({ inputValue: '' })
+                    }}
                 />
 
-                <Keywords 
-                    searchObject={this.props.searchObject} 
+                <Keywords
+                    searchObject={this.props.searchObject}
                     removeSearchTerm={this.props.removeSearchTerm}
-                    clearInput={this.clearInput}/>
+                    clearInput={this.clearInput}
+                />
 
             </div>
         )

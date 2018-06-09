@@ -8,39 +8,43 @@ import React from 'react';
 import { SearchLogic } from "../Elements";
 
 export class Keywords extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
 
         this.chooseColor = this.chooseColor.bind(this);
 
         this.state = {
-            color : this.chooseColor(this.props.searchObject.logic)
+            color: this.chooseColor(this.props.searchObject.logic)
         };
     }
 
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
         this.setState({
-            color : this.chooseColor(nextProps.searchObject.logic)
+            color: this.chooseColor(nextProps.searchObject.logic)
         });
     }
 
     // logic modifies the color it displays, updates everytime props changes
-    chooseColor(logicField){
+    chooseColor(logicField) {
         if (logicField === SearchLogic.CONTAINING)
             return 'green';
         return 'red';
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <ul className={'keyword-list-' + this.state.color}>
                 {this.props.searchObject.terms.map((word, i) => {
                     return (
                         <li key={i} className='keyword'>
                             <p className={'keyword-' + this.state.color} >{word + "  "}</p>
-                            <Glyphicon onClick={(e) => {
-                                this.props.clearInput()
-                                this.props.removeSearchTerm(this.props.searchObject, word)}} glyph="remove" />
+                            <Glyphicon
+                                onClick={(e) => {
+                                    this.props.clearInput()
+                                    this.props.removeSearchTerm(this.props.searchObject, word)
+                                }}
+                                glyph="remove"
+                            />
                         </li>
                     );
                 })}
