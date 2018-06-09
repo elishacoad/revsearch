@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { SearchGroupsPresentational } from '../Presentational/SearchGroupsPresentational';
+import SearchGroupsPresentational from '../Presentational/SearchGroupsPresentational';
 
 class SearchGroups extends React.Component {
     constructor(props) {

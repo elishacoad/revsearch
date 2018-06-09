@@ -5,7 +5,7 @@
 import React from 'react'
 import { SearchGroup } from '../../../../Elements';
 
-export const SearchGroupsPresentational = (props) => {
+const SearchGroupsPresentational = (props) => {
     return (
         <div className='search-groups'>
             {props.searchGroupsList.map((searchObject, i) => {
@@ -24,3 +24,4 @@ export const SearchGroupsPresentational = (props) => {
     )
 }
 
+export default SearchGroupsPresentational;
