@@ -70,7 +70,7 @@ class SearchgroupsFilter extends Component {
     render() {
         return (
             <FilterPresentational
-            onClick={this.addSearchGroup}
+            addSearchGroup={this.addSearchGroup}
             allTerms={this.state.allTerms}
             updateSearchGroup={this.updateSearchGroup}
             searchGroups={this.props.searchgroups}

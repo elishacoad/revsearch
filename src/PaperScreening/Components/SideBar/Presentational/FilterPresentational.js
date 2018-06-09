@@ -20,7 +20,7 @@ export const FilterPresentational = (props) => {
             </Panel.Toggle>
             <Panel.Collapse>
                 <Panel.Body>
-                    <Button onClick={props.onClick} className="btn btn-default btn-block">
+                    <Button onClick={props.addSearchGroup} className="btn btn-default btn-block">
                         <Glyphicon glyph="search" /> New search
                      </Button>
                     <SearchGroups
