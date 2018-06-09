@@ -1,6 +1,7 @@
-/** Container component handles filtering of papers using field, logic, and terms options 
- *  given by user to filter out specific papers, user can create search groups
- *  and edit/remove them 
+/** 
+ * Container component handles filtering of papers using field, logic, and terms options 
+ * given by user to filter out specific papers, user can create search groups
+ * and edit/remove them.
  */
 
 import { PaperFields, SearchLogic } from '../../../../Elements/constants';
@@ -16,7 +17,8 @@ class Filter extends Component {
     constructor(props, context) {
         super(props, context);
 
-        // list of all the terms form every search group object, used to check for duplicates
+        // list of all the terms form every search group object
+        // used to check for duplicates
         this.state = {
             allTerms: this.generateTermsList(this.props.searchgroups)
         };
@@ -34,8 +36,10 @@ class Filter extends Component {
         }
     }
 
+    /**
+     * Create a new empty with default values search group and adds to list.
+     */
     addSearchGroup() {
-        // creates a new empty with default values search group and adds to list
         this.props.addSearchgroups({
             key: uuid.v1(),
             field: PaperFields.ALL,
@@ -44,12 +48,16 @@ class Filter extends Component {
         });
     }
 
+    /** 
+     * Call this whenever a new term is added, or any field/logic is modified.
+    */
     updateSearchGroup(newObject) {
-        // whenever a new term is added, or any field/logic is modified this is called
         this.props.updateSearchgroups(newObject);
     }
 
-    // creates the list of the terms for every object in the search group list
+    /**
+     * Create the list of the terms for every object in the search group list.
+     */
     generateTermsList(searchGroups){
         let allTerms = [];
         searchGroups.map((searchObject, i) => {
@@ -60,7 +68,6 @@ class Filter extends Component {
     }
 
     render() {
-        // presentational component that displays the entire filter section
         return (
             <FilterPresentational
             onClick={this.addSearchGroup}
