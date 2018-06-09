@@ -55,8 +55,8 @@ class Papers extends Component {
     }
 
     /**
-     * Decide if a paper should be displayed to
-     * given the search groups that the user has currently set.
+     * Decide if a paper should be displayed given
+     * the search groups that the user has currently set.
      */
     matchesGroupsCriteria(paper) {
         return this.props.searchgroups.every(group => this.matchesGroupCriteria(paper, group));
