@@ -51,7 +51,6 @@ class SearchGroup extends Component {
 
     render() {
         let searchgroup = this.props.searchgroups.find(group => group.key === this.state.key);
-        console.log(searchgroup);
         return (
             <div>
                 <hr></hr>

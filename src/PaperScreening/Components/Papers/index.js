@@ -11,7 +11,6 @@ class Papers extends Component {
   constructor(props, context) {
     super(props, context);
 
-    this.applySearchLogic = this.applySearchLogic.bind(this);
     this.isEligibleToShow = this.isEligibleToShow.bind(this);
   }
 
@@ -39,30 +38,29 @@ class Papers extends Component {
     )
   }
 
-  applySearchLogic(searchText, group) {
-    // part of isEligibleToShow()
-    // would be best to make it a nested function but I don't know how
-    switch (group.logic) {
-      case SearchLogic.CONTAINING:
-        return group.terms.every(term => searchText.includes(term));
-      case SearchLogic.NOTCONTAINING:
-        return group.terms.every(term => !searchText.includes(term));
-      default:
-        // this should never be reached since the SearchLogic is an enum
-        // and all the options are covered in the cases above
-    }
-  }
-
+  /**
+   * Perform the logic to decide if the paper should be displayed to
+   * the user given the search terms that the user has currently set.
+  */  
   isEligibleToShow(paper, group) {
-    // perform the logic to decide if the paper should be displayed to
-    // the user given the search terms that the user has currently set
+    let applySearchLogic = (searchText, group) => {
+      switch (group.logic) {
+        case SearchLogic.CONTAINING:
+          return group.terms.every(term => searchText.includes(term));
+        case SearchLogic.NOTCONTAINING:
+          return group.terms.every(term => !searchText.includes(term));
+        default:
+          // this should never be reached since the SearchLogic is an enum
+          // and all the options are covered in the cases above
+      }
+    }
     switch (group.field) {
       case PaperFields.ALL:
-        return this.applySearchLogic(Object.values(paper).join(" "), group);
+        return applySearchLogic(Object.values(paper).join(" "), group);
       case PaperFields.TITLE:
-        return this.applySearchLogic(paper.title, group);
+        return applySearchLogic(paper.title, group);
       case PaperFields.ABSTRACT:
-        return this.applySearchLogic(paper.abstract, group);
+        return applySearchLogic(paper.abstract, group);
       default:
         // this should never be reached since the PaperFields is an enum
         // and all the options are covered in the cases above
