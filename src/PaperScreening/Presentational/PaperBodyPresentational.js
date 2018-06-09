@@ -1,6 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 
-import DecisionButtonGroup from '../../../Elements/DecisionButtonGroup';
+import DecisionButtonGroup from '../../Elements/DecisionButtonGroup';
 import Highlighter from "react-highlight-words";
 import React from 'react';
 

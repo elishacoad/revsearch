@@ -4,13 +4,13 @@
  *  The logic to decide which papers to present to the user is also here.
  */
 
-import { Decision, PaperFields, SearchLogic } from '../../../Elements/constants';
+import { Decision, PaperFields, SearchLogic } from '../../Elements/constants';
 import React, { Component } from 'react';
 
-import PapersPresentational from './PapersPresentational';
+import PapersPresentational from '../Presentational/PapersPresentational';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { selectRow } from '../../../Actions';
+import { selectRow } from '../../Actions';
 
 class Papers extends Component {
     constructor(props, context) {

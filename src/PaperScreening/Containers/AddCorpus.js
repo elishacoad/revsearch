@@ -1,10 +1,10 @@
 import { Alert, Button, ControlLabel, FormControl, FormGroup, Label } from 'react-bootstrap';
 import React, { Component } from 'react';
 
-import { addCorpusAction } from '../../../Actions';
+import { addCorpusAction } from '../../Actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { parseCorpus } from './CorpusParser'
+import { parseCorpus } from '../../Elements/corpusParser'
 import uuid from 'uuid';
 
 class AddCorpus extends Component {

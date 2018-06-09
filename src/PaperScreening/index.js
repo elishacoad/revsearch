@@ -1,8 +1,8 @@
 import { Col, Row } from 'react-bootstrap';
 import React, { Component } from 'react';
 
-import AddCorpus from './Components/AddCorpus';
-import Papers from './Components/Papers/Papers';
+import AddCorpus from './Containers/AddCorpus';
+import Papers from './Containers/Papers';
 import Sidebar from './Components/SideBar';
 import { connect } from 'react-redux';
 

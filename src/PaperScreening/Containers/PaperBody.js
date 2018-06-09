@@ -3,12 +3,12 @@
  *  and paper abstract, link, etc. The buttons are also displayed here.
  */
 
-import '../../../css/index.css';
+import '../../css/index.css';
 
 import React, { Component } from 'react';
-import { incrementRow, updatePaper } from '../../../Actions';
+import { incrementRow, updatePaper } from '../../Actions';
 
-import PaperBodyPresentational from './PaperBodyPresentational';
+import PaperBodyPresentational from '../Presentational/PaperBodyPresentational';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
