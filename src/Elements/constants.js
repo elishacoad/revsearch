@@ -9,6 +9,7 @@ export const Colors = Object.freeze({
     INCLUDE: "#83ddb2",
     DARKINCLUDE: "#00994d",
     MAYBE: "#cde9ff",
+    NONE: "lightgray",
     DARKMAYBE: "#004d99",
     EXCLUDE: "#eeab9e",
     DARKEXCLUDE: "#990000",

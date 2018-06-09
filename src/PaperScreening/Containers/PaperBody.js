@@ -42,9 +42,9 @@ class PaperBody extends Component {
    *  - displayvalue: the word to show in the button
   */
   buildDecisionObjects() {
-    let decisionvalues = [Decision.INCLUDE, Decision.EXCLUDE, Decision.MAYBE];
-    let colors = [Colors.INCLUDE, Colors.EXCLUDE, Colors.MAYBE];
-    let displayvalues = ["Include", "Exlude", "Maybe"];
+    let decisionvalues = [Decision.INCLUDE, Decision.EXCLUDE, Decision.MAYBE, Decision.NONE];
+    let colors = [Colors.INCLUDE, Colors.EXCLUDE, Colors.MAYBE, Colors.NONE];
+    let displayvalues = ["Include", "Exlude", "Maybe", "None"];
     return this.zip([colors, decisionvalues, displayvalues])
       .map(decision => {
         return { buttoncolor: decision[0], decisionvalue: decision[1], displayvalue: decision[2] }
