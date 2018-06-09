@@ -18,21 +18,38 @@ class PaperBody extends Component {
     super(props, context);
 
     this.changePaperDecision = this.changePaperDecision.bind(this);
-
-    // zip: zip n arrays that are m length into an array of dimension n x m
-    const zip = rows => rows[0].map((_, c) => rows.map(row => row[c]));
-    let displayDecisions = ["None", "Include", "Exlude", "Maybe"]
-    // make an array of decision objects to pass to DecisionButtonGroup with the {buttoncolor, clickvalue, displayword}
-    // buttoncolor is the color of the button
-    // clickvalue is the value to be passed back to the changePaperDecision function
-    // display word is the word to show in the button
-    let decisions = zip(Object.keys(Colors), Object.keys(Decision), displayDecisions)
-      .forEach(decision => {
-        return { buttoncolor: decision[0], clickvalue: decision[1], displayword: decision[2] }
-      });
-    this.setState({decisions: decisions});
+    this.state = { decisions: [] }
   }
 
+  componentDidMount() {
+    const decisions = this.buildDecisionObjects();
+    this.setState({ decisions: decisions });
+  }
+
+  /**
+   * zip: zip n arrays that are m length into an array of dimension n x m
+   * ie: zip([[1, 2, 3], [4, 5, 6]]) -> [[1, 4], [2, 5], [3, 6]]
+  */
+  zip(arrays) {
+    return arrays[0].map((_, i) => arrays.map(array => array[i]));
+  }
+
+  /** 
+   *  make an array of decision objects to pass to DecisionButtonGroup
+   *  where each object is {buttoncolor, clickvalue, displayvalue}
+   *  - buttoncolor: the color of the button
+   *  - decisionvalue: the value that the paper.decision will be updated to
+   *  - displayvalue: the word to show in the button
+  */
+  buildDecisionObjects() {
+    let decisionvalues = [Decision.INCLUDE, Decision.EXCLUDE, Decision.MAYBE];
+    let colors = [Colors.INCLUDE, Colors.EXCLUDE, Colors.MAYBE];
+    let displayvalues = ["Include", "Exlude", "Maybe"];
+    return this.zip([colors, decisionvalues, displayvalues])
+      .map(decision => {
+        return { buttoncolor: decision[0], decisionvalue: decision[1], displayvalue: decision[2] }
+      });
+  }
 
   changePaperDecision(decision) {
     let paper = this.props.paper;

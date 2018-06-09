@@ -3,13 +3,14 @@ import React from 'react'
 
 const DecisionButtonGroup = (props) =>
     <div>
-        {props.decisions.map(decision => 
+        {props.decisions.map((decision, i) => 
             <Button
+                key={i}
                 style={{ "backgroundColor": decision.buttoncolor }}
                 className="decisionbutton"
-                onClick={() => props.handleDecisionButtonClick(decision.clickvalue)}
+                onClick={() => props.handleDecisionButtonClick(decision.decisionvalue)}
             >
-                {decision.displayword}
+                {decision.displayvalue}
             </Button>
         )}
     </div >
