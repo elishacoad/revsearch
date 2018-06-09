@@ -5,7 +5,7 @@
 
 import { Glyphicon } from 'react-bootstrap';
 import React from 'react';
-import { SearchLogic } from "../Elements/constants";
+import { SearchLogic } from "../Elements";
 
 export class Keywords extends React.Component {
     constructor (props) {

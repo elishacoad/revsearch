@@ -2,11 +2,8 @@
  *  controls the input value whenever a user finishes typing an element
  */
 
-import { PaperFields, SearchGroupAttributes, SearchLogic } from '../Elements/constants'
 import { ButtonGroup } from 'react-bootstrap';
-import { DropdownElement } from './DropdownElement'
-import { FormElement } from './FormElement'
-import { Keywords } from './Keywords'
+import { Keywords, FormElement, DropdownElement, PaperFields, SearchGroupAttributes, SearchLogic } from '../Elements'
 import React from 'react'
 import { logicalToDisplayName } from './constants'
 
