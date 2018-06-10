@@ -1,7 +1,7 @@
 /** Form element wrapper around bootstrap form control */
 
+import { FormControl } from 'react-bootstrap';
 import React from 'react'
-import {FormControl} from 'react-bootstrap';
 
 export const FormElement = (props) => {
     return (
@@ -10,5 +10,7 @@ export const FormElement = (props) => {
             value={props.value}
             placeholder={props.placeholder}
             onChange={props.onChange}
-            onKeyPress={props.onKeyPress}/>)
+            onKeyPress={props.onKeyPress}
+        />
+    )
 }
