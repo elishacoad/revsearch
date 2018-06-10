@@ -1,4 +1,4 @@
-import App from './App';
+import App from './app/components/presentational/App';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
