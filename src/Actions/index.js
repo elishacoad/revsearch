@@ -5,9 +5,9 @@ export const updatePaper = (paper) => {
     }
 };
 
-export const addCorpusAction = (originalPapers) => {
+export const setCorpus = (originalPapers) => {
     return {
-        type: 'CORPUS_ADDED',
+        type: 'CORPUS_SET',
         payload: originalPapers
     }
 };

@@ -2,9 +2,9 @@
  * The color of the panel is decided by what the decision for the paper is.
  */
 
-import { Colors } from '../../../Elements/constants';
+import { Colors } from '../../Elements/constants';
 import { Panel } from 'react-bootstrap';
-import PaperBody from '../PaperBody/PaperBody';
+import PaperBody from '../Containers/PaperBody';
 import React from 'react';
 
 const PaperPanelPresentational = (props) => {

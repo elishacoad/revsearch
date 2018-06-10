@@ -1,6 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 
-import DecisionButtonGroup from '../../../Elements/DecisionButtonGroup';
+import DecisionButtonGroup from '../../Elements/DecisionButtonGroup';
 import Highlighter from "react-highlight-words";
 import React from 'react';
 
@@ -38,6 +38,7 @@ const PaperBodyPresentational = (props) => {
             <Col xs={12} sm={2}>
                 <DecisionButtonGroup
                     handleDecisionButtonClick={props.handleDecisionButtonClick}
+                    options={props.options}
                 />
             </Col>
         </Row>
