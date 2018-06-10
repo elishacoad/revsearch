@@ -10,7 +10,7 @@ import { Glyphicon } from 'react-bootstrap';
 import React from 'react'
 import SearchGroups from '../Containers/SearchGroups';
 
-export const FilterPresentational = (props) => {
+const FilterPresentational = (props) => {
     return (
         <Panel id="accordion-example" style={{ "borderColor": "gray" }}>
             <Panel.Toggle>
@@ -33,3 +33,5 @@ export const FilterPresentational = (props) => {
         </Panel>
     )
 }
+
+export default FilterPresentational;

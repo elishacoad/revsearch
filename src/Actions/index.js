@@ -1,6 +1,6 @@
-export const changeDecision = (paper) => {
+export const updatePaper = (paper) => {
     return {
-        type: 'DECISION_CHANGED',
+        type: 'PAPER_UPDATED',
         payload: paper
     }
 };

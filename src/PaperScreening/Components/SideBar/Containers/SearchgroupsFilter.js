@@ -8,7 +8,7 @@ import { PaperFields, SearchLogic } from '../../../../Elements';
 import React, { Component } from 'react';
 import { addSearchgroups, updateSearchgroups } from '../../../../Actions';
 
-import { FilterPresentational } from '../Presentational/FilterPresentational';
+import FilterPresentational from '../Presentational/FilterPresentational';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
