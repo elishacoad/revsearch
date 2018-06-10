@@ -44,7 +44,7 @@ class PaperBody extends Component {
   buildDecisionObjects() {
     let decisionvalues = [Decision.INCLUDE, Decision.EXCLUDE, Decision.MAYBE, Decision.NONE];
     let colors = [Colors.INCLUDE, Colors.EXCLUDE, Colors.MAYBE, Colors.NONE];
-    let displayvalues = ["Include", "Exlude", "Maybe", "None"];
+    let displayvalues = ["Include", "Exlude", "Maybe", "Undecided"];
     return this.zip([colors, decisionvalues, displayvalues])
       .map(decision => {
         return { buttoncolor: decision[0], decisionvalue: decision[1], displayvalue: decision[2] }
