@@ -1,6 +1,7 @@
-/** Container component that receives the list of search groups made by the user
- *  from the state, displats them, and handles formatting for updating and 
- *  removing terms, logic, and field options
+/** 
+ * Container component that receives the list of search groups made by the user
+ * from the state, displats them, and handles formatting for updating and 
+ * removing terms, logic, and field options.
  */
 
 import React from 'react';
@@ -21,7 +22,7 @@ class SearchGroups extends React.Component {
     }
 
     addSearchTerm (object, e) {
-        // if enter key, or empty field or duplicate fo not add search term
+        // if enter key was pressed, or empty field or duplicate do not add search term
         if (e.charCode !== 13 || e.target.value === '' || this.usedTerm(e.target.value)) return;
         object.terms = object.terms.concat(e.target.value);
         let newObject = object;
@@ -39,8 +40,10 @@ class SearchGroups extends React.Component {
         this.props.updateSearchGroup(newObject);
     }
 
+    /** 
+     * Create new object with new attribute before updating.
+    */
     editSearch(object, attribute, attributeList, choice){
-        // Create new object with new attribute before updating
         let newObject = object;
         newObject[attribute] = attributeList[choice];
         this.props.updateSearchGroup(newObject);
