@@ -3,14 +3,14 @@ import React from 'react'
 
 const DecisionButtonGroup = (props) =>
     <div>
-        {props.decisions.map((decision, i) => 
+        {props.options.map((option, i) => 
             <Button
                 key={i}
-                style={{ "backgroundColor": decision.buttoncolor }}
+                style={{ "backgroundColor": option.buttoncolor }}
                 className="decisionbutton"
-                onClick={() => props.handleDecisionButtonClick(decision.decisionvalue)}
+                onClick={() => props.handleDecisionButtonClick(option.decisionvalue)}
             >
-                {decision.displayvalue}
+                {option.displayvalue}
             </Button>
         )}
     </div >

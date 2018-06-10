@@ -18,12 +18,12 @@ class PaperBody extends Component {
     super(props, context);
 
     this.changePaperDecision = this.changePaperDecision.bind(this);
-    this.state = { decisions: [] }
+    this.state = { options: [] }
   }
 
   componentDidMount() {
-    const decisions = this.buildDecisionObjects();
-    this.setState({ decisions: decisions });
+    const options = this.buildDecisionObjects();
+    this.setState({ options: options });
   }
 
   /**
@@ -64,7 +64,7 @@ class PaperBody extends Component {
         keywords={this.props.keywords}
         paper={this.props.paper}
         handleDecisionButtonClick={this.changePaperDecision}
-        decisions={this.state.decisions}
+        options={this.state.options}
       />
     );
   }
