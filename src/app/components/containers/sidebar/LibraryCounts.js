@@ -1,10 +1,10 @@
-import { Checkbox, Panel } from 'react-bootstrap';
-import { Colors, Decision } from '../../../../Elements/constants';
 import React, { Component } from 'react';
-
+import { Checkbox, Panel } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { updateFilter } from '../../../../Actions';
+
+import { updateFilter } from '../../../redux/actions';
+import { Colors, Decision } from '../../../globals/constants';
 
 class LibraryCounts extends Component {
     constructor(props, context) {

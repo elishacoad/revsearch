@@ -1,8 +1,8 @@
-import App from './app/components/presentational/App';
+import App from './App';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import allReducers from './Reducers';
+import allReducers from './app/redux/reducers';
 import { createStore } from 'redux';
 
 

@@ -1,10 +1,10 @@
-import { Col, Row } from 'react-bootstrap';
 import React, { Component } from 'react';
-
-import AddCorpus from './Containers/AddCorpus';
-import Papers from './Containers/Papers';
-import Sidebar from './Components/SideBar';
+import { Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
+
+import AddCorpus from '../../containers/paperScreening/AddCorpus';
+import Papers  from '../../containers/paperScreening/Papers';
+import Sidebar from '../sidebar/Sidebar';
 
 class PaperScreening extends Component {
   render() {

@@ -1,7 +1,6 @@
 /** Form element wrapper around bootstrap form control */
-
-import { FormControl } from 'react-bootstrap';
 import React from 'react'
+import { FormControl } from 'react-bootstrap';
 
 export const FormElement = (props) => {
     return (

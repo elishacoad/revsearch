@@ -2,12 +2,10 @@
  * Search group UI element displays the search group defined by a user
  * controls the input value whenever a user finishes typing an element.
  */
-
-import { DropdownElement, FormElement, Keywords, PaperFields, SearchGroupAttributes, SearchLogic } from '../Elements'
-
-import { ButtonGroup } from 'react-bootstrap';
 import React from 'react'
-import { logicalToDisplayName } from './constants'
+import { ButtonGroup } from 'react-bootstrap';
+import { DropdownElement, FormElement, Keywords } from '../elements'
+import { SearchGroupAttributes, SearchLogic, PaperFields, logicalToDisplayName } from '../../globals/constants'
 
 export class SearchGroup extends React.Component {
     constructor() {

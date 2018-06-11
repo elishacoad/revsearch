@@ -1,6 +1,7 @@
-import { PanelGroup } from 'react-bootstrap';
-import PaperPanelPresentational from '../Presentational/PaperPanelPresentational';
 import React from 'react';
+import { PanelGroup } from 'react-bootstrap';
+
+import PaperPanelPresentational from '../../presentationals/paperScreening/PaperPanelPresentational';
 
 const PapersPresentational = (props) => {
     return (

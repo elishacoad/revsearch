@@ -3,12 +3,10 @@
  * search tab and renders the Searchgroups component to make and update
  * new searches.
  */
-
-import { Button, Panel } from 'react-bootstrap';
-
-import { Glyphicon } from 'react-bootstrap';
 import React from 'react'
-import SearchGroups from '../Containers/SearchGroups';
+import { Glyphicon, Button, Panel } from 'react-bootstrap';
+
+import SearchGroups from '../../containers/sidebar/SearchGroups';
 
 const FilterPresentational = (props) => {
     return (

@@ -3,15 +3,14 @@
  * given by user to filter out specific papers, user can create search groups
  * and edit/remove them.
  */
-
-import { PaperFields, SearchLogic } from '../../../../Elements';
 import React, { Component } from 'react';
-import { addSearchgroups, updateSearchgroups } from '../../../../Actions';
-
-import FilterPresentational from '../Presentational/FilterPresentational';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
+
+import { PaperFields, SearchLogic } from '../../../globals/constants'
+import { addSearchgroups, updateSearchgroups } from '../../../redux/actions';
+import FilterPresentational from '../../presentationals/sidebar/FilterPresentational';
 
 class SearchgroupsFilter extends Component {
     constructor(props, context) {

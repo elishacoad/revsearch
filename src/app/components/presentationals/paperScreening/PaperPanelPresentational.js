@@ -1,11 +1,12 @@
 /** A paper panel is the clickable banner that opens the paper body.
  * The color of the panel is decided by what the decision for the paper is.
  */
-
-import { Colors } from '../../Elements/constants';
-import { Panel } from 'react-bootstrap';
-import PaperBody from '../Containers/PaperBody';
 import React from 'react';
+import { Panel } from 'react-bootstrap';
+
+import { Colors } from '../../../globals/constants';
+import PaperBody from '../../containers/paperScreening/PaperBody';
+
 
 const PaperPanelPresentational = (props) => {
     return (

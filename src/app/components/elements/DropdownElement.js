@@ -1,11 +1,9 @@
 /** Dropdown element wrapper around bootstrap dorwdown button
  *  receives a list of items for menuitems and maps those accordingly
  */
-
-import { DropdownButton, MenuItem } from 'react-bootstrap';
-
 import React from 'react';
-import { logicalToDisplayName } from '../Elements';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
+import { logicalToDisplayName } from '../../globals/constants';
 
 export const DropdownElement = (props) => {
     // maps menu items options from items sent as list

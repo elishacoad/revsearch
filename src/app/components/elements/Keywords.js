@@ -2,10 +2,9 @@
  *  displays the terms for thay object, state controls color depending
  *  on the logic of the search
  */
-
-import { Glyphicon } from 'react-bootstrap';
 import React from 'react';
-import { SearchLogic } from "../Elements";
+import { Glyphicon } from 'react-bootstrap';
+import { SearchLogic } from '../../globals/constants';
 
 export class Keywords extends React.Component {
     constructor(props) {

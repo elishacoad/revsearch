@@ -1,10 +1,10 @@
-import { FormControl, Glyphicon, Panel } from 'react-bootstrap';
 import React, { Component } from 'react';
-
-import { Colors } from '../../../../Elements/constants';
+import { FormControl, Glyphicon, Panel } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { updateKeywords } from '../../../../Actions';
+
+import { Colors } from '../../../globals/constants';
+import { updateKeywords } from '../../../redux/actions';
 
 class Keywords extends Component {
     constructor(props, context) {

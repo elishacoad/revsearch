@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-
-import AddCorpusPresentational from '../Presentational/AddCorpusPresentational';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { parseCorpus } from '../../Elements/corpusParser'
-import { setCorpus } from '../../Actions';
+
+import AddCorpusPresentational from '../../presentationals/paperScreening/AddCorpusPresentational';
+import { parseCorpus } from '../../../globals/corpusParser'
+import { setCorpus } from '../../../redux/actions';
 
 class AddCorpus extends Component {
   constructor(props, context) {

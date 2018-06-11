@@ -1,9 +1,9 @@
 /** Presentational component for displaying search groups
  *  maps the list of groups to an element search group
  */
-
 import React from 'react'
-import { SearchGroup } from '../../../../Elements';
+
+import { SearchGroup } from '../../elements';
 
 const SearchGroupsPresentational = (props) => {
     return (

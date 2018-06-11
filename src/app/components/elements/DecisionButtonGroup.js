@@ -1,5 +1,5 @@
-import { Button } from 'react-bootstrap';
 import React from 'react'
+import { Button } from 'react-bootstrap';
 
 const DecisionButtonGroup = (props) =>
     <div>

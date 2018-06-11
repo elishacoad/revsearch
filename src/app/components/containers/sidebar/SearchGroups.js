@@ -3,9 +3,8 @@
  * from the state, displats them, and handles formatting for updating and 
  * removing terms, logic, and field options.
  */
-
 import React from 'react';
-import SearchGroupsPresentational from '../Presentational/SearchGroupsPresentational';
+import SearchGroupsPresentational from '../../presentationals/sidebar/SearchGroupsPresentational'
 
 class SearchGroups extends React.Component {
     constructor(props) {

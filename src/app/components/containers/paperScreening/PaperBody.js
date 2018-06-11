@@ -2,16 +2,14 @@
  *  (in smaller text; not the title banner that you click on),
  *  and paper abstract, link, etc. The buttons are also displayed here.
  */
-
-import '../../css/index.css';
-
-import { Colors, Decision } from '../../Elements/constants'
 import React, { Component } from 'react';
-import { incrementRow, updatePaper } from '../../Actions';
-
-import PaperBodyPresentational from '../Presentational/PaperBodyPresentational';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
+import { Colors, Decision } from '../../../globals/constants'
+import { incrementRow, updatePaper } from '../../../redux/actions';
+import PaperBodyPresentational from '../../presentationals/paperScreening/PaperBodyPresentational';
+
 
 class PaperBody extends Component {
   constructor(props, context) {

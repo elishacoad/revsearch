@@ -3,14 +3,13 @@
  *  on one paper, that paper body closes and the next paper body opens.
  *  The logic to decide which papers to present to the user is also here.
  */
-
-import { Decision, PaperFields, SearchLogic } from '../../Elements/constants';
 import React, { Component } from 'react';
-
-import PapersPresentational from '../Presentational/PapersPresentational';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { selectRow } from '../../Actions';
+
+import PapersPresentational from '../../presentationals/paperScreening/PapersPresentational';
+import { Decision, PaperFields, SearchLogic } from '../../../globals/constants';
+import { selectRow } from '../../../redux/actions';
 
 class Papers extends Component {
     constructor(props, context) {
