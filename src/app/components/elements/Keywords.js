@@ -4,6 +4,7 @@
  */
 import React from 'react';
 import { Glyphicon } from 'react-bootstrap';
+
 import { SearchLogic } from '../../globals/constants';
 
 export class Keywords extends React.Component {

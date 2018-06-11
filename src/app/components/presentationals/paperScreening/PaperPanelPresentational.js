@@ -7,7 +7,6 @@ import { Panel } from 'react-bootstrap';
 import { Colors } from '../../../globals/constants';
 import PaperBody from '../../containers/paperScreening/PaperBody';
 
-
 const PaperPanelPresentational = (props) => {
     return (
         <Panel

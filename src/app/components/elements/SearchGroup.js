@@ -4,6 +4,7 @@
  */
 import React from 'react'
 import { ButtonGroup } from 'react-bootstrap';
+
 import { DropdownElement, FormElement, Keywords } from '../elements'
 import { SearchGroupAttributes, SearchLogic, PaperFields, logicalToDisplayName } from '../../globals/constants'
 

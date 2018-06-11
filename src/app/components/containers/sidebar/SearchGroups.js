@@ -4,6 +4,7 @@
  * removing terms, logic, and field options.
  */
 import React from 'react';
+
 import SearchGroupsPresentational from '../../presentationals/sidebar/SearchGroupsPresentational'
 
 class SearchGroups extends React.Component {

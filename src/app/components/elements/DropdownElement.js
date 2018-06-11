@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+
 import { logicalToDisplayName } from '../../globals/constants';
 
 export const DropdownElement = (props) => {
