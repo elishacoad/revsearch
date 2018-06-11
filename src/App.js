@@ -1,11 +1,10 @@
-import './css/index.css';
-
 import React, { Component } from 'react';
-
-import { Colors } from "./Elements/constants"
 import { Grid } from 'react-bootstrap';
-import PaperScreening from './PaperScreening/index';
-import RevNavbar from './Components/RevNavbar';
+
+import './app/stylesheets/index.css';
+import PaperScreening from './app/components/presentationals/paperScreening/PaperScreening';
+import RevNavbar from './app/components/elements/RevNavbar';
+import { Colors } from './app/globals/constants';
 
 class App extends Component {
   render() {
