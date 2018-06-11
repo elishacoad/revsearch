@@ -8,9 +8,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 
+import FilterPresentational from '../../presentationals/sidebar/FilterPresentational';
 import { PaperFields, SearchLogic } from '../../../globals/constants'
 import { addSearchgroups, updateSearchgroups } from '../../../redux/actions';
-import FilterPresentational from '../../presentationals/sidebar/FilterPresentational';
 
 class SearchgroupsFilter extends Component {
     constructor(props, context) {

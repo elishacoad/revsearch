@@ -1,4 +1,4 @@
-const dummypapers = `%0 Journal Article
+const dummyPapers = `%0 Journal Article
 %A Crawley, D.
 %A Chandra, A.
 %A Loda, M.
@@ -484,4 +484,4 @@ I. Jialal, Laboratory for Atherosclerosis and Metabolic Research, University of 
 %G eng
 `
 
-export default dummypapers;
+export default dummyPapers;

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Grid } from 'react-bootstrap';
 
 import './app/stylesheets/index.css';
-import { Colors } from "./app/globals/constants"
 import PaperScreening from './app/components/presentationals/paperScreening/PaperScreening';
 import RevNavbar from './app/components/elements/RevNavbar';
+import { Colors } from './app/globals/constants';
 
 class App extends Component {
   render() {
