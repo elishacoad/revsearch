@@ -17,6 +17,7 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: "reVsearch",
             template: "src/config/index.ejs"

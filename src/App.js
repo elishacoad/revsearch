@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid } from 'react-bootstrap';
+import { hot } from 'react-hot-loader'
 
 import 'Style';
 import PaperScreening from 'Presentationals/paperScreening/PaperScreening';
@@ -19,4 +20,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default hot(module)(App);

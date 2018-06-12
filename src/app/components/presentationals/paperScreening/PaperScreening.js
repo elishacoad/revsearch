@@ -19,7 +19,7 @@ class PaperScreening extends Component {
       return (
         <Row>
           <Col xs={12} md={3} lg={3} className="sidebar">
-            <Sidebar />
+          <Sidebar />
           </Col>
           <Col xs={12} md={9} lg={9} className="paper-review-col">
             <Papers />
