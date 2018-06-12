@@ -49,7 +49,9 @@ class Keywords extends Component {
                             cursor: 'pointer',
                         }}
                     >
-                        <Panel.Title style={{ color: 'white' }}>Keywords</Panel.Title>
+                        <Panel.Title style={{ color: 'white' }}>
+                            Keywords
+                        </Panel.Title>
                     </Panel.Heading>
                 </Panel.Toggle>
                 <Panel.Collapse>

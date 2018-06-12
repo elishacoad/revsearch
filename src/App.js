@@ -6,14 +6,13 @@ import PaperScreening from './app/components/presentationals/paperScreening/Pape
 import RevNavbar from './app/components/elements/RevNavbar';
 import { Colors } from './app/globals/constants';
 
-const App = () =>
-    (
-        <div style={{ backgroundColor: Colors.REVBACKGROUND }}>
-            <RevNavbar />
-            <Grid fluid>
-                <PaperScreening />
-            </Grid>
-        </div>
-    );
+const App = () => (
+    <div style={{ backgroundColor: Colors.REVBACKGROUND }}>
+        <RevNavbar />
+        <Grid fluid>
+            <PaperScreening />
+        </Grid>
+    </div>
+);
 
 export default App;

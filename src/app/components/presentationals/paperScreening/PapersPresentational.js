@@ -12,8 +12,12 @@ const PapersPresentational = props => (
         id="papers-accordion-uncontrolled"
         className="Papers"
     >
-        {props.paperItems.map(paperItem => (
-            <PaperPanelPresentational key={uuid.v1()} eventKey={uuid.v1()} paper={paperItem} />
+        {props.paperItems.map((paperItem, i) => (
+            <PaperPanelPresentational
+                key={uuid.v1()}
+                eventKey={i}
+                paper={paperItem}
+            />
         ))}
     </PanelGroup>
 );
