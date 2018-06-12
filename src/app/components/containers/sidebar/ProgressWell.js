@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Badge, Panel, ProgressBar } from 'react-bootstrap';
 
-import { Colors, Decision } from '../../../globals/constants';
+import { Colors, Decision } from 'Constants';
 
 class ProgressWell extends Component {
     constructor(props, context) {

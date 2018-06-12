@@ -23,6 +23,19 @@ module.exports = {
           })
     ],
 
+    resolve: {
+        alias: {
+          Containers: path.resolve(__dirname, 'src/app/components/containers'),
+          Presentationals: path.resolve(__dirname, 'src/app/components/presentationals'),
+          Elements: path.resolve(__dirname, 'src/app/components/elements'),
+          Globals: path.resolve(__dirname, 'src/app/globals'),
+          Actions: path.resolve(__dirname, 'src/app/redux/actions'),
+          Reducers: path.resolve(__dirname, 'src/app/redux/reducers'),
+          Style$: path.resolve(__dirname, 'src/app/stylesheets/index.css'),
+          Constants$: path.resolve(__dirname, 'src/app/globals/constants.js'),
+        }
+    },
+
     module: {
       rules: [
         {

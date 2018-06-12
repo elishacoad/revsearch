@@ -7,9 +7,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import PapersPresentational from '../../presentationals/paperScreening/PapersPresentational';
-import { Decision, PaperFields, SearchLogic } from '../../../globals/constants';
-import { selectRow } from '../../../redux/actions';
+import PapersPresentational from 'Presentationals/paperScreening/PapersPresentational';
+import { Decision, PaperFields, SearchLogic } from 'Constants';
+import { selectRow } from 'Actions';
 
 class Papers extends Component {
     constructor(props, context) {

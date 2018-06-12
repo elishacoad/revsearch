@@ -3,7 +3,7 @@
  */
 import React from 'react'
 
-import { SearchGroup } from '../../elements';
+import { SearchGroup } from 'Elements';
 
 const SearchGroupsPresentational = (props) => {
     return (

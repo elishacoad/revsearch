@@ -4,7 +4,7 @@
 import React from 'react';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 
-import { logicalToDisplayName } from '../../globals/constants';
+import { logicalToDisplayName } from 'Constants';
 
 export const DropdownElement = (props) => {
     // maps menu items options from items sent as list

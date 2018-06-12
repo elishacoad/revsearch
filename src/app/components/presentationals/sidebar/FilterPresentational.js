@@ -6,7 +6,7 @@
 import React from 'react'
 import { Glyphicon, Button, Panel } from 'react-bootstrap';
 
-import SearchGroups from '../../containers/sidebar/SearchGroups';
+import SearchGroups from 'Containers/sidebar/SearchGroups';
 
 const FilterPresentational = (props) => {
     return (

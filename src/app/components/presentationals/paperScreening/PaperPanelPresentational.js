@@ -4,8 +4,8 @@
 import React from 'react';
 import { Panel } from 'react-bootstrap';
 
-import PaperBody from '../../containers/paperScreening/PaperBody';
-import { Colors } from '../../../globals/constants';
+import PaperBody from 'Containers/paperScreening/PaperBody';
+import { Colors } from 'Constants';
 
 const PaperPanelPresentational = (props) => {
     return (

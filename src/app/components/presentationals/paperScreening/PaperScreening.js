@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import AddCorpus from '../../containers/paperScreening/AddCorpus';
-import Papers  from '../../containers/paperScreening/Papers';
+import AddCorpus from 'Containers/paperScreening/AddCorpus';
+import Papers  from 'Containers/paperScreening/Papers';
 import Sidebar from '../sidebar/Sidebar';
 
 class PaperScreening extends Component {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Highlighter from "react-highlight-words";
 
-import DecisionButtonGroup from '../../elements/DecisionButtonGroup';
+import DecisionButtonGroup from 'Elements/DecisionButtonGroup';
 
 const PaperBodyPresentational = (props) => {
     return (

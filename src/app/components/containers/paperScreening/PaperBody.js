@@ -6,9 +6,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import PaperBodyPresentational from '../../presentationals/paperScreening/PaperBodyPresentational';
-import { Colors, Decision } from '../../../globals/constants'
-import { incrementRow, updatePaper } from '../../../redux/actions';
+import PaperBodyPresentational from 'Presentationals/paperScreening/PaperBodyPresentational';
+import { Colors, Decision } from 'Constants'
+import { incrementRow, updatePaper } from 'Actions';
 
 class PaperBody extends Component {
   constructor(props, context) {

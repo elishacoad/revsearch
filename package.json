@@ -33,8 +33,9 @@
     "uuid": "^2.0.3"
   },
   "scripts": {
-    "start": "npm run build && webpack-dev-server --mode development",
+    "start": "npm run build && webpack-dev-server",
     "build": "webpack",
+    "clean": "node_modules/.bin/rimraf public",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

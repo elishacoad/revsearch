@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar } from 'react-bootstrap';
 
-import { Colors } from '../../globals/constants';
+import { Colors } from 'Constants';
 
 class RevNavbar extends Component {
     render() {
