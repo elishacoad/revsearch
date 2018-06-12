@@ -50,7 +50,6 @@ const parsePaper = (papertext) => {
         // The result can be accessed through the `m`-variable.
         // eslint-disable-next-line
         m.forEach((match, groupIndex) => {
-            // eslint-disable-next-line
             if (groupIndex === 1) {
                 sectionheader = SECTION_DELIMITERS[match] || 'unknownheader';
             } else if (groupIndex === 2) {
