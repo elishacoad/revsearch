@@ -16,6 +16,11 @@ module.exports = {
         filename: 'bundle.js'
     },
 
+    devServer: {
+        contentBase: BUILD_DIR,
+        hot: true
+    },
+
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
