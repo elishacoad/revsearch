@@ -1,7 +1,6 @@
-import React from 'react';
 import { PanelGroup } from 'react-bootstrap';
-
 import PaperPanelPresentational from '../../presentationals/paperScreening/PaperPanelPresentational';
+import React from 'react';
 
 const PapersPresentational = (props) => {
     return (
@@ -9,8 +8,8 @@ const PapersPresentational = (props) => {
             accordion
             activeKey={props.activeRowIndex}
             onSelect={props.selectRow}
-            id="papers-accordion-uncontrolled"
-            className="Papers"
+            id='papers-accordion-uncontrolled'
+            className='Papers'
         >
             {props.paperItems.map((paperItem, i) =>
                 <PaperPanelPresentational key={i} eventKey={i} paper={paperItem} />

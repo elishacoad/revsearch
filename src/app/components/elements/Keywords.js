@@ -4,17 +4,19 @@
  */
 import React from 'react';
 import { Glyphicon } from 'react-bootstrap';
+import uuid from 'uuid';
 
 import { SearchLogic } from '../../globals/constants';
 
-export class Keywords extends React.Component {
+// logic modifies the color it displays, updates everytime props changes
+const chooseColor = logicField => (logicField === SearchLogic.CONTAINING ? 'green' : 'red');
+
+class Keywords extends React.Component {
     constructor(props) {
         super(props);
 
-        this.chooseColor = this.chooseColor.bind(this);
-
         this.state = {
-            color: this.chooseColor(this.props.searchObject.logic)
+            color: chooseColor(this.props.searchObject.logic),
         };
     }
 
@@ -24,31 +26,25 @@ export class Keywords extends React.Component {
         });
     }
 
-    // logic modifies the color it displays, updates everytime props changes
-    chooseColor(logicField) {
-        if (logicField === SearchLogic.CONTAINING)
-            return 'green';
-        return 'red';
-    }
-
     render() {
         return (
-            <ul className={'keyword-list-' + this.state.color}>
-                {this.props.searchObject.terms.map((word, i) => {
-                    return (
-                        <li key={i} className='keyword'>
-                            <p className={'keyword-' + this.state.color} >{word + "  "}</p>
+            <ul className={`keyword-list-${this.state.color}`}>
+                {this.props.searchObject.terms.map(word =>
+                    (
+                        <li key={uuid.v1()} className="keyword">
+                            <p className={`keyword-list-${this.state.color}`} >{`${word}  `}</p>
                             <Glyphicon
-                                onClick={(e) => {
-                                    this.props.clearInput()
-                                    this.props.removeSearchTerm(this.props.searchObject, word)
+                                onClick={() => {
+                                    this.props.clearInput();
+                                    this.props.removeSearchTerm(this.props.searchObject, word);
                                 }}
                                 glyph="remove"
                             />
                         </li>
-                    );
-                })}
+                    ))}
             </ul>
         );
     }
 }
+
+export default Keywords;

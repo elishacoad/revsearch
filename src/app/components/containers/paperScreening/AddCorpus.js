@@ -28,6 +28,8 @@ class AddCorpus extends Component {
     readFile(e) {
         e.preventDefault();
         const file = e.target.files[0];
+        // FileReader is a global class so eslint says its undefined
+        // eslint-disable-next-line no-undef
         const read = new FileReader();
         read.readAsBinaryString(file);
         read.onloadend = () => {

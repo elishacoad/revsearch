@@ -1,6 +1,6 @@
 /*
 Parsing for a specific type of formatting.
-Parsing assumptions: a paper starts with "%0 Journal Article" and ends with "%G"
+Parsing assumptions: a paper starts with '%0 Journal Article' and ends with '%G'
 The beginning of a new section in a paper starts with one of the deliminators shown below
 and each section ends with a newline character (using \n).
 */
@@ -8,41 +8,41 @@ and each section ends with a newline character (using \n).
 import { Decision } from './constants';
 
 const SECTION_DELIMITERS = {
-    "0": "type",
-    "A": "author",
-    "V": "volume",
-    "@": "issn",
-    "N": "issue",
-    "9": "articletype",
-    "D": "publishingdate",
-    "T": "title",
-    "B": "journalname",
-    "!": "alternatetitle",
-    "R": "fulltextlink",
-    "M": "accessionnumber",
-    "X": "abstract",
-    "~": "databasename",
-    "g": "language",
-    "+": "authoraddress",
-    "K": "keywords",
-    "W": "databaseprovider"
+    0: 'type',
+    A: 'author',
+    V: 'volume',
+    '@': 'issn',
+    N: 'issue',
+    9: 'articletype',
+    D: 'publishingdate',
+    T: 'title',
+    B: 'journalname',
+    '!': 'alternatetitle',
+    R: 'fulltextlink',
+    M: 'accessionnumber',
+    X: 'abstract',
+    '~': 'databasename',
+    g: 'language',
+    '+': 'authoraddress',
+    K: 'keywords',
+    W: 'databaseprovider',
 };
 
 export function parseCorpus(text) {
-    let corpus = text;
+    const corpus = text;
     const regex = /%0[\s\S]*?(?=%G)/gm; // to see how this matches, use regex101.com
     let m;
-    let papers = [];
+    const papers = [];
     // eslint-disable-next-line
-    while ((m = regex.exec(corpus)) !== null) {
-        // This is necessary to avoid infinite loops with zero-width matches
+  while ((m = regex.exec(corpus)) !== null) {
+    // This is necessary to avoid infinite loops with zero-width matches
         if (m.index === regex.lastIndex) {
             regex.lastIndex++;
         }
 
         // The result can be accessed through the `m`-variable.
         // eslint-disable-next-line
-        m.forEach((match, groupIndex) => {
+    m.forEach((match, groupIndex) => {
             papers.push(parsePaper(match));
         });
     }
@@ -61,21 +61,20 @@ export function parsePaper(papertext) {
     const regex = /^\s*%\s*(.)\s*(.*)/gm;
     let m;
     let sectionheader;
-    let paper = {};
+    const paper = {};
     // eslint-disable-next-line
-    while ((m = regex.exec(papertext)) !== null) {
-        // This is necessary to avoid infinite loops with zero-width matches
+  while ((m = regex.exec(papertext)) !== null) {
+    // This is necessary to avoid infinite loops with zero-width matches
         if (m.index === regex.lastIndex) {
             regex.lastIndex++;
         }
         // The result can be accessed through the `m`-variable.
         // eslint-disable-next-line
-        m.forEach((match, groupIndex) => {
+    m.forEach((match, groupIndex) => {
             // eslint-disable-next-line
-            if (groupIndex === 1) {
-                sectionheader = SECTION_DELIMITERS[match] || "unknownheader";
-            }
-            else if (groupIndex === 2) {
+      if (groupIndex === 1) {
+                sectionheader = SECTION_DELIMITERS[match] || 'unknownheader';
+            } else if (groupIndex === 2) {
                 paper[sectionheader] = match;
             }
         });

@@ -3,12 +3,12 @@ const defaultstate = {
     showIncludes: true,
     showExcludes: true,
     showMaybes: true,
-    showUndecided: true
-}
+    showUndecided: true,
+};
 
-export default (state=defaultstate, action) => {
-    switch(action.type){
-        case "DECISIONFILTER_UPDATED":
+export default (state = defaultstate, action) => {
+    switch (action.type) {
+        case 'DECISIONFILTER_UPDATED':
             // have to make a newstate since you can't mutate the original state
             const deepClone = JSON.parse(JSON.stringify(state));
             return Object.assign(deepClone, action.payload);
@@ -16,4 +16,4 @@ export default (state=defaultstate, action) => {
             // some nonrelevant action taken
             return state;
     }
-}
+};
