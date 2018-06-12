@@ -3,35 +3,35 @@ import { Alert, Button, ControlLabel, FormControl, FormGroup, Label } from 'reac
 import React from 'react';
 import dummyPapers from '../../../globals/dummyPapers';
 
-const AddCorpusPresentational = (props) =>
+const AddCorpusPresentational = props => (
     <div>
         <Alert style={{ textAlign: 'center' }}>
-            <h4> Looks like you haven't uploaded any papers yet! </h4>
+            <h4> Looks like you have not uploaded any papers yet! </h4>
             <br />
-            <Button bsStyle='info' onClick={() => props.setCorpus(dummyPapers)}>
+            <Button bsStyle="info" onClick={() => props.setCorpus(dummyPapers)}>
                 Add Some Dummy Papers
             </Button>
             <br />
             OR
             <br />
             <FormGroup>
-                <ControlLabel htmlFor='fileUpload' style={{ cursor: 'pointer' }}>
+                <ControlLabel htmlFor="fileUpload" style={{ cursor: 'pointer' }}>
                     <h4>
-                        <Label bsStyle='info'>
+                        <Label bsStyle="info">
                             Add file
                         </Label>
                     </h4>
                     <FormControl
-                        id='fileUpload'
-                        type='file'
-                        accept='.txt'
+                        id="fileUpload"
+                        type="file"
+                        accept=".txt"
                         onChange={() => props.readFile()}
                         style={{ display: 'none' }}
                     />
                 </ControlLabel>
             </FormGroup>
         </Alert>
-    </div>
+    </div>);
 
 
 export default AddCorpusPresentational;

@@ -16,7 +16,7 @@ export const zip = arrays => arrays[0].map((_, i) => arrays.map(array => array[i
 export const buildOptionObjects = () => {
     const decisionvalues = [Decision.INCLUDE, Decision.EXCLUDE, Decision.MAYBE, Decision.NONE];
     const colors = [Colors.INCLUDE, Colors.EXCLUDE, Colors.MAYBE, Colors.NONE];
-    const displayvalues = ['Include', 'Exlude', 'Maybe', 'Undecided'];
+    const displayvalues = ['Include', 'Exclude', 'Maybe', 'Undecided'];
     return zip([colors, decisionvalues, displayvalues])
         .map(option => (
             {

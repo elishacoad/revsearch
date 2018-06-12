@@ -8,4 +8,4 @@ export default (state = [], action) => {
             // some nonrelevant action taken
             return state;
     }
-}
+};

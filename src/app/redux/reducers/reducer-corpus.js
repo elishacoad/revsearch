@@ -1,4 +1,4 @@
-// state passed to this function is the entire list 
+// state passed to this function is the entire list
 // of papers that belongs to the user
 export default (state = [], action) => {
     switch (action.type) {
