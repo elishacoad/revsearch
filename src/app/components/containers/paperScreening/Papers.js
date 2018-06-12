@@ -35,8 +35,8 @@ class Papers extends Component {
         // filter out papers that don't match the searchgroups criteria
         let papersToShow = allPapers.filter(paper => this.matchesGroupsCriteria(paper));
         // filter out papers that don't match the decision filter criteria
-        papersToShow = papersToShow.filter(paper =>
-            (this.props.decisionFilter.showIncludes && paper.decision === Decision.INCLUDE)
+        papersToShow = papersToShow.filter(paper => (
+            this.props.decisionFilter.showIncludes && paper.decision === Decision.INCLUDE)
             || (this.props.decisionFilter.showExcludes && paper.decision === Decision.EXCLUDE)
             || (this.props.decisionFilter.showMaybes && paper.decision === Decision.MAYBE)
             || (this.props.decisionFilter.showUndecided && paper.decision === Decision.NONE));
@@ -60,7 +60,7 @@ function mapStateToProps(state) {
         papersItems: state.papers,
         activeRowIndex: state.activeRowIndex,
         searchgroups: state.searchgroups,
-        decisionFilter: state.filters,
+        decisionFilter: state.decisionFilter,
     };
 }
 

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import uuid from 'uuid';
 
 import { Colors } from '../../../globals/constants';
-import { updateKeywords } from '../../../redux/actions';
+import { updateHighlightwords } from '../../../redux/actions';
 
 class Keywords extends Component {
     constructor(props, context) {
@@ -29,16 +29,14 @@ class Keywords extends Component {
         this.setState({
             positivekeyword_inputvalue: '',
         });
-        this.props.updateKeywords({ positiveWords });
+        this.props.updateHighlightwords({ ...this.props.keywords, positiveWords });
     }
 
     deleteKeyword(word) {
         const { positiveWords } = this.props.keywords;
         const index = positiveWords.indexOf(word);
         if (index !== -1) positiveWords.splice(index, 1);
-        this.props.updateKeywords({
-            positiveWords,
-        });
+        this.props.updateHighlightwords({ ...this.props.keywords, positiveWords });
     }
 
     render() {
@@ -67,14 +65,12 @@ class Keywords extends Component {
                         />
                         {this.props.keywords.positiveWords.length > 0 && <br />}
                         <ul style={{ color: '#00994d' }}>
-                            {this.props.keywords.positiveWords.map(word =>
-                                (
-                                    <li key={uuid.v1()}>
-                                        {`${word}  `}
-                                        <Glyphicon onClick={() => this.deleteKeyword(word)} glyph="remove" />
-                                    </li>
-                                ))
-                            }
+                            {this.props.keywords.positiveWords.map(word => (
+                                <li key={uuid.v1()}>
+                                    {`${word}  `}
+                                    <Glyphicon onClick={() => this.deleteKeyword(word)} glyph="remove" />
+                                </li>
+                            ))}
                         </ul>
                     </Panel.Body>
                 </Panel.Collapse>
@@ -92,7 +88,7 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
     return bindActionCreators({
-        updateKeywords,
+        updateHighlightwords,
     }, dispatch);
 }
 

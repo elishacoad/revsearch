@@ -19,9 +19,9 @@ const ProgressWell = (props) => {
                     }}
                 >
                     <Panel.Title style={{ color: 'white' }}>
-                        Progress
+                        {'Progress  '}
                         <Badge>
-                            {counts.excludes + counts.includes} / {this.props.papers.length}
+                            {counts.excludes + counts.includes} / {props.papers.length}
                         </Badge>
                     </Panel.Title>
                 </Panel.Heading>

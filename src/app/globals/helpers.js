@@ -7,27 +7,28 @@ import { Colors, Decision, SearchLogic, PaperFields } from './constants';
 export const zip = arrays => arrays[0].map((_, i) => arrays.map(array => array[i]));
 
 /**
- *  Make an array of option objects to pass to DecisionButtonGroup
- *  where each object is {buttoncolor, clickvalue, displayvalue}.
- *  - buttoncolor: the color of the button
- *  - decisionvalue: the value that the paper.decision will be updated to
- *  - displayvalue: the word to show in the button
+ * Make an array of option objects to pass to DecisionButtonGroup
+ * where each object is {buttoncolor, clickvalue, displayvalue}.
+ * - buttoncolor: the color of the button
+ * - decisionvalue: the value that the paper.decision will be updated to
+ * - displayvalue: the word to show in the button
 */
 export const buildOptionObjects = () => {
     const decisionvalues = [Decision.INCLUDE, Decision.EXCLUDE, Decision.MAYBE, Decision.NONE];
     const colors = [Colors.INCLUDE, Colors.EXCLUDE, Colors.MAYBE, Colors.NONE];
     const displayvalues = ['Include', 'Exlude', 'Maybe', 'Undecided'];
     return zip([colors, decisionvalues, displayvalues])
-        .map(option =>
-            ({
+        .map(option => (
+            {
                 buttoncolor: option[0],
                 decisionvalue: option[1],
                 displayvalue: option[2],
-            }));
+            }
+        ));
 };
 
 /**
- *  Count how many papers of each paper-decision there are in the corpus.
+ * Count how many papers of each paper-decision there are in the corpus.
 */
 export const tallyDecisions = (papers) => {
     let includes = 0;

@@ -16,13 +16,11 @@ const DropdownElement = props =>
             onSelect={props.onSelect}
         >
 
-            {Object.keys(props.items).map(key =>
-                (
-                    <MenuItem key={key} eventKey={key}>
-                        {logicalToDisplayName[key]}
-                    </MenuItem>
-                ))
-            }
+            {Object.keys(props.items).map(key => (
+                <MenuItem key={key} eventKey={key}>
+                    {logicalToDisplayName[key]}
+                </MenuItem>
+            ))}
         </DropdownButton>
     );
 

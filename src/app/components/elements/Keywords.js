@@ -22,26 +22,25 @@ class Keywords extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            color: this.chooseColor(nextProps.searchObject.logic)
+            color: chooseColor(nextProps.searchObject.logic),
         });
     }
 
     render() {
         return (
             <ul className={`keyword-list-${this.state.color}`}>
-                {this.props.searchObject.terms.map(word =>
-                    (
-                        <li key={uuid.v1()} className="keyword">
-                            <p className={`keyword-list-${this.state.color}`} >{`${word}  `}</p>
-                            <Glyphicon
-                                onClick={() => {
-                                    this.props.clearInput();
-                                    this.props.removeSearchTerm(this.props.searchObject, word);
-                                }}
-                                glyph="remove"
-                            />
-                        </li>
-                    ))}
+                {this.props.searchObject.terms.map(word => (
+                    <li key={uuid.v1()} className="keyword">
+                        <p className={`keyword-${this.state.color}`} >{`${word}  `}</p>
+                        <Glyphicon
+                            onClick={() => {
+                                this.props.clearInput();
+                                this.props.removeSearchTerm(this.props.searchObject, word);
+                            }}
+                            glyph="remove"
+                        />
+                    </li>
+                ))}
             </ul>
         );
     }

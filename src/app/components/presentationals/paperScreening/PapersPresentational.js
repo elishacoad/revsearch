@@ -1,21 +1,21 @@
-import { PanelGroup } from 'react-bootstrap';
-import PaperPanelPresentational from '../../presentationals/paperScreening/PaperPanelPresentational';
 import React from 'react';
+import { PanelGroup } from 'react-bootstrap';
+import uuid from 'uuid';
 
-const PapersPresentational = (props) => {
-    return (
-        <PanelGroup
-            accordion
-            activeKey={props.activeRowIndex}
-            onSelect={props.selectRow}
-            id='papers-accordion-uncontrolled'
-            className='Papers'
-        >
-            {props.paperItems.map((paperItem, i) =>
-                <PaperPanelPresentational key={i} eventKey={i} paper={paperItem} />
-            )}
-        </PanelGroup>
-    );
-}
+import PaperPanelPresentational from '../../presentationals/paperScreening/PaperPanelPresentational';
+
+const PapersPresentational = props => (
+    <PanelGroup
+        accordion
+        activeKey={props.activeRowIndex}
+        onSelect={props.selectRow}
+        id="papers-accordion-uncontrolled"
+        className="Papers"
+    >
+        {props.paperItems.map(paperItem => (
+            <PaperPanelPresentational key={uuid.v1()} eventKey={uuid.v1()} paper={paperItem} />
+        ))}
+    </PanelGroup>
+);
 
 export default PapersPresentational;

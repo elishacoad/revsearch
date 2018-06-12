@@ -16,9 +16,9 @@ export const updateFilter = updateObject =>
         payload: updateObject,
     });
 
-export const updateKeywords = updateObject =>
+export const updateHighlightwords = updateObject =>
     ({
-        type: 'KEYWORDS_UPDATED',
+        type: 'HIGHLIGHTWORDS_UPDATED',
         payload: updateObject,
     });
 
