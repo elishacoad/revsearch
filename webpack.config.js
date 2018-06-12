@@ -17,8 +17,8 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            favicon: 'src/config/favicon.ico',
-            template: "src/config/index.html"
+            title: "reVsearch",
+            template: "src/config/index.ejs"
           })
     ],
 
@@ -42,6 +42,16 @@ module.exports = {
         {
             test: /\.css$/,
             use: [ 'style-loader', 'css-loader' ]
+        },
+        {
+            test: /\.(ico|png|svg|jp(e*)g)$/,
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 8000,
+                    name: 'src/images/[name].[ext]'
+                }
+            }]
         }
       ]
     }
