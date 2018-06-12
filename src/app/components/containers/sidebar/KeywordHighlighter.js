@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import uuid from 'uuid';
 
 import { Colors } from '../../../globals/constants';
-import { updateHighlightwords } from '../../../redux/actions';
+import { setHighlightwords } from '../../../redux/actions';
 
 class Keywords extends Component {
     constructor(props, context) {
@@ -21,22 +21,22 @@ class Keywords extends Component {
 
     addPositiveWord(e) {
         if (e.charCode !== 13) return;
-        const { positiveWords } = this.props.keywords;
+        const { positiveWords } = this.props.highlightWords;
         if (positiveWords
-            .concat(this.props.keywords.negativeWords)
+            .concat(this.props.highlightWords.negativeWords)
             .includes(e.target.value)) return;
         positiveWords.push(e.target.value);
         this.setState({
             positivekeyword_inputvalue: '',
         });
-        this.props.updateHighlightwords({ ...this.props.keywords, positiveWords });
+        this.props.setHighlightwords({ ...this.props.highlightWords, positiveWords });
     }
 
     deleteKeyword(word) {
-        const { positiveWords } = this.props.keywords;
+        const { positiveWords } = this.props.highlightWords;
         const index = positiveWords.indexOf(word);
         if (index !== -1) positiveWords.splice(index, 1);
-        this.props.updateHighlightwords({ ...this.props.keywords, positiveWords });
+        this.props.setHighlightwords({ ...this.props.highlightWords, positiveWords });
     }
 
     render() {
@@ -65,9 +65,9 @@ class Keywords extends Component {
                             })}
                             onKeyPress={this.addPositiveWord}
                         />
-                        {this.props.keywords.positiveWords.length > 0 && <br />}
+                        {this.props.highlightWords.positiveWords.length > 0 && <br />}
                         <ul style={{ color: '#00994d' }}>
-                            {this.props.keywords.positiveWords.map(word => (
+                            {this.props.highlightWords.positiveWords.map(word => (
                                 <li key={uuid.v1()}>
                                     {`${word}  `}
                                     <Glyphicon onClick={() => this.deleteKeyword(word)} glyph="remove" />
@@ -84,13 +84,13 @@ class Keywords extends Component {
 function mapStateToProps(state) {
     return {
         papers: state.papers,
-        keywords: state.keywords,
+        highlightWords: state.highlightWords,
     };
 }
 
 function matchDispatchToProps(dispatch) {
     return bindActionCreators({
-        updateHighlightwords,
+        setHighlightwords,
     }, dispatch);
 }
 

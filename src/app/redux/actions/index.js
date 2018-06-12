@@ -10,15 +10,15 @@ export const setCorpus = originalPapers =>
         payload: originalPapers,
     });
 
-export const updateFilter = updateObject =>
+export const setDecisionFilter = updateObject =>
     ({
-        type: 'DECISIONFILTER_UPDATED',
+        type: 'DECISIONFILTER_SET',
         payload: updateObject,
     });
 
-export const updateHighlightwords = updateObject =>
+export const setHighlightwords = updateObject =>
     ({
-        type: 'HIGHLIGHTWORDS_UPDATED',
+        type: 'HIGHLIGHTWORDS_SET',
         payload: updateObject,
     });
 

@@ -12,7 +12,7 @@ const PaperBodyPresentational = (props) => {
                     <h5>
                         <Highlighter
                             highlightClassName='highlight-good'
-                            searchWords={props.keywords.positiveWords}
+                            searchWords={props.highlightWords.positiveWords}
                             autoEscape={true}
                             textToHighlight={props.paper.title}
                         />
@@ -20,7 +20,7 @@ const PaperBodyPresentational = (props) => {
                     <hr></hr>
                     <Highlighter
                         highlightClassName='highlight-good'
-                        searchWords={props.keywords.positiveWords}
+                        searchWords={props.highlightWords.positiveWords}
                         autoEscape={true}
                         textToHighlight={props.paper.abstract}
                     />

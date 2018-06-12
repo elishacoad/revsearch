@@ -28,7 +28,7 @@ class PaperBody extends Component {
     render() {
         return (
             <PaperBodyPresentational
-                keywords={this.props.keywords}
+                highlightWords={this.props.highlightWords}
                 paper={this.props.paper}
                 handleDecisionButtonClick={this.changePaperDecision}
                 options={this.state.options}
@@ -38,7 +38,7 @@ class PaperBody extends Component {
 
 function mapStateToProps(state) {
     return {
-        keywords: state.keywords,
+        highlightWords: state.highlightWords,
     };
 }
 

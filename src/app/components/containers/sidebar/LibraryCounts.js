@@ -3,7 +3,7 @@ import { Checkbox, Panel } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { updateFilter } from '../../../redux/actions';
+import { setDecisionFilter } from '../../../redux/actions';
 import { Colors } from '../../../globals/constants';
 import { tallyDecisions } from '../../../globals/helpers';
 
@@ -25,25 +25,33 @@ const LibraryCounts = (props) => {
                 <Panel.Body>
                     <Checkbox
                         defaultChecked
-                        onChange={e => props.updateFilter({ showIncludes: e.target.checked })}
+                        onChange={e => props.setDecisionFilter({
+                            ...props.decisionFilter, showIncludes: e.target.checked,
+                        })}
                     >
                         Includes ({counts.includes})
                     </Checkbox>
                     <Checkbox
                         defaultChecked
-                        onChange={e => props.updateFilter({ showExcludes: e.target.checked })}
+                        onChange={e => props.setDecisionFilter({
+                            ...props.decisionFilter, showExcludes: e.target.checked,
+                        })}
                     >
                         Excludes ({counts.excludes})
                     </Checkbox>
                     <Checkbox
                         defaultChecked
-                        onChange={e => props.updateFilter({ showMaybes: e.target.checked })}
+                        onChange={e => props.setDecisionFilter({
+                            ...props.decisionFilter, showMaybes: e.target.checked,
+                        })}
                     >
                         Maybes ({counts.maybes})
                     </Checkbox>
                     <Checkbox
                         defaultChecked
-                        onChange={e => props.updateFilter({ showUndecided: e.target.checked })}
+                        onChange={e => props.setDecisionFilter({
+                            ...props.decisionFilter, showUndecided: e.target.checked,
+                        })}
                     >
                         Undecided ({counts.undecided})
                     </Checkbox>
@@ -56,11 +64,12 @@ const LibraryCounts = (props) => {
 function mapStateToProps(state) {
     return {
         papers: state.papers,
+        decisionFilter: state.decisionFilter,
     };
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({ updateFilter }, dispatch);
+    return bindActionCreators({ setDecisionFilter }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(LibraryCounts);
