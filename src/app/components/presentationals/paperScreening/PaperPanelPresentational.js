@@ -17,7 +17,7 @@ const PaperPanelPresentational = (props) => {
             <Panel.Heading
                 style={{ "backgroundColor": Colors[props.paper.decision.toUpperCase()] }}
             >
-                <Panel.Title toggle>{props.paper.title}</Panel.Title>
+                <Panel.Title toggle className="ellipses">{props.paper.title}</Panel.Title>
             </Panel.Heading>
             <Panel.Collapse>
                 <Panel.Body>

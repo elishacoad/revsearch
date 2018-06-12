@@ -205,3 +205,9 @@ Forces navbar to hug sides */
     border-color: rgb(0, 0, 0);
     box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2), 3px 2px 15px 0 rgba(0, 0, 0, 0.19);
 }
+
+.ellipses {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
