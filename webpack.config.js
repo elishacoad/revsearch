@@ -5,6 +5,7 @@ var webpack = require("webpack");
 var BUILD_DIR = path.resolve(__dirname, 'public');
 
 module.exports = {
+    mode: "development",
     entry: [
         "./src/index.js"
     ],
