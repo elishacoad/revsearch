@@ -2,11 +2,16 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require("path");
 var webpack = require("webpack");
 
+// custom build directory, can be changed
 var BUILD_DIR = path.resolve(__dirname, 'public');
 
 module.exports = {
     mode: "development",
+
+    // the first two entry points enable "hot" CSS and auto-refreshes for JS
     entry: [
+        "react-hot-loader/patch",
+        // contains the entire app, can be changed locations but has to be the highest rendering component, maps to html root
         "./src/index.js"
     ],
 
@@ -16,12 +21,14 @@ module.exports = {
         filename: 'bundle.js'
     },
 
+    // hot-loader
     devServer: {
         contentBase: BUILD_DIR,
         hot: true
     },
 
     plugins: [
+        //hot module replacement refreshes JS
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: "reVsearch",
@@ -30,6 +37,7 @@ module.exports = {
     ],
 
     resolve: {
+        // paths can be added to shorten paths
         alias: {
           Containers: path.resolve(__dirname, 'src/app/components/containers'),
           Presentationals: path.resolve(__dirname, 'src/app/components/presentationals'),
@@ -42,6 +50,7 @@ module.exports = {
         }
     },
 
+    // loaders for specific files and file types
     module: {
       rules: [
         {
