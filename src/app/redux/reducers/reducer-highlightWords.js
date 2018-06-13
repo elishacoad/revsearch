@@ -1,6 +1,5 @@
 const defaultstate = {
     positiveWords: [],
-    negativeWords: [],
 };
 
 export default (state = defaultstate, action) => {

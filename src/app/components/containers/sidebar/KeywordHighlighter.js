@@ -11,7 +11,7 @@ class Keywords extends Component {
     constructor(props, context) {
         super(props, context);
 
-        this.addPositiveWord = this.addPositiveWord.bind(this);
+        this.addKeyword = this.addKeyword.bind(this);
         this.deleteKeyword = this.deleteKeyword.bind(this);
 
         this.state = {
@@ -19,12 +19,10 @@ class Keywords extends Component {
         };
     }
 
-    addPositiveWord(e) {
+    addKeyword(e) {
         if (e.charCode !== 13) return;
         const { positiveWords } = this.props.highlightWords;
-        if (positiveWords
-            .concat(this.props.highlightWords.negativeWords)
-            .includes(e.target.value)) return;
+        if (positiveWords.includes(e.target.value)) return;
         positiveWords.push(e.target.value);
         this.setState({
             positivekeyword_inputvalue: '',
@@ -63,7 +61,7 @@ class Keywords extends Component {
                             onChange={e => this.setState({
                                 positivekeyword_inputvalue: e.target.value,
                             })}
-                            onKeyPress={this.addPositiveWord}
+                            onKeyPress={this.addKeyword}
                         />
                         {this.props.highlightWords.positiveWords.length > 0 && <br />}
                         <ul style={{ color: '#00994d' }}>
