@@ -8,21 +8,21 @@ export const zip = arrays => arrays[0].map((_, i) => arrays.map(array => array[i
 
 /**
  * Make an array of option objects to pass to DecisionButtonGroup
- * where each object is {buttoncolor, clickvalue, displayvalue}.
- * - buttoncolor: the color of the button
- * - decisionvalue: the value that the paper.decision will be updated to
- * - displayvalue: the word to show in the button
+ * where each object is {buttonColor, clickvalue, displayValue}.
+ * - buttonColor: the color of the button
+ * - decisionValue: the value that the paper.decision will be updated to
+ * - displayValue: the word to show in the button
 */
 export const buildOptionObjects = () => {
-    const decisionvalues = [Decision.INCLUDE, Decision.EXCLUDE, Decision.MAYBE, Decision.NONE];
+    const decisionValues = [Decision.INCLUDE, Decision.EXCLUDE, Decision.MAYBE, Decision.NONE];
     const colors = [Colors.INCLUDE, Colors.EXCLUDE, Colors.MAYBE, Colors.NONE];
-    const displayvalues = ['Include', 'Exclude', 'Maybe', 'Undecided'];
-    return zip([colors, decisionvalues, displayvalues])
+    const displayValues = ['Include', 'Exclude', 'Maybe', 'Undecided'];
+    return zip([colors, decisionValues, displayValues])
         .map(option => (
             {
-                buttoncolor: option[0],
-                decisionvalue: option[1],
-                displayvalue: option[2],
+                buttonColor: option[0],
+                decisionValue: option[1],
+                displayValue: option[2],
             }
         ));
 };

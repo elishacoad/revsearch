@@ -8,11 +8,11 @@ const DecisionButtonGroup = props =>
             {props.options.map(option => (
                 <Button
                     key={uuid.v1()}
-                    style={{ backgroundColor: option.buttoncolor }}
+                    style={{ backgroundColor: option.buttonColor }}
                     className="decisionbutton"
-                    onClick={() => props.handleDecisionButtonClick(option.decisionvalue)}
+                    onClick={() => props.handleDecisionButtonClick(option.decisionValue)}
                 >
-                    {option.displayvalue}
+                    {option.displayValue}
                 </Button>
             ))}
         </div>
