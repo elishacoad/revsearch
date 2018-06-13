@@ -1,55 +1,47 @@
-export const updatePaper = (paper) => {
-    return {
+export const updatePaper = paper =>
+    ({
         type: 'PAPER_UPDATED',
-        payload: paper
-    }
-};
+        payload: paper,
+    });
 
-export const setCorpus = (originalPapers) => {
-    return {
+export const setCorpus = originalPapers =>
+    ({
         type: 'CORPUS_SET',
-        payload: originalPapers
-    }
-};
+        payload: originalPapers,
+    });
 
-export const updateFilter = (updateObject) => {
-    return {
-        type: 'DECISIONFILTER_UPDATED',
-        payload: updateObject
-    }
-};
+export const setDecisionFilter = updateObject =>
+    ({
+        type: 'DECISIONFILTER_SET',
+        payload: updateObject,
+    });
 
-export const updateKeywords = (updateObject) => {
-    return {
-        type: 'KEYWORDS_UPDATED',
-        payload: updateObject
-    }
-};
+export const setHighlightwords = updateObject =>
+    ({
+        type: 'HIGHLIGHTWORDS_SET',
+        payload: updateObject,
+    });
 
-export const updateSearchgroups = (updateObject) => {
-    return {
+export const updateSearchgroups = updateObject =>
+    ({
         type: 'SEARCHGROUPS_UPDATED',
-        payload: updateObject
-    }
-};
+        payload: updateObject,
+    });
 
-export const incrementRow = (updateObject) => {
-    return {
+export const incrementRow = updateObject =>
+    ({
         type: 'INCREMENT_ROW',
-        payload: updateObject
-    }
-};
+        payload: updateObject,
+    });
 
-export const selectRow = (updateObject) => {
-    return {
+export const selectRow = updateObject =>
+    ({
         type: 'ROW_SELECTED',
-        payload: updateObject
-    }
-};
+        payload: updateObject,
+    });
 
-export const addSearchgroups = (newGroup) => {
-    return {
+export const addSearchgroups = newGroup =>
+    ({
         type: 'SEARCHGROUP_ADDED',
-        payload: newGroup
-    }
-};
+        payload: newGroup,
+    });
