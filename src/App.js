@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Grid } from 'react-bootstrap';
 
 import './app/stylesheets/index.css';
@@ -6,17 +6,13 @@ import PaperScreening from './app/components/presentationals/paperScreening/Pape
 import RevNavbar from './app/components/elements/RevNavbar';
 import { Colors } from './app/globals/constants';
 
-class App extends Component {
-  render() {
-    return (
-      <div style={{"backgroundColor": Colors.REVBACKGROUND}}>
+const App = () => (
+    <div style={{ backgroundColor: Colors.REVBACKGROUND }}>
         <RevNavbar />
         <Grid fluid>
-          <PaperScreening />
+            <PaperScreening />
         </Grid>
-      </div>
-    );
-  }
-}
+    </div>
+);
 
 export default App;
