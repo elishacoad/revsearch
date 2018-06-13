@@ -24,6 +24,7 @@ const PaperPanelPresentational = props => (
                 <PaperBody paper={props.paper} />
             </Panel.Body>
         </Panel.Collapse>
-    </Panel>);
+    </Panel>
+);
 
 export default PaperPanelPresentational;
