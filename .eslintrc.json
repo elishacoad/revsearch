@@ -28,5 +28,8 @@
             "error",
             4
         ]
+    },
+    "settings": {
+        "import/resolver": "webpack"
     }
 }
