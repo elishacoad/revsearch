@@ -18,8 +18,8 @@ class AddCorpus extends Component {
    * Set the collection of papers by reading in a string, parsing it
    * and setting the global state corpus to the result.
    */
-    setCorpusToString(inputtext) {
-        let corpus = parseCorpus(inputtext);
+    setCorpusToString(inputText) {
+        let corpus = parseCorpus(inputText);
         // set a unique key for each paper using it's index in the corpus
         corpus = corpus.map((paper, i) => Object.assign(paper, { id: i }));
         this.props.setCorpus(corpus);
