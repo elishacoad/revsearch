@@ -47,10 +47,11 @@ module.exports = {
             Globals: path.resolve(__dirname, 'src/app/globals'),
             Actions: path.resolve(__dirname, 'src/app/redux/actions'),
             Reducers: path.resolve(__dirname, 'src/app/redux/reducers'),
+            Images: path.resolve(__dirname, 'src/images'),
             Style$: path.resolve(__dirname, 'src/app/stylesheets/index.css'),
             Constants$: path.resolve(__dirname, 'src/app/globals/constants.js'),
         },
-        extensions: ['*', '.js', '.jsx'],
+        extensions: ['*', '.js', '.jsx', '.ico'],
     },
 
     // loaders for specific files and file types
@@ -64,14 +65,6 @@ module.exports = {
                     presets: ['react', 'es2015'],
                 },
             },
-            /** svg */
-            {
-                test: /\.svg$/,
-                loader: 'babel!svg-react',
-                query: {
-                    presets: ['es2015', 'react']
-                },
-            },
             {
                 test: /\.html$/,
                 use: {
@@ -82,15 +75,13 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'],
             },
+            // "file" loader makes sure those assets get served by WebpackDevServer.
             {
-                test: /\.(ico|png|svg|jp(e*)g)$/,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        limit: 8000,
-                        name: 'src/images/[name].[ext]',
-                    },
-                }],
+                test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+                loader: 'file-loader',
+                query: {
+                    name: 'images/[name].[ext]',
+                },
             },
         ],
     },
