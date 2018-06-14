@@ -28,6 +28,10 @@ module.exports = {
         hot: true,
     },
 
+    // might be slower than eval-source-map but yields better mapped code
+    // works well with third party tools, if too slow, switch to eval
+    devtool: "inline-source-map",
+
     plugins: [
         // hot module replacement refreshes JS
         new webpack.HotModuleReplacementPlugin(),
