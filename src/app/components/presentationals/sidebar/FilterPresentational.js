@@ -3,7 +3,7 @@
  * search tab and renders the Searchgroups component to make and update
  * new searches.
  */
-import React from 'react'
+import React from 'react';
 import { Glyphicon, Button, Panel } from 'react-bootstrap';
 
 import SearchGroups from 'Containers/sidebar/SearchGroups';
