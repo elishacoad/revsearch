@@ -35,6 +35,12 @@ export const SearchGroupAttributes = Object.freeze({
     LOGIC: 'logic',
 });
 
+export const RevNavbarEventKeys = Object.freeze({
+    TOOLS: {
+        DOWNLOAD: 1,
+    },
+});
+
 export const logicalToDisplayName = {
     [PaperFields.ALL]: 'Any Field',
     [PaperFields.TITLE]: 'Title',
