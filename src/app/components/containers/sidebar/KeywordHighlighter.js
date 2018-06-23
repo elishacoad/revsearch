@@ -39,7 +39,7 @@ class Keywords extends Component {
 
     render() {
         return (
-            <Panel id="accordion-example" style={{ borderColor: 'gray' }}>
+            <Panel defaultExpanded id="accordion-example" style={{ borderColor: 'gray' }}>
                 <Panel.Toggle>
                     <Panel.Heading
                         style={{
