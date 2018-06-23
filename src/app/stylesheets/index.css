@@ -97,9 +97,16 @@ div .panel {
     --dark-exclude-color: #990000;
 }
 
+/* ######## Panels ######## */
+
 .paper-review-col {
     height: 90vh;
+}
+
+.panel-group {
+    height: 100%;
     overflow-y: scroll;
+    padding-right: 5px;
 }
 
 .panel-heading{
@@ -130,4 +137,18 @@ div .panel {
 .decisionbutton:hover {
     border-color: rgb(0, 0, 0);
     box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2), 3px 2px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: rgb(67, 67, 67);
+}
+
+::-webkit-scrollbar-track{
+	background-color: rgb(183, 183, 183);
+	border-radius: 10px;
 }
