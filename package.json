@@ -11,6 +11,7 @@
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "babel-eslint": "^8.2.3",
+    "eslint-plugin-filenames": "^1.3.2",
     "eslint-plugin-flowtype": "^2.49.3",
     "jquery": "^3.1.1",
     "react": "^15.3.2",
@@ -43,7 +45,7 @@
     "webpack": "^4.12.0"
   },
   "scripts": {
-    "start": "npm run build && webpack-dev-server",
+    "start": "webpack-dev-server",
     "build": "webpack",
     "clean": "node_modules/.bin/rimraf public",
     "test": "react-scripts test --env=jsdom",
