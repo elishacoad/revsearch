@@ -48,3 +48,27 @@ export const logicalToDisplayName = {
     [SearchLogic.CONTAINING]: 'Containing',
     [SearchLogic.NOTCONTAINING]: 'Not Containing',
 };
+
+export const ENDNOTE_SECTION_DELIMITERS = {
+    type: '0',
+    author: 'A',
+    volume: 'V',
+    issn: '@',
+    issue: 'N',
+    articletype: '9',
+    publishingdate: 'D',
+    title: 'T',
+    journalname: 'B',
+    alternatetitle: '!',
+    fulltextlink: 'R',
+    accessionnumber: 'M',
+    abstract: 'X',
+    databasename: '~',
+    language: 'g',
+    authoraddress: '+',
+    keywords: 'K',
+    databaseprovider: 'W',
+};
+
+export const PAPER_FIELDS = ['type', 'title', 'author', 'volume', 'issn', 'issue', 'articletype', 'publishingdate', 'journalname', 'alternatetitle', 'fulltextlink', 'accessionnumber', 'abstract', 'databasename', 'language', 'authoraddress', 'keywords', 'databaseprovider'];
+

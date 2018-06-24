@@ -25,7 +25,7 @@ const RevNavbarPresentational = props => (
                     id="basic-nav-dropdown"
                 >
                     <MenuItem eventKey={RevNavbarEventKeys.TOOLS.DOWNLOAD}>
-                        <Glyphicon glyph="download-alt" />{' '}Download All
+                        <Glyphicon glyph="download-alt" />{' '}Download Papers
                     </MenuItem>
                 </NavDropdown>
             </Nav>

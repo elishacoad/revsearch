@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ControlLabel, Checkbox, FormGroup, FormControl } from 'react-bootstrap';
+import { Button, Modal, ControlLabel, Checkbox, FormGroup, FormControl, Radio } from 'react-bootstrap';
 
 
 const DownloadPapersModalPresenational = props => (
@@ -11,26 +11,54 @@ const DownloadPapersModalPresenational = props => (
             <form>
                 <FormControl
                     type="text"
-                    value={props.filenameInput}
                     placeholder="Filename"
-                    onChange={props.handleFilenameChange}
+                    value={props.filenameInput}
+                    // onChange={props.handleFilenameChange}
+                    onKeyPress={props.handleFilenameChange}
                 />
-                <FormGroup onClick={e => console.log(e)}>
-                    <Checkbox onClick={e => console.log(e)}>1</Checkbox>
-                    <Checkbox onChange={e => console.log(e)}>1</Checkbox>
-                </FormGroup>
+                <Checkbox
+                    defaultChecked
+                    onChange={e => props.setDecisionFilter({
+                        ...props.decisionFilter, downloadIncludes: e.target.checked,
+                    })}
+                >
+                    Includes ({props.decisionCounts.includes})
+                </Checkbox>
+                <Checkbox
+                    defaultChecked
+                    onChange={e => props.setDecisionFilter({
+                        ...props.decisionFilter, downloadExcludes: e.target.checked,
+                    })}
+                >
+                    Excludes ({props.decisionCounts.excludes})
+                </Checkbox>
+                <Checkbox
+                    defaultChecked
+                    onChange={e => props.setDecisionFilter({
+                        ...props.decisionFilter, downloadMaybes: e.target.checked,
+                    })}
+                >
+                    Maybes ({props.decisionCounts.maybes})
+                </Checkbox>
+                <Checkbox
+                    defaultChecked
+                    onChange={e => props.setDecisionFilter({
+                        ...props.decisionFilter, downloadUndecided: e.target.checked,
+                    })}
+                >
+                    Undecided ({props.decisionCounts.undecided})
+                </Checkbox>
                 <FormGroup controlId="formControlsSelect">
                     <ControlLabel>Document Format</ControlLabel>
-                    <FormControl
-                        componentClass="select"
-                        placeholder="select"
-                        onChange={e => console.log(e)}
-                    >
-                        <option value="option1">option1</option>
-                        <option value="option2">option2</option>
-                    </FormControl>
+                    <Radio>
+                        Endnote
+                    </Radio>
+                    <Radio>
+                        Other
+                    </Radio>
                 </FormGroup>
             </form>
+            <Button onClick={props.handleDownload}>Download</Button>
         </Modal.Body>
         <Modal.Footer>
             <Button onClick={props.handleModalClose}>Close</Button>
