@@ -30,7 +30,7 @@ module.exports = {
 
     // might be slower than eval-source-map but yields better mapped code
     // works well with third party tools, if too slow, switch to eval
-    devtool: "inline-source-map",
+    devtool: 'inline-source-map',
 
     plugins: [
         // hot module replacement refreshes JS
