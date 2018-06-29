@@ -26,6 +26,7 @@ module.exports = {
     devServer: {
         contentBase: BUILD_DIR,
         hot: true,
+        clientLogLevel: 'none',
         // ignores extra logging
         stats: {
             colors: true,
