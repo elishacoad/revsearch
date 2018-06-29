@@ -48,13 +48,10 @@ const DownloadPapersModalPresenational = props => (
                 >
                     Undecided ({props.decisionCounts.undecided})
                 </Checkbox>
-                <FormGroup controlId="formControlsSelect">
+                <FormGroup controlId="documentFormatSelect">
                     <ControlLabel>Document Format</ControlLabel>
-                    <Radio>
+                    <Radio name="documentFormatSelectGroup" defaultChecked>
                         Endnote
-                    </Radio>
-                    <Radio>
-                        Other
                     </Radio>
                 </FormGroup>
             </form>
