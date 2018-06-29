@@ -13,8 +13,8 @@ const DownloadPapersModalPresenational = props => (
                     type="text"
                     placeholder="Filename"
                     value={props.filenameInput}
-                    // onChange={props.handleFilenameChange}
-                    onKeyPress={props.handleFilenameChange}
+                    onChange={props.handleFilenameChange}
+                    onKeyPress={props.handleFilenameKeypress}
                 />
                 <Checkbox
                     defaultChecked

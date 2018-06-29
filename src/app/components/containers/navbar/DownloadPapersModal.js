@@ -25,7 +25,6 @@ const formatEndnoteCorpus = (papers) => {
 };
 
 const downloadTextFile = (filename, text) => {
-    console.log(filename);
     const element = document.createElement('a');
     element.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`);
     element.setAttribute('download', filename);
@@ -56,7 +55,10 @@ class DownloadPapersModal extends Component {
 
         this.handleFilenameChange = this.handleFilenameChange.bind(this);
         this.handleFilenameChange = this.handleFilenameChange.bind(this);
+        this.setDecisionFilter = this.setDecisionFilter.bind(this);
         this.handleDownload = this.handleDownload.bind(this);
+        this.handleFilenameKeypress = this.handleFilenameKeypress.bind(this);
+
         this.state = {
             filename: '',
             decisionFilter: {
@@ -74,7 +76,10 @@ class DownloadPapersModal extends Component {
 
     handleFilenameChange(e) {
         this.setState({ filename: e.target.value });
-        if (e.charCode === 13) {
+    }
+
+    handleFilenameKeypress(e) {
+        if (e.charCode === 13) { // enter
             e.preventDefault(); // don't refresh the page
             this.handleDownload();
         }
@@ -85,6 +90,8 @@ class DownloadPapersModal extends Component {
             this.state.decisionFilter,
             this.props.papers,
         );
+        console.log(this.state.decisionFilter);
+        console.log(papersEligibleToDownload.length, this.props.papers.length);
         const endnoteText = formatEndnoteCorpus(papersEligibleToDownload);
         downloadTextFile(this.state.filename, endnoteText);
         this.props.handleModalClose();
@@ -96,6 +103,7 @@ class DownloadPapersModal extends Component {
         return (<DownloadPapersModalPresentational
             decisionCounts={counts}
             handleFilenameChange={this.handleFilenameChange}
+            handleFilenameKeypress={this.handleFilenameKeypress}
             handleDownload={this.handleDownload}
             handleModalClose={this.props.handleModalClose}
             showModal={this.props.showModal}
