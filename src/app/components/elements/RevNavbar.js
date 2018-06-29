@@ -4,7 +4,7 @@ import { Navbar } from 'react-bootstrap';
 import { Colors } from 'Constants';
 
 const RevNavbar = () => (
-    <Navbar style={{ backgroundColor: Colors.REVNAVY }}>
+    <Navbar staticTop style={{ backgroundColor: Colors.REVNAVY }}>
         <Navbar.Header>
             <Navbar.Brand>
                 <a href="#home" style={{ color: 'white' }}>reVsearch</a>

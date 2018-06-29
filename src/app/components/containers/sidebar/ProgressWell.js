@@ -11,7 +11,7 @@ const ProgressWell = (props) => {
     const pexcluded = Math.round(percent(counts.excludes, props.papers.length));
 
     return (
-        <Panel style={{ borderColor: 'gray' }}>
+        <Panel defaultExpanded style={{ borderColor: 'gray' }}>
             <Panel.Toggle>
                 <Panel.Heading
                     style={{
