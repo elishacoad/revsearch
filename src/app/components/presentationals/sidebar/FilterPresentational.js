@@ -9,7 +9,7 @@ import React from 'react';
 import SearchGroups from '../../containers/sidebar/SearchGroups';
 
 const FilterPresentational = props => (
-    <Panel id="accordion-example" style={{ borderColor: 'gray' }}>
+    <Panel defaultExpanded id="accordion-example" style={{ borderColor: 'gray' }}>
         <Panel.Toggle>
             <Panel.Heading className="background-revnavy cursor-pointer">
                 <Panel.Title style={{ color: 'white' }}>Search</Panel.Title>
