@@ -14,11 +14,13 @@ const PaperPanelPresentational = props => (
         style={{ borderColor: Colors[`DARK${props.paper.decision.toUpperCase()}`] }}
         key={props.paper.id}
     >
-        <Panel.Heading
-            style={{ backgroundColor: Colors[props.paper.decision.toUpperCase()] }}
-        >
-            <Panel.Title toggle>{props.paper.title}</Panel.Title>
-        </Panel.Heading>
+        <Panel.Toggle>
+            <Panel.Heading
+                style={{ backgroundColor: Colors[props.paper.decision.toUpperCase()] }}
+            >
+                <Panel.Title>{props.paper.title}</Panel.Title>
+            </Panel.Heading>
+        </Panel.Toggle>
         <Panel.Collapse>
             <Panel.Body>
                 <PaperBody paper={props.paper} />
