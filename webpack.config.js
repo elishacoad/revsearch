@@ -44,7 +44,6 @@ module.exports = {
             publicPath: false,
         },
     },
-    
     // might be slower than eval-source-map but yields better mapped code
     // works well with third party tools, if too slow, switch to eval
     devtool: 'inline-source-map',
@@ -118,5 +117,21 @@ module.exports = {
                 },
             },
         ],
+    },
+    stats: {
+        colors: true,
+        hash: false,
+        version: false,
+        timings: false,
+        assets: false,
+        chunks: false,
+        modules: false,
+        reasons: false,
+        children: false,
+        source: false,
+        errors: true,
+        errorDetails: true,
+        warnings: true,
+        publicPath: false,
     },
 };
