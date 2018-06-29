@@ -1,7 +1,7 @@
 {
     "extends": "airbnb",
     "rules": {
-        "import/extensions": 0,
+
         "react/jsx-filename-extension": [
             1,
             {
@@ -31,11 +31,7 @@
         ]
     },
     "settings": {
-        "import/resolver": {
-            "webpack": {
-                "config": "./webpack.config.js"
-            }
-        }
+        "import/resolver": "webpack"
     },
     "plugins": [
         "filenames",

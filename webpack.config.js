@@ -26,8 +26,25 @@ module.exports = {
     devServer: {
         contentBase: BUILD_DIR,
         hot: true,
+        // ignores extra logging
+        stats: {
+            colors: true,
+            hash: false,
+            version: false,
+            timings: false,
+            assets: false,
+            chunks: false,
+            modules: false,
+            reasons: false,
+            children: false,
+            source: false,
+            errors: true,
+            errorDetails: false,
+            warnings: true,
+            publicPath: false,
+        },
     },
-
+    
     // might be slower than eval-source-map but yields better mapped code
     // works well with third party tools, if too slow, switch to eval
     devtool: 'inline-source-map',
@@ -52,7 +69,7 @@ module.exports = {
             Actions: path.resolve(__dirname, 'src/app/redux/actions'),
             Reducers: path.resolve(__dirname, 'src/app/redux/reducers'),
             Images: path.resolve(__dirname, 'src/images'),
-            Style$: path.resolve(__dirname, 'src/app/stylesheets/index.css'),
+            Style: path.resolve(__dirname, 'src/app/stylesheets'),
             Constants$: path.resolve(__dirname, 'src/app/globals/constants.js'),
         },
         extensions: ['*', '.js', '.jsx', '.ico'],
