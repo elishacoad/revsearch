@@ -73,6 +73,10 @@ div .panel {
     }
 }
 
+.nav-dropdown-icon {
+    color: white;
+}
+
 /* ######## PAPERBODY.CSS ######## */
 
 .highlight-match {

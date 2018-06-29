@@ -26,7 +26,7 @@ const LibraryCounts = (props) => {
                     <Checkbox
                         defaultChecked
                         onChange={e => props.setDecisionFilter({
-                            ...props.decisionFilter, showIncludes: e.target.checked,
+                            ...props.decisionFilter, allowIncludes: e.target.checked,
                         })}
                     >
                         Includes ({counts.includes})
@@ -34,7 +34,7 @@ const LibraryCounts = (props) => {
                     <Checkbox
                         defaultChecked
                         onChange={e => props.setDecisionFilter({
-                            ...props.decisionFilter, showExcludes: e.target.checked,
+                            ...props.decisionFilter, allowExcludes: e.target.checked,
                         })}
                     >
                         Excludes ({counts.excludes})
@@ -42,7 +42,7 @@ const LibraryCounts = (props) => {
                     <Checkbox
                         defaultChecked
                         onChange={e => props.setDecisionFilter({
-                            ...props.decisionFilter, showMaybes: e.target.checked,
+                            ...props.decisionFilter, allowMaybes: e.target.checked,
                         })}
                     >
                         Maybes ({counts.maybes})
@@ -50,7 +50,7 @@ const LibraryCounts = (props) => {
                     <Checkbox
                         defaultChecked
                         onChange={e => props.setDecisionFilter({
-                            ...props.decisionFilter, showUndecided: e.target.checked,
+                            ...props.decisionFilter, allowUndecided: e.target.checked,
                         })}
                     >
                         Undecided ({counts.undecided})

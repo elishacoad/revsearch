@@ -91,3 +91,27 @@ export const matchesGroupCriteria = (paper, group) => {
             return [];
     }
 };
+
+/**
+ * Create an anchor DOM element and click it, setting off the action
+ * to download a file to the browser's host computer.
+ */
+export const downloadTextFile = (filename, text) => {
+    const element = document.createElement('a');
+    element.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`);
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+};
+
+/**
+ * Filter out papers that don't match the decision filter criteria.
+ */
+export const decisionFilterPapers = (decisionFilter, allPapers) =>
+    allPapers.filter(paper =>
+        (decisionFilter.allowIncludes && paper.decision === Decision.INCLUDE)
+        || (decisionFilter.allowExcludes && paper.decision === Decision.EXCLUDE)
+        || (decisionFilter.allowMaybes && paper.decision === Decision.MAYBE)
+        || (decisionFilter.allowUndecided && paper.decision === Decision.NONE));

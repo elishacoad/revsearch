@@ -7,9 +7,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PapersPresentational from '../../presentationals/paperScreening/PapersPresentational';
-import { Decision } from '../../../globals/constants';
 import { selectRow } from '../../../redux/actions';
-import { matchesGroupCriteria } from '../../../globals/helpers';
+import { matchesGroupCriteria, decisionFilterPapers } from '../../../globals/helpers';
 
 class Papers extends Component {
     constructor(props, context) {
@@ -35,11 +34,7 @@ class Papers extends Component {
         // filter out papers that don't match the searchgroups criteria
         let papersToShow = allPapers.filter(paper => this.matchesGroupsCriteria(paper));
         // filter out papers that don't match the decision filter criteria
-        papersToShow = papersToShow.filter(paper => (
-            this.props.decisionFilter.showIncludes && paper.decision === Decision.INCLUDE)
-            || (this.props.decisionFilter.showExcludes && paper.decision === Decision.EXCLUDE)
-            || (this.props.decisionFilter.showMaybes && paper.decision === Decision.MAYBE)
-            || (this.props.decisionFilter.showUndecided && paper.decision === Decision.NONE));
+        papersToShow = decisionFilterPapers(this.props.decisionFilter, papersToShow);
         return papersToShow;
     }
 

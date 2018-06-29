@@ -19,7 +19,7 @@ const DownloadPapersModalPresenational = props => (
                 <Checkbox
                     defaultChecked
                     onChange={e => props.setDecisionFilter({
-                        ...props.decisionFilter, downloadIncludes: e.target.checked,
+                        ...props.decisionFilter, allowIncludes: e.target.checked,
                     })}
                 >
                     Includes ({props.decisionCounts.includes})
@@ -27,7 +27,7 @@ const DownloadPapersModalPresenational = props => (
                 <Checkbox
                     defaultChecked
                     onChange={e => props.setDecisionFilter({
-                        ...props.decisionFilter, downloadExcludes: e.target.checked,
+                        ...props.decisionFilter, allowExcludes: e.target.checked,
                     })}
                 >
                     Excludes ({props.decisionCounts.excludes})
@@ -35,7 +35,7 @@ const DownloadPapersModalPresenational = props => (
                 <Checkbox
                     defaultChecked
                     onChange={e => props.setDecisionFilter({
-                        ...props.decisionFilter, downloadMaybes: e.target.checked,
+                        ...props.decisionFilter, allowMaybes: e.target.checked,
                     })}
                 >
                     Maybes ({props.decisionCounts.maybes})
@@ -43,7 +43,7 @@ const DownloadPapersModalPresenational = props => (
                 <Checkbox
                     defaultChecked
                     onChange={e => props.setDecisionFilter({
-                        ...props.decisionFilter, downloadUndecided: e.target.checked,
+                        ...props.decisionFilter, allowUndecided: e.target.checked,
                     })}
                 >
                     Undecided ({props.decisionCounts.undecided})
@@ -58,7 +58,12 @@ const DownloadPapersModalPresenational = props => (
                     </Radio>
                 </FormGroup>
             </form>
-            <Button onClick={props.handleDownload}>Download</Button>
+            <Button
+                onClick={props.handleDownloadButtonClick}
+                disabled={!props.canDownload}
+            >
+                Download
+            </Button>
         </Modal.Body>
         <Modal.Footer>
             <Button onClick={props.handleModalClose}>Close</Button>

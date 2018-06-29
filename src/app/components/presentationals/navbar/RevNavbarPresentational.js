@@ -15,14 +15,18 @@ const RevNavbarPresentational = props => (
                     <a href="#home" style={{ color: 'white' }}>reVsearch</a>
                 </Navbar.Brand>
             </Navbar.Header>
-            <Nav>
+            <Nav pullRight>
                 <NavDropdown
                     title={
                         <div style={{ display: 'inline-block' }}>
-                            <Glyphicon glyph="wrench" /> Tools{' '}
+                            <Glyphicon
+                                glyph="wrench"
+                                className="nav-dropdown-icon"
+                            />
                         </div>
                     }
-                    id="basic-nav-dropdown"
+                    id="nav-dropdown-tools"
+                    noCaret
                 >
                     <MenuItem eventKey={RevNavbarEventKeys.TOOLS.DOWNLOAD}>
                         <Glyphicon glyph="download-alt" />{' '}Download Papers
