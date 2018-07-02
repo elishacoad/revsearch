@@ -24,28 +24,28 @@ const formatEndnoteCorpus = (papers) => {
     return text;
 };
 
+const defaultDownloadFilter = {
+    allowIncludes: true,
+    allowExcludes: true,
+    allowMaybes: true,
+    allowUndecided: true,
+};
+
 class DownloadPapersModal extends Component {
     constructor(props, context) {
         super(props, context);
 
         this.handleFilenameChange = this.handleFilenameChange.bind(this);
-        this.handleFilenameChange = this.handleFilenameChange.bind(this);
         this.setDecisionFilter = this.setDecisionFilter.bind(this);
         this.handleDownload = this.handleDownload.bind(this);
         this.handleFilenameKeypress = this.handleFilenameKeypress.bind(this);
 
-        const defaultDecisionFilter = {
-            allowIncludes: true,
-            allowExcludes: true,
-            allowMaybes: true,
-            allowUndecided: true,
-        };
 
         this.state = {
             filename: '',
-            decisionFilter: defaultDecisionFilter,
+            decisionFilter: defaultDownloadFilter,
             papersEligibleToDownload: decisionFilterPapers(
-                defaultDecisionFilter,
+                defaultDownloadFilter,
                 this.props.papers,
             ),
         };
