@@ -1,6 +1,7 @@
 {
     "extends": "airbnb",
     "rules": {
+
         "react/jsx-filename-extension": [
             1,
             {
@@ -28,5 +29,8 @@
             "error",
             4
         ]
+    },
+    "settings": {
+        "import/resolver": "webpack"
     }
 }

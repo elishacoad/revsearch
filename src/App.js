@@ -1,13 +1,13 @@
 import React from 'react';
 import { Grid } from 'react-bootstrap';
 
-import './app/stylesheets/index.css';
-import PaperScreening from './app/components/presentationals/paperScreening/PaperScreening';
-import RevNavbar from './app/components/elements/RevNavbar';
-import { Colors } from './app/globals/constants';
+import 'Style/index.css';
+import PaperScreening from 'Presentationals/paperScreening/PaperScreening';
+import RevNavbar from 'Elements/RevNavbar';
+import { Colors } from 'Constants';
 
 const App = () => (
-    <div style={{ backgroundColor: Colors.REVBACKGROUND, height: "100vh" }}>
+    <div style={{ backgroundColor: Colors.REVBACKGROUND, height: '100vh' }}>
         <RevNavbar />
         <Grid fluid>
             <PaperScreening />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
 
-import { Colors } from '../../globals/constants';
+import { Colors } from 'Constants';
 
 const RevNavbar = () => (
     <Navbar staticTop style={{ backgroundColor: Colors.REVNAVY }}>

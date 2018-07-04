@@ -5,8 +5,8 @@
 import React from 'react';
 import { ButtonGroup } from 'react-bootstrap';
 
-import { DropdownElement, FormElement, Keywords } from '../elements';
-import { SearchGroupAttributes, SearchLogic, PaperFields, logicalToDisplayName } from '../../globals/constants';
+import { DropdownElement, FormElement, Keywords } from 'Elements';
+import { SearchGroupAttributes, SearchLogic, PaperFields, logicalToDisplayName } from 'Constants';
 
 class SearchGroup extends React.Component {
     constructor() {

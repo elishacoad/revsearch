@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Badge, Panel, ProgressBar } from 'react-bootstrap';
-import { Colors } from '../../../globals/constants';
-import { tallyDecisions, percent } from '../../../globals/helpers';
+
+import { Colors } from 'Constants';
+import { tallyDecisions, percent } from 'Globals/helpers';
 
 const ProgressWell = (props) => {
     const counts = tallyDecisions(props.papers);
@@ -35,7 +36,6 @@ const ProgressWell = (props) => {
         </Panel>
     );
 };
-
 
 function mapStateToProps(state) {
     return {

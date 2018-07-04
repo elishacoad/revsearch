@@ -1,12 +1,12 @@
-import { Button, Glyphicon, Panel } from 'react-bootstrap';
-
 /**
  * Presentational component for filtering papers, has UI elements for the
  * search tab and renders the Searchgroups component to make and update
  * new searches.
  */
 import React from 'react';
-import SearchGroups from '../../containers/sidebar/SearchGroups';
+import { Glyphicon, Button, Panel } from 'react-bootstrap';
+
+import SearchGroups from 'Containers/sidebar/SearchGroups';
 
 const FilterPresentational = props => (
     <Panel defaultExpanded id="accordion-example" style={{ borderColor: 'gray' }}>

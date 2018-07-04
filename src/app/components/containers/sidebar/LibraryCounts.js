@@ -3,9 +3,9 @@ import { Checkbox, Panel } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { setDecisionFilter } from '../../../redux/actions';
-import { Colors } from '../../../globals/constants';
-import { tallyDecisions } from '../../../globals/helpers';
+import { Colors } from 'Constants';
+import { setDecisionFilter } from 'Actions';
+import { tallyDecisions } from 'Globals/helpers';
 
 const LibraryCounts = (props) => {
     const counts = tallyDecisions(props.papers);
