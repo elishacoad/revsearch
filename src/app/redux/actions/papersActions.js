@@ -33,11 +33,6 @@ export function fetchPapers() {
             .then(handleErrors)
             .then(res => res.json())
             .then((res) => {
-                const output = [];
-                for (let i = 0; i < res.length; i += 1) { output.push(res[i].title); }
-                return output;
-            })
-            .then((res) => {
                 dispatch(fetchPapersSuccess(res));
                 return res;
             })

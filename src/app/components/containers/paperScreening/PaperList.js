@@ -23,7 +23,7 @@ class PaperList extends React.Component {
             <div>
                 <ul>
                     {papers.map(paper =>
-                        <li key={uuid.v4()}>{paper}</li>)
+                        <li key={uuid.v4()}>{paper.title}</li>)
                     }
                 </ul>
             </div>
