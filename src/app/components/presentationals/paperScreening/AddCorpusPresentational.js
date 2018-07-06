@@ -1,15 +1,21 @@
+import React from 'react';
 import { Alert, Button, ControlLabel, FormControl, FormGroup, Label } from 'react-bootstrap';
 
-import React from 'react';
 import dummyPapers from '../../../globals/dummyPapers';
 
 const AddCorpusPresentational = props => (
     <div>
-        <Alert style={{ textAlign: 'center' }}>
+        <Alert className="text-center">
             <h4> Looks like you have not uploaded any papers yet! </h4>
             <br />
             <Button bsStyle="info" onClick={() => props.setCorpus(dummyPapers)}>
                 Add Some Dummy Papers
+            </Button>
+            <br />
+            OR
+            <br />
+            <Button bsStyle="info" onClick={props.addFromDatabase}>
+                Add From Database
             </Button>
             <br />
             OR

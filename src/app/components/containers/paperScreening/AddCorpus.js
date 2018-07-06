@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import ReactLoading from 'react-loading';
 
 import AddCorpusPresentational from '../../presentationals/paperScreening/AddCorpusPresentational';
 import parseCorpus from '../../../globals/corpusParser';
 import { setCorpus } from '../../../redux/actions';
+import { fetchPapers } from '../../../redux/actions/papersActions';
+import { Colors } from "../../../globals/constants";
+import BackendErrorModal from "../../elements/BackendErrorModal";
 
 class AddCorpus extends Component {
     constructor(props, context) {
@@ -12,6 +16,8 @@ class AddCorpus extends Component {
 
         this.setCorpusToString = this.setCorpusToString.bind(this);
         this.readFile = this.readFile.bind(this);
+        this.addFromDatabase = this.addFromDatabase.bind(this);
+
     }
 
     /**
@@ -37,20 +43,45 @@ class AddCorpus extends Component {
         };
     }
 
+    addFromDatabase() {
+        this.props.fetchPapers();
+    }
+
     render() {
+        if (this.props.paperRetrievalLoading) {
+            return (<ReactLoading
+                className="center-block"
+                type="bars"
+                color={Colors.REVNAVY}
+            />);
+        }
         return (
-            <AddCorpusPresentational
-                setCorpus={this.setCorpusToString}
-                readFile={this.readFile}
-            />
+            <div>
+                <BackendErrorModal
+                    followUpMessage={"Try one of the other options."}
+                    backendContactError={this.props.paperRetrievalError}
+                />
+                <AddCorpusPresentational
+                    setCorpus={this.setCorpusToString}
+                    readFile={this.readFile}
+                    addFromDatabase={this.addFromDatabase}
+                    paperRetrievalLoading={this.props.paperRetrievalLoading}
+                    paperRetrievalError={this.props.paperRetrievalError}
+                />
+            </div>
         );
     }
 }
 
-const mapStateToProps = null;
+function mapStateToProps(state) {
+    return {
+        paperRetrievalLoading: state.paperstate.loading,
+        paperRetrievalError: state.paperstate.error,
+    };
+}
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({ setCorpus }, dispatch);
+    return bindActionCreators({ setCorpus, fetchPapers }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(AddCorpus);

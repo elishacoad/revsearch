@@ -28,7 +28,7 @@ export default function paperReducer(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                items: action.payload.papers,
+                items: action.payload.items,
             };
 
         case FETCH_PAPERS_FAILURE:

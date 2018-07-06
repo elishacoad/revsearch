@@ -8,9 +8,9 @@ export const fetchPapersBegin = () => ({
     type: FETCH_PAPERS_BEGIN,
 });
 
-export const fetchPapersSuccess = papers => ({
+export const fetchPapersSuccess = items => ({
     type: FETCH_PAPERS_SUCCESS,
-    payload: { papers },
+    payload: { items },
 });
 
 export const fetchPapersError = error => ({
@@ -19,7 +19,7 @@ export const fetchPapersError = error => ({
 });
 
 // Handle HTTP errors since fetch won't.
-function handleErrors(response) {
+function handlefetchErrors(response) {
     if (!response.ok) {
         throw Error(response.statusText);
     }
@@ -30,7 +30,7 @@ export function fetchPapers() {
     return (dispatch) => {
         dispatch(fetchPapersBegin());
         return fetch('http://localhost:3000/api/papers')
-            .then(handleErrors)
+            .then(handlefetchErrors)
             .then(res => res.json())
             .then((res) => {
                 dispatch(fetchPapersSuccess(res));
