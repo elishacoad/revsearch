@@ -32,5 +32,11 @@
     },
     "settings": {
         "import/resolver": "webpack"
+    },
+    "globals": {
+        "fetch": false,
+        "document": false,
+        "window": false,
+        "render": false
     }
 }
