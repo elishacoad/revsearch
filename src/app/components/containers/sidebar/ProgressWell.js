@@ -39,7 +39,7 @@ const ProgressWell = (props) => {
 
 function mapStateToProps(state) {
     return {
-        papers: state.papers,
+        papers: state.paperstate.items,
     };
 }
 

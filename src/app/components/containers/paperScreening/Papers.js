@@ -57,7 +57,7 @@ class Papers extends Component {
 
 function mapStateToProps(state) {
     return {
-        papersItems: state.papers,
+        papersItems: state.paperstate.items,
         activeRowIndex: state.activeRowIndex,
         searchgroups: state.searchgroups,
         decisionFilter: state.decisionFilter,

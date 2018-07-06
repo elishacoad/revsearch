@@ -81,7 +81,7 @@ class Keywords extends Component {
 
 function mapStateToProps(state) {
     return {
-        papers: state.papers,
+        papers: state.paperstate.items,
         highlightWords: state.highlightWords,
     };
 }

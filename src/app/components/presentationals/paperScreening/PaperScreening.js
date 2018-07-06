@@ -5,14 +5,14 @@ import { Col, Row } from 'react-bootstrap';
 import AddCorpus from '../../containers/paperScreening/AddCorpus';
 import Papers from '../../containers/paperScreening/Papers';
 import Sidebar from '../sidebar/Sidebar';
-import Products from '../../containers/paperScreening/Products';
+import PaperList from '../../containers/paperScreening/PaperList';
 
 const PaperScreening = (props) => {
     if (props.papers.length === 0) {
         return (
             <div className="App">
                 <AddCorpus />
-                <Products />
+                <PaperList />
             </div>
         );
     }
@@ -31,7 +31,7 @@ const PaperScreening = (props) => {
 
 function mapStateToProps(state) {
     return {
-        papers: state.papers,
+        papers: state.paperstate.items,
     };
 }
 

@@ -28,5 +28,10 @@
             "error",
             4
         ]
+    },
+    "globals": {
+        "fetch": false,
+        "document": false,
+        "window": false
     }
 }

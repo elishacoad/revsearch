@@ -63,7 +63,7 @@ const LibraryCounts = (props) => {
 
 function mapStateToProps(state) {
     return {
-        papers: state.papers,
+        papers: state.paperstate.items,
         decisionFilter: state.decisionFilter,
     };
 }
