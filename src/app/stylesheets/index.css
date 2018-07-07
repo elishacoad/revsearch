@@ -156,3 +156,11 @@ div .panel {
 	background-color: rgb(183, 183, 183);
 	border-radius: 10px;
 }
+
+.rev-navbar {
+    background-color: #294777 !important;
+}
+
+.color-white {
+    color: white !important;
+}
