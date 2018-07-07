@@ -14,8 +14,8 @@ export const zip = arrays => arrays[0].map((_, i) => arrays.map(array => array[i
  * - displayValue: the word to show in the button
 */
 export const buildOptionObjects = () => {
-    const decisionValues = [Decision.INCLUDE, Decision.EXCLUDE, Decision.MAYBE, Decision.NONE];
-    const colors = [Colors.INCLUDE, Colors.EXCLUDE, Colors.MAYBE, Colors.NONE];
+    const decisionValues = [Decision.INCLUDE, Decision.EXCLUDE, Decision.MAYBE, Decision.UNKNOWN];
+    const colors = [Colors.INCLUDE, Colors.EXCLUDE, Colors.MAYBE, Colors.UNKNOWN];
     const displayValues = ['Include', 'Exclude', 'Maybe', 'Undecided'];
     return zip([colors, decisionValues, displayValues])
         .map(option => (
@@ -45,7 +45,7 @@ export const tallyDecisions = (papers) => {
             case Decision.MAYBE:
                 maybes += 1;
                 break;
-            case Decision.NONE:
+            case Decision.UNKNOWN:
                 break;
             default:
                 break;

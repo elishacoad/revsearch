@@ -1,5 +1,5 @@
 export const Decision = Object.freeze({
-    NONE: 'none',
+    UNKNOWN: 'unknown',
     INCLUDE: 'include',
     MAYBE: 'maybe',
     EXCLUDE: 'exclude',
@@ -9,8 +9,8 @@ export const Colors = Object.freeze({
     INCLUDE: '#83ddb2',
     DARKINCLUDE: '#00994d',
     MAYBE: '#cde9ff',
-    NONE: 'lightgray',
-    DARKNONE: 'gray',
+    UNKNOWN: 'lightgray',
+    DARKUNKNOWN: 'gray',
     DARKMAYBE: '#004d99',
     EXCLUDE: '#eeab9e',
     DARKEXCLUDE: '#990000',

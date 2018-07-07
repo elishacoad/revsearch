@@ -39,7 +39,7 @@ class Papers extends Component {
             this.props.decisionFilter.showIncludes && paper.decision === Decision.INCLUDE)
             || (this.props.decisionFilter.showExcludes && paper.decision === Decision.EXCLUDE)
             || (this.props.decisionFilter.showMaybes && paper.decision === Decision.MAYBE)
-            || (this.props.decisionFilter.showUndecided && paper.decision === Decision.NONE));
+            || (this.props.decisionFilter.showUndecided && paper.decision === Decision.UNKNOWN));
         return papersToShow;
     }
 

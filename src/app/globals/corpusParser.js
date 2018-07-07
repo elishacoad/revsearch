@@ -5,6 +5,7 @@ The beginning of a new section in a paper starts with one of the deliminators sh
 and each section ends with a newline character (using \n).
 */
 
+import uuid from 'uuid';
 import { Decision } from './constants';
 
 const SECTION_DELIMITERS = {
@@ -57,7 +58,9 @@ const parsePaper = (papertext) => {
             }
         });
     }
-    paper.decision = Decision.NONE;
+    paper.decision = Decision.UNKNOWN;
+    // set a unique key for each paper using it's index in the corpus
+    paper.id = uuid.v4();
     return paper;
 };
 

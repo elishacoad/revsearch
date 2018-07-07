@@ -23,7 +23,7 @@ class BackendErrorModal extends Component {
                     <p>
                         We can not seem to contact the backend :(
                         <br />
-                        {this.props.followUpMessage}
+                        {this.props.children}
                     </p>
                 </Modal.Body>
                 <Modal.Footer>

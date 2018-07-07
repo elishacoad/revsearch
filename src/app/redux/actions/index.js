@@ -1,15 +1,3 @@
-export const updatePaper = paper =>
-    ({
-        type: 'PAPER_UPDATED',
-        payload: paper,
-    });
-
-export const setCorpus = originalPapers =>
-    ({
-        type: 'CORPUS_SET',
-        payload: originalPapers,
-    });
-
 export const setDecisionFilter = updateObject =>
     ({
         type: 'DECISIONFILTER_SET',

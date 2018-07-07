@@ -5,8 +5,7 @@ import ReactLoading from 'react-loading';
 
 import AddCorpusPresentational from '../../presentationals/paperScreening/AddCorpusPresentational';
 import parseCorpus from '../../../globals/corpusParser';
-import { setCorpus } from '../../../redux/actions';
-import { fetchPapers } from '../../../redux/actions/papersActions';
+import { fetchPapers, fetchPapersSuccess } from '../../../redux/actions/papersActions';
 import { Colors } from "../../../globals/constants";
 import BackendErrorModal from "../../elements/BackendErrorModal";
 
@@ -25,10 +24,8 @@ class AddCorpus extends Component {
    * and setting the global state corpus to the result.
    */
     setCorpusToString(inputText) {
-        let corpus = parseCorpus(inputText);
-        // set a unique key for each paper using it's index in the corpus
-        corpus = corpus.map((paper, i) => Object.assign(paper, { id: i }));
-        this.props.setCorpus(corpus);
+        const corpus = parseCorpus(inputText);
+        this.props.fetchPapersSuccess(corpus);
     }
 
     readFile(e) {
@@ -58,9 +55,10 @@ class AddCorpus extends Component {
         return (
             <div>
                 <BackendErrorModal
-                    followUpMessage={"Try one of the other options."}
                     backendContactError={this.props.paperRetrievalError}
-                />
+                >
+                    Try one of the other options.
+                </ BackendErrorModal>
                 <AddCorpusPresentational
                     setCorpus={this.setCorpusToString}
                     readFile={this.readFile}
@@ -81,7 +79,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({ setCorpus, fetchPapers }, dispatch);
+    return bindActionCreators({ fetchPapersSuccess, fetchPapers }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(AddCorpus);
