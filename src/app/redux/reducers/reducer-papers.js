@@ -1,3 +1,4 @@
+import { replaceWhere } from '../../globals/helpers';
 import {
     FETCH_PAPERS_BEGIN,
     FETCH_PAPERS_SUCCESS,
@@ -45,8 +46,10 @@ export default function paperReducer(state = initialState, action) {
         case PAPER_UPDATE:
             // replace the paper in the list of papers where the
             // paper.id passed matches the paper.id in the list
-            return state.items.map(paper =>
-                (paper.id === action.payload.id ? action.payload : paper));
+            return {
+                ...state,
+                items: replaceWhere(state.items, 'id', action.payload.paper.id, action.payload.paper),
+            };
 
         default:
             // ALWAYS have a default case in a reducer

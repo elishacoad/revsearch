@@ -91,3 +91,16 @@ export const matchesGroupCriteria = (paper, group) => {
             return [];
     }
 };
+
+export const replaceWhere = (array, prop, match, replacement) =>
+    /**
+     * Returns a new array with the replaced objects
+     * @param {Object} array - the iterable of obejcts to find
+     * a replacement in (objects should contain prop)
+     * @param prop - the property of the object which will be
+     * used to compare to 'match' for replacement
+     * @param match - the value which each prop will be compared
+     * against to determine if should replace
+     * @param replacement - the object to replace for when a match is found
+     */
+    array.map(item => (item[prop] === match ? replacement : item));

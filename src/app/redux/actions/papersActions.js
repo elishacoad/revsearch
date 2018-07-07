@@ -18,6 +18,11 @@ export const fetchPapersError = error => ({
     payload: { error },
 });
 
+export const updatePaper = paper => ({
+    type: PAPER_UPDATE,
+    payload: { paper },
+});
+
 // Handle HTTP errors since fetch won't.
 function handlefetchErrors(response) {
     if (!response.ok) {
@@ -25,6 +30,7 @@ function handlefetchErrors(response) {
     }
     return response;
 }
+
 
 export function fetchPapers() {
     return (dispatch) => {

@@ -6,8 +6,8 @@ import ReactLoading from 'react-loading';
 import AddCorpusPresentational from '../../presentationals/paperScreening/AddCorpusPresentational';
 import parseCorpus from '../../../globals/corpusParser';
 import { fetchPapers, fetchPapersSuccess } from '../../../redux/actions/papersActions';
-import { Colors } from "../../../globals/constants";
-import BackendErrorModal from "../../elements/BackendErrorModal";
+import { Colors } from '../../../globals/constants';
+import BackendErrorModal from '../../elements/BackendErrorModal';
 
 class AddCorpus extends Component {
     constructor(props, context) {
@@ -16,7 +16,6 @@ class AddCorpus extends Component {
         this.setCorpusToString = this.setCorpusToString.bind(this);
         this.readFile = this.readFile.bind(this);
         this.addFromDatabase = this.addFromDatabase.bind(this);
-
     }
 
     /**
@@ -58,7 +57,7 @@ class AddCorpus extends Component {
                     backendContactError={this.props.paperRetrievalError}
                 >
                     Try one of the other options.
-                </ BackendErrorModal>
+                </BackendErrorModal>
                 <AddCorpusPresentational
                     setCorpus={this.setCorpusToString}
                     readFile={this.readFile}

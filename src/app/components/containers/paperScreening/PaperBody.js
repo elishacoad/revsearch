@@ -7,7 +7,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import PaperBodyPresentational from '../../presentationals/paperScreening/PaperBodyPresentational';
-import { incrementRow, updatePaper } from '../../../redux/actions';
+import { incrementRow } from '../../../redux/actions';
+import { updatePaper } from '../../../redux/actions/papersActions';
 import { buildOptionObjects } from '../../../globals/helpers';
 
 class PaperBody extends Component {

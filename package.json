@@ -27,6 +27,7 @@
     "react-redux": "^4.4.5",
     "react-table": "^6.7.5",
     "redux": "^3.5.2",
+    "redux-apimap": "^0.1.1",
     "redux-logger": "^2.6.1",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.3.0",
