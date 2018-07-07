@@ -61,6 +61,7 @@ class DownloadPapersModal extends Component {
                     this.state.decisionFilter,
                     nextProps.papers,
                 ),
+                counts: tallyDecisions(this.props.papers),
             });
         }
     }
@@ -94,14 +95,7 @@ class DownloadPapersModal extends Component {
         this.props.handleModalClose();
     }
 
-    componentWillReceiveProps(newProps) {
-        if (newProps.papers !== this.state.papers) {
-            this.setState({counts: tallyDecisions(this.props.papers)});
-        }
-    }
-
     render() {
-
         return (<DownloadPapersModalPresentational
             decisionCounts={this.state.counts}
             handleFilenameChange={this.handleFilenameChange}
