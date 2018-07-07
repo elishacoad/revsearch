@@ -6,9 +6,10 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PapersPresentational from '../../presentationals/paperScreening/PapersPresentational';
-import { selectRow } from '../../../redux/actions';
-import { matchesGroupCriteria, decisionFilterPapers } from '../../../globals/helpers';
+
+import PapersPresentational from 'Presentationals/paperScreening/PapersPresentational';
+import { selectRow } from 'Actions';
+import { matchesGroupCriteria } from 'Globals/helpers';
 
 class Papers extends Component {
     constructor(props, context) {

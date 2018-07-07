@@ -8,9 +8,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 
-import FilterPresentational from '../../presentationals/sidebar/FilterPresentational';
-import { PaperFields, SearchLogic } from '../../../globals/constants';
-import { addSearchgroups, updateSearchgroups } from '../../../redux/actions';
+import FilterPresentational from 'Presentationals/sidebar/FilterPresentational';
+import { PaperFields, SearchLogic } from 'Constants';
+import { addSearchgroups, updateSearchgroups } from 'Actions';
 
 /**
  * Create the list of the terms for every object in the search group list.

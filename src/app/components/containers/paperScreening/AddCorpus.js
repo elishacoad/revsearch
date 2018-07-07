@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import AddCorpusPresentational from '../../presentationals/paperScreening/AddCorpusPresentational';
-import parseCorpus from '../../../globals/corpusParser';
-import { setCorpus } from '../../../redux/actions';
+import AddCorpusPresentational from 'Presentationals/paperScreening/AddCorpusPresentational';
+import parseCorpus from 'Globals/corpusParser';
+import { setCorpus } from 'Actions';
 
 class AddCorpus extends Component {
     constructor(props, context) {

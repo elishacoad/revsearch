@@ -1,8 +1,8 @@
 import React from 'react';
 import { Panel } from 'react-bootstrap';
 
-import { Colors } from '../../../globals/constants';
-import PaperBody from '../../containers/paperScreening/PaperBody';
+import PaperBody from 'Containers/paperScreening/PaperBody';
+import { Colors } from 'Constants';
 
 /** A paper panel is the clickable banner that opens the paper body.
  * The color of the panel is decided by what the decision for the paper is.

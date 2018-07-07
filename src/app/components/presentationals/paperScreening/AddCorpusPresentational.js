@@ -1,7 +1,7 @@
+import React from 'react';
 import { Alert, Button, ControlLabel, FormControl, FormGroup, Label } from 'react-bootstrap';
 
-import React from 'react';
-import dummyPapers from '../../../globals/dummyPapers';
+import dummyPapers from 'Globals/dummyPapers';
 
 const AddCorpusPresentational = props => (
     <div>

@@ -6,7 +6,7 @@ import React from 'react';
 import { Glyphicon } from 'react-bootstrap';
 import uuid from 'uuid';
 
-import { SearchLogic } from '../../globals/constants';
+import { SearchLogic } from 'Constants';
 
 // logic modifies the color it displays, updates everytime props changes
 const chooseColor = logicField => (logicField === SearchLogic.CONTAINING ? 'green' : 'red');

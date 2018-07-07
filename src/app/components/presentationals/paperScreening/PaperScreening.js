@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Col, Row } from 'react-bootstrap';
 
-import AddCorpus from '../../containers/paperScreening/AddCorpus';
-import Papers from '../../containers/paperScreening/Papers';
+import AddCorpus from 'Containers/paperScreening/AddCorpus';
+import Papers from 'Containers/paperScreening/Papers';
 import Sidebar from '../sidebar/Sidebar';
 
 const PaperScreening = (props) => {

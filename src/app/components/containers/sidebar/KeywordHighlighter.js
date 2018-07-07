@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 
-import { Colors } from '../../../globals/constants';
-import { setHighlightwords } from '../../../redux/actions';
+import { Colors } from 'Constants';
+import { setHighlightwords } from 'Actions';
 
 class Keywords extends Component {
     constructor(props, context) {
