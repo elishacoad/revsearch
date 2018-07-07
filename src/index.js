@@ -32,7 +32,8 @@ ReactDOM.render(
 // Webpack Hot Module Replacement API
 if (module.hot) {
     module.hot.accept('./App', () => {
-        render(<Root />,
+        render(
+            <Root />,
             document.getElementById('root'),
         );
     });

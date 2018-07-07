@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 import PapersPresentational from 'Presentationals/paperScreening/PapersPresentational';
 import { selectRow } from 'Actions';
-import { matchesGroupCriteria } from 'Globals/helpers';
+import { matchesGroupCriteria, decisionFilterPapers } from 'Globals/helpers';
 
 class Papers extends Component {
     constructor(props, context) {
