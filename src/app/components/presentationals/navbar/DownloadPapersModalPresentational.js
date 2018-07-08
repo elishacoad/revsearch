@@ -12,7 +12,7 @@ const DownloadPapersModalPresentional = props => (
                 <InputGroup>
                     <FormControl
                         type="text"
-                        placeholder="download"
+                        placeholder={props.formFilenamePlaceholder}
                         value={props.filenameInput}
                         onChange={props.handleFilenameChange}
                         onKeyPress={props.handleFilenameKeypress}

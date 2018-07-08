@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DownloadPapersModalPresentational from '../../presentationals/navbar/DownloadPapersModalPresentational';
 
-import { ENDNOTE_SECTION_DELIMITERS, PAPER_FIELDS } from '../../../globals/constants';
+import { ENDNOTE_SECTION_DELIMITERS, PAPER_FIELDS, DEFAULT_DOWNLOAD_FILENAME } from '../../../globals/constants';
 import { tallyDecisions, downloadTextFile, decisionFilterPapers } from '../../../globals/helpers';
 
 /**
@@ -40,9 +40,8 @@ class DownloadPapersModal extends Component {
         this.handleDownload = this.handleDownload.bind(this);
         this.handleFilenameKeypress = this.handleFilenameKeypress.bind(this);
 
-
         this.state = {
-            filename: '',
+            filename: DEFAULT_DOWNLOAD_FILENAME,
             decisionFilter: defaultDownloadFilter,
             papersEligibleToDownload: decisionFilterPapers(
                 defaultDownloadFilter,
@@ -93,6 +92,7 @@ class DownloadPapersModal extends Component {
         const endnoteText = formatEndnoteCorpus(this.state.papersEligibleToDownload);
         downloadTextFile(this.state.filename, endnoteText);
         this.props.handleModalClose();
+        this.setState({ filename: DEFAULT_DOWNLOAD_FILENAME });
     }
 
     render() {
@@ -106,6 +106,7 @@ class DownloadPapersModal extends Component {
             setDecisionFilter={this.setDecisionFilter}
             decisionFilter={this.state.decisionFilter}
             canDownload={!!this.state.papersEligibleToDownload.length}
+            formFilenamePlaceholder={DEFAULT_DOWNLOAD_FILENAME}
         />);
     }
 }

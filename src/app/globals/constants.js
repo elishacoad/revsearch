@@ -72,3 +72,4 @@ export const ENDNOTE_SECTION_DELIMITERS = {
 
 export const PAPER_FIELDS = ['type', 'title', 'author', 'volume', 'issn', 'issue', 'articletype', 'publishingdate', 'journalname', 'alternatetitle', 'fulltextlink', 'accessionnumber', 'abstract', 'databasename', 'language', 'authoraddress', 'keywords', 'databaseprovider'];
 
+export const DEFAULT_DOWNLOAD_FILENAME = Object.freeze('revsearch_papers');
