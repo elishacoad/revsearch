@@ -11,7 +11,6 @@ const store = createStore(
     allReducers,
     compose(
         applyMiddleware(thunk),
-        // eslint-disable-next-line no-underscore-dangle
         window.devToolsExtension ? window.devToolsExtension() : f => f,
     ),
 
