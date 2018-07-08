@@ -39,6 +39,7 @@ class DownloadPapersModal extends Component {
         this.setDecisionFilter = this.setDecisionFilter.bind(this);
         this.handleDownload = this.handleDownload.bind(this);
         this.handleFilenameKeypress = this.handleFilenameKeypress.bind(this);
+        this.handleInternalModalClose = this.handleInternalModalClose.bind(this);
 
         this.state = {
             filename: DEFAULT_DOWNLOAD_FILENAME,
@@ -91,8 +92,20 @@ class DownloadPapersModal extends Component {
         if (!this.state.papersEligibleToDownload.length) return;
         const endnoteText = formatEndnoteCorpus(this.state.papersEligibleToDownload);
         downloadTextFile(this.state.filename, endnoteText);
+        this.handleInternalModalClose();
+    }
+
+    handleInternalModalClose() {
+        // reset values
+        this.setState({
+            filename: DEFAULT_DOWNLOAD_FILENAME,
+            papersEligibleToDownload: decisionFilterPapers(
+                defaultDownloadFilter,
+                this.props.papers,
+            ),
+        });
+        // handle close modal
         this.props.handleModalClose();
-        this.setState({ filename: DEFAULT_DOWNLOAD_FILENAME });
     }
 
     render() {
@@ -101,7 +114,7 @@ class DownloadPapersModal extends Component {
             handleFilenameChange={this.handleFilenameChange}
             handleFilenameKeypress={this.handleFilenameKeypress}
             handleDownloadButtonClick={this.handleDownload}
-            handleModalClose={this.props.handleModalClose}
+            handleModalClose={this.handleInternalModalClose}
             showModal={this.props.showModal}
             setDecisionFilter={this.setDecisionFilter}
             decisionFilter={this.state.decisionFilter}
