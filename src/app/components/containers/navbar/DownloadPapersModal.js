@@ -60,7 +60,7 @@ class DownloadPapersModal extends Component {
                     this.state.decisionFilter,
                     nextProps.papers,
                 ),
-                counts: tallyDecisions(this.props.papers),
+                counts: tallyDecisions(nextProps.papers),
             });
         }
     }
