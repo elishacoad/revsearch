@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-
-import App from './App';
+import { createApi, ApiProvider } from 'redux-apimap';
+// import App from './App';
 import allReducers from './app/redux/reducers';
+import users from './app/globals/users';
+import UsersList from './app/components/containers/UsersList';
 
 const store = createStore(
     allReducers,
@@ -17,9 +19,18 @@ const store = createStore(
 
 );
 
+const api = createApi(
+    store,
+    { users },
+    { json: true, baseUrl: 'https://jsonplaceholder.typicode.com' },
+);
+
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <ApiProvider api={api}>
+            {/* <App /> */}
+            <UsersList />
+        </ApiProvider>
     </Provider>,
     document.getElementById('root'),
 );
