@@ -13,7 +13,6 @@ const store = createStore(
         applyMiddleware(thunk),
         window.devToolsExtension ? window.devToolsExtension() : f => f,
     ),
-
 );
 
 ReactDOM.render(
