@@ -215,7 +215,6 @@ div .panel {
 .rev-checkbox-button.gray.disabled,
 .rev-checkbox-button.default.disabled{
     background: #a4a6a9;
-    text-decoration: line-through;
 }
 
 .container-grid{

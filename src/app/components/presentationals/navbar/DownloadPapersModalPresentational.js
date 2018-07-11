@@ -14,7 +14,7 @@ const DownloadPapersModalPresentional = props => (
 
                 <div className="container-grid">
                     <CheckboxButton
-                        label="Include"
+                        label="Included"
                         color="green"
                         count={props.decisionCounts.includes}
                         checked={props.decisionFilter.allowIncludes}
@@ -25,7 +25,7 @@ const DownloadPapersModalPresentional = props => (
                     />
 
                     <CheckboxButton
-                        label="Exclude"
+                        label="Excluded"
                         color="red"
                         count={props.decisionCounts.excludes}
                         checked={props.decisionFilter.allowExcludes}

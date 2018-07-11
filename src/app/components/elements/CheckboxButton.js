@@ -54,7 +54,7 @@ class CheckboxButton extends React.Component {
                 onFocus={() => { this.handleCheckboxFocus(); }}
                 onBlur={() => { this.handleCheckboxUnfocus(); }}
             >
-                {`${this.props.label} (${this.props.count})`}
+                {`${this.state.checked ? '\u2713' : ''}  ${this.props.label} (${this.props.count})`}
             </button>
         );
     }
