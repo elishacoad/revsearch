@@ -1,8 +1,4 @@
 
-/**
- * Search group UI element displays the search group defined by a user
- * controls the input value whenever a user finishes typing an element.
- */
 import React from 'react';
 
 class CheckboxButton extends React.Component {

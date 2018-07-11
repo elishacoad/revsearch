@@ -1,7 +1,3 @@
-.panel-heading{
-    cursor: pointer !important;
-}
-
 .panel-group {
     height: 100%;
     overflow-y: scroll;
@@ -18,15 +14,50 @@
         a {
             text-decoration: none !important;
         }
-    
-        .panel-title{
-            color: black !important;
-            /* Settings add Ellipses */
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-        
+
+        .paper-panel-header{
+            border: 0;
+            border-radius: 2px;
+            padding: 10px 15px;
+            cursor: pointer !important;
+            display: block;
+            background: lightgray;
+            -webkit-filter: brightness(100%);
+
+            .title{
+                color: black !important;
+                /* Settings add Ellipses */
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                margin-top: 0;
+                margin-bottom: 0;
+                font-size: 14px;
+            }
+
+            &.default,
+            &.blue{
+                background: $light-blue;
+            }
+            &.green{
+                background: $light-green   
+            }
+            &.red{
+                background: $light-red 
+            }
+            &.gray{
+                background:$light-gray
+            }
+
+            &:hover{
+                -webkit-filter: brightness(85%);
+                -webkit-transition: all 0.1s ease;
+                -moz-transition: all 0.1s ease;
+                -o-transition: all 0.1s ease;
+                -ms-transition: all 0.1s ease;
+                transition: all 0.1s ease;
+            }
+        }    
     }
 
     .full-title {

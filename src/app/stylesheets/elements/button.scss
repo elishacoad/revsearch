@@ -1,3 +1,4 @@
+@import 'colors';
 
 .rev-button{
     border: none;
@@ -41,17 +42,18 @@
     &.enabled{
         background: #a4a6a9;
 
-        &.default{
-            background: rgb(82, 174, 213);
+        &.default,
+        &.blue{
+            background: $blue;
         }
         &.green{
-            background: rgb(40, 180, 124);   
+            background: $green   
         }
         &.red{
-            background: rgba(220, 73, 58, 1); 
+            background: $red 
         }
         &.gray{
-            background: #5f5f5f;
+            background:$gray
         }
     }
 }

@@ -9,7 +9,6 @@ export const Colors = Object.freeze({
     INCLUDE: 'green',
     MAYBE: 'default',
     NONE: 'gray',
-    LIGHTGRAY: 'lightgray',
     EXCLUDE: 'red',
     REVNAVY: '#294777',
     REVBACKGROUND: '#f0f0f0',
