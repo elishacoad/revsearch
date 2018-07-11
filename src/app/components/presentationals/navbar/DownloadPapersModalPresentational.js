@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Modal, ControlLabel, Checkbox, FormGroup, FormControl, Radio, InputGroup, Well, Label } from 'react-bootstrap';
+import { Button, Modal, ControlLabel, FormGroup, FormControl, Radio, InputGroup } from 'react-bootstrap';
+import CheckboxButton from '../../elements/CheckboxButton';
 
 
 const DownloadPapersModalPresentional = props => (
@@ -9,61 +10,79 @@ const DownloadPapersModalPresentional = props => (
         </Modal.Header>
         <Modal.Body>
             <form>
-                <Checkbox
-                    defaultChecked
-                    onChange={e => props.setDecisionFilter({
-                        ...props.decisionFilter, allowIncludes: e.target.checked,
-                    })}
-                >
-                    Includes ({props.decisionCounts.includes})
-                </Checkbox>
-                <Checkbox
-                    defaultChecked
-                    onChange={e => props.setDecisionFilter({
-                        ...props.decisionFilter, allowExcludes: e.target.checked,
-                    })}
-                >
-                    Excludes ({props.decisionCounts.excludes})
-                </Checkbox>
-                <Checkbox
-                    defaultChecked
-                    onChange={e => props.setDecisionFilter({
-                        ...props.decisionFilter, allowMaybes: e.target.checked,
-                    })}
-                >
-                    Maybes ({props.decisionCounts.maybes})
-                </Checkbox>
-                <Checkbox
-                    defaultChecked
-                    onChange={e => props.setDecisionFilter({
-                        ...props.decisionFilter, allowUndecided: e.target.checked,
-                    })}
-                >
-                    Undecided ({props.decisionCounts.undecided})
-                </Checkbox>
+                <ControlLabel>Download papers marked as</ControlLabel>
+
+                <div className="container-grid">
+                    <CheckboxButton
+                        label="Include"
+                        color="green"
+                        count={props.decisionCounts.includes}
+                        checked={props.decisionFilter.allowIncludes}
+                        handleChange={checked => props.setDecisionFilter({
+                            ...props.decisionFilter, allowIncludes: checked,
+                        })}
+                        lg
+                    />
+
+                    <CheckboxButton
+                        label="Exclude"
+                        color="red"
+                        count={props.decisionCounts.excludes}
+                        checked={props.decisionFilter.allowExcludes}
+                        handleChange={checked => props.setDecisionFilter({
+                            ...props.decisionFilter, allowExcludes: checked,
+                        })}
+                        lg
+                    />
+
+                    <CheckboxButton
+                        label="Maybe"
+                        count={props.decisionCounts.maybes}
+                        checked={props.decisionFilter.allowMaybes}
+                        handleChange={checked => props.setDecisionFilter({
+                            ...props.decisionFilter, allowMaybes: checked,
+                        })}
+                        lg
+                    />
+                    <CheckboxButton
+                        label="Undecided"
+                        color="gray"
+                        count={props.decisionCounts.undecided}
+                        checked={props.decisionFilter.allowUndecided}
+                        handleChange={checked => props.setDecisionFilter({
+                            ...props.decisionFilter, allowUndecided: checked,
+                        })}
+                        lg
+                    />
+                </div>
+
+                <ControlLabel>Document Format</ControlLabel>
                 <FormGroup controlId="documentFormatSelect">
-                    <ControlLabel>Document Format</ControlLabel>
                     <Radio name="documentFormatSelectGroup" defaultChecked>
                         Endnote
                     </Radio>
                 </FormGroup>
+
                 <ControlLabel>File Name</ControlLabel>
-                <InputGroup>
-                    <FormControl
-                        type="text"
-                        placeholder={props.formFilenamePlaceholder}
-                        value={props.filenameInput}
-                        onChange={props.handleFilenameChange}
-                        onKeyPress={props.handleFilenameKeypress}
-                    />
-                    <InputGroup.Addon>.txt</InputGroup.Addon>
-                </InputGroup>
+                <div className="container-grid">
+                    <InputGroup>
+                        <FormControl
+                            type="text"
+                            placeholder={props.formFilenamePlaceholder}
+                            value={props.filenameInput}
+                            onChange={props.handleFilenameChange}
+                            onKeyPress={props.handleFilenameKeypress}
+                        />
+                        <InputGroup.Addon>.txt</InputGroup.Addon>
+                    </InputGroup>
+                </div>
 
             </form>
         </Modal.Body>
         <Modal.Footer>
             <Button onClick={props.handleModalClose}>Cancel</Button>
             <Button
+                bsStyle="primary"
                 onClick={props.handleDownloadButtonClick}
                 disabled={!props.canDownload}
             >

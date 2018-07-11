@@ -26,9 +26,9 @@ const formatEndnoteCorpus = (papers) => {
 
 const defaultDownloadFilter = {
     allowIncludes: true,
-    allowExcludes: true,
-    allowMaybes: true,
-    allowUndecided: true,
+    allowExcludes: false,
+    allowMaybes: false,
+    allowUndecided: false,
 };
 
 class DownloadPapersModal extends Component {
@@ -99,6 +99,7 @@ class DownloadPapersModal extends Component {
         // reset values
         this.setState({
             filename: DEFAULT_DOWNLOAD_FILENAME,
+            decisionFilter: defaultDownloadFilter,
             papersEligibleToDownload: decisionFilterPapers(
                 defaultDownloadFilter,
                 this.props.papers,
