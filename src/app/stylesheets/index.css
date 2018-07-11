@@ -222,6 +222,6 @@ div .panel {
     display: flex;
     flex-direction: row;
     flex-flow: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 10px;
 }
