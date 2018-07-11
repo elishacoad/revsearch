@@ -4,7 +4,7 @@ import Button from './Button';
 
 const DecisionButtonGroup = props =>
     (
-        <div>
+        <div className="decision-buttons">
             {props.options.map(option => (
                 <Button
                     key={uuid.v1()}

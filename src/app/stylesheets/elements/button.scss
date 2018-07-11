@@ -12,7 +12,9 @@
     padding: 0.8rem 0.8rem;
     font-size: 12px;
     margin: 2px;
-    min-width: 110px;
+    max-width: 130px;
+    min-width: 90px;
+    width: -webkit-fill-available;
     -webkit-filter: brightness(100%);
 
     &.checkbox-button{
@@ -32,6 +34,7 @@
     }
 
     &.lg{
+        min-width: 250px;
         width: 250px;
         font-size: 1em;
     }
@@ -61,4 +64,10 @@
             border-color: $gray;
         }
     }
+}
+
+.decision-buttons{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
