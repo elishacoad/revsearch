@@ -12,7 +12,7 @@
     padding: 0.8rem 0.8rem;
     font-size: 12px;
     margin: 2px;
-    min-width: 90px;
+    min-width: 110px;
     -webkit-filter: brightness(100%);
 
     &.checkbox-button{
@@ -20,7 +20,7 @@
         margin: 5px;
     }
 
-    &.focusOn,
+    &.focus-on,
     &:hover{
         -webkit-filter: brightness(70%);
         -webkit-transition: all 0.5s ease;
@@ -28,6 +28,7 @@
         -o-transition: all 0.5s ease;
         -ms-transition: all 0.5s ease;
         transition: all 0.5s ease;
+        box-shadow: 0 0 5px grey;
     }
 
     &.lg{
@@ -45,15 +46,19 @@
         &.default,
         &.blue{
             background: $blue;
+            border-color: $blue;
         }
         &.green{
-            background: $green   
+            background: $green;
+            border-color: $green;
         }
         &.red{
-            background: $red 
+            background: $red;
+            border-color: $red;
         }
         &.gray{
-            background:$gray
+            background:$gray;
+            border-color: $gray;
         }
     }
 }

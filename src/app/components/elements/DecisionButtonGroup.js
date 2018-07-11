@@ -1,17 +1,17 @@
 import React from 'react';
 import uuid from 'uuid';
+import Button from './Button';
 
 const DecisionButtonGroup = props =>
     (
         <div>
             {props.options.map(option => (
-                <button
+                <Button
                     key={uuid.v1()}
-                    className={`rev-button enabled ${option.buttonColor}`}
+                    color={option.buttonColor}
+                    content={option.displayValue}
                     onClick={() => props.handleDecisionButtonClick(option.decisionValue)}
-                >
-                    {option.displayValue}
-                </button>
+                />
             ))}
         </div>
     );
