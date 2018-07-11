@@ -1,4 +1,3 @@
-import { Button } from 'react-bootstrap';
 import React from 'react';
 import uuid from 'uuid';
 
@@ -6,14 +5,13 @@ const DecisionButtonGroup = props =>
     (
         <div>
             {props.options.map(option => (
-                <Button
+                <button
                     key={uuid.v1()}
-                    style={{ backgroundColor: option.buttonColor }}
-                    className="decisionbutton"
+                    className={`rev-button enabled ${option.buttonColor}`}
                     onClick={() => props.handleDecisionButtonClick(option.decisionValue)}
                 >
                     {option.displayValue}
-                </Button>
+                </button>
             ))}
         </div>
     );

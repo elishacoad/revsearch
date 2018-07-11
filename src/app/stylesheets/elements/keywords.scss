@@ -1,0 +1,36 @@
+.keyword-list-green, .keyword-list-red {
+    margin: 10px;
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.keyword-list-green {
+    color: #00994d
+}
+
+.keyword-list-red {
+    color: #990000
+}
+
+.keyword>.glyphicon {
+    vertical-align: baseline;
+}
+
+.keyword>p {
+    padding: 7px;
+    margin: 3px;
+    border-radius: 12px;
+    display: inline-flex;
+    color: white;
+    word-break: break-word;
+    max-width: 90%;
+}
+
+.keyword-green {
+    background: #00994d;
+}
+
+.keyword-red {
+    background: #990000;
+}

@@ -1,0 +1,57 @@
+
+.rev-button{
+    border: none;
+    border-radius: 5px;
+    color: white;
+    overflow: hidden;
+    outline: none;
+    position: relative;
+    letter-spacing: 0.1em;
+    font-weight: 400; 
+    padding: 0.8rem 0.8rem;
+    font-size: 12px;
+    margin: 2px;
+    min-width: 90px;
+    -webkit-filter: brightness(100%);
+
+    &.checkbox-button{
+        padding: 1rem 2rem;
+        margin: 5px;
+    }
+
+    &.focusOn,
+    &:hover{
+        -webkit-filter: brightness(70%);
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    &.lg{
+        width: 250px;
+        font-size: 1em;
+    }
+
+    &.disabled{
+        background: #a4a6a9;
+    }
+
+    &.enabled{
+        background: #a4a6a9;
+
+        &.default{
+            background: rgb(82, 174, 213);
+        }
+        &.green{
+            background: rgb(40, 180, 124);   
+        }
+        &.red{
+            background: rgba(220, 73, 58, 1); 
+        }
+        &.gray{
+            background: #5f5f5f;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+.panel-heading{
+    cursor: pointer !important;
+}
+
+.panel-group {
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 5px;
+}
+
+.paper-review-col {
+    height: 90vh;
+
+    .panel{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+    
+        a {
+            text-decoration: none !important;
+        }
+    
+        .panel-title{
+            color: black !important;
+            /* Settings add Ellipses */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        
+    }
+
+    .full-title {
+        width: 90%;
+    }
+    
+    .decisionbutton {
+        margin-top: 10px;
+        width: 100%;
+        background-color: white;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+    }
+    
+    .decisionbutton:hover {
+        box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2), 3px 2px 15px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+}
