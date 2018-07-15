@@ -4,23 +4,24 @@
 import React from 'react';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 
-import { logicalToDisplayName } from '../../globals/constants';
+import { logicalToDisplayName } from 'Constants';
 
-export const DropdownElement = (props) => {
+const DropdownElement = props =>
     // maps menu items options from items sent as list
-    return (
+    (
         <DropdownButton
             bsStyle={props.bstyle}
             title={props.title}
             id={props.id}
-            onSelect={props.onSelect}>
+            onSelect={props.onSelect}
+        >
 
-            {Object.keys(props.items).map((key, value) =>
+            {Object.keys(props.items).map(key => (
                 <MenuItem key={key} eventKey={key}>
                     {logicalToDisplayName[key]}
                 </MenuItem>
-            )}
-
+            ))}
         </DropdownButton>
-    )
-}
+    );
+
+export default DropdownElement;

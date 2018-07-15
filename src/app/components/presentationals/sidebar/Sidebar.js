@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import Keywords from '../../containers/sidebar/KeywordHighlighter';
-import LibraryCounts from '../../containers/sidebar/LibraryCounts';
-import ProgressWell from '../../containers/sidebar/ProgressWell';
-import SearchgroupsFilter from '../../containers/sidebar/SearchgroupsFilter';
+import Keywords from 'Containers/sidebar/KeywordHighlighter';
+import LibraryCounts from 'Containers/sidebar/LibraryCounts';
+import ProgressWell from 'Containers/sidebar/ProgressWell';
+import SearchgroupsFilter from 'Containers/sidebar/SearchgroupsFilter';
 
-export default class Sidebar extends Component {
-    render() {
-        return (
-            <div>
-                <LibraryCounts />
-                <Keywords />
-                <SearchgroupsFilter />
-                <ProgressWell />
-            </div>
-        );
-    }
-}
+const Sidebar = () => (
+    <div>
+        <LibraryCounts />
+        <Keywords />
+        <SearchgroupsFilter />
+        <ProgressWell />
+    </div>
+);
+
+export default Sidebar;

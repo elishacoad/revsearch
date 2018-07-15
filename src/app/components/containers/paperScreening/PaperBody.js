@@ -6,80 +6,50 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import PaperBodyPresentational from '../../presentationals/paperScreening/PaperBodyPresentational';
-import { Colors, Decision } from '../../../globals/constants'
-import { incrementRow, updatePaper } from '../../../redux/actions';
+import PaperBodyPresentational from 'Presentationals/paperScreening/PaperBodyPresentational';
+import { incrementRow, updatePaper } from 'Actions';
+import { buildOptionObjects } from 'Globals/helpers';
 
 class PaperBody extends Component {
-  constructor(props, context) {
-    super(props, context);
+    constructor(props, context) {
+        super(props, context);
 
-    this.changePaperDecision = this.changePaperDecision.bind(this);
-    this.state = { options: [] }
-  }
+        this.changePaperDecision = this.changePaperDecision.bind(this);
+        this.state = { options: buildOptionObjects() };
+    }
 
-  componentDidMount() {
-    const options = this.buildDecisionObjects();
-    this.setState({ options: options });
-  }
+    changePaperDecision(decision) {
+        const { paper } = this.props;
+        paper.decision = decision;
+        this.props.updatePaper(paper);
+        this.props.incrementRow();
+    }
 
-  /**
-   * zip: zip n arrays that are m length into an array of dimension n x m
-   * ie: zip([[1, 2, 3], [4, 5, 6]]) -> [[1, 4], [2, 5], [3, 6]]
-  */
-  zip(arrays) {
-    return arrays[0].map((_, i) => arrays.map(array => array[i]));
-  }
-
-  /** 
-   *  make an array of decision objects to pass to DecisionButtonGroup
-   *  where each object is {buttoncolor, clickvalue, displayvalue}
-   *  - buttoncolor: the color of the button
-   *  - decisionvalue: the value that the paper.decision will be updated to
-   *  - displayvalue: the word to show in the button
-  */
-  buildDecisionObjects() {
-    let decisionvalues = [Decision.INCLUDE, Decision.EXCLUDE, Decision.MAYBE, Decision.NONE];
-    let colors = [Colors.INCLUDE, Colors.EXCLUDE, Colors.MAYBE, Colors.NONE];
-    let displayvalues = ["Include", "Exlude", "Maybe", "Undecided"];
-    return this.zip([colors, decisionvalues, displayvalues])
-      .map(decision => {
-        return { buttoncolor: decision[0], decisionvalue: decision[1], displayvalue: decision[2] }
-      });
-  }
-
-  changePaperDecision(decision) {
-    let paper = this.props.paper;
-    paper.decision = decision;
-    this.props.updatePaper(paper);
-    this.props.incrementRow();
-  }
-
-  render() {
-    return (
-      <PaperBodyPresentational
-        keywords={this.props.keywords}
-        paper={this.props.paper}
-        handleDecisionButtonClick={this.changePaperDecision}
-        options={this.state.options}
-      />
-    );
-  }
+    render() {
+        return (
+            <PaperBodyPresentational
+                highlightWords={this.props.highlightWords}
+                paper={this.props.paper}
+                handleDecisionButtonClick={this.changePaperDecision}
+                options={this.state.options}
+            />);
+    }
 }
 
 function mapStateToProps(state) {
-  return {
-    keywords: state.keywords
-  }
+    return {
+        highlightWords: state.highlightWords,
+    };
 }
 
 function matchDispatchToProps(dispatch) {
-  return bindActionCreators(
-    {
-      updatePaper: updatePaper,
-      incrementRow: incrementRow
-    },
-    dispatch);
+    return bindActionCreators(
+        {
+            updatePaper,
+            incrementRow,
+        },
+        dispatch,
+    );
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(PaperBody);

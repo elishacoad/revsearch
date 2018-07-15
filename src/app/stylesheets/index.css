@@ -1,20 +1,4 @@
-/* ######## INDEX.CSS ######## */
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-}
-
 /* ######## APP.CSS ######## */
-
-div .row, .paper-review-col, .Papers, table, tbody {
-    height: 100%;
-}
-
-div .container-fluid {
-    height: 90vh;
-}
 
 .panel a {
     text-decoration: none !important;
@@ -23,35 +7,6 @@ div .container-fluid {
 div .panel {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-}
-
-/* Overides Bootstrap Styles
-Forces navbar to hug sides */
-
-.navbar {
-    border-radius: 0px !important;
-    border: none !important;
-}
-
-.navbar {
-    min-height: 80px !important;
-}
-
-.navbar-brand {
-    padding: 0 15px !important;
-    height: 80px;
-    line-height: 80px !important;
-}
-
-.navbar-toggle {
-    /* (80px - button height 34px) / 2 = 23px */
-    margin-top: 23px;
-    padding: 9px 10px !important;
-}
-
-.add-word-form {
-    font-weight: 500 !important;
-    background-color: #eaeaea !important;
 }
 
 /* ######## KEYWORDS ######## */
@@ -109,8 +64,6 @@ Forces navbar to hug sides */
     cursor: pointer;
 }
 
-
-
 @media (min-width: 768px) {
     .navbar-nav>li>a {
         /* (80px - line-height of 27px) / 2 = 26.5px */
@@ -118,6 +71,10 @@ Forces navbar to hug sides */
         padding-bottom: 26.5px;
         line-height: 27px;
     }
+}
+
+.nav-dropdown-icon {
+    color: white;
 }
 
 /* ######## PAPERBODY.CSS ######## */
@@ -144,48 +101,28 @@ Forces navbar to hug sides */
     --dark-exclude-color: #990000;
 }
 
-.paper {
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
-    margin-bottom: 12px;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    cursor: pointer;
-    /* Disables Text Selection */
-    -webkit-touch-callout: none;
-    /* iOS Safari */
-    -webkit-user-select: none;
-    /* Safari */
-    -khtml-user-select: none;
-    /* Konqueror HTML */
-    -moz-user-select: none;
-    /* Firefox */
-    -ms-user-select: none;
-    /* Internet Explorer/Edge */
-    user-select: none;
-    /* Non-prefixed version, currently
-    supported by Chrome and Opera */
+/* ######## Panels ######## */
+
+.paper-review-col {
+    height: 90vh;
 }
 
-.paper {
-    background-color: rgb(255, 255, 255);
-    border-color: rgb(255, 255, 255);
-    border-style: solid;
-    border-width: 2px;
+.panel-group {
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 5px;
 }
 
-.paper:hover {
-    background-color: #b7b7b7;
+.panel-heading{
+    cursor: pointer !important;
 }
 
-.title h4 {
-    text-overflow: ellipsis;
-    width: 100%;
-    /* Required properties to achieve text-overflow */
-    white-space: nowrap;
+.paper-review-col .panel-title{
+    color: black !important;
+    /* Settings add Ellipses */
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .full-title {
@@ -204,4 +141,86 @@ Forces navbar to hug sides */
 .decisionbutton:hover {
     border-color: rgb(0, 0, 0);
     box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2), 3px 2px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: rgb(67, 67, 67);
+}
+
+::-webkit-scrollbar-track{
+	background-color: rgb(183, 183, 183);
+	border-radius: 10px;
+}
+
+.rev-navbar {
+    background-color: #294777 !important;
+}
+
+.color-white {
+    color: white !important;
+}
+
+.rev-checkbox-button{
+    border: none;
+    border-radius: 20px;
+    color: white;
+    overflow: hidden;
+    outline: none;
+    position: relative;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    padding: 1rem 2rem;
+    font-size: 1em;
+    margin: 5px;
+    -webkit-filter: brightness(100%);
+}
+
+.rev-checkbox-button.focusOn,
+.rev-checkbox-button:hover{
+    -webkit-filter: brightness(70%);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.rev-checkbox-button.lg{ 
+    width: 250px;
+}
+
+.rev-checkbox-button.default.enabled{
+    background: rgb(82, 174, 213);
+}
+
+.rev-checkbox-button.green.enabled{
+    background: rgb(40, 180, 124);
+}
+
+.rev-checkbox-button.red.enabled{
+    background: rgba(220, 73, 58, 1);
+}
+
+.rev-checkbox-button.gray.enabled{
+    background: #5f5f5f;
+}
+
+.rev-checkbox-button.green.disabled,
+.rev-checkbox-button.red.disabled,
+.rev-checkbox-button.gray.disabled,
+.rev-checkbox-button.default.disabled{
+    background: #a4a6a9;
+}
+
+.container-grid{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    margin: 10px;
 }
