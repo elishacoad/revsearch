@@ -73,6 +73,10 @@ div .panel {
     }
 }
 
+.nav-dropdown-icon {
+    color: white;
+}
+
 /* ######## PAPERBODY.CSS ######## */
 
 .highlight-match {
@@ -151,4 +155,72 @@ div .panel {
 ::-webkit-scrollbar-track{
 	background-color: rgb(183, 183, 183);
 	border-radius: 10px;
+}
+
+.rev-navbar {
+    background-color: #294777 !important;
+}
+
+.color-white {
+    color: white !important;
+}
+
+.rev-checkbox-button{
+    border: none;
+    border-radius: 20px;
+    color: white;
+    overflow: hidden;
+    outline: none;
+    position: relative;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    padding: 1rem 2rem;
+    font-size: 1em;
+    margin: 5px;
+    -webkit-filter: brightness(100%);
+}
+
+.rev-checkbox-button.focusOn,
+.rev-checkbox-button:hover{
+    -webkit-filter: brightness(70%);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.rev-checkbox-button.lg{ 
+    width: 250px;
+}
+
+.rev-checkbox-button.default.enabled{
+    background: rgb(82, 174, 213);
+}
+
+.rev-checkbox-button.green.enabled{
+    background: rgb(40, 180, 124);
+}
+
+.rev-checkbox-button.red.enabled{
+    background: rgba(220, 73, 58, 1);
+}
+
+.rev-checkbox-button.gray.enabled{
+    background: #5f5f5f;
+}
+
+.rev-checkbox-button.green.disabled,
+.rev-checkbox-button.red.disabled,
+.rev-checkbox-button.gray.disabled,
+.rev-checkbox-button.default.disabled{
+    background: #a4a6a9;
+}
+
+.container-grid{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    margin: 10px;
 }

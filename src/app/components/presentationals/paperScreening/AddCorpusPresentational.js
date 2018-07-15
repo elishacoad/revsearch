@@ -25,7 +25,7 @@ const AddCorpusPresentational = props => (
                         id="fileUpload"
                         type="file"
                         accept=".txt"
-                        onChange={() => props.readFile()}
+                        onChange={e => props.readFile(e)}
                         style={{ display: 'none' }}
                     />
                 </ControlLabel>

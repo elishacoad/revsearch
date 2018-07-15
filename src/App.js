@@ -3,7 +3,7 @@ import { Grid } from 'react-bootstrap';
 
 import 'Style/index.css';
 import PaperScreening from 'Presentationals/paperScreening/PaperScreening';
-import RevNavbar from 'Elements/RevNavbar';
+import RevNavbar from 'Containers/navbar/RevNavbar';
 import { Colors } from 'Constants';
 
 const App = () => (

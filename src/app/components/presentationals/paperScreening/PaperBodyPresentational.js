@@ -13,7 +13,7 @@ const PaperBodyPresentational = props => (
                         highlightClassName="highlight-good"
                         searchWords={props.highlightWords.positiveWords}
                         autoEscape
-                        textToHighlight={props.paper.title}
+                        textToHighlight={props.paper.title || ''}
                     />
                 </h5>
                 <hr />
@@ -21,7 +21,7 @@ const PaperBodyPresentational = props => (
                     highlightClassName="highlight-good"
                     searchWords={props.highlightWords.positiveWords}
                     autoEscape
-                    textToHighlight={props.paper.abstract}
+                    textToHighlight={props.paper.abstract || ''}
                 />
             </div>
             {props.paper.fulltextlink && (
