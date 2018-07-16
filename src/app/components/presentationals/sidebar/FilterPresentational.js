@@ -12,7 +12,7 @@ const FilterPresentational = props => (
     <Panel defaultExpanded id="accordion-search">
         <Panel.Toggle>
             <Panel.Heading className="background-revnavy cursor-pointer">
-                <Panel.Title style={{ color: 'white' }}>Search</Panel.Title>
+                <Panel.Title className="sidebar-panel-title">Search</Panel.Title>
             </Panel.Heading>
         </Panel.Toggle>
         <Panel.Collapse>

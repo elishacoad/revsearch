@@ -7,4 +7,45 @@
         background-color: $revnavy;
         cursor: pointer;
     }
+
+    .white-dropdown{
+        color: white;
+        display: inline-block;
+    }
+
+    .action-alert{
+        text-align: center;
+    }
+
+    .pointer-cursor{
+        cursor: pointer;
+    }
+
+    .paper-panel{
+        &.border-dark{
+            &.default,
+            &.blue{
+                border-color: $dark-blue;
+            }
+            &.green{
+                border-color: $dark-green;
+            }
+            &.red{
+                border-color: $dark-red;
+            }
+            &.gray{
+                border-color: $dark-gray;
+            }
+        }
+
+        .panel-bottom-link{
+            margin-top: 10px;
+    
+            a{
+                font-style: italic;
+            }
+        }
+    }
+
+
 }

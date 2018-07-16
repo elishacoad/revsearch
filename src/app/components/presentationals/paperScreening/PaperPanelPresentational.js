@@ -11,8 +11,8 @@ import { PaperPanelHeader } from 'Elements';
 
 const PaperPanelPresentational = props => (
     <Panel
+        className={`paper-panel border-dark ${Colors[props.paper.decision.toUpperCase()]}`}
         eventKey={props.eventKey}
-        style={{ borderColor: Colors[`DARK${props.paper.decision.toUpperCase()}`] }}
         key={props.paper.id}
     >
         <Panel.Toggle>
