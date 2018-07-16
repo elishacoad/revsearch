@@ -25,9 +25,12 @@ class Checkmark extends React.Component {
     handleCheckboxClick(e) {
         e.preventDefault();
         this.props.handleChange(!this.state.checked);
-        this.setState({
-            focus: '',
-        });
+        // only when mouse click should we lose focus
+        if (e.detail === 1) {
+            this.setState({
+                focus: '',
+            });
+        }
     }
 
     handleCheckboxFocus() {
