@@ -1,13 +1,13 @@
 
+
 import React from 'react';
 
-class CheckboxButton extends React.Component {
+class Checkmark extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
             checked: props.checked || false,
             color: props.color ? props.color : 'default',
-            lg: props.lg ? 'lg' : '',
             focus: '',
         };
 
@@ -44,16 +44,19 @@ class CheckboxButton extends React.Component {
 
     render() {
         return (
-            <button
-                className={`rev-button checkbox-button ${this.state.lg} ${this.state.focus} ${this.state.color} ${this.state.checked ? 'enabled' : 'disabled'}`}
-                onClick={(e) => { this.handleCheckboxClick(e); }}
-                onFocus={() => { this.handleCheckboxFocus(); }}
-                onBlur={() => { this.handleCheckboxUnfocus(); }}
-            >
-                {`${this.state.checked ? '\u2713' : ''}  ${this.props.label} (${this.props.count})`}
-            </button>
+            <div className="checkmark">
+                <button
+                    className={`rev-button checkmark-button ${this.state.focus} ${this.state.color} ${this.state.checked ? 'enabled' : 'disabled'}`}
+                    onClick={(e) => { this.handleCheckboxClick(e); }}
+                    onFocus={() => { this.handleCheckboxFocus(); }}
+                    onBlur={() => { this.handleCheckboxUnfocus(); }}
+                >
+                    {this.state.checked ? '\u2713' : ''}
+                </button>
+                {this.props.label}
+            </div>
         );
     }
 }
 
-export default CheckboxButton;
+export default Checkmark;

@@ -20,6 +20,26 @@
     &.checkbox-button{
         padding: 1rem 2rem;
         margin: 5px;
+
+        &.disabled{
+            background: #a4a6a9;
+        }
+    }
+
+    &.checkmark-button{
+        width: 17px;
+        min-width: 17px;
+        min-height: 17px;
+        padding: 1px;
+        font-size: 11px;
+        text-align: center;
+        margin: 1px;
+        margin-right: 8px;
+
+        &.disabled{
+            border: 1px solid $gray;
+            background: white;
+        }
     }
 
     &.focus-on,
@@ -37,10 +57,6 @@
         min-width: 250px;
         width: 250px;
         font-size: 1em;
-    }
-
-    &.disabled{
-        background: #a4a6a9;
     }
 
     &.enabled{
@@ -70,4 +86,12 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+}
+
+.checkmark{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

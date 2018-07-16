@@ -1,8 +1,9 @@
 import React from 'react';
-import { Checkbox, Panel } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { Checkmark } from 'Elements';
 import { Colors } from 'Constants';
 import { setDecisionFilter } from 'Actions';
 import { tallyDecisions } from 'Globals/helpers';
@@ -23,38 +24,38 @@ const LibraryCounts = (props) => {
             </Panel.Toggle>
             <Panel.Collapse>
                 <Panel.Body>
-                    <Checkbox
-                        defaultChecked
-                        onChange={e => props.setDecisionFilter({
-                            ...props.decisionFilter, allowIncludes: e.target.checked,
+                    <Checkmark
+                        color="green"
+                        checked={props.decisionFilter.allowIncludes}
+                        label={`Includes (${counts.includes})`}
+                        handleChange={checked => props.setDecisionFilter({
+                            ...props.decisionFilter, allowIncludes: checked,
                         })}
-                    >
-                        Includes ({counts.includes})
-                    </Checkbox>
-                    <Checkbox
-                        defaultChecked
-                        onChange={e => props.setDecisionFilter({
-                            ...props.decisionFilter, allowExcludes: e.target.checked,
+                    />
+                    <Checkmark
+                        color="red"
+                        checked={props.decisionFilter.allowExcludes}
+                        label={`Excludes (${counts.excludes})`}
+                        handleChange={checked => props.setDecisionFilter({
+                            ...props.decisionFilter, allowExcludes: checked,
                         })}
-                    >
-                        Excludes ({counts.excludes})
-                    </Checkbox>
-                    <Checkbox
-                        defaultChecked
-                        onChange={e => props.setDecisionFilter({
-                            ...props.decisionFilter, allowMaybes: e.target.checked,
+                    />
+                    <Checkmark
+                        color="blue"
+                        checked={props.decisionFilter.allowMaybes}
+                        label={`Maybes (${counts.maybes})`}
+                        handleChange={checked => props.setDecisionFilter({
+                            ...props.decisionFilter, allowMaybes: checked,
                         })}
-                    >
-                        Maybes ({counts.maybes})
-                    </Checkbox>
-                    <Checkbox
-                        defaultChecked
-                        onChange={e => props.setDecisionFilter({
-                            ...props.decisionFilter, allowUndecided: e.target.checked,
+                    />
+                    <Checkmark
+                        color="gray"
+                        checked={props.decisionFilter.allowUndecided}
+                        label={`Undecided (${counts.undecided})`}
+                        handleChange={checked => props.setDecisionFilter({
+                            ...props.decisionFilter, allowUndecided: checked,
                         })}
-                    >
-                        Undecided ({counts.undecided})
-                    </Checkbox>
+                    />
                 </Panel.Body>
             </Panel.Collapse>
         </Panel>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Modal, ControlLabel, FormGroup, FormControl, Radio, InputGroup } from 'react-bootstrap';
-import CheckboxButton from '../../elements/CheckboxButton';
-
+import { CheckboxButton } from 'Elements';
 
 const DownloadPapersModalPresentional = props => (
     <Modal show={props.showModal} onHide={props.handleModalClose}>
