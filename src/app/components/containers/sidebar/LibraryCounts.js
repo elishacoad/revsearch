@@ -4,22 +4,16 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { Checkmark } from 'Elements';
-import { Colors } from 'Constants';
 import { setDecisionFilter } from 'Actions';
 import { tallyDecisions } from 'Globals/helpers';
 
 const LibraryCounts = (props) => {
     const counts = tallyDecisions(props.papers);
     return (
-        <Panel defaultExpanded id="accordion-example" style={{ borderColor: 'gray' }}>
+        <Panel defaultExpanded id="accordion-library">
             <Panel.Toggle>
-                <Panel.Heading
-                    style={{
-                        backgroundColor: Colors.REVNAVY,
-                        cursor: 'pointer',
-                    }}
-                >
-                    <Panel.Title style={{ color: 'white' }}>Library ({counts.total})</Panel.Title>
+                <Panel.Heading className="sidebar-panel-heading">
+                    <Panel.Title className="sidebar-panel-title">Library ({counts.total})</Panel.Title>
                 </Panel.Heading>
             </Panel.Toggle>
             <Panel.Collapse>

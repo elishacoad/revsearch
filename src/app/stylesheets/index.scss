@@ -1,7 +1,9 @@
 @import 'elements/button';
 @import 'elements/panel';
+@import 'elements/accordion';
 @import 'elements/keywords';
 @import 'elements/navbar';
+@import 'bootstrap';
 @import 'paperbody';
 @import 'setup';
 
@@ -17,12 +19,13 @@
 
 /* ######## BACKGROUNDS ######## */
 
-.background-revnavy {
-    background-color: #294777;
+#app{
+    height: 100vh;
+    background-color: $snow;
 }
 
 .background-revnavy {
-    background-color: #294777;
+    background-color: $revnavy;
 }
 
 ::-webkit-scrollbar {

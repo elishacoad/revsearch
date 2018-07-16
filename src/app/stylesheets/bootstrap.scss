@@ -1,0 +1,10 @@
+/* ######## BBOTRSTRAP OVERLOAD TRICK FOR NOW ######## */
+#app{
+    .sidebar-panel-title{
+        color: white;
+    }
+    .sidebar-panel-heading{
+        background-color: $revnavy;
+        cursor: pointer;
+    }
+}

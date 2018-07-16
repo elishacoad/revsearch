@@ -34,3 +34,10 @@
 .keyword-red {
     background: #990000;
 }
+
+/* ######## OLD STYLE OF LIST, MUST CHANGE ######## */
+.list-keyword{
+    &.green{
+        color: $green-highlight;
+    }
+}
