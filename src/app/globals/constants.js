@@ -10,9 +10,6 @@ export const Colors = Object.freeze({
     MAYBE: 'default',
     NONE: 'gray',
     EXCLUDE: 'red',
-    REVNAVY: '#294777',
-    REVBACKGROUND: '#f0f0f0',
-    PAPERBACKGROUND: '#dfdfdf',
 });
 
 export const PaperFields = Object.freeze({
