@@ -42,9 +42,9 @@ class Button extends React.Component {
         return (
             <button
                 className={`rev-button enabled ${this.state.lg} ${this.state.focus} ${this.state.color}`}
-                onClick={(e) => { this.handleButtonClick(e); }}
-                onFocus={() => { this.handleButtonFocus(); }}
-                onBlur={() => { this.handleButtonUnfocus(); }}
+                onClick={this.handleButtonClick}
+                onFocus={this.handleButtonFocus}
+                onBlur={this.handleButtonUnfocus}
             >
                 {this.props.content}
             </button>

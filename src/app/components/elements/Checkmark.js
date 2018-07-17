@@ -50,9 +50,9 @@ class Checkmark extends React.Component {
             <div className="checkmark">
                 <button
                     className={`rev-button checkmark-button ${this.state.focus} ${this.state.color} ${this.state.checked ? 'enabled' : 'disabled'}`}
-                    onClick={(e) => { this.handleCheckboxClick(e); }}
-                    onFocus={() => { this.handleCheckboxFocus(); }}
-                    onBlur={() => { this.handleCheckboxUnfocus(); }}
+                    onClick={this.handleCheckboxClick}
+                    onFocus={this.handleCheckboxFocus}
+                    onBlur={this.handleCheckboxUnfocus}
                 >
                     {this.state.checked ? '\u2713' : ''}
                 </button>

@@ -49,9 +49,9 @@ class CheckboxButton extends React.Component {
         return (
             <button
                 className={`rev-button checkbox-button ${this.state.lg} ${this.state.focus} ${this.state.color} ${this.state.checked ? 'enabled' : 'disabled'}`}
-                onClick={(e) => { this.handleCheckboxClick(e); }}
-                onFocus={() => { this.handleCheckboxFocus(); }}
-                onBlur={() => { this.handleCheckboxUnfocus(); }}
+                onClick={this.handleCheckboxClick}
+                onFocus={this.handleCheckboxFocus}
+                onBlur={this.handleCheckboxUnfocus}
             >
                 {`${this.state.checked ? '\u2713' : ''}  ${this.props.label} (${this.props.count})`}
             </button>
