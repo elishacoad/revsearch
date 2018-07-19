@@ -1,4 +1,4 @@
-import { Colors, Decision, SearchLogic, PaperFields } from './constants';
+import { Decision, SearchLogic, PaperFields } from './constants';
 
 /**
  * zip: zip n arrays that are m length into an array of dimension n x m
@@ -15,14 +15,12 @@ export const zip = arrays => arrays[0].map((_, i) => arrays.map(array => array[i
 */
 export const buildOptionObjects = () => {
     const decisionValues = [Decision.INCLUDE, Decision.EXCLUDE, Decision.MAYBE, Decision.NONE];
-    const colors = [Colors.INCLUDE, Colors.EXCLUDE, Colors.MAYBE, Colors.NONE];
     const displayValues = ['Include', 'Exclude', 'Maybe', 'Undecided'];
-    return zip([colors, decisionValues, displayValues])
+    return zip([decisionValues, displayValues])
         .map(option => (
             {
-                buttonColor: option[0],
-                decisionValue: option[1],
-                displayValue: option[2],
+                decisionValue: option[0],
+                displayValue: option[1],
             }
         ));
 };

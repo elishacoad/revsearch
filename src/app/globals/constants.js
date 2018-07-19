@@ -5,13 +5,6 @@ export const Decision = Object.freeze({
     EXCLUDE: 'exclude',
 });
 
-export const Colors = Object.freeze({
-    INCLUDE: 'green',
-    MAYBE: 'default',
-    NONE: 'gray',
-    EXCLUDE: 'red',
-});
-
 export const PaperFields = Object.freeze({
     ALL: 'ALL',
     TITLE: 'TITLE',

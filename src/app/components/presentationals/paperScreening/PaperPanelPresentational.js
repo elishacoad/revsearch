@@ -2,7 +2,6 @@ import React from 'react';
 import { Panel } from 'react-bootstrap';
 
 import PaperBody from 'Containers/paperScreening/PaperBody';
-import { Colors } from 'Constants';
 import { PaperPanelHeader } from 'Elements';
 
 /** A paper panel is the clickable banner that opens the paper body.
@@ -11,14 +10,14 @@ import { PaperPanelHeader } from 'Elements';
 
 const PaperPanelPresentational = props => (
     <Panel
-        className={`paper-panel border-dark ${Colors[props.paper.decision.toUpperCase()]}`}
+        className={`paper-panel border-dark ${props.paper.decision}`}
         eventKey={props.eventKey}
         key={props.paper.id}
     >
         <Panel.Toggle>
             <Panel.Heading
                 componentClass={PaperPanelHeader}
-                color={Colors[props.paper.decision.toUpperCase()]}
+                color={props.paper.decision}
                 paperTitle={props.paper.title}
             />
         </Panel.Toggle>

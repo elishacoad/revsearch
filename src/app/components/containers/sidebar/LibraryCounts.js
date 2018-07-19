@@ -19,37 +19,41 @@ const LibraryCounts = (props) => {
             <Panel.Collapse>
                 <Panel.Body>
                     <Checkmark
-                        color="green"
+                        color="include"
                         checked={props.decisionFilter.allowIncludes}
-                        label={`Includes (${counts.includes})`}
                         handleChange={checked => props.setDecisionFilter({
                             ...props.decisionFilter, allowIncludes: checked,
                         })}
-                    />
+                    >
+                        {`Includes (${counts.includes})`}
+                    </Checkmark>
                     <Checkmark
-                        color="red"
+                        color="exclude"
                         checked={props.decisionFilter.allowExcludes}
-                        label={`Excludes (${counts.excludes})`}
                         handleChange={checked => props.setDecisionFilter({
                             ...props.decisionFilter, allowExcludes: checked,
                         })}
-                    />
+                    >
+                        {`Excludes (${counts.excludes})`}
+                    </Checkmark>
                     <Checkmark
-                        color="blue"
+                        color="maybe"
                         checked={props.decisionFilter.allowMaybes}
-                        label={`Maybes (${counts.maybes})`}
                         handleChange={checked => props.setDecisionFilter({
                             ...props.decisionFilter, allowMaybes: checked,
                         })}
-                    />
+                    >
+                        {`Maybes (${counts.maybes})`}
+                    </Checkmark>
                     <Checkmark
-                        color="gray"
+                        color="undecided"
                         checked={props.decisionFilter.allowUndecided}
-                        label={`Undecided (${counts.undecided})`}
                         handleChange={checked => props.setDecisionFilter({
                             ...props.decisionFilter, allowUndecided: checked,
                         })}
-                    />
+                    >
+                        {`Undecided (${counts.undecided})`}
+                    </Checkmark>
                 </Panel.Body>
             </Panel.Collapse>
         </Panel>

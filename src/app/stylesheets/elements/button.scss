@@ -63,19 +63,20 @@
         background: #a4a6a9;
 
         &.default,
-        &.blue{
+        &.maybe{
             background: $blue;
             border-color: $blue;
         }
-        &.green{
+        &.include{
             background: $green;
             border-color: $green;
         }
-        &.red{
+        &.exclude{
             background: $red;
             border-color: $red;
         }
-        &.gray{
+        &.none,
+        &.undecided{
             background:$gray;
             border-color: $gray;
         }

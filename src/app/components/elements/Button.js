@@ -18,7 +18,7 @@ class Button extends React.Component {
     handleButtonClick(e) {
         e.preventDefault();
         this.props.onClick();
-        // only when mouse click should we lose focus
+        // only on mouse click should we lose focus
         if (e.detail === 1) {
             this.setState({
                 focus: '',
@@ -46,7 +46,7 @@ class Button extends React.Component {
                 onFocus={this.handleButtonFocus}
                 onBlur={this.handleButtonUnfocus}
             >
-                {this.props.content}
+                {this.props.children}
             </button>
         );
     }

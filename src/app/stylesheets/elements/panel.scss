@@ -36,16 +36,17 @@
             }
 
             &.default,
-            &.blue{
+            &.maybe{
                 background: $light-blue;
             }
-            &.green{
+            &.include{
                 background: $light-green   
             }
-            &.red{
+            &.exclude{
                 background: $light-red 
             }
-            &.gray{
+            &.none,
+            &.undecided{
                 background:$light-gray
             }
 

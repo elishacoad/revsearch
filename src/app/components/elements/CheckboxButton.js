@@ -25,7 +25,7 @@ class CheckboxButton extends React.Component {
     handleCheckboxClick(e) {
         e.preventDefault();
         this.props.handleChange(!this.state.checked);
-        // only when mouse click should we lose focus
+        // only on mouse click should we lose focus
         if (e.detail === 1) {
             this.setState({
                 focus: '',

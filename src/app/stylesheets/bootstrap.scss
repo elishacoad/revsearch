@@ -24,16 +24,17 @@
     .paper-panel{
         &.border-dark{
             &.default,
-            &.blue{
+            &.maybe{
                 border-color: $dark-blue;
             }
-            &.green{
+            &.include{
                 border-color: $dark-green;
             }
-            &.red{
+            &.exclude{
                 border-color: $dark-red;
             }
-            &.gray{
+            &.none,
+            &.undecided{
                 border-color: $dark-gray;
             }
         }
