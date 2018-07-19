@@ -27,6 +27,7 @@ module.exports = {
         contentBase: BUILD_DIR,
         hot: true,
         clientLogLevel: 'none',
+        historyApiFallback: true,
         // ignores extra logging
         stats: {
             colors: true,
