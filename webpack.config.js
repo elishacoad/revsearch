@@ -105,9 +105,9 @@ module.exports = {
                 },
             },
             {
-                test: /\.css$/,
-                // will need to add sass compatibility when we switch
-                use: ['style-loader', 'css-loader'],
+                test: /\.(s*)css$/,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+                
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             {

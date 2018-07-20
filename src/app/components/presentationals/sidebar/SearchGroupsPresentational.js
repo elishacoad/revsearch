@@ -2,7 +2,6 @@
  *  maps the list of groups to an element search group
  */
 import React from 'react';
-
 import { SearchGroup } from 'Elements';
 
 const SearchGroupsPresentational = props => (

@@ -1,0 +1,52 @@
+/* ######## BBOTRSTRAP OVERLOAD TRICK FOR NOW ######## */
+#app{
+    .sidebar-panel-title{
+        color: white;
+    }
+    .sidebar-panel-heading{
+        background-color: $revnavy;
+        cursor: pointer;
+    }
+
+    .white-dropdown{
+        color: white;
+        display: inline-block;
+    }
+
+    .action-alert{
+        text-align: center;
+    }
+
+    .pointer-cursor{
+        cursor: pointer;
+    }
+
+    .paper-panel{
+        &.border-dark{
+            &.default,
+            &.maybe{
+                border-color: $dark-blue;
+            }
+            &.include{
+                border-color: $dark-green;
+            }
+            &.exclude{
+                border-color: $dark-red;
+            }
+            &.none,
+            &.undecided{
+                border-color: $dark-gray;
+            }
+        }
+
+        .panel-bottom-link{
+            margin-top: 10px;
+    
+            a{
+                font-style: italic;
+            }
+        }
+    }
+
+
+}

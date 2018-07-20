@@ -18,10 +18,7 @@ const RevNavbarPresentational = props => (
             <Nav pullRight>
                 <NavDropdown
                     title={
-                        <div
-                            style={{ display: 'inline-block' }}
-                            className="color-white"
-                        >
+                        <div className="white-dropdown">
                             <Glyphicon
                                 glyph="list-alt"
                                 className="nav-dropdown-icon"

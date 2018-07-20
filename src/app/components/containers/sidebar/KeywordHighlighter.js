@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 
-import { Colors } from 'Constants';
 import { setHighlightwords } from 'Actions';
 
 class Keywords extends Component {
@@ -39,15 +38,10 @@ class Keywords extends Component {
 
     render() {
         return (
-            <Panel defaultExpanded id="accordion-example" style={{ borderColor: 'gray' }}>
+            <Panel defaultExpanded id="accordion-keywords">
                 <Panel.Toggle>
-                    <Panel.Heading
-                        style={{
-                            backgroundColor: Colors.REVNAVY,
-                            cursor: 'pointer',
-                        }}
-                    >
-                        <Panel.Title style={{ color: 'white' }}>
+                    <Panel.Heading className="sidebar-panel-heading">
+                        <Panel.Title className="sidebar-panel-title">
                             Keywords
                         </Panel.Title>
                     </Panel.Heading>
@@ -64,7 +58,7 @@ class Keywords extends Component {
                             onKeyPress={this.addKeyword}
                         />
                         {this.props.highlightWords.positiveWords.length > 0 && <br />}
-                        <ul style={{ color: '#00994d' }}>
+                        <ul className="list-keyword green">
                             {this.props.highlightWords.positiveWords.map(word => (
                                 <li key={uuid.v1()}>
                                     {`${word}  `}

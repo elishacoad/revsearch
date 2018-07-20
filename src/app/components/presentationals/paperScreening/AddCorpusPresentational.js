@@ -5,7 +5,7 @@ import dummyPapers from 'Globals/dummyPapers';
 
 const AddCorpusPresentational = props => (
     <div>
-        <Alert style={{ textAlign: 'center' }}>
+        <Alert className="action-alert">
             <h4> Looks like you have not uploaded any papers yet! </h4>
             <br />
             <Button bsStyle="info" onClick={() => props.setCorpus(dummyPapers)}>
@@ -15,7 +15,7 @@ const AddCorpusPresentational = props => (
             OR
             <br />
             <FormGroup>
-                <ControlLabel htmlFor="fileUpload" style={{ cursor: 'pointer' }}>
+                <ControlLabel htmlFor="fileUpload" className="pointer-cursor">
                     <h4>
                         <Label bsStyle="info">
                             Add file
@@ -26,7 +26,7 @@ const AddCorpusPresentational = props => (
                         type="file"
                         accept=".txt"
                         onChange={e => props.readFile(e)}
-                        style={{ display: 'none' }}
+                        className="hidden"
                     />
                 </ControlLabel>
             </FormGroup>
