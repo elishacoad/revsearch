@@ -24,6 +24,7 @@ module.exports = {
 
     // hot-loader
     devServer: {
+        port: 8081,
         contentBase: BUILD_DIR,
         hot: true,
         clientLogLevel: 'none',
