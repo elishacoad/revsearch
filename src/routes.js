@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import App from './App';
-import Home from './app/Home/Home';
+import Landing from './app/Landing/Landing';
 import Callback from './app/Callback/Callback';
 import Auth from './app/Auth/Auth';
 import history from './history';
@@ -33,7 +33,7 @@ export const makeMainRoutes = () => (
         <Router history={history}>
             <div>
                 <Route path="/" render={props => <App auth={auth} {...props} />} />
-                <Route path="/home" render={props => <Home auth={auth} {...props} />} />
+                <Route path="/landing" render={props => <Landing auth={auth} {...props} />} />
                 <Route
                     path="/callback"
                     render={(props) => {

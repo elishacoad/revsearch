@@ -37,9 +37,9 @@ class App extends Component {
                 <Button
                     bsStyle="primary"
                     className="btn-margin"
-                    onClick={() => this.goTo('home')}
+                    onClick={() => this.goTo('landing')}
                 >
-                    Home
+                    Landing
                 </Button>
                 {
                     !isAuthenticated() && (

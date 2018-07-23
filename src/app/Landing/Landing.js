@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 
-class Home extends Component {
+class Landing extends Component {
     constructor(props) {
         super(props);
 
@@ -19,7 +19,7 @@ class Home extends Component {
                 {
                     isAuthenticated() && (
                         <h4>
-                You are logged in!
+                            You are logged in!
                         </h4>
                     )
                 }
@@ -41,4 +41,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Landing;
