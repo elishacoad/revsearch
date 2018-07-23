@@ -1,7 +1,6 @@
 {
     "extends": "airbnb",
     "rules": {
-
         "react/jsx-filename-extension": [
             1,
             {
@@ -28,6 +27,10 @@
         "react/jsx-indent-props": [
             "error",
             4
+        ],
+        "linebreak-style": [
+            "error",
+            "windows"
         ]
     },
     "settings": {

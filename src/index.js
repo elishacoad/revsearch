@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 import App from './App';
 import allReducers from './app/redux/reducers';
 
-require('Images/favicon.ico');
+require('./assets/favicon.ico');
 
 const store = createStore(
     allReducers,
@@ -32,7 +32,8 @@ ReactDOM.render(
 // Webpack Hot Module Replacement API
 if (module.hot) {
     module.hot.accept('./App', () => {
-        render(<Root />,
+        render(
+            <Root />,
             document.getElementById('root'),
         );
     });

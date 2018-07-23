@@ -15,7 +15,6 @@ import { matchesGroupCriteria } from 'Globals/helpers';
 class Papers extends Component {
     constructor(props, context) {
         super(props, context);
-
         this.matchesGroupsCriteria = this.matchesGroupsCriteria.bind(this);
         this.areEligibleToShow = this.areEligibleToShow.bind(this);
     }

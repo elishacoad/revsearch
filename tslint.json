@@ -1,0 +1,4 @@
+{
+	"tslint.jsEnabled" : false,
+"tslint.Exclude" : ["**/*.js"]
+}

@@ -1,3 +1,99 @@
+/* ######## Splashpage ######## */
+.dark-row, .light-row {
+    padding: 50px;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.dark-row {
+    background-color: rgb(0, 120, 160);
+}
+
+.dark-row p {
+    background-color: rgb(0, 120, 160);
+    color: white;
+}
+
+.light-row {
+    background-color: rgb(215, 244, 255);
+}
+
+.hero {
+}
+
+.additional-info {
+}
+
+.work-from-anywhere {
+}
+
+.footer {
+}
+
+.theme-button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: rgb(240, 128, 43);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 8px;
+    width: 330px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    vertical-align: middle;
+    margin-top: 20px;
+}
+
+.theme-button:hover {
+    background-color: rgb(139, 60, 0);
+}
+
+.theme-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.theme-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.theme-button:hover span {
+    padding-right: 25px;
+}
+
+.theme-button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.row .jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+nav.navbar {
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+    background-color: rgb(215, 244, 255);
+}
+
+img {
+    width: 100%;
+}
+
 /* ######## APP.CSS ######## */
 
 .panel a {
@@ -11,7 +107,8 @@ div .panel {
 
 /* ######## KEYWORDS ######## */
 
-.keyword-list-green, .keyword-list-red {
+.keyword-list-green,
+.keyword-list-red {
     margin: 10px;
     margin-top: 20px;
     list-style-type: none;
@@ -109,11 +206,11 @@ div .panel {
     padding-right: 5px;
 }
 
-.panel-heading{
+.panel-heading {
     cursor: pointer !important;
 }
 
-.paper-review-col .panel-title{
+.paper-review-col .panel-title {
     color: black !important;
     /* Settings add Ellipses */
     overflow: hidden;
@@ -140,15 +237,15 @@ div .panel {
 }
 
 ::-webkit-scrollbar {
-	width: 10px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	background-color: rgb(67, 67, 67);
+    border-radius: 10px;
+    background-color: rgb(67, 67, 67);
 }
 
-::-webkit-scrollbar-track{
-	background-color: rgb(183, 183, 183);
-	border-radius: 10px;
+::-webkit-scrollbar-track {
+    background-color: rgb(183, 183, 183);
+    border-radius: 10px;
 }
