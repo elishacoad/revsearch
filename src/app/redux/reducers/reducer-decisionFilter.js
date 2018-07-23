@@ -1,9 +1,9 @@
 // state passed to this function is the object that keeps track of current filters
 const defaultstate = {
-    showIncludes: true,
-    showExcludes: true,
-    showMaybes: true,
-    showUndecided: true,
+    allowIncludes: true,
+    allowExcludes: true,
+    allowMaybes: true,
+    allowUndecided: true,
 };
 
 export default (state = defaultstate, action) => {

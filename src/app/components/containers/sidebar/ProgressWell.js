@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Badge, Panel, ProgressBar } from 'react-bootstrap';
 
-import { Colors } from 'Constants';
 import { tallyDecisions, percent } from 'Globals/helpers';
 
 const ProgressWell = (props) => {
@@ -11,15 +10,10 @@ const ProgressWell = (props) => {
     const pexcluded = Math.round(percent(counts.excludes, props.papers.length));
 
     return (
-        <Panel defaultExpanded style={{ borderColor: 'gray' }}>
+        <Panel defaultExpanded id="accordion-progress">
             <Panel.Toggle>
-                <Panel.Heading
-                    style={{
-                        backgroundColor: Colors.REVNAVY,
-                        cursor: 'pointer',
-                    }}
-                >
-                    <Panel.Title style={{ color: 'white' }}>
+                <Panel.Heading className="sidebar-panel-heading">
+                    <Panel.Title className="sidebar-panel-title">
                         {'Progress  '}
                         <Badge>
                             {counts.excludes + counts.includes} / {props.papers.length}

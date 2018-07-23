@@ -1,4 +1,4 @@
-import { Colors, Decision, SearchLogic, PaperFields } from './constants';
+import { Decision, SearchLogic, PaperFields } from './constants';
 
 /**
  * zip: zip n arrays that are m length into an array of dimension n x m
@@ -15,14 +15,12 @@ export const zip = arrays => arrays[0].map((_, i) => arrays.map(array => array[i
 */
 export const buildOptionObjects = () => {
     const decisionValues = [Decision.INCLUDE, Decision.EXCLUDE, Decision.MAYBE, Decision.NONE];
-    const colors = [Colors.INCLUDE, Colors.EXCLUDE, Colors.MAYBE, Colors.NONE];
     const displayValues = ['Include', 'Exclude', 'Maybe', 'Undecided'];
-    return zip([colors, decisionValues, displayValues])
+    return zip([decisionValues, displayValues])
         .map(option => (
             {
-                buttonColor: option[0],
-                decisionValue: option[1],
-                displayValue: option[2],
+                decisionValue: option[0],
+                displayValue: option[1],
             }
         ));
 };
@@ -91,3 +89,27 @@ export const matchesGroupCriteria = (paper, group) => {
             return [];
     }
 };
+
+/**
+ * Create an anchor DOM element and click it, setting off the action
+ * to download a file to the browser's host computer.
+ */
+export const downloadTextFile = (filename, text) => {
+    const element = document.createElement('a');
+    element.setAttribute('href', `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`);
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+};
+
+/**
+ * Filter out papers that don't match the decision filter criteria.
+ */
+export const decisionFilterPapers = (decisionFilter, allPapers) =>
+    allPapers.filter(paper =>
+        (decisionFilter.allowIncludes && paper.decision === Decision.INCLUDE)
+        || (decisionFilter.allowExcludes && paper.decision === Decision.EXCLUDE)
+        || (decisionFilter.allowMaybes && paper.decision === Decision.MAYBE)
+        || (decisionFilter.allowUndecided && paper.decision === Decision.NONE));

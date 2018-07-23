@@ -9,8 +9,7 @@ import { connect } from 'react-redux';
 
 import PapersPresentational from 'Presentationals/paperScreening/PapersPresentational';
 import { selectRow } from 'Actions';
-import { Decision } from 'Constants';
-import { matchesGroupCriteria } from 'Globals/helpers';
+import { matchesGroupCriteria, decisionFilterPapers } from 'Globals/helpers';
 
 class Papers extends Component {
     constructor(props, context) {
@@ -35,11 +34,7 @@ class Papers extends Component {
         // filter out papers that don't match the searchgroups criteria
         let papersToShow = allPapers.filter(paper => this.matchesGroupsCriteria(paper));
         // filter out papers that don't match the decision filter criteria
-        papersToShow = papersToShow.filter(paper => (
-            this.props.decisionFilter.showIncludes && paper.decision === Decision.INCLUDE)
-            || (this.props.decisionFilter.showExcludes && paper.decision === Decision.EXCLUDE)
-            || (this.props.decisionFilter.showMaybes && paper.decision === Decision.MAYBE)
-            || (this.props.decisionFilter.showUndecided && paper.decision === Decision.NONE));
+        papersToShow = decisionFilterPapers(this.props.decisionFilter, papersToShow);
         return papersToShow;
     }
 

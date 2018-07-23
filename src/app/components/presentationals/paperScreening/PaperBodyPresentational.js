@@ -2,7 +2,7 @@ import React from 'react';
 import Highlighter from 'react-highlight-words';
 import { Col, Row } from 'react-bootstrap';
 
-import DecisionButtonGroup from 'Elements/DecisionButtonGroup';
+import { DecisionButtonGroup } from 'Elements';
 
 const PaperBodyPresentational = props => (
     <Row>
@@ -13,7 +13,7 @@ const PaperBodyPresentational = props => (
                         highlightClassName="highlight-good"
                         searchWords={props.highlightWords.positiveWords}
                         autoEscape
-                        textToHighlight={props.paper.title}
+                        textToHighlight={props.paper.title || ''}
                     />
                 </h5>
                 <hr />
@@ -21,18 +21,19 @@ const PaperBodyPresentational = props => (
                     highlightClassName="highlight-good"
                     searchWords={props.highlightWords.positiveWords}
                     autoEscape
-                    textToHighlight={props.paper.abstract}
+                    textToHighlight={props.paper.abstract || ''}
                 />
             </div>
             {props.paper.fulltextlink && (
-                <a
-                    href={props.paper.fulltextlink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ fontstyle: 'italic' }}
-                >
-                    Link to Article
-                </a>
+                <div className="panel-bottom-link">
+                    <a
+                        href={props.paper.fulltextlink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Link to Article
+                    </a>
+                </div>
             )}
         </Col>
         <Col xs={12} sm={2}>

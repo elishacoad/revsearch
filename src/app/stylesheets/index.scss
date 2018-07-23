@@ -1,0 +1,63 @@
+@import 'elements/button';
+@import 'elements/panel';
+@import 'elements/accordion';
+@import 'elements/keywords';
+@import 'elements/navbar';
+@import 'bootstrap';
+@import 'paperbody';
+@import 'setup';
+
+:root {
+    /* :root is a way of saying "the outer-most element" */
+    --include-color: #83ddb2;
+    --dark-include-color: #00994d;
+    --maybe-color: #cde9ff;
+    --dark-maybe-color: #004d99;
+    --exclude-color: #eeab9e;
+    --dark-exclude-color: #990000;
+}
+
+/* ######## BACKGROUNDS ######## */
+
+#app{
+    height: 100vh;
+    background-color: $snow;
+}
+
+.background-revnavy {
+    background-color: $revnavy;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: rgb(67, 67, 67);
+}
+
+::-webkit-scrollbar-track{
+	background-color: rgb(183, 183, 183);
+	border-radius: 10px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.color-white {
+    color: white !important;
+}
+
+.container-grid{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+
+.hidden{
+    display: none !important;
+}
