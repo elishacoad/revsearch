@@ -28,12 +28,10 @@ export default class Auth {
         this.auth0.parseHash((err, authResult) => {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 this.setSession(authResult);
-                history.replace('/landing');
+                history.replace('/paperscreening');
             } else if (err) {
                 history.replace('/landing');
                 console.log(err);
-                /* eslint-disable-next-line no-alert */
-                alert(`Error: ${err.error}. Check the console for further details.`);
             }
         });
     }

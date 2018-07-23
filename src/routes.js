@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import App from './App';
-import Landing from './app/Landing/Landing';
-import Callback from './app/Callback/Callback';
-import Auth from './app/Auth/Auth';
+import Landing from './app/components/containers/landing/Landing';
+import Callback from './app/components/containers/callback/Callback';
+import Auth from './app/auth/auth';
 import history from './history';
 import allReducers from './app/redux/reducers';
 
@@ -32,8 +32,8 @@ export const makeMainRoutes = () => (
     <Provider store={store}>
         <Router history={history}>
             <div>
-                <Route path="/" render={props => <App auth={auth} {...props} />} />
-                <Route path="/landing" render={props => <Landing auth={auth} {...props} />} />
+                <Route path="/" render={props => <Landing auth={auth} {...props} />} />
+                <Route path="/paperscreening" render={props => <App auth={auth} {...props} />} />
                 <Route
                     path="/callback"
                     render={(props) => {
