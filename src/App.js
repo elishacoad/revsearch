@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from 'react-bootstrap';
 
 import 'Style/index.css';
-// import RevNavbar from 'Containers/navbar/RevNavbar';
+import RevNavbar from './app/components/containers/navbar/RevNavbar';
 import SplashPage from './app/components/containers/splashPage/SplashPage';
 // import PaperScreening from 'Presentationals/paperScreening/PaperScreening';
 
