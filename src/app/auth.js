@@ -35,7 +35,7 @@ export default class Auth {
                 this.setSession(authResult);
                 history.replace('/paperscreening');
             } else if (err) {
-                history.replace('/landing');
+                history.replace('/');
                 console.log(err);
             }
         });
@@ -48,7 +48,7 @@ export default class Auth {
         localStorage.setItem('id_token', authResult.idToken);
         localStorage.setItem('expires_at', expiresAt);
         // navigate to the landing route
-        history.replace('/landing');
+        history.replace('/');
     }
 
     logout() {
@@ -57,7 +57,7 @@ export default class Auth {
         localStorage.removeItem('id_token');
         localStorage.removeItem('expires_at');
         // navigate to the landing route
-        history.replace('/landing');
+        history.replace('/');
     }
 
     isAuthenticated() {

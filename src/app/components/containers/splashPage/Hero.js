@@ -4,8 +4,11 @@ class Hero extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-        };
+        this.login = this.login.bind(this);
+    }
+
+    login() {
+        this.props.auth.login();
     }
 
     render() {
@@ -18,16 +21,15 @@ class Hero extends React.Component {
                         team manage your systematic review in a simple, flexible,
                         and efficient way.
                     </p>
-                    <button className="rev-button theme-button"><span>SIGN UP FOR FREE </span></button>
+                    <button className="rev-button theme-button" onClick={this.login}><span>SIGN UP FOR FREE </span></button>
                     <p>
                         Already a member?{' '}
-                        <a href="#test">Sign in</a>
+                        <a href="#test" onClick={this.login}>Sign in</a>
                     </p>
                 </div>
             </div>
         );
     }
 }
-
 
 export default Hero;

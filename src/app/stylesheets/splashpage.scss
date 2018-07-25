@@ -17,7 +17,7 @@
 }
 
 .light-row {
-    background-color: lighten( $revnavy, 60%);
+    background-color: lighten( adjust-hue($revnavy, -20%), 50%);
 }
 
 .basic-container {
@@ -51,11 +51,11 @@
 }
 
 .theme-button span:after {
-    content: '\00bb';
+    content: '>';
     position: absolute;
     opacity: 0;
     top: 0;
-    right: -20px;
+    right: -30px;
     transition: 0.5s;
 }
 
