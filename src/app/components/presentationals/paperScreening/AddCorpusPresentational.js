@@ -5,7 +5,7 @@ import dummyPapers from 'Globals/dummyPapers';
 
 const AddCorpusPresentational = props => (
     <div>
-        <Alert className="action-alert">
+        <Alert className="action-alert text-center center-block">
             <h4> Looks like you have not uploaded any papers yet! </h4>
             <br />
             <Button bsStyle="info" onClick={() => props.setCorpus(dummyPapers)}>

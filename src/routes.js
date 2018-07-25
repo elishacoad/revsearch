@@ -32,13 +32,13 @@ export const makeMainRoutes = () => (
     <Provider store={store}>
         <Router history={history}>
             <div>
-                <Route path="/" render={props => <Landing auth={auth} {...props} />} />
+                <Route path="/landing" render={props => <Landing auth={auth} {...props} />} />
                 <Route path="/paperscreening" render={props => <App auth={auth} {...props} />} />
                 <Route
                     path="/callback"
                     render={(props) => {
                         handleAuthentication(props);
-                        return <Callback {...props} />;
+                        return <Callback />;
                     }}
                 />
             </div>
