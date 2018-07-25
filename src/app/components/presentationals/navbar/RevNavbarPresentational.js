@@ -1,6 +1,5 @@
 import React from 'react';
-import { Navbar, MenuItem, NavDropdown, Glyphicon, Nav } from 'react-bootstrap';
-
+import { MenuItem, NavDropdown, Glyphicon, Navbar, Nav, NavItem } from 'react-bootstrap';
 import { RevNavbarEventKeys } from '../../../globals/constants';
 import DownloadPapersModal from '../../containers/navbar/DownloadPapersModal';
 
@@ -33,6 +32,31 @@ const RevNavbarPresentational = props => (
                         <Glyphicon glyph="download-alt" />{' '}Download Papers
                     </MenuItem>
                 </NavDropdown>
+
+                <NavItem
+                    className="btn-margin"
+                    onClick={() => props.goTo('landing')}
+                >
+                    Landing
+                </NavItem>
+                {
+                    !props.isAuthenticated() && (
+                        <NavItem
+                            className="color-white"
+                            onClick={props.login}
+                        >
+                            Log In
+                        </NavItem>)
+                }
+                {
+                    props.isAuthenticated() && (
+                        <NavItem
+                            className="color-white"
+                            onClick={props.logout}
+                        >
+                            Log Out
+                        </NavItem>)
+                }
             </Nav>
         </Navbar>
         <DownloadPapersModal

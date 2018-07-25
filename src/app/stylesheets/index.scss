@@ -51,6 +51,11 @@
     color: white !important;
 }
 
+// make the bootstrap NavItem text color white
+.navbar-default .navbar-nav>li>a {
+    color: white !important;
+}
+
 .container-grid {
     display: flex;
     flex-direction: row;
