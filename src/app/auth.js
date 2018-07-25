@@ -1,7 +1,12 @@
 /* eslint-disable class-methods-use-this */
 import auth0 from 'auth0-js';
-import history from '../../history';
-import { AUTH_CONFIG } from './auth0-variables';
+import history from '../history';
+
+const AUTH_CONFIG = {
+    domain: 'revsearch.eu.auth0.com',
+    clientId: 'i9DlcDL1TASkNDhhFaZOXIsx996ySFZ6',
+    callbackUrl: 'http://localhost:8081/callback',
+};
 
 export default class Auth {
     constructor() {
@@ -37,7 +42,7 @@ export default class Auth {
     }
 
     setSession(authResult) {
-    // Set the time that the access token will expire at
+        // Set the time that the access token will expire at
         const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('id_token', authResult.idToken);
@@ -47,7 +52,7 @@ export default class Auth {
     }
 
     logout() {
-    // Clear access token and ID token from local storage
+        // Clear access token and ID token from local storage
         localStorage.removeItem('access_token');
         localStorage.removeItem('id_token');
         localStorage.removeItem('expires_at');
@@ -56,9 +61,24 @@ export default class Auth {
     }
 
     isAuthenticated() {
-    // Check whether the current time is past the
-    // access token's expiry time
+        // Check whether the current time is past the
+        // access token's expiry time
         const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
         return new Date().getTime() < expiresAt;
+    }
+
+    // https://auth0.com/docs/quickstart/spa/vanillajs/02-user-profile
+    getProfile() {
+        let userProfile = null;
+        const accessToken = localStorage.getItem('access_token');
+        if (!accessToken) {
+            console.log('Access Token must exist to fetch profile');
+        }
+        this.webAuth.client.userInfo(accessToken, (err, profile) => {
+            if (profile) {
+                userProfile = profile;
+            }
+        });
+        return userProfile;
     }
 }

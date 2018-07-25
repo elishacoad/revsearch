@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import App from './App';
 import Landing from './app/components/containers/landing/Landing';
 import Callback from './app/components/containers/callback/Callback';
-import Auth from './app/auth/auth';
+import Auth from './app/auth';
 import history from './history';
 import allReducers from './app/redux/reducers';
 
