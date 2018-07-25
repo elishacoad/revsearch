@@ -29,10 +29,7 @@
             "error",
             4
         ],
-        "linebreak-style": [
-            "error",
-            "windows"
-        ]
+        "linebreak-style": 0
     },
     "env": {
         "browser": true,
