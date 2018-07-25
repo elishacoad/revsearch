@@ -1,3 +1,4 @@
+@import 'mixins';
 @import 'elements/button';
 @import 'elements/panel';
 @import 'elements/accordion';
@@ -6,7 +7,7 @@
 @import 'bootstrap';
 @import 'paperbody';
 @import 'setup';
-
+@import 'splashpage';
 :root {
     /* :root is a way of saying "the outer-most element" */
     --include-color: #83ddb2;
@@ -19,7 +20,7 @@
 
 /* ######## BACKGROUNDS ######## */
 
-#app{
+#app {
     height: 100vh;
     background-color: $snow;
 }
@@ -29,17 +30,17 @@
 }
 
 ::-webkit-scrollbar {
-	width: 10px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	background-color: rgb(67, 67, 67);
+    border-radius: 10px;
+    background-color: rgb(67, 67, 67);
 }
 
-::-webkit-scrollbar-track{
-	background-color: rgb(183, 183, 183);
-	border-radius: 10px;
+::-webkit-scrollbar-track {
+    background-color: rgb(183, 183, 183);
+    border-radius: 10px;
 }
 
 .cursor-pointer {
@@ -50,7 +51,7 @@
     color: white !important;
 }
 
-.container-grid{
+.container-grid {
     display: flex;
     flex-direction: row;
     flex-flow: wrap;
@@ -58,6 +59,6 @@
     margin: 10px;
 }
 
-.hidden{
+.hidden {
     display: none !important;
 }

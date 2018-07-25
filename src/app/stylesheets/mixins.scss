@@ -1,0 +1,14 @@
+@mixin setBgColorAndHover($baseColor) {
+    background-color: $baseColor;
+    &:hover {
+        background-color: darken($baseColor, 15%);
+    }
+}
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}

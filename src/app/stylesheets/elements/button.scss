@@ -1,6 +1,6 @@
 @import 'colors';
-
-.rev-button{
+.rev-button {
+    @include transition(all .5s ease);
     border: none;
     border-radius: 5px;
     color: white;
@@ -8,7 +8,7 @@
     outline: none;
     position: relative;
     letter-spacing: 0.1em;
-    font-weight: 400; 
+    font-weight: 400;
     padding: 0.8rem 0.8rem;
     font-size: 12px;
     margin: 2px;
@@ -16,17 +16,20 @@
     min-width: 90px;
     width: -webkit-fill-available;
     -webkit-filter: brightness(100%);
-
-    &.checkbox-button{
+    &.theme-button {
+        background-color: $theme-orange;
+        font-size: 28px;
+        width: 400px;
+        max-width: 400px;
+    }
+    C.checkbox-button {
         padding: 1rem 2rem;
         margin: 5px;
-
-        &.disabled{
+        &.disabled {
             background: #a4a6a9;
         }
     }
-
-    &.checkmark-button{
+    &.checkmark-button {
         width: 17px;
         min-width: 17px;
         min-height: 17px;
@@ -35,61 +38,51 @@
         text-align: center;
         margin: 1px;
         margin-right: 8px;
-
-        &.disabled{
+        &.disabled {
             border: 1px solid $gray;
             background: white;
         }
     }
-
     &.focus-on,
-    &:hover{
+    &:hover {
         -webkit-filter: brightness(70%);
-        -webkit-transition: all 0.5s ease;
-        -moz-transition: all 0.5s ease;
-        -o-transition: all 0.5s ease;
-        -ms-transition: all 0.5s ease;
-        transition: all 0.5s ease;
         box-shadow: 0 0 5px grey;
     }
-
-    &.lg{
+    &.lg {
         min-width: 250px;
         width: 250px;
         font-size: 1em;
     }
-
-    &.enabled{
+    &.enabled {
         background: #a4a6a9;
-
         &.default,
-        &.maybe{
+        &.maybe {
             background: $blue;
             border-color: $blue;
         }
-        &.include{
+        &.include {
             background: $green;
             border-color: $green;
         }
-        &.exclude{
+        &.exclude {
             background: $red;
             border-color: $red;
         }
         &.none,
-        &.undecided{
-            background:$gray;
+        &.undecided {
+            background: $gray;
             border-color: $gray;
         }
     }
 }
 
-.decision-buttons{
+.decision-buttons {
     align-items: center;
     display: flex;
     flex-direction: column;
 }
 
-.checkmark{
+.checkmark {
     display: flex;
     flex-direction: row;
     align-content: center;

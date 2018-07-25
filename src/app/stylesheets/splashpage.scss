@@ -1,0 +1,79 @@
+/* ######## Splashpage ######## */
+
+.dark-row,
+.light-row {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.dark-row {
+    background-color: $revnavy;
+}
+
+.dark-row p {
+    color: white;
+}
+
+.light-row {
+    background-color: lighten( $revnavy, 60%);
+}
+
+.basic-container {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.flex-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero {
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+.additional-info {}
+
+.work-from-anywhere {}
+
+.footer {}
+
+.theme-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.theme-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.theme-button:hover span {
+    padding-right: 25px;
+}
+
+.theme-button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+nav.navbar {
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+    background-color: rgb(215, 244, 255);
+}
+
+img {
+    width: 100%;
+}

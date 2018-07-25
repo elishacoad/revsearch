@@ -16,16 +16,14 @@ class AdditionalInfo extends React.Component {
 
     render() {
         return (
-            <Row className="additional-info dark-row">
-                <Col md={3} />
-                <Col md={6}>
+            <div className="additional-info dark-row">
+                <div className="basic-container">
                     <p>
                         Import referances, screen studies, retrieve full text and much more with
                         Revseach to maintain a productive work flow in your systematic review.
                     </p>
-                </Col>
-                <Col md={3} />
-            </Row>
+                </div>
+            </div>
         );
     }
 }

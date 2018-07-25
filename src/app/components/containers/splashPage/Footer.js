@@ -16,19 +16,17 @@ class Footer extends React.Component {
 
     render() {
         return (
-            <Row className="footer dark-row">
-                <Col md={3} />
-                <Col md={6}>
+            <div className="footer dark-row">
+                <div className="basic-container">
                     <p>
                         Revsearch is tailored toward your specific systematic
                         review providing an experience unlike any other program.
                     </p>
                     <p>
-                        <button className="theme-button">SIGN UP TODAY</button>
+                        <button className="rev-button theme-button">SIGN UP TODAY</button>
                     </p>
-                </Col>
-                <Col md={3} />
-            </Row>
+                </div>
+            </div>
         );
     }
 }

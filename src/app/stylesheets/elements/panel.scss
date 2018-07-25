@@ -6,25 +6,21 @@
 
 .paper-review-col {
     height: 90vh;
-
-    .panel{
+    .panel {
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-    
         a {
             text-decoration: none;
         }
-
-        .paper-panel-header{
+        .paper-panel-header {
             border: 0;
             border-radius: 2px;
             padding: 10px 15px;
             cursor: pointer !important;
             display: block;
-            background: lightgray;
-            -webkit-filter: brightness(100%);
-
-            .title{
+            @include setBgColorAndHover($light-gray);
+            @include transition(all .3s ease);
+            .title {
                 color: black !important;
                 /* Settings add Ellipses */
                 overflow: hidden;
@@ -34,37 +30,25 @@
                 margin-bottom: 0;
                 font-size: 14px;
             }
-
             &.default,
-            &.maybe{
-                background: $light-blue;
+            &.maybe {
+                @include setBgColorAndHover($light-blue);
             }
-            &.include{
-                background: $light-green   
+            &.include {
+                @include setBgColorAndHover($light-green);
             }
-            &.exclude{
-                background: $light-red 
+            &.exclude {
+                @include setBgColorAndHover($light-red);
             }
             &.none,
-            &.undecided{
-                background:$light-gray
+            &.undecided {
+                @include setBgColorAndHover($light-gray);
             }
-
-            &:hover{
-                -webkit-filter: brightness(85%);
-                -webkit-transition: all 0.1s ease;
-                -moz-transition: all 0.1s ease;
-                -o-transition: all 0.1s ease;
-                -ms-transition: all 0.1s ease;
-                transition: all 0.1s ease;
-            }
-        }    
+        }
     }
-
     .full-title {
         width: 90%;
     }
-    
     .decisionbutton {
         margin-top: 10px;
         width: 100%;
@@ -72,9 +56,7 @@
         -webkit-transition-duration: 0.4s;
         transition-duration: 0.4s;
     }
-    
     .decisionbutton:hover {
         box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2), 3px 2px 15px 0 rgba(0, 0, 0, 0.19);
     }
-    
 }

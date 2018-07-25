@@ -16,21 +16,25 @@ class WorkFromAnywhere extends React.Component {
 
     render() {
         return (
-            <Row className="work-from-anywhere light-row">
-                <Col md={3} />
-                <Col md={3}>
-                    <h1>Work from anywhere</h1>
-                    <p>
-                        All your progress and data is securely stored and backed up on the cloud
-                        allowing you and your team to easily access it from any device anytime,
-                        anywhere.
-                    </p>
-                </Col>
-                <Col md={3}>
-                    <img src={image} alt="Screen types" />
-                </Col>
-                <Col md={3} />
-            </Row>
+            <div className="work-from-anywhere light-row">
+                <div className="basic-container">
+                    <Row>
+                        <Col md={8}>
+                            <h1>Work from anywhere</h1>
+                            <p>
+                                All your progress and data is securely
+                                stored and backed up on the cloud
+                                allowing you and your team to easily
+                                access it from any device anytime,
+                                anywhere.
+                            </p>
+                        </Col>
+                        <Col md={4}>
+                            <img src={image} alt="Screen types" />
+                        </Col>
+                    </Row>
+                </div>
+            </div>
         );
     }
 }
