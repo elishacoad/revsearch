@@ -11,6 +11,7 @@ const allReducers = combineReducers({
     highlightWords: keywordsReducer,
     decisionFilter: filterReducer,
     searchgroups: searchwordsReducer,
+    profile: (state = {}, action) => (action.type === 'USERPROFILE_SET' ? action.payload : state),
 });
 
 export default allReducers;

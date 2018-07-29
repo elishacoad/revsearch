@@ -69,16 +69,18 @@ export default class Auth {
 
     // https://auth0.com/docs/quickstart/spa/vanillajs/02-user-profile
     getProfile() {
-        let userProfile = null;
-        const accessToken = localStorage.getItem('access_token');
-        if (!accessToken) {
-            console.log('Access Token must exist to fetch profile');
-        }
-        this.webAuth.client.userInfo(accessToken, (err, profile) => {
-            if (profile) {
-                userProfile = profile;
+        return new Promise((resolve) => {
+            let userProfile = null;
+            const accessToken = localStorage.getItem('access_token');
+            if (!accessToken) {
+                console.log('Access Token must exist to fetch profile');
             }
+            this.auth0.client.userInfo(accessToken, (err, profile) => {
+                if (profile) {
+                    userProfile = profile;
+                    resolve(userProfile);
+                }
+            });
         });
-        return userProfile;
     }
 }

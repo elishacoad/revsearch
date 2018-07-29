@@ -45,3 +45,9 @@ export const addSearchgroups = newGroup =>
         type: 'SEARCHGROUP_ADDED',
         payload: newGroup,
     });
+
+export const setUserProfile = profile =>
+    ({
+        type: 'USERPROFILE_SET',
+        payload: profile,
+    });
