@@ -6,7 +6,7 @@ import ProgressWell from 'Containers/sidebar/ProgressWell';
 import SearchgroupsFilter from 'Containers/sidebar/SearchgroupsFilter';
 
 const Sidebar = () => (
-    <div>
+    <div className="panel-group">
         <LibraryCounts />
         <Keywords />
         <SearchgroupsFilter />
