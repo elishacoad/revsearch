@@ -55,7 +55,7 @@ module.exports = {
         // hot module replacement refreshes JS
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            title: 'reVsearch',
+            title: 'revsearch',
             template: 'src/config/index.ejs',
         }),
     ],

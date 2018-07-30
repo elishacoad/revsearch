@@ -16,7 +16,7 @@ const RevNavbarPresentational = props => (
             }
             <Navbar.Header>
                 <Navbar.Brand>
-                    <a href="#home" className="color-white">reVsearch</a>
+                    <a href="#home" className="color-white">Revsearch</a>
                 </Navbar.Brand>
             </Navbar.Header>
             <Nav pullRight>
@@ -38,12 +38,6 @@ const RevNavbarPresentational = props => (
                     </MenuItem>
                 </NavDropdown>
 
-                <NavItem
-                    className="btn-margin"
-                    onClick={() => props.goTo('landing')}
-                >
-                    Landing
-                </NavItem>
                 {props.isAuthenticated() ? (
                     <NavItem
                         className="color-white"
