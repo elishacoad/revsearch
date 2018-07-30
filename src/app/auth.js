@@ -1,11 +1,29 @@
 /* eslint-disable class-methods-use-this */
 import auth0 from 'auth0-js';
+import Auth0Lock from 'auth0-lock';
 import history from '../history';
 
 const AUTH_CONFIG = {
     domain: 'revsearch.eu.auth0.com',
-    clientId: 'i9DlcDL1TASkNDhhFaZOXIsx996ySFZ6',
+    clientId: '9UWNRKmygH6WQ0BaIQWH4N3MNfOF2mx1',
     callbackUrl: 'http://localhost:8081/callback',
+};
+
+// https://auth0.com/docs/libraries/lock/v11/configuration
+// login with google not working and callback is not 'http://localhost:8081/callback'
+const lockOptions = {
+    theme: {
+        logo: 'https://s3.amazonaws.com/revsearch-assets/logo.png',
+        primaryColor: 'navy',
+        labeledSubmitButton: false,
+    },
+    container: 'login-container',
+    allowShowPassword: true,
+    closable: false,
+    languageDictionary: {
+        title: 'Revsearch',
+    },
+    allowedConnections: ['Username-Password-Authentication'],
 };
 
 export default class Auth {
@@ -13,20 +31,28 @@ export default class Auth {
         this.auth0 = new auth0.WebAuth({
             domain: AUTH_CONFIG.domain,
             clientID: AUTH_CONFIG.clientId,
-            redirectUri: AUTH_CONFIG.callbackUrl,
             audience: `https://${AUTH_CONFIG.domain}/userinfo`,
             responseType: 'token id_token',
             scope: 'openid profile',
+            redirectUrl: 'http://localhost:8081/callback/',
         });
-
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
+        this.signUp = this.signUp.bind(this);
         this.handleAuthentication = this.handleAuthentication.bind(this);
         this.isAuthenticated = this.isAuthenticated.bind(this);
     }
 
     login() {
-        this.auth0.authorize();
+        new Auth0Lock(AUTH_CONFIG.clientId, AUTH_CONFIG.domain, {
+            ...lockOptions, auth: this.auth0, allowSignUp: false, allowLogin: true,
+        }).show();
+    }
+
+    signUp() {
+        new Auth0Lock(AUTH_CONFIG.clientId, AUTH_CONFIG.domain, {
+            ...lockOptions, auth: this.auth0, allowSignUp: true, allowLogin: false,
+        }).show();
     }
 
     handleAuthentication() {
