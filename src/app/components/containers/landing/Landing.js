@@ -34,6 +34,6 @@ const Landing = (props) => {
             <div id="login-container" />
         </div>
     );
-}
+};
 
 export default Landing;
