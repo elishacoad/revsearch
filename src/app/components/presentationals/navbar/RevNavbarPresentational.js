@@ -1,8 +1,9 @@
 import React from 'react';
-import { Navbar, MenuItem, NavDropdown, Glyphicon, Nav } from 'react-bootstrap';
-
+import { connect } from 'react-redux';
+import { MenuItem, NavDropdown, Glyphicon, Navbar, Nav, NavItem } from 'react-bootstrap';
 import { RevNavbarEventKeys } from '../../../globals/constants';
 import DownloadPapersModal from '../../containers/navbar/DownloadPapersModal';
+
 
 const RevNavbarPresentational = props => (
     <div>
@@ -10,9 +11,12 @@ const RevNavbarPresentational = props => (
             className="rev-navbar"
             onSelect={props.handleNavSelect}
         >
+            {props.profile.picture &&
+                <img src={props.profile.picture} className="img-circle profile-image" alt="img" />
+            }
             <Navbar.Header>
                 <Navbar.Brand>
-                    <a href="#home" className="color-white">reVsearch</a>
+                    <a href="#home" className="color-white">Revsearch</a>
                 </Navbar.Brand>
             </Navbar.Header>
             <Nav pullRight>
@@ -33,6 +37,26 @@ const RevNavbarPresentational = props => (
                         <Glyphicon glyph="download-alt" />{' '}Download Papers
                     </MenuItem>
                 </NavDropdown>
+
+                {props.isAuthenticated() ? (
+                    <NavItem
+                        className="color-white"
+                        onClick={props.logout}
+                    >
+                        Log Out
+                    </NavItem>
+                ) : (
+                    <NavItem
+                        className="color-white"
+                        onClick={props.login}
+                    >
+                        Log In
+                    </NavItem>)}
+                {props.profile.given_name && (
+                    <NavItem>
+                        Welcome back {props.profile.given_name}!
+                    </NavItem>)
+                }
             </Nav>
         </Navbar>
         <DownloadPapersModal
@@ -42,4 +66,10 @@ const RevNavbarPresentational = props => (
     </div>
 );
 
-export default RevNavbarPresentational;
+function mapStateToProps(state) {
+    return {
+        profile: state.profile,
+    };
+}
+
+export default connect(mapStateToProps)(RevNavbarPresentational);

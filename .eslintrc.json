@@ -28,12 +28,13 @@
         "react/jsx-indent-props": [
             "error",
             4
-        ]
+        ],
+        "linebreak-style": 0
     },
     "env": {
         "browser": true,
         "node": true
-    },
+    },    
     "settings": {
         "import/resolver": "webpack"
     },

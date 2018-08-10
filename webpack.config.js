@@ -24,9 +24,11 @@ module.exports = {
 
     // hot-loader
     devServer: {
+        port: 8081,
         contentBase: BUILD_DIR,
         hot: true,
         clientLogLevel: 'none',
+        historyApiFallback: true,
         // ignores extra logging
         stats: {
             colors: true,
@@ -53,7 +55,7 @@ module.exports = {
         // hot module replacement refreshes JS
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            title: 'reVsearch',
+            title: 'revsearch',
             template: 'src/config/index.ejs',
         }),
     ],
