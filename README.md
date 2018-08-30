@@ -1,4 +1,4 @@
-# Revsearch
+# Revsearch ![icon](./public/favicon.ico)
 > *Screen references intelligently*
 
 Started building this at the Oxford hackathon and won an award for big data in medicine!
@@ -8,7 +8,7 @@ So we decided to continue with development and continue adding features.
 The goal is to have a software for researchers (but right now specifically medical) to have a modern and lightweight
 but powerful platform to navigate their accumulation of research reference papers.
 
-see live demo [here](http://revsearch.online/)!
+see live demo [here](http://revsearch.online/)!  :nerd_face:
 
 #### Current features:
 
