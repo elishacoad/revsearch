@@ -1,4 +1,4 @@
-# Revsearch ![icon](./public/favicon.ico)
+# Revsearch ![icon](public/favicon.ico)
 > *Screen references intelligently*
 
 Started building this at the Oxford hackathon and won an award for big data in medicine!
